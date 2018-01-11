@@ -4,7 +4,7 @@ using System.Windows.Input;
 using Microsoft.Practices.Unity;
 using Prism.Commands;
 
-namespace Quotation.Dashboard.ViewModels
+namespace Quotation.DashboardModule.ViewModels
 {
     public class RightTitlebarCommandsViewModel : ViewModelBase
     {

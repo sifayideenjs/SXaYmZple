@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Quotation.MotorInsurance.ViewModels
+namespace Quotation.MotorInsuranceModule.ViewModels
 {
     public class ModuleAPopupViewModel : ViewModelDialogPopupBase
     {

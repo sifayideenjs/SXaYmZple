@@ -67,7 +67,9 @@
   <ItemGroup>
     <Resource Include="BitmapGraphics\Icons\16x16\add_on.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="BitmapGraphics\Icons\globe.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="BitmapGraphics\Icons\32x32\add_on.png" />
   </ItemGroup>

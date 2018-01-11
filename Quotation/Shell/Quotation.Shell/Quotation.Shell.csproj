@@ -106,31 +106,11 @@
     <Compile Include="Logging\NLogLogger.cs" />
     <Compile Include="Model\AccentColor.cs" />
     <Compile Include="Model\ApplicationTheme.cs" />
-    <Compile Include="ViewModels\HomeTilesViewModel.cs" />
     <Compile Include="ViewModels\ShellWindowViewModel.cs" />
-    <Compile Include="ViewModels\RightTitlebarCommandsViewModel.cs" />
-    <Compile Include="ViewModels\ShellSettingsFlyoutViewModel.cs" />
-    <Compile Include="Views\HomeTiles.xaml.cs">
-      <DependentUpon>HomeTiles.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RightTitlebarCommands.xaml.cs">
-      <DependentUpon>RightTitlebarCommands.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ShellSettingsFlyout.xaml.cs">
-      <DependentUpon>ShellSettingsFlyout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ShellWindow.xaml.cs">
       <DependentUpon>ShellWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Icons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\HomeTiles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -139,18 +119,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Views\RightTitlebarCommands.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ShellSettingsFlyout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\ShellWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,20 +167,22 @@
       <Project>{a9984f2e-d289-45f0-aff4-693d77f3cde4}</Project>
       <Name>Quotation.Styling</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Quotation.MotorInsurance\Quotation.MotorInsurance.csproj">
+    <ProjectReference Include="..\..\Modules\Quotation.Dashboard\Quotation.DashboardModule.csproj">
+      <Project>{35695603-e53d-4a1f-b85f-b93a772e36c7}</Project>
+      <Name>Quotation.DashboardModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Quotation.Login\Quotation.LoginModule.csproj">
+      <Project>{f6373b4d-4c59-490e-b1c8-1bea70cf2cac}</Project>
+      <Name>Quotation.LoginModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Quotation.MotorInsurance\Quotation.MotorInsuranceModule.csproj">
       <Project>{97c8f8f9-d101-4c2c-8151-90782a360162}</Project>
-      <Name>Quotation.MotorInsurance</Name>
+      <Name>Quotation.MotorInsuranceModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Quotation.TravelInsurance\Quotation.TravelInsurance.csproj">
+    <ProjectReference Include="..\..\Modules\Quotation.TravelInsurance\Quotation.TravelInsuranceModule.csproj">
       <Project>{b74fbf16-ec1e-49ce-8f68-99eb7265d124}</Project>
-      <Name>Quotation.TravelInsurance</Name>
+      <Name>Quotation.TravelInsuranceModule</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\WindowsIcons-license.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

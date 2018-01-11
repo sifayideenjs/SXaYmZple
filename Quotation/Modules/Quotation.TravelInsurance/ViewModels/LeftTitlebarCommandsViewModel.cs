@@ -1,6 +1,6 @@
 ﻿using Quotation.Infrastructure.Base;
 
-namespace Quotation.TravelInsurance.ViewModels
+namespace Quotation.TravelInsuranceModule.ViewModels
 {
     public class LeftTitlebarCommandsViewModel : ViewModelBase
     {

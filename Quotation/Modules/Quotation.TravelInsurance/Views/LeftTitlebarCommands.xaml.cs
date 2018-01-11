@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Quotation.TravelInsurance.Views
+namespace Quotation.TravelInsuranceModule.Views
 {
     /// <summary>
     /// Interaktionslogik für RightTitlebarCommands.xaml

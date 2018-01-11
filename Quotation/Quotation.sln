@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{78161B3C-3CAC-4593-9504-8FFEF720B21F}"
 EndProject
@@ -21,15 +21,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.Infrastructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.Styling", "Infrastructure\Quotation.Styling\Quotation.Styling.csproj", "{A9984F2E-D289-45F0-AFF4-693D77F3CDE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.MotorInsurance", "Modules\Quotation.MotorInsurance\Quotation.MotorInsurance.csproj", "{97C8F8F9-D101-4C2C-8151-90782A360162}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.MotorInsuranceModule", "Modules\Quotation.MotorInsurance\Quotation.MotorInsuranceModule.csproj", "{97C8F8F9-D101-4C2C-8151-90782A360162}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.TravelInsurance", "Modules\Quotation.TravelInsurance\Quotation.TravelInsurance.csproj", "{B74FBF16-EC1E-49CE-8F68-99EB7265D124}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.TravelInsuranceModule", "Modules\Quotation.TravelInsurance\Quotation.TravelInsuranceModule.csproj", "{B74FBF16-EC1E-49CE-8F68-99EB7265D124}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.Shell", "Shell\Quotation.Shell\Quotation.Shell.csproj", "{85836386-FC9B-40EC-832E-541E6C9A445A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.Login", "Modules\Quotation.Login\Quotation.Login.csproj", "{F6373B4D-4C59-490E-B1C8-1BEA70CF2CAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.LoginModule", "Modules\Quotation.Login\Quotation.LoginModule.csproj", "{F6373B4D-4C59-490E-B1C8-1BEA70CF2CAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.Dashboard", "Modules\Quotation.Dashboard\Quotation.Dashboard.csproj", "{35695603-E53D-4A1F-B85F-B93A772E36C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.DashboardModule", "Modules\Quotation.Dashboard\Quotation.DashboardModule.csproj", "{35695603-E53D-4A1F-B85F-B93A772E36C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.Common", "Infrastructure\Quotation.Common\Quotation.Common.csproj", "{C57E7381-FCD3-4401-B02B-12122C894015}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{35695603-E53D-4A1F-B85F-B93A772E36C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35695603-E53D-4A1F-B85F-B93A772E36C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35695603-E53D-4A1F-B85F-B93A772E36C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57E7381-FCD3-4401-B02B-12122C894015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57E7381-FCD3-4401-B02B-12122C894015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57E7381-FCD3-4401-B02B-12122C894015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57E7381-FCD3-4401-B02B-12122C894015}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +93,6 @@ Global
 		{85836386-FC9B-40EC-832E-541E6C9A445A} = {0066C7E7-4A80-436A-850F-8C6A5430C990}
 		{F6373B4D-4C59-490E-B1C8-1BEA70CF2CAC} = {763CCFE4-A638-4894-93FD-DCA6D967CA14}
 		{35695603-E53D-4A1F-B85F-B93A772E36C7} = {763CCFE4-A638-4894-93FD-DCA6D967CA14}
+		{C57E7381-FCD3-4401-B02B-12122C894015} = {1B733E20-47F8-49AD-9CBF-1B1A10BB1F7B}
 	EndGlobalSection
 EndGlobal

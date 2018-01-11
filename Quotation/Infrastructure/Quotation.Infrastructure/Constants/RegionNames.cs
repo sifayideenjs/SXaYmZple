@@ -9,6 +9,7 @@ namespace Quotation.Infrastructure.Constants
     public static class RegionNames
     {
         public static string MainRegion = "MainRegion";
+        public static string TileRegion = "TileRegion";
         public static string SubMainRegion = "SubMainRegion";
         public static string FlyoutRegion = "FlyoutRegion";
         public static string LeftWindowCommandsRegion = "LeftWindowCommandsRegion";

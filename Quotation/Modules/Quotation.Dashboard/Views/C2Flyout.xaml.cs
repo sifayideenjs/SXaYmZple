@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Quotation.Dashboard.Views
+namespace Quotation.DashboardModule.Views
 {
     /// <summary>
     /// Interaktionslogik für C2Flyout.xaml

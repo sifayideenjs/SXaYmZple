@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Quotation.MotorInsurance.Views
+namespace Quotation.MotorInsuranceModule.Views
 {
     /// <summary>
     /// Interaktionslogik für RightTitlebarCommands.xaml

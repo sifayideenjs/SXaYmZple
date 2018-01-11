@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Quotation.MotorInsurance.Views
+namespace Quotation.MotorInsuranceModule.Views
 {
     /// <summary>
     /// Interaktionslogik für ModuleAPopup.xaml

@@ -18,7 +18,9 @@
                    ResizeMode="CanResizeWithGrip"
                    GlowBrush="{DynamicResource AccentColorBrush}"
                    mc:Ignorable="d"
-                   Title="ShellWindow" Height="600" Width="800">
+                   WindowState="Maximized"
+                   Title="ShellWindow" Height="600" Width="800"
+                   Background="#FF252526">
 
     <!-- LeftWindow Commands -->
     <metro:MetroWindow.LeftWindowCommands>

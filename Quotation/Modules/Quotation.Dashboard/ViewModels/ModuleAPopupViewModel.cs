@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Quotation.Dashboard.ViewModels
+namespace Quotation.DashboardModule.ViewModels
 {
     public class ModuleAPopupViewModel : ViewModelDialogPopupBase
     {

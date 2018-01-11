@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Quotation.Dashboard.Views
+namespace Quotation.DashboardModule.Views
 {
     /// <summary>
     /// Interaktionslogik für RightTitlebarCommands.xaml

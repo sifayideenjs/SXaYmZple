@@ -4,7 +4,7 @@ using System.Windows.Input;
 using Microsoft.Practices.Unity;
 using Prism.Commands;
 
-namespace Quotation.MotorInsurance.ViewModels
+namespace Quotation.MotorInsuranceModule.ViewModels
 {
     public class RightTitlebarCommandsViewModel : ViewModelBase
     {

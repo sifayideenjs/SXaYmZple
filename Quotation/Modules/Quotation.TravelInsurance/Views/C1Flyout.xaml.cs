@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Quotation.TravelInsurance.Views
+namespace Quotation.TravelInsuranceModule.Views
 {
     /// <summary>
     /// Interaktionslogik für C1Flyout.xaml

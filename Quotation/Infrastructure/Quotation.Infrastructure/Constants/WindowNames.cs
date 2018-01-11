@@ -10,5 +10,6 @@ namespace Quotation.Infrastructure.Constants
     {
         // Shell-Flyouts
         public static string MainWindowName = "MainWindowName";
+        public static string Dashboard = "Dashboard";
     }
 }
