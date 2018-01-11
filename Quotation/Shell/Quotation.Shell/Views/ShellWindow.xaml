@@ -1,0 +1,51 @@
+﻿<metro:MetroWindow x:Class="Quotation.Shell.Views.ShellWindow"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:local="clr-namespace:Quotation"
+                   xmlns:infConstants="clr-namespace:Quotation.Infrastructure.Constants;assembly=Quotation.Infrastructure"
+                   xmlns:infBehaviors="clr-namespace:Quotation.Infrastructure.Behaviors;assembly=Quotation.Infrastructure"
+                   infBehaviors:RegionPopupBehaviors.CreatePopupRegionWithName="{x:Static infConstants:RegionNames.DialogPopupRegion}"
+                   infBehaviors:RegionPopupBehaviors.ContainerWindowStyle="{StaticResource PopupRegionWindowStyle}"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:prism="http://www.codeplex.com/prism"
+                   xmlns:lex="http://wpflocalizeextension.codeplex.com"
+                   lex:LocalizeDictionary.DesignCulture="en-US"        
+                   lex:ResxLocalizationProvider.DefaultAssembly="Quotation.Shell"
+                   lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+                   prism:ViewModelLocator.AutoWireViewModel="True"
+                   ResizeMode="CanResizeWithGrip"
+                   GlowBrush="{DynamicResource AccentColorBrush}"
+                   mc:Ignorable="d"
+                   Title="ShellWindow" Height="600" Width="800">
+
+    <!-- LeftWindow Commands -->
+    <metro:MetroWindow.LeftWindowCommands>
+        <metro:WindowCommands x:Name="leftWindowCommandsRegion" />
+    </metro:MetroWindow.LeftWindowCommands>
+
+    <!-- RightWindow Commands -->
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands x:Name="rightWindowCommandsRegion" />
+    </metro:MetroWindow.RightWindowCommands>
+
+    <!-- Flyouts -->
+    <metro:MetroWindow.Flyouts>
+        <metro:FlyoutsControl x:Name="flyoutsControlRegion" />
+    </metro:MetroWindow.Flyouts>
+    
+    <metro:MetroContentControl>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        
+            <ContentControl x:Name="MainRegion" Grid.Row="1" Grid.Column="0"
+                            prism:RegionManager.RegionName="{x:Static infConstants:RegionNames.MainRegion}"
+                            VerticalContentAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch" />
+        </Grid>
+    </metro:MetroContentControl>
+</metro:MetroWindow>

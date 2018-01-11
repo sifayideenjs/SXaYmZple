@@ -1,0 +1,10 @@
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\bin\Debug\Quotation.Styling.dll
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\bin\Debug\Quotation.Styling.pdb
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\obj\Debug\BitmapGraphics\Icons.baml
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\obj\Debug\LookAndFeel.baml
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Styles\Popup.baml
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Styles\Label.baml
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling_MarkupCompile.cache
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.g.resources
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.dll
+D:\Project\Insurance\MainProject\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.pdb
