@@ -53,6 +53,10 @@ namespace Quotation.Shell
             Container.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
 
             Container.RegisterTypeForNavigation< Quotation.DashboardModule.Views.Dashboard> (WindowNames.Dashboard);
+
+            Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateQuotation>(WindowNames.MotorCreateQuotation);
+            Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.RecentQuotation>(WindowNames.MotorRecentQuotation);
+            Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.SearchQuotation>(WindowNames.MotorSearchQuotation);
         }
         
         protected override void ConfigureModuleCatalog()

@@ -16,47 +16,62 @@ namespace Quotation.TravelInsuranceModule.ViewModels
     {
         public TravelInsuranceTilesViewModel()
         {
-            this.IntializeCommands();
+            //this.IntializeCommands();
         }
 
         #region Commands
-        
         private void IntializeCommands()
         {
-            this.ShowModuleAPopupCommand = new DelegateCommand(this.ShowModuleAPopup, this.CanShowModuleAPoupup);
-            this.ShowModuleAMessageCommand = new DelegateCommand(this.ShowModuleAMessage, this.CanShowModuleAMessage);
+            this.CreateQuotationCommand = new DelegateCommand(this.ExecuteCreateQuotationCommand, this.CanExecuteCreateQuotationCommand);
+            this.RecentQuotationCommand = new DelegateCommand(this.ExecuteRecentQuotationCommand, this.CanExecuteSearchQuotationCommand);
+            this.SearchQuotationCommand = new DelegateCommand(this.ExecuteSearchQuotationCommand, this.CanExecuteSearchQuotationCommand);
+            this.ExpiringQuotationCommand = new DelegateCommand(this.ExecuteExpiringQuotationCommand, this.CanExecuteExpiringQuotationCommand);
         }
-        
-        public ICommand ShowModuleAPopupCommand { get; private set; }
 
-        public bool CanShowModuleAPoupup()
+        public ICommand CreateQuotationCommand { get; private set; }
+        public ICommand RecentQuotationCommand { get; private set; }
+        public ICommand SearchQuotationCommand { get; private set; }
+        public ICommand ExpiringQuotationCommand { get; private set; }
+
+        public bool CanExecuteCreateQuotationCommand()
         {
             return true;
         }
 
-        public void ShowModuleAPopup()
+        public void ExecuteCreateQuotationCommand()
         {
             this.RegionManager.RequestNavigate(RegionNames.SubMainRegion, PopupNames.ModuleAPopup);
         }
 
-        /// <summary>
-        /// Show popup
-        /// </summary>
-        public ICommand ShowModuleAMessageCommand { get; private set; }
-
-        public bool CanShowModuleAMessage()
+        public bool CanExecuteRecentQuotationCommand()
         {
             return true;
         }
 
-        /// <summary>
-        /// Show message
-        /// </summary>
-        public void ShowModuleAMessage()
+        public void ExecuteRecentQuotationCommand()
         {
             this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Module A Message", "This is a message from Module A");
         }
 
+        public bool CanExecuteSearchQuotationCommand()
+        {
+            return true;
+        }
+
+        public void ExecuteSearchQuotationCommand()
+        {
+            this.RegionManager.RequestNavigate(RegionNames.SubMainRegion, PopupNames.ModuleAPopup);
+        }
+
+        public bool CanExecuteExpiringQuotationCommand()
+        {
+            return true;
+        }
+
+        public void ExecuteExpiringQuotationCommand()
+        {
+            this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Module A Message", "This is a message from Module A");
+        }
         #endregion Commands
     }
 }

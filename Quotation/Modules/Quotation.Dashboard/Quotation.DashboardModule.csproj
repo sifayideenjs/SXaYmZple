@@ -96,19 +96,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DashboardViewModel.cs" />
-    <Compile Include="ViewModels\ModuleAPopupViewModel.cs" />
     <Compile Include="ViewModels\RightTitlebarCommandsViewModel.cs" />
-    <Compile Include="Views\C1Flyout.xaml.cs">
-      <DependentUpon>C1Flyout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\C2Flyout.xaml.cs">
-      <DependentUpon>C2Flyout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ModuleAPopup.xaml.cs">
-      <DependentUpon>ModuleAPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RightTitlebarCommands.xaml.cs">
       <DependentUpon>RightTitlebarCommands.xaml</DependentUpon>
@@ -119,19 +109,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\C1Flyout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\C2Flyout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Dashboard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ModuleAPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +130,10 @@
     <ProjectReference Include="..\..\Infrastructure\Quotation.Infrastructure\Quotation.Infrastructure.csproj">
       <Project>{de912131-546f-40a9-9c3f-7016957ea613}</Project>
       <Name>Quotation.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Quotation.Styling\Quotation.Styling.csproj">
+      <Project>{a9984f2e-d289-45f0-aff4-693d77f3cde4}</Project>
+      <Name>Quotation.Styling</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

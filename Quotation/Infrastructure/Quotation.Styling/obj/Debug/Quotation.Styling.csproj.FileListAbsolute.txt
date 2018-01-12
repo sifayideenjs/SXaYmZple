@@ -18,3 +18,16 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styli
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.g.resources
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.dll
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\bin\Debug\Quotation.Styling.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\bin\Debug\Quotation.Styling.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\BitmapGraphics\Icons.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\LookAndFeel.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Styles\Popup.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Styles\Label.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Controls\HeaderControl.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling_MarkupCompile.cache
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling_MarkupCompile.lref
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Controls\HeaderControl.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.g.resources
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.pdb

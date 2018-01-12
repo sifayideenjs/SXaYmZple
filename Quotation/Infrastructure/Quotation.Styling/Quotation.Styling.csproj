@@ -48,10 +48,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\HeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LookAndFeel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Controls\HeaderControl.xaml.cs">
+      <DependentUpon>HeaderControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Page Include="Styles\Popup.xaml">
       <SubType>Designer</SubType>
@@ -72,6 +79,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="BitmapGraphics\Icons\32x32\add_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BitmapGraphics\Icons\globe_bw.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

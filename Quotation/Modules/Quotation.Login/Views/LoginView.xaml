@@ -20,11 +20,15 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Vertical">
+
+            <Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  Foreground="White" FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI"/>
+
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
 
                 <DockPanel LastChildFill="True">
-                    <Image Margin="3" Width="150" Height="120" DockPanel.Dock="Bottom" Source="pack://application:,,,/Quotation.Styling;component/BitmapGraphics/Icons/globe.png"/>
+                    <Image Margin="3" Width="150" Height="120" DockPanel.Dock="Bottom" Source="{StaticResource logo}"/>
                 </DockPanel>
 
                 <Grid Margin="0 20 0 0">
@@ -53,7 +57,7 @@
                 </Grid>
             </StackPanel>
 
-            <TextBlock Grid.Row="9" Margin="5" Text="{Binding ErrorMessage, Mode=TwoWay}" Foreground="Blue" FontSize="14" FontFamily="Segoe UI Light" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold" />
+            <TextBlock Grid.Row="2" Margin="5" Text="{Binding ErrorMessage, Mode=TwoWay}" Foreground="Blue" FontSize="14" FontFamily="Segoe UI Light" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold" />
         </Grid>
     </Border>
 </UserControl>

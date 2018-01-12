@@ -95,16 +95,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\LeftTitlebarCommandsViewModel.cs" />
     <Compile Include="ViewModels\TravelInsuranceTilesViewModel.cs" />
-    <Compile Include="Views\C1Flyout.xaml.cs">
-      <DependentUpon>C1Flyout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\TravelInsuranceTiles.xaml.cs">
       <DependentUpon>TravelInsuranceTiles.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LeftTitlebarCommands.xaml.cs">
-      <DependentUpon>LeftTitlebarCommands.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -118,15 +111,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\C1Flyout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\TravelInsuranceTiles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\LeftTitlebarCommands.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,7 +19,7 @@
                    GlowBrush="{DynamicResource AccentColorBrush}"
                    mc:Ignorable="d"
                    WindowState="Maximized"
-                   Title="ShellWindow" Height="600" Width="800"
+                   Title="PROPOSIFY" Height="600" Width="800"
                    Background="#FF252526">
 
     <!-- LeftWindow Commands -->
@@ -43,7 +43,19 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-        
+
+            <!-- Header -->
+            <!--<StackPanel Margin="0,10,0,0" Grid.Row="0">
+                <StackPanel Margin="5,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="32" Height="32"  Source="{StaticResource logo}"/>
+                        <Label Margin="4 0 0 0" Style="{DynamicResource Header1}" VerticalAlignment="Center" Content="PROPOSIFY" Foreground="LightGray"/>
+                    </StackPanel>
+                </StackPanel>
+                <Rectangle Margin="2,3,2,3" HorizontalAlignment="Stretch" Fill="{DynamicResource AccentColorBrush}" Height="2"/>
+            </StackPanel>-->
+
+            <!-- Main-Region -->
             <ContentControl x:Name="MainRegion" Grid.Row="1" Grid.Column="0"
                             prism:RegionManager.RegionName="{x:Static infConstants:RegionNames.MainRegion}"
                             VerticalContentAlignment="Stretch"

@@ -10,13 +10,6 @@ namespace Quotation.MotorInsuranceModule
     {
         public MotorInsuranceModule(IUnityContainer unityContainer, IRegionManager regionManager) : base(unityContainer, regionManager)
         {
-            //// Titlebar
-            regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(RightTitlebarCommands));
-
-            //// Flyouts
-            //regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(C1Flyout));
-            //regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(C2Flyout));
-
             // Tiles
             regionManager.RegisterViewWithRegion(RegionNames.TileRegion, typeof(MotorInsuranceTiles));
 

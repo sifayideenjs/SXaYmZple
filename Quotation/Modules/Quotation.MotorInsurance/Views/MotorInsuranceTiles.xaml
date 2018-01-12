@@ -7,44 +7,81 @@
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
-             lex:LocalizeDictionary.DesignCulture="de-DE"        
              lex:ResxLocalizationProvider.DefaultAssembly="Quotation.MotorInsuranceModule"
              lex:ResxLocalizationProvider.DefaultDictionary="Resources"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="600">
+             d:DesignHeight="300" d:DesignWidth="670">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />          
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Label Grid.Row="0" 
-               Style="{StaticResource Header1}"
-               Content="{lex:Loc ModuleATiles}" />
+        <Label Grid.Row="0" Content="Motor Insurance" Foreground="LightGray" FontSize="22" Margin="5 0 0 0"/>
         
         <!-- Tiles -->
-        <StackPanel Grid.Row="1" 
-                    Orientation="Horizontal">
-            <metro:Tile Title="{lex:Loc Tile1ShowPopupTitle}" 
-                        Content="{lex:Loc Tile1ShowPopupDescription}"
-                        Command="{Binding ShowModuleAPopupCommand}"
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5 0 0 10">
+            <metro:Tile Title="Create Quotation" 
+                        Command="{Binding CreateQuotationCommand}"
+                        HorizontalAlignment="Center"                        
+                        VerticalAlignment="Top"
+                        TiltFactor="1"
+                        Width="156" 
+                        Height="150" 
+                        Background="#FF16B2D6">
+                <Rectangle Fill="White" Height="45" Width="45">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource tile_create_new}" Stretch="Uniform" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </metro:Tile>
+            <metro:Tile Title="Recent Quotations" 
+                        Command="{Binding RecentQuotationCommand}"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        TiltFactor="1"                    
-                        Width="255" 
-                        Height="100" Background="#CC91BB81"/>
-            <metro:Tile Title="{lex:Loc Tile2ShowPopupTitle}" 
-                        Content="{lex:Loc Tile2ShowPopupDescription}"
-                        Command="{Binding ShowModuleAMessageCommand}"
+                        TiltFactor="1"  
+                        Width="156" 
+                        Height="150"
+                        Background="#FF16B2D6">
+                <Rectangle Fill="White" Height="45" Width="45">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource tile_recent}" Stretch="Uniform" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </metro:Tile>
+            <metro:Tile Title="Search Quotation" 
+                        Command="{Binding SearchQuotationCommand}"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        TiltFactor="1"                    
-                        Width="255" 
-                        Height="100" />
+                        TiltFactor="1"  
+                        Width="156" 
+                        Height="150"
+                        Background="#FF16B2D6">
+                <Rectangle Fill="White" Height="45" Width="45">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource tile_search}" Stretch="Uniform" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </metro:Tile>
+            <metro:Badged Badge="1000" BadgePlacementMode="TopRight" BadgeBackground="#FFDA1111">
+                <metro:Tile Title="Expiring Quotations"
+                        Command="{Binding ExpiringQuotationCommand}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        TiltFactor="1"  
+                        Width="156" 
+                        Height="150"
+                        Background="#FF16B2D6">
+                    <Rectangle Fill="White" Height="45" Width="45">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Visual="{StaticResource tile_expired}" Stretch="Uniform" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </metro:Tile>
+            </metro:Badged>
         </StackPanel>
-
     </Grid>
     
 </UserControl>

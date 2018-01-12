@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\
 Quotation.Styling
 none
 false
 DEBUG;TRACE
 
-4-1903456153
+5743378403
 
-1-1208850287
+2691398859
 13738642453
-BitmapGraphics\Icons.xaml;LookAndFeel.xaml;Styles\Popup.xaml;Styles\Label.xaml;
+BitmapGraphics\Icons.xaml;Controls\HeaderControl.xaml;LookAndFeel.xaml;Styles\Popup.xaml;Styles\Label.xaml;
 
 False
 

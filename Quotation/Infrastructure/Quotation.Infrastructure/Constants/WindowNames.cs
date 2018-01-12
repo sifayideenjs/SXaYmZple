@@ -8,8 +8,11 @@ namespace Quotation.Infrastructure.Constants
 {
     public static class WindowNames
     {
-        // Shell-Flyouts
         public static string MainWindowName = "MainWindowName";
         public static string Dashboard = "Dashboard";
+        public static string MotorCreateQuotation = "MotorCreateQuotation";
+        public static string MotorRecentQuotation = "MotorRecentQuotation";
+        public static string MotorSearchQuotation = "MotorSearchQuotation";
+        public static string MotorExpiringQuotation = "MotorExpiringQuotation";
     }
 }

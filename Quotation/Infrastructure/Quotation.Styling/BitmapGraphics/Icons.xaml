@@ -7,4 +7,7 @@
     <!-- Icons 32x32 -->
     <ImageSource x:Key="add_on_32x32">/Quotation.Styling;component/BitmapGraphics/Icons/32x32/add_on.png</ImageSource>
 
+    <ImageSource x:Key="logo">/Quotation.Styling;component/BitmapGraphics/Icons/globe.png</ImageSource>
+    <ImageSource x:Key="logo_bw">/Quotation.Styling;component/BitmapGraphics/Icons/globe_bw.png</ImageSource>
+
 </ResourceDictionary>
