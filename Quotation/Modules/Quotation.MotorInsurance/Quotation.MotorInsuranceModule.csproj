@@ -88,9 +88,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\AddInsuranceEvent.cs" />
+    <Compile Include="Events\AddOwnerEvent.cs" />
+    <Compile Include="Events\AddVehicleEvent.cs" />
+    <Compile Include="Events\CancelEvent.cs" />
     <Compile Include="Events\CreateVehicalEvent.cs" />
     <Compile Include="Events\CreateDriverEvent.cs" />
     <Compile Include="Events\CreateOwnerEvent.cs" />
+    <Compile Include="Events\DashboardEvent.cs" />
+    <Compile Include="Events\NextEvent.cs" />
+    <Compile Include="Events\PreviousEvent.cs" />
+    <Compile Include="Models\MIQuotation.cs" />
+    <Compile Include="Models\OwnerDetail.cs" />
+    <Compile Include="Models\VehicleDetail.cs" />
     <Compile Include="MotorInsuranceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -100,8 +110,13 @@
     </Compile>
     <Compile Include="ViewModels\CreateQuotationViewModel.cs" />
     <Compile Include="ViewModels\MotorInsuranceTilesViewModel.cs" />
+    <Compile Include="ViewModels\QuotationsViewModel.cs" />
+    <Compile Include="ViewModels\QuotationViewModel.cs" />
     <Compile Include="ViewModels\RecentQuotationViewModel.cs" />
     <Compile Include="ViewModels\SearchQuotationViewModel.cs" />
+    <Compile Include="ViewModels\Wizards\AddInsuranceDetailViewModel.cs" />
+    <Compile Include="ViewModels\Wizards\AddOwnerDetailViewModel.cs" />
+    <Compile Include="ViewModels\Wizards\AddVehicleDetailViewModel.cs" />
     <Compile Include="Views\CreateQuotation.xaml.cs">
       <DependentUpon>CreateQuotation.xaml</DependentUpon>
     </Compile>
@@ -113,6 +128,18 @@
     </Compile>
     <Compile Include="Views\SearchQuotation.xaml.cs">
       <DependentUpon>SearchQuotation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Wizards\AddInsuranceDetail.xaml.cs">
+      <DependentUpon>AddInsuranceDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Wizards\AddOwnerDetail.xaml.cs">
+      <DependentUpon>AddOwnerDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Wizards\AddVehicleDetail.xaml.cs">
+      <DependentUpon>AddVehicleDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Wizards\QuotationSummary.xaml.cs">
+      <DependentUpon>QuotationSummary.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +160,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchQuotation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Wizards\AddInsuranceDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Wizards\AddOwnerDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Wizards\AddVehicleDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Wizards\QuotationSummary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

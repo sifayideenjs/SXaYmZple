@@ -43,6 +43,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public void ExecuteCreateQuotationCommand()
         {
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
+            this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, WindowNames.MotorAddOwnerDetail);
         }        
 
         public bool CanExecuteRecentQuotationCommand()
@@ -79,12 +80,18 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         #region EventAggregation
         private void SubscribeEvents()
         {
+            this.EventAggregator.GetEvent<DashboardEvent>().Subscribe(OnDashboardView);
             this.EventAggregator.GetEvent<CreateDriverEvent>().Subscribe(OnCreateDriverView);
         }
 
         private void OnCreateDriverView(CreateDriverEventArgs arg)
         {
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorRecentQuotation);
+        }
+
+        private void OnDashboardView(DashboardEventArgs arg)
+        {
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.Dashboard);
         }
         #endregion //EventAggregation
     }

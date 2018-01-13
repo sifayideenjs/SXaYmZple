@@ -28,12 +28,8 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsura
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\bin\Debug\Prism.Wpf.xml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\bin\Debug\WPFLocalizeExtension.xml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Quotation.TravelInsuranceModule.csprojResolveAssemblyReference.cache
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Views\C1Flyout.g.cs
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Views\LeftTitlebarCommands.g.cs
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Quotation.TravelInsuranceModule_MarkupCompile.cache
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Quotation.TravelInsuranceModule_MarkupCompile.lref
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Views\C1Flyout.baml
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Views\LeftTitlebarCommands.baml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Quotation.TravelInsuranceModule.g.resources
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Quotation.TravelInsuranceModule.Properties.Resources.resources
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Quotation.TravelInsuranceModule.Properties.Resources.de-DE.resources

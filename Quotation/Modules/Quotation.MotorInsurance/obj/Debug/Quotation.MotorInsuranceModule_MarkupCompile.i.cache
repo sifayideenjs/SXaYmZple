@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\
 Quotation.MotorInsuranceModule
 none
 false
 DEBUG;TRACE
 
-4-1541327006
+8-1008092719
 
-181414198926
-77-1147334858
-Views\CreateQuotation.xaml;Views\MotorInsuranceTiles.xaml;Views\RecentQuotation.xaml;Views\SearchQuotation.xaml;
+37595839859
+77324972865
+Views\CreateQuotation.xaml;Views\MotorInsuranceTiles.xaml;Views\RecentQuotation.xaml;Views\SearchQuotation.xaml;Views\Wizards\AddInsuranceDetail.xaml;Views\Wizards\AddOwnerDetail.xaml;Views\Wizards\AddVehicleDetail.xaml;Views\Wizards\QuotationSummary.xaml;
 
-False
+True
 

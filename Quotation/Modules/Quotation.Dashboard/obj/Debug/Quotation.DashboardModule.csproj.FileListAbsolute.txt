@@ -27,15 +27,9 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bi
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Prism.Unity.Wpf.xml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Prism.Wpf.xml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\WPFLocalizeExtension.xml
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\C1Flyout.g.cs
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\C2Flyout.g.cs
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\ModuleAPopup.g.cs
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\RightTitlebarCommands.g.cs
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule_MarkupCompile.cache
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule_MarkupCompile.lref
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\C1Flyout.baml
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\C2Flyout.baml
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\ModuleAPopup.baml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\RightTitlebarCommands.baml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule.g.resources
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule.Properties.Resources.resources
@@ -96,3 +90,5 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\en-US\Quotation.DashboardModule.resources.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule.pdb
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Styling.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Styling.pdb

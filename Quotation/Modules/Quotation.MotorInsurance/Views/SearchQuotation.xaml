@@ -26,9 +26,93 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <control:HeaderControl Grid.Row="0"/>
+        <!--<control:HeaderControl Grid.Row="0"/>-->
 
-        <Label Grid.Row="1" Content="Search Quotation" Foreground="LightGray" FontSize="22" Margin="5 0 0 0"/>
+        <Grid Grid.Row="1" Background="Gray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Height="40" Width="40" Command="{Binding DashboardCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+                <Rectangle Width="15" Height="15" Fill="White">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_left}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Label Grid.Column="1" Content="Search Quotation" Margin="5 0 0 0" FontSize="20" FontFamily="{DynamicResource HeaderFontFamily}" Foreground="LightGray"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="45 0 5 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Content="NRIC" Foreground="LightGray" FontSize="14"/>
+            <ComboBox Grid.Row="1" IsEditable="True" metro:TextBoxHelper.ClearTextButton="True" metro:TextBoxHelper.Watermark="Search NRIC" Height="30" Margin="5 0 0 0"
+                      Text="{Binding NRIC, Mode=TwoWay}" ItemsSource="{Binding Path=NRICs}">
+            </ComboBox>
+
+            <Button Grid.Row="1" Grid.Column="1" Height="35" Width="35" Command="{Binding NewQuotationCommand}" Style="{StaticResource MetroCircleButtonStyle}" HorizontalAlignment="Left" Margin="5 0 0 0">
+                <Rectangle Width="13" Height="13" Fill="WhiteSmoke">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+
+            <ListBox  Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding QuotationsViewModel.Quotations}" SelectedItem="{Binding QuotationsViewModel.SelectedQuotation, Mode=TwoWay}" Margin="5 0 0 0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="100" Text="{Binding Quotation.NRIC}"/>
+                            <TextBlock Width="250" Text="{Binding OwnerDetail.Name}"/>
+                            <TextBlock Text="{Binding Quotation.InsuranceQtnNo}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding PreviousCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+                <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_insuarance}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding PreviousCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+                <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource info_edit}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding PreviousCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+                <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_delete}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding PreviousCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+                <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_printer}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </StackPanel>
 
     </Grid>
 </UserControl>

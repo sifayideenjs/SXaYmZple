@@ -19,8 +19,9 @@
                    GlowBrush="{DynamicResource AccentColorBrush}"
                    mc:Ignorable="d"
                    WindowState="Maximized"
-                   Title="PROPOSIFY" Height="600" Width="800"
-                   Background="#FF252526">
+                   Title="PROPOSIFY | V1.0" Height="600" Width="800"
+                   Background="#FF252526"
+                   Icon="{StaticResource logo_bw}" TitlebarHeight="45">
 
     <!-- LeftWindow Commands -->
     <metro:MetroWindow.LeftWindowCommands>
