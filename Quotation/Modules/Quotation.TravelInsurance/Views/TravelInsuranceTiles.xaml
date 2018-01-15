@@ -37,7 +37,7 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </metro:Tile>
-            <metro:Tile Title="Recent Quotations"
+            <!--<metro:Tile Title="Recent Quotations"
                         Command="{Binding RecentQuotationCommand}"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
@@ -50,7 +50,7 @@
                         <VisualBrush Visual="{StaticResource tile_recent}" Stretch="Uniform" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
-            </metro:Tile>
+            </metro:Tile>-->
             <metro:Tile Title="Search Quotation" 
                         Command="{Binding SearchQuotationCommand}"
                         HorizontalAlignment="Left"

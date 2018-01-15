@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Quotation.Infrastructure;
 using Quotation.Infrastructure.Base;
 using Quotation.Infrastructure.Constants;
 using System;
@@ -45,9 +46,9 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         private void IntializeCommands()
         {
-            this.NewQuotationCommand = new DelegateCommand(this.ExecuteNewQuotationCommand, this.CanExecuteNewQuotationCommand);
-            this.EditQuotationCommand = new DelegateCommand(this.ExecuteEditQuotationCommand, this.CanExecuteEditQuotationCommand);
-            this.DeleteQuotationCommand = new DelegateCommand(this.ExecuteDeleteQuotationCommand, this.CanExecuteDeleteQuotationCommand);
+            this.NewQuotationCommand = new RelayCommand(this.ExecuteNewQuotationCommand, this.CanExecuteNewQuotationCommand);
+            this.EditQuotationCommand = new RelayCommand(this.ExecuteEditQuotationCommand, this.CanExecuteEditQuotationCommand);
+            this.DeleteQuotationCommand = new RelayCommand(this.ExecuteDeleteQuotationCommand, this.CanExecuteDeleteQuotationCommand);
         }
 
         public ICommand NewQuotationCommand { get; set; }

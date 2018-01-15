@@ -1,7 +1,8 @@
 ﻿using Prism.Commands;
+using Quotation.Infrastructure;
 using Quotation.Infrastructure.Base;
 using Quotation.MotorInsuranceModule.Events;
-using Quotation.MotorInsuranceModule.Models;
+using Quotation.DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,16 +29,16 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 #if DEBUG
             quotations.Add(new MIQuotation() { NRIC = "XXX-YYY", InsuranceQtnNo = "123456" });
 #endif
-            var quotationViewModels = new ObservableCollection<QuotationViewModel>(quotations.Select(q => new QuotationViewModel(q)));
+            //var quotationViewModels = new ObservableCollection<QuotationViewModel>(quotations.Select(q => new QuotationViewModel(q)));
 
-            QuotationsViewModel = new QuotationsViewModel(quotationViewModels);
+            //QuotationsViewModel = new QuotationsViewModel(quotationViewModels);
         }
 
         #region Commands
         private void IntializeCommands()
         {
-            this.DashboardCommand = new DelegateCommand(this.ExecuteDashboardCommand, this.CanExecuteDashboardCommand);
-            this.CreateOwnerCommand = new DelegateCommand(this.ExecuteCreateOwnerCommand, this.CanExecuteCreateOwnerCommand);
+            this.DashboardCommand = new RelayCommand(this.ExecuteDashboardCommand, this.CanExecuteDashboardCommand);
+            this.CreateOwnerCommand = new RelayCommand(this.ExecuteCreateOwnerCommand, this.CanExecuteCreateOwnerCommand);
         }
 
         public ICommand DashboardCommand { get; private set; }

@@ -101,13 +101,34 @@ namespace QuotationAPI.Controllers
         }
 
         [HttpPost]
-        [Route("api/Quotation/UpdateInsuranceDetails")]
+        [Route("api/Quotation/AddInsuranceDetails")]
         [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> UpdateInsuranceDetails([FromBody]MIQuotation quotationDetail)
+        public async Task<IHttpActionResult> AddInsuranceDetails([FromBody]MIQuotation quotationDetail)
         {
             try
             {
                 ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateInsuranceDetails(quotationDetail));
+                if (errorDetail == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(errorDetail);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [HttpPost]
+        [Route("api/Quotation/AddOwnerDetails")]
+        [ResponseType(typeof(ErrorDetail))]
+        public async Task<IHttpActionResult> AddOwnerDetails([FromBody]OwnerDetail ownerDetail)
+        {
+            try
+            {
+                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateOwnerDetails(ownerDetail, "ADD"));
                 if (errorDetail == null)
                 {
                     return NotFound();
@@ -128,7 +149,28 @@ namespace QuotationAPI.Controllers
         {
             try
             {
-                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateOwnerDetails(ownerDetail));
+                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateOwnerDetails(ownerDetail, "EDIT"));
+                if (errorDetail == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(errorDetail);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [HttpPost]
+        [Route("api/Quotation/DeleteOwnerDetails")]
+        [ResponseType(typeof(ErrorDetail))]
+        public async Task<IHttpActionResult> DeleteOwnerDetails([FromBody]OwnerDetail ownerDetail)
+        {
+            try
+            {
+                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateOwnerDetails(ownerDetail, "DELETE"));
                 if (errorDetail == null)
                 {
                     return NotFound();
@@ -185,9 +227,9 @@ namespace QuotationAPI.Controllers
         }
 
         [HttpPost]
-        [Route("api/Quotation/UpdateVehicleDetails")]
+        [Route("api/Quotation/AddVehicleDetails")]
         [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> UpdateVehicleDetails([FromBody]VehicleDetail vehicleDetail)
+        public async Task<IHttpActionResult> AddVehicleDetails([FromBody]VehicleDetail vehicleDetail)
         {
             try
             {
@@ -208,7 +250,7 @@ namespace QuotationAPI.Controllers
         [HttpPost]
         [Route("api/Quotation/ValidateUser")]
         [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> ValidateUser([FromBody]string userName, [FromBody]string password)
+        public async Task<IHttpActionResult> ValidateUser(string userName, string password)
         {
             try
             {
@@ -229,11 +271,11 @@ namespace QuotationAPI.Controllers
         [HttpPost]
         [Route("api/Quotation/LoadComboDetails")]
         [ResponseType(typeof(DataSet))]
-        public async Task<IHttpActionResult> LoadComboDetails([FromBody]string userName, [FromBody]string password)
+        public async Task<IHttpActionResult> LoadComboDetails(string flag, string condition)
         {
             try
             {
-                DataSet details = await Task.Run(() => quotationDb.LoadComboDetails(userName, password));
+                DataSet details = await Task.Run(() => quotationDb.LoadComboDetails(flag, condition));
                 if (details == null)
                 {
                     return NotFound();

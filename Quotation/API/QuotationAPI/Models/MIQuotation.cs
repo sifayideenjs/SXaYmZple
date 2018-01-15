@@ -10,9 +10,9 @@ namespace QuotationAPI.Models
         public string NRIC { get; set; }
         public string InsuranceQtnNo { get; set; }
         public System.DateTime InsuranceExpiryDate { get; set; }
-        public System.DateTime InsuranceRenewalDate { get; set; }
+        public Nullable<System.DateTime> InsuranceRenewalDate { get; set; }
         public System.DateTime RoadTaxExpiryDate { get; set; }
-        public System.DateTime RoadTaxRenewalDate { get; set; }
+        public Nullable<System.DateTime> RoadTaxRenewalDate { get; set; }
         public string PreviousDealer { get; set; }
         public string Agency { get; set; }
         public string PrevYearPremium { get; set; }

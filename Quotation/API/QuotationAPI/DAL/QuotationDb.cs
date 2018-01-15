@@ -18,28 +18,28 @@ namespace QuotationAPI.DAL
             List<OwnerDetail> ownerDetails = new List<OwnerDetail>();
 
             Dictionary<string, SqlParameter> queryParameters = new Dictionary<string, SqlParameter>();
-            SqlDataReader dataReader = dbutility.ExecuteReader("QuotationDb", "dbo.GetAllOwnerDetails", queryParameters);
-
-            while (dataReader.Read())
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetAllOwnerDetails", queryParameters);
+            if(dataSet != null)
             {
-                OwnerDetail ownerDetail = new OwnerDetail();
-
-                ownerDetail.Name = dataReader["Name"].ToString();
-                ownerDetail.NRIC = dataReader["NRIC"].ToString();
-                ownerDetail.DateOfBirth = DateTime.Parse(dataReader["DateOfBirth"].ToString());
-                ownerDetail.Gender = dataReader["Gender"].ToString();
-                ownerDetail.MaritalStatus = bool.Parse(dataReader["MaritalStatus"].ToString());
-                ownerDetail.Occupation = dataReader["Occupation"].ToString();
-                ownerDetail.LicenseDate = DateTime.Parse(dataReader["LicenseDate"].ToString());
-                ownerDetail.CreatedBy = dataReader["CreatedBy"].ToString();
-                ownerDetail.CreatedDate = DateTime.Parse(dataReader["CreatedDate"].ToString());
-                ownerDetail.LastUpdatedBy = dataReader["LastUpdatedBy"].ToString();
-                ownerDetail.LastUpdatedDate = DateTime.Parse(dataReader["LastUpdatedDate"].ToString());
-                ownerDetail.Email = dataReader["Email"].ToString();
-                ownerDetail.Address = dataReader["Address"].ToString();
-                ownerDetail.RenewalRemindDays = short.Parse(dataReader["RenewalRemindDays"].ToString());
-
-                ownerDetails.Add(ownerDetail);
+                var dataTable = dataSet.Tables[0];
+                ownerDetails = dataTable.AsEnumerable().Select(row =>
+                                new OwnerDetail
+                                {
+                                    Name = row.Field<string>("Name"),
+                                    NRIC = row.Field<string>("NRIC"),
+                                    DateOfBirth = row.Field<DateTime?>("DateOfBirth"),
+                                    Gender = row.Field<string>("Gender"),
+                                    MaritalStatus = row.Field<bool?>("MaritalStatus"),
+                                    Occupation = row.Field<string>("Occupation"),
+                                    LicenseDate = row.Field<DateTime?>("LicenseDate"),
+                                    CreatedBy = row.Field<string>("CreatedBy"),
+                                    CreatedDate = row.Field<DateTime?>("CreatedDate"),
+                                    LastUpdatedBy = row.Field<string>("LastUpdatedBy"),
+                                    LastUpdatedDate = row.Field<DateTime?>("LastUpdatedDate"),
+                                    Email = row.Field<string>("Email"),
+                                    Address = row.Field<string>("Address"),
+                                    RenewalRemindDays = row.Field<short?>("RenewalRemindDays"),
+                                }).ToList();
             }
 
             return ownerDetails;
@@ -50,22 +50,23 @@ namespace QuotationAPI.DAL
             List<ExpiredInsurance> expiredInsurances = new List<ExpiredInsurance>();
 
             Dictionary<string, SqlParameter> queryParameters = new Dictionary<string, SqlParameter>();
-            SqlDataReader dataReader = dbutility.ExecuteReader("QuotationDb", "dbo.GetInsuranceQtnTobeExpired", queryParameters);
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetInsuranceQtnTobeExpired", queryParameters);
 
-            while (dataReader.Read())
+            if (dataSet != null)
             {
-                ExpiredInsurance expiredInsurance = new ExpiredInsurance();
-
-                expiredInsurance.Name = dataReader["Name"].ToString();
-                expiredInsurance.NRIC = dataReader["NRIC"].ToString();
-                expiredInsurance.LicenseDate = DateTime.Parse(dataReader["LicenseDate"].ToString());
-                expiredInsurance.Email = dataReader["Email"].ToString();
-                expiredInsurance.Address = dataReader["Address"].ToString();
-                expiredInsurance.InsuranceQtnNo = dataReader["InsuranceQtnNo"].ToString();
-                expiredInsurance.InsuranceExpiryDate = DateTime.Parse(dataReader["InsuranceExpiryDate"].ToString());
-                expiredInsurance.RoadTaxExpiryDate = DateTime.Parse(dataReader["RoadTaxExpiryDate"].ToString());
-
-                expiredInsurances.Add(expiredInsurance);
+                var dataTable = dataSet.Tables[0];
+                expiredInsurances = dataTable.AsEnumerable().Select(row =>
+                                new ExpiredInsurance
+                                {
+                                    Name = row.Field<string>("Name"),
+                                    NRIC = row.Field<string>("NRIC"),
+                                    LicenseDate = row.Field<DateTime?>("LicenseDate"),
+                                    Email = row.Field<string>("Email"),
+                                    Address = row.Field<string>("Address"),
+                                    InsuranceQtnNo = row.Field<string>("InsuranceQtnNo"),
+                                    InsuranceExpiryDate = row.Field<DateTime?>("InsuranceExpiryDate"),
+                                    RoadTaxExpiryDate = row.Field<DateTime?>("RoadTaxExpiryDate")
+                                }).ToList();
             }
 
             return expiredInsurances;
@@ -88,21 +89,22 @@ namespace QuotationAPI.DAL
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
             cmdParameters["UserID"] = new SqlParameter("UserID", userId);
 
-            SqlDataReader dataReader = dbutility.ExecuteReader("QuotationDb", "dbo.GetUserDetails", cmdParameters);
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetUserDetails", cmdParameters);
 
-            while (dataReader.Read())
+            if (dataSet != null)
             {
-                UserDetail userDetail = new UserDetail();
-
-                userDetail.UserID = int.Parse(dataReader["UserID"].ToString());
-                userDetail.UserName = dataReader["UserName"].ToString();
-                userDetail.Password = dataReader["Password"].ToString();
-                userDetail.CreatedBy = dataReader["CreatedBy"].ToString();
-                userDetail.CreatedDate = DateTime.Parse(dataReader["CreatedDate"].ToString());
-                userDetail.LastUpdatedBy = dataReader["LastUpdatedBy"].ToString();
-                userDetail.LastUpdatedDate = DateTime.Parse(dataReader["LastUpdatedDate"].ToString());
-
-                userDetails.Add(userDetail);
+                var dataTable = dataSet.Tables[0];
+                userDetails = dataTable.AsEnumerable().Select(row =>
+                                new UserDetail
+                                {
+                                    UserID = row.Field<int>("UserID"),
+                                    UserName = row.Field<string>("UserName"),
+                                    Password = row.Field<string>("Password"),
+                                    CreatedBy = row.Field<string>("CreatedBy"),
+                                    CreatedDate = row.Field<DateTime?>("CreatedDate"),
+                                    LastUpdatedBy = row.Field<string>("LastUpdatedBy"),
+                                    LastUpdatedDate = row.Field<DateTime?>("LastUpdatedDate")
+                                }).ToList();
             }
 
             return userDetails;
@@ -124,45 +126,71 @@ namespace QuotationAPI.DAL
             cmdParameters["InsuranceRenewed"] = new SqlParameter("InsuranceRenewed", quotationDetail.InsuranceRenewed);
             cmdParameters["RoadTaxRenewed"] = new SqlParameter("RoadTaxRenewed", quotationDetail.RoadTaxRenewed);
 
-            SqlDataReader dataReader = dbutility.ExecuteReader("QuotationDb", "dbo.UpdateInsuranceDetails", cmdParameters);
+            SqlParameter outPutParameter1 = new SqlParameter();
+            outPutParameter1.ParameterName = "ERRORNO";
+            outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter1.Size = 255;
+            outPutParameter1.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORNO"] = outPutParameter1;
+
+            SqlParameter outPutParameter2 = new SqlParameter();
+            outPutParameter2.ParameterName = "ERRORDESC";
+            outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
+            outPutParameter2.Size = 255;
+            outPutParameter2.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORDESC"] = outPutParameter2;
 
             ErrorDetail errorDetail = new ErrorDetail();
-            bool result = dataReader.Read();
-            if(result)
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateInsuranceDetails", cmdParameters);
+            if (dataSet != null && dataSet.Tables.Count > 1)
             {
-                errorDetail.Code = int.Parse(dataReader["ERRORNO"].ToString());
-                errorDetail.Info = dataReader["ERRORDESC"].ToString();
+                var dataTable = dataSet.Tables[0];
+                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
             }
+
             return errorDetail;
         }
 
-        internal ErrorDetail UpdateOwnerDetails(OwnerDetail ownerDetail)
+        internal ErrorDetail UpdateOwnerDetails(OwnerDetail ownerDetail, string flag)
         {
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
-            cmdParameters["Name"] = new SqlParameter("Name", ownerDetail.Name);
-            cmdParameters["NRIC"] = new SqlParameter("NRIC", ownerDetail.NRIC);
-            cmdParameters["DateOfBirth"] = new SqlParameter("DateOfBirth", ownerDetail.DateOfBirth);
-            cmdParameters["Gender"] = new SqlParameter("Gender", ownerDetail.Gender);
-            cmdParameters["MaritalStatus"] = new SqlParameter("MaritalStatus", ownerDetail.MaritalStatus);
-            cmdParameters["Occupation"] = new SqlParameter("Occupation", ownerDetail.Occupation);
-            cmdParameters["LicenseDate"] = new SqlParameter("LicenseDate", ownerDetail.LicenseDate);
-            cmdParameters["CreatedBy"] = new SqlParameter("CreatedBy", ownerDetail.CreatedBy);
-            cmdParameters["CreatedDate"] = new SqlParameter("CreatedDate", ownerDetail.CreatedDate);
-            cmdParameters["LastUpdatedBy"] = new SqlParameter("LastUpdatedBy", ownerDetail.LastUpdatedBy);
-            cmdParameters["LastUpdatedDate"] = new SqlParameter("LastUpdatedDate", ownerDetail.LastUpdatedDate);
-            cmdParameters["Email"] = new SqlParameter("Email", ownerDetail.Email);
-            cmdParameters["Address"] = new SqlParameter("Address", ownerDetail.Address);
-            cmdParameters["RenewalRemindDays"] = new SqlParameter("RenewalRemindDays", ownerDetail.RenewalRemindDays);
+            cmdParameters["@Flag"] = new SqlParameter("@Flag", flag);
+            cmdParameters["@Name"] = new SqlParameter("@Name", ownerDetail.Name);
+            cmdParameters["@NRIC"] = new SqlParameter("@NRIC", ownerDetail.NRIC);
+            cmdParameters["@DateOfBirth"] = new SqlParameter("@DateOfBirth", ownerDetail.DateOfBirth);
+            cmdParameters["@Gender"] = new SqlParameter("@Gender", ownerDetail.Gender);
+            cmdParameters["@MaritalStatus"] = new SqlParameter("@MaritalStatus", ownerDetail.MaritalStatus);
+            cmdParameters["@Occupation"] = new SqlParameter("@Occupation", ownerDetail.Occupation);
+            cmdParameters["@LicenseDate"] = new SqlParameter("@LicenseDate", ownerDetail.LicenseDate);
+            cmdParameters["@Email"] = new SqlParameter("@Email", ownerDetail.Email);
+            cmdParameters["@Address"] = new SqlParameter("@Address", ownerDetail.Address);
+            //cmdParameters["RenewalRemindDays"] = new SqlParameter("RenewalRemindDays", ownerDetail.RenewalRemindDays);
+            cmdParameters["@LogUser"] = new SqlParameter("@LogUser", ownerDetail.CreatedBy);
 
-            SqlDataReader dataReader = dbutility.ExecuteReader("QuotationDb", "dbo.UpdateOwnerDetails", cmdParameters);
+            SqlParameter outPutParameter1 = new SqlParameter();
+            outPutParameter1.ParameterName = "@ERRORNO";
+            outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter1.Size = 255;
+            outPutParameter1.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["@ERRORNO"] = outPutParameter1;
+
+            SqlParameter outPutParameter2 = new SqlParameter();
+            outPutParameter2.ParameterName = "@ERRORDESC";
+            outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
+            outPutParameter2.Size = 255;
+            outPutParameter2.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["@ERRORDESC"] = outPutParameter2;
 
             ErrorDetail errorDetail = new ErrorDetail();
-            bool result = dataReader.Read();
-            if (result)
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateOwnerDetails", cmdParameters);
+            if (dataSet != null && dataSet.Tables.Count > 1)
             {
-                errorDetail.Code = int.Parse(dataReader["ERRORNO"].ToString());
-                errorDetail.Info = dataReader["ERRORDESC"].ToString();
+                var dataTable = dataSet.Tables[0];
+                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
             }
+
             return errorDetail;
         }
 
@@ -172,20 +200,32 @@ namespace QuotationAPI.DAL
             cmdParameters["UserID"] = new SqlParameter("UserID", userDetail.UserID);
             cmdParameters["UserName"] = new SqlParameter("UserName", userDetail.UserName);
             cmdParameters["Password"] = new SqlParameter("Password", userDetail.Password);
-            cmdParameters["CreatedBy"] = new SqlParameter("CreatedBy", userDetail.CreatedBy);
-            cmdParameters["CreatedDate"] = new SqlParameter("CreatedDate", userDetail.CreatedDate);
-            cmdParameters["LastUpdatedBy"] = new SqlParameter("LastUpdatedBy", userDetail.LastUpdatedBy);
-            cmdParameters["LastUpdatedDate"] = new SqlParameter("LastUpdatedDate", userDetail.LastUpdatedDate);
+            cmdParameters["Flag"] = new SqlParameter("Flag", userDetail.CreatedBy);
+            cmdParameters["LogUser"] = new SqlParameter("LogUser", userDetail.CreatedDate);
 
-            SqlDataReader dataReader = dbutility.ExecuteReader("QuotationDb", "dbo.UpdateUser", cmdParameters);
+            SqlParameter outPutParameter1 = new SqlParameter();
+            outPutParameter1.ParameterName = "ERRORNO";
+            outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter1.Size = 255;
+            outPutParameter1.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORNO"] = outPutParameter1;
+
+            SqlParameter outPutParameter2 = new SqlParameter();
+            outPutParameter2.ParameterName = "ERRORDESC";
+            outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
+            outPutParameter2.Size = 255;
+            outPutParameter2.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORDESC"] = outPutParameter2;
 
             ErrorDetail errorDetail = new ErrorDetail();
-            bool result = dataReader.Read();
-            if (result)
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateUser", cmdParameters);
+            if (dataSet != null && dataSet.Tables.Count > 1)
             {
-                errorDetail.Code = int.Parse(dataReader["ERRORNO"].ToString());
-                errorDetail.Info = dataReader["ERRORDESC"].ToString();
+                var dataTable = dataSet.Tables[0];
+                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
             }
+
             return errorDetail;
         }
 
@@ -196,15 +236,15 @@ namespace QuotationAPI.DAL
             cmdParameters["FormID"] = new SqlParameter("FormID", userFormRight.FormID);
             cmdParameters["Options"] = new SqlParameter("Options", userFormRight.Options);
 
-            SqlDataReader dataReader = dbutility.ExecuteReader("QuotationDb", "dbo.UpdateUserFormRights", cmdParameters);
-
             ErrorDetail errorDetail = new ErrorDetail();
-            bool result = dataReader.Read();
-            if (result)
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateUserFormRights", cmdParameters);
+            if (dataSet != null && dataSet.Tables.Count > 1)
             {
-                errorDetail.Code = int.Parse(dataReader["ERRORNO"].ToString());
-                errorDetail.Info = dataReader["ERRORDESC"].ToString();
+                var dataTable = dataSet.Tables[0];
+                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
             }
+
             return errorDetail;
         }
 
@@ -225,15 +265,29 @@ namespace QuotationAPI.DAL
             cmdParameters["PreviousRegNo"] = new SqlParameter("PreviousRegNo", vehicleDetail.PreviousRegNo);
             cmdParameters["Claims"] = new SqlParameter("Claims", vehicleDetail.Claims);
 
-            SqlDataReader dataReader = dbutility.ExecuteReader("QuotationDb", "dbo.UpdateVehicleDetails", cmdParameters);
+            SqlParameter outPutParameter1 = new SqlParameter();
+            outPutParameter1.ParameterName = "ERRORNO";
+            outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter1.Size = 255;
+            outPutParameter1.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORNO"] = outPutParameter1;
+
+            SqlParameter outPutParameter2 = new SqlParameter();
+            outPutParameter2.ParameterName = "ERRORDESC";
+            outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
+            outPutParameter2.Size = 255;
+            outPutParameter2.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORDESC"] = outPutParameter2;
 
             ErrorDetail errorDetail = new ErrorDetail();
-            bool result = dataReader.Read();
-            if (result)
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateVehicleDetails", cmdParameters);
+            if (dataSet != null && dataSet.Tables.Count > 1)
             {
-                errorDetail.Code = int.Parse(dataReader["ERRORNO"].ToString());
-                errorDetail.Info = dataReader["ERRORDESC"].ToString();
+                var dataTable = dataSet.Tables[0];
+                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
             }
+
             return errorDetail;
         }
 
@@ -243,15 +297,15 @@ namespace QuotationAPI.DAL
             cmdParameters["UserName"] = new SqlParameter("UserName", userName);
             cmdParameters["Password"] = new SqlParameter("Password", password);
 
-            SqlDataReader dataReader = dbutility.ExecuteReader("QuotationDb", "dbo.sp_UserValidate", cmdParameters);
-
             ErrorDetail errorDetail = new ErrorDetail();
-            bool result = dataReader.Read();
-            if (result)
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.sp_UserValidate", cmdParameters);
+            if (dataSet != null && dataSet.Tables.Count > 1)
             {
-                //errorDetail.Code = int.Parse(dataReader["ERRORNO"].ToString());
-                errorDetail.Info = dataReader["ERRORDESC"].ToString();
+                var dataTable = dataSet.Tables[0];
+                //errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
             }
+
             return errorDetail;
         }
 
@@ -260,8 +314,8 @@ namespace QuotationAPI.DAL
             List<string> details = new List<string>();
 
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
-            cmdParameters["Flag"] = new SqlParameter("UserName", flag);
-            cmdParameters["Condition"] = new SqlParameter("Password", condition);
+            cmdParameters["Flag"] = new SqlParameter("Flag", flag);
+            cmdParameters["Condition"] = new SqlParameter("Condition", condition);
 
             DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.LoadComboDetails", cmdParameters);
             return dataSet;

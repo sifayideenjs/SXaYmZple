@@ -18,7 +18,7 @@ namespace Quotation.Infrastructure.Services
         {
             _regionManager = regionManager;
 
-            ShowFlyoutCommand = new DelegateCommand<string>(ShowFlyout, CanShowFlyout);
+            ShowFlyoutCommand = new RelayCommand<string>(ShowFlyout, CanShowFlyout);
             applicationCommands.ShowFlyoutCommand.RegisterCommand(ShowFlyoutCommand);
         }
 

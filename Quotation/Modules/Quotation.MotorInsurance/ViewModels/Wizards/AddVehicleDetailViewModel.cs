@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Quotation.Infrastructure;
 using Quotation.Infrastructure.Base;
 using Quotation.Infrastructure.Constants;
 using Quotation.MotorInsuranceModule.Events;
@@ -13,30 +14,64 @@ namespace Quotation.MotorInsuranceModule.ViewModels.Wizards
 {
     public class AddVehicleDetailViewModel : ViewModelBase
     {
-        public AddVehicleDetailViewModel()
+        private CreateQuotationViewModel parentViewModel = null;
+
+        public AddVehicleDetailViewModel(CreateQuotationViewModel parentViewModel)
         {
+            this.parentViewModel = parentViewModel;
+#if DEBUG
+            DataAccess.Models.VehicleDetail vehicleDetail = new DataAccess.Models.VehicleDetail()
+            {
+                Make = "TOYOTA COROLLA",
+                Model = "AXIO 1.5XA",
+                YearMade = "2007",
+                Capacity = "1496CC",
+                DateOfRegistered = DateTime.Now,
+                RegNo = "SGY9152X",
+                PreviousRegNo = "SGY9152X",
+                ParallelImport = 1,
+                OffPeakVehicle = 0,
+                NCD = "10% EISTING",
+                ExistingInsurer = "AXA",
+                Claims = string.Empty
+            };
+
+            this.VehicleDetail = new VehicleDetailViewModel(vehicleDetail);
+#else
+            this.VehicleDetail = new VehicleDetailViewModel(new DataAccess.Models.VehicleDetail());
+#endif
             this.IntializeCommands();
         }
 
         #region Commands
         private void IntializeCommands()
         {
-            this.AddVehicleCommand = new DelegateCommand(this.ExecuteAddVehicleCommand, this.CanExecuteAddVehicleCommand);
-            this.PreviousCommand = new DelegateCommand(this.ExecutePreviousCommand, this.CanExecutePreviousCommand);
-            this.NextCommand = new DelegateCommand(this.ExecuteNextCommand, this.CanExecuteNextCommand);
+            this.AddVehicleCommand = new RelayCommand(this.ExecuteAddVehicleCommand, this.CanExecuteAddVehicleCommand);
+            this.PreviousCommand = new RelayCommand(this.ExecutePreviousCommand, this.CanExecutePreviousCommand);
+            this.NextCommand = new RelayCommand(this.ExecuteNextCommand, this.CanExecuteNextCommand);
         }
 
         public ICommand AddVehicleCommand { get; private set; }
 
         public bool CanExecuteAddVehicleCommand()
         {
-            return true;
+            if (this.VehicleDetail.IsValid())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ExecuteAddVehicleCommand()
         {
-            this.EventAggregator.GetEvent<AddVehicleEvent>().Publish(new AddVehicleEventArgs
+            this.EventAggregator.GetEvent<AddVehicleEvent>().Publish(new VehicleEventArgs
             {
+                VehicleDetail = this.VehicleDetail.Model,
+                RegionName = RegionNames.MotorWizardRegion,
+                Source = WindowNames.MotorAddInsuranceDetail
             });
         }
 
@@ -44,15 +79,23 @@ namespace Quotation.MotorInsuranceModule.ViewModels.Wizards
 
         public bool CanExecutePreviousCommand()
         {
-            return true;
+            if (this.VehicleDetail.IsValid())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ExecutePreviousCommand()
         {
-            this.EventAggregator.GetEvent<PreviousEvent>().Publish(new PreviousEventArgs
+            this.EventAggregator.GetEvent<AddVehicleEvent>().Publish(new VehicleEventArgs
             {
+                VehicleDetail = this.VehicleDetail.Model,
                 RegionName = RegionNames.MotorWizardRegion,
-                Source = WindowNames.MotorAddOwnerDetail
+                Source = WindowNames.MotorAddDriverDetail
             });
         }
 
@@ -60,17 +103,37 @@ namespace Quotation.MotorInsuranceModule.ViewModels.Wizards
 
         public bool CanExecuteNextCommand()
         {
-            return true;
+            if (this.VehicleDetail.IsValid())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ExecuteNextCommand()
         {
-            this.EventAggregator.GetEvent<NextEvent>().Publish(new NextEventArgs
+            this.EventAggregator.GetEvent<AddVehicleEvent>().Publish(new VehicleEventArgs
             {
+                VehicleDetail = this.VehicleDetail.Model,
                 RegionName = RegionNames.MotorWizardRegion,
-                Source = WindowNames.MotorSummaryDetail
+                Source = WindowNames.MotorAddInsuranceDetail
             });
         }
         #endregion Commands
+
+        #region Properties
+        public VehicleDetailViewModel VehicleDetail
+        {
+            get { return this.parentViewModel.QuotationViewModel.VehicleDetail; }
+            set
+            {
+                this.parentViewModel.QuotationViewModel.VehicleDetail = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion //Properties
     }
 }

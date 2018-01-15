@@ -13,17 +13,17 @@ namespace QuotationAPI.Models
 
         public string Name { get; set; }
         public string NRIC { get; set; }
-        public System.DateTime DateOfBirth { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Gender { get; set; }
-        public bool MaritalStatus { get; set; }
+        public Nullable<bool> MaritalStatus { get; set; }
         public string Occupation { get; set; }
-        public System.DateTime LicenseDate { get; set; }
+        public Nullable<System.DateTime> LicenseDate { get; set; }
         public string CreatedBy { get; set; }
-        public System.DateTime CreatedDate { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public string LastUpdatedBy { get; set; }
-        public System.DateTime LastUpdatedDate { get; set; }
+        public Nullable<System.DateTime> LastUpdatedDate { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public short RenewalRemindDays { get; set; }
+        public Nullable<short> RenewalRemindDays { get; set; }
     }
 }

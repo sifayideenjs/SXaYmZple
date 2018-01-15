@@ -202,3 +202,9 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\obj\D
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\obj\Debug\Quotation.Shell.csproj.GenerateResource.Cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\obj\Debug\de-DE\Quotation.Shell.resources.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\obj\Debug\en-US\Quotation.Shell.resources.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Quotation.DataAccess.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Quotation.DataAccess.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\System.Net.Http.Formatting.xml

@@ -50,6 +50,10 @@
       <HintPath>..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
@@ -66,6 +70,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -88,9 +96,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\AddInsuranceEvent.cs" />
-    <Compile Include="Events\AddOwnerEvent.cs" />
-    <Compile Include="Events\AddVehicleEvent.cs" />
+    <Compile Include="Events\DriverEvent.cs" />
+    <Compile Include="Events\InsuranceEvent.cs" />
+    <Compile Include="Events\OwnerEvent.cs" />
+    <Compile Include="Events\VehicleEvent.cs" />
     <Compile Include="Events\CancelEvent.cs" />
     <Compile Include="Events\CreateVehicalEvent.cs" />
     <Compile Include="Events\CreateDriverEvent.cs" />
@@ -98,9 +107,7 @@
     <Compile Include="Events\DashboardEvent.cs" />
     <Compile Include="Events\NextEvent.cs" />
     <Compile Include="Events\PreviousEvent.cs" />
-    <Compile Include="Models\MIQuotation.cs" />
-    <Compile Include="Models\OwnerDetail.cs" />
-    <Compile Include="Models\VehicleDetail.cs" />
+    <Compile Include="Events\SearchQuotationEvent.cs" />
     <Compile Include="MotorInsuranceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -114,11 +121,16 @@
     <Compile Include="ViewModels\QuotationViewModel.cs" />
     <Compile Include="ViewModels\RecentQuotationViewModel.cs" />
     <Compile Include="ViewModels\SearchQuotationViewModel.cs" />
+    <Compile Include="ViewModels\Wizards\AddDriverDetailViewModel.cs" />
     <Compile Include="ViewModels\Wizards\AddInsuranceDetailViewModel.cs" />
     <Compile Include="ViewModels\Wizards\AddOwnerDetailViewModel.cs" />
     <Compile Include="ViewModels\Wizards\AddVehicleDetailViewModel.cs" />
+    <Compile Include="ViewModels\Wizards\QuotationSummaryViewModel.cs" />
     <Compile Include="Views\CreateQuotation.xaml.cs">
       <DependentUpon>CreateQuotation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateWizards\AddDriverDetail.xaml.cs">
+      <DependentUpon>AddDriverDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MotorInsuranceTiles.xaml.cs">
       <DependentUpon>MotorInsuranceTiles.xaml</DependentUpon>
@@ -129,17 +141,26 @@
     <Compile Include="Views\SearchQuotation.xaml.cs">
       <DependentUpon>SearchQuotation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Wizards\AddInsuranceDetail.xaml.cs">
+    <Compile Include="Views\CreateWizards\AddInsuranceDetail.xaml.cs">
       <DependentUpon>AddInsuranceDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Wizards\AddOwnerDetail.xaml.cs">
+    <Compile Include="Views\CreateWizards\AddOwnerDetail.xaml.cs">
       <DependentUpon>AddOwnerDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Wizards\AddVehicleDetail.xaml.cs">
+    <Compile Include="Views\CreateWizards\AddVehicleDetail.xaml.cs">
       <DependentUpon>AddVehicleDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Wizards\QuotationSummary.xaml.cs">
+    <Compile Include="Views\CreateWizards\QuotationSummary.xaml.cs">
       <DependentUpon>QuotationSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchWizards\NonSearchView.xaml.cs">
+      <DependentUpon>NonSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchWizards\InsuranceRenewalDetail.xaml.cs">
+      <DependentUpon>InsuranceRenewalDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchWizards\SearchView.xaml.cs">
+      <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +169,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\CreateQuotation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateWizards\AddDriverDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,19 +188,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Wizards\AddInsuranceDetail.xaml">
+    <Page Include="Views\CreateWizards\AddInsuranceDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Wizards\AddOwnerDetail.xaml">
+    <Page Include="Views\CreateWizards\AddOwnerDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Wizards\AddVehicleDetail.xaml">
+    <Page Include="Views\CreateWizards\AddVehicleDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Wizards\QuotationSummary.xaml">
+    <Page Include="Views\CreateWizards\QuotationSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchWizards\NonSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchWizards\InsuranceRenewalDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchWizards\SearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,6 +226,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\Quotation.DataAccess\Quotation.DataAccess.csproj">
+      <Project>{fff4b040-cc7b-46a7-acb1-7d484f809c72}</Project>
+      <Name>Quotation.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\Quotation.Infrastructure\Quotation.Infrastructure.csproj">
       <Project>{de912131-546f-40a9-9c3f-7016957ea613}</Project>
       <Name>Quotation.Infrastructure</Name>

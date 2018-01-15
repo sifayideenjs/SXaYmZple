@@ -15,7 +15,7 @@
              d:DesignHeight="600" d:DesignWidth="600"
              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType={x:Type Grid}, Mode=FindAncestor}}"
              Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type Grid}, Mode=FindAncestor}}">
-    <Border Background="#FF252526">
+    <Border>
         <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -23,7 +23,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  Foreground="White" FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI"/>
+            <Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  Foreground="White" FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>
 
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
 

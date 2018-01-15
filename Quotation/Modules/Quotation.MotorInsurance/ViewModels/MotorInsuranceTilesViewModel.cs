@@ -10,6 +10,8 @@ using Microsoft.Practices.Unity;
 using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Interfaces;
 using Quotation.MotorInsuranceModule.Events;
+using Prism.Regions;
+using Quotation.Infrastructure;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
@@ -24,10 +26,10 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         #region Commands
         private void IntializeCommands()
         {
-            this.CreateQuotationCommand = new DelegateCommand(this.ExecuteCreateQuotationCommand, this.CanExecuteCreateQuotationCommand);
-            this.RecentQuotationCommand = new DelegateCommand(this.ExecuteRecentQuotationCommand, this.CanExecuteSearchQuotationCommand);
-            this.SearchQuotationCommand = new DelegateCommand(this.ExecuteSearchQuotationCommand, this.CanExecuteSearchQuotationCommand);
-            this.ExpiringQuotationCommand = new DelegateCommand(this.ExecuteExpiringQuotationCommand, this.CanExecuteExpiringQuotationCommand);
+            this.CreateQuotationCommand = new RelayCommand(this.ExecuteCreateQuotationCommand, this.CanExecuteCreateQuotationCommand);
+            this.RecentQuotationCommand = new RelayCommand(this.ExecuteRecentQuotationCommand, this.CanExecuteSearchQuotationCommand);
+            this.SearchQuotationCommand = new RelayCommand(this.ExecuteSearchQuotationCommand, this.CanExecuteSearchQuotationCommand);
+            this.ExpiringQuotationCommand = new RelayCommand(this.ExecuteExpiringQuotationCommand, this.CanExecuteExpiringQuotationCommand);
         }
 
         public ICommand CreateQuotationCommand { get; private set; }
@@ -42,9 +44,10 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecuteCreateQuotationCommand()
         {
+            ClearRegions(RegionNames.MotorWizardRegion);
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
             this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, WindowNames.MotorAddOwnerDetail);
-        }        
+        }
 
         public bool CanExecuteRecentQuotationCommand()
         {
@@ -53,6 +56,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         
         public void ExecuteRecentQuotationCommand()
         {
+            ClearRegions(RegionNames.MotorWizardRegion);
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorRecentQuotation);
         }
 
@@ -63,6 +67,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecuteSearchQuotationCommand()
         {
+            ClearRegions(RegionNames.MotorSearchRegion);
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorSearchQuotation);
         }
 
@@ -81,12 +86,12 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         private void SubscribeEvents()
         {
             this.EventAggregator.GetEvent<DashboardEvent>().Subscribe(OnDashboardView);
-            this.EventAggregator.GetEvent<CreateDriverEvent>().Subscribe(OnCreateDriverView);
+            this.EventAggregator.GetEvent<CreateOwnerEvent>().Subscribe(OnCreateOwnerView);
         }
 
-        private void OnCreateDriverView(CreateDriverEventArgs arg)
+        private void OnCreateOwnerView(CreateOwnerEventArgs arg)
         {
-            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorRecentQuotation);
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
         }
 
         private void OnDashboardView(DashboardEventArgs arg)
@@ -94,5 +99,21 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.Dashboard);
         }
         #endregion //EventAggregation
+
+        private void ClearRegions(string regionName)
+        {
+            if(this.RegionManager.Regions.ContainsRegionWithName(regionName))
+            {
+                IRegion region = this.RegionManager.Regions[regionName];
+                if (region != null)
+                {
+                    var views = region.Views;
+                    foreach (var view in views)
+                    {
+                        region.Remove(view);
+                    }
+                }
+            }
+        }
     }
 }

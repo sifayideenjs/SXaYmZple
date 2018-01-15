@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Microsoft.Practices.Unity;
 using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Interfaces;
+using Quotation.Infrastructure;
 
 namespace Quotation.TravelInsuranceModule.ViewModels
 {
@@ -22,10 +23,10 @@ namespace Quotation.TravelInsuranceModule.ViewModels
         #region Commands
         private void IntializeCommands()
         {
-            this.CreateQuotationCommand = new DelegateCommand(this.ExecuteCreateQuotationCommand, this.CanExecuteCreateQuotationCommand);
-            this.RecentQuotationCommand = new DelegateCommand(this.ExecuteRecentQuotationCommand, this.CanExecuteSearchQuotationCommand);
-            this.SearchQuotationCommand = new DelegateCommand(this.ExecuteSearchQuotationCommand, this.CanExecuteSearchQuotationCommand);
-            this.ExpiringQuotationCommand = new DelegateCommand(this.ExecuteExpiringQuotationCommand, this.CanExecuteExpiringQuotationCommand);
+            this.CreateQuotationCommand = new RelayCommand(this.ExecuteCreateQuotationCommand, this.CanExecuteCreateQuotationCommand);
+            this.RecentQuotationCommand = new RelayCommand(this.ExecuteRecentQuotationCommand, this.CanExecuteSearchQuotationCommand);
+            this.SearchQuotationCommand = new RelayCommand(this.ExecuteSearchQuotationCommand, this.CanExecuteSearchQuotationCommand);
+            this.ExpiringQuotationCommand = new RelayCommand(this.ExecuteExpiringQuotationCommand, this.CanExecuteExpiringQuotationCommand);
         }
 
         public ICommand CreateQuotationCommand { get; private set; }

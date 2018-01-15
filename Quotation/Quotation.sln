@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{78161B3C-3CAC-4593-9504-8FFEF720B21F}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.DashboardModule", "Modules\Quotation.Dashboard\Quotation.DashboardModule.csproj", "{35695603-E53D-4A1F-B85F-B93A772E36C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.Common", "Infrastructure\Quotation.Common\Quotation.Common.csproj", "{C57E7381-FCD3-4401-B02B-12122C894015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.DataAccess", "Infrastructure\Quotation.DataAccess\Quotation.DataAccess.csproj", "{FFF4B040-CC7B-46A7-ACB1-7D484F809C72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{C57E7381-FCD3-4401-B02B-12122C894015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C57E7381-FCD3-4401-B02B-12122C894015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C57E7381-FCD3-4401-B02B-12122C894015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFF4B040-CC7B-46A7-ACB1-7D484F809C72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF4B040-CC7B-46A7-ACB1-7D484F809C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF4B040-CC7B-46A7-ACB1-7D484F809C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF4B040-CC7B-46A7-ACB1-7D484F809C72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +100,6 @@ Global
 		{F6373B4D-4C59-490E-B1C8-1BEA70CF2CAC} = {763CCFE4-A638-4894-93FD-DCA6D967CA14}
 		{35695603-E53D-4A1F-B85F-B93A772E36C7} = {763CCFE4-A638-4894-93FD-DCA6D967CA14}
 		{C57E7381-FCD3-4401-B02B-12122C894015} = {1B733E20-47F8-49AD-9CBF-1B1A10BB1F7B}
+		{FFF4B040-CC7B-46A7-ACB1-7D484F809C72} = {1B733E20-47F8-49AD-9CBF-1B1A10BB1F7B}
 	EndGlobalSection
 EndGlobal

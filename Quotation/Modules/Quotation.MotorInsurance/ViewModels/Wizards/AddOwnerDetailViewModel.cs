@@ -1,9 +1,12 @@
 ﻿using Prism.Commands;
+using Quotation.DataAccess.Models;
+using Quotation.Infrastructure;
 using Quotation.Infrastructure.Base;
 using Quotation.Infrastructure.Constants;
 using Quotation.MotorInsuranceModule.Events;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +16,39 @@ namespace Quotation.MotorInsuranceModule.ViewModels.Wizards
 {
     public class AddOwnerDetailViewModel : ViewModelBase
     {
-        public AddOwnerDetailViewModel()
+        private CreateQuotationViewModel parentViewModel = null;
+
+        public AddOwnerDetailViewModel(CreateQuotationViewModel parentViewModel)
         {
+            this.parentViewModel = parentViewModel;
+#if DEBUG
+            DataAccess.Models.OwnerDetail ownerDetail = new DataAccess.Models.OwnerDetail()
+            {
+                Name = "Sifayideen",
+                NRIC = "YYY-ZZZ1",
+                DateOfBirth = new DateTime(1983, 5, 7),
+                Gender = "MALE",
+                MaritalStatus = true,
+                Occupation = "Software Engineer",
+                LicenseDate = DateTime.Now,
+                Email = "sifayideen@gmail.com",
+                Address = "Chennai",
+                RenewalRemindDays = 7
+            };
+
+            this.OwnerDetail = new OwnerDetailViewModel(ownerDetail);
+#else            
+            this.OwnerDetail = new OwnerDetailViewModel(new DataAccess.Models.OwnerDetail());
+#endif
             this.IntializeCommands();
         }
 
         #region Commands
         private void IntializeCommands()
         {
-            this.CancelCommand = new DelegateCommand(this.ExecuteCancelCommand, this.CanExecuteCancelCommand);
-            this.AddOwnerCommand = new DelegateCommand(this.ExecuteAddOwnerCommand, this.CanExecuteAddOwnerCommand);
-            this.NextCommand = new DelegateCommand(this.ExecuteNextCommand, this.CanExecuteNextCommand);
+            this.CancelCommand = new RelayCommand(this.ExecuteCancelCommand, this.CanExecuteCancelCommand);
+            this.AddOwnerCommand = new RelayCommand(this.ExecuteAddOwnerCommand, this.CanExecuteAddOwnerCommand);
+            this.NextCommand = new RelayCommand(this.ExecuteNextCommand, this.CanExecuteNextCommand);
         }
 
         public ICommand CancelCommand { get; private set; }
@@ -35,7 +60,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels.Wizards
 
         public void ExecuteCancelCommand()
         {
-            this.EventAggregator.GetEvent<CancelEvent>().Publish(new CancelEventArgs
+            this.EventAggregator.GetEvent<CancelEvent>().Publish(new Events.CancelEventArgs
             {
             });
         }
@@ -44,13 +69,23 @@ namespace Quotation.MotorInsuranceModule.ViewModels.Wizards
 
         public bool CanExecuteAddOwnerCommand()
         {
-            return true;
+            if(this.OwnerDetail.IsValid())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ExecuteAddOwnerCommand()
         {
-            this.EventAggregator.GetEvent<AddOwnerEvent>().Publish(new AddOwnerEventArgs
+            this.EventAggregator.GetEvent<AddOwnerEvent>().Publish(new OwnerEventArgs
             {
+                OwnerDetail = this.OwnerDetail.Model,
+                RegionName = RegionNames.MotorWizardRegion,
+                Source = WindowNames.MotorAddDriverDetail
             });
         }
 
@@ -58,17 +93,37 @@ namespace Quotation.MotorInsuranceModule.ViewModels.Wizards
 
         public bool CanExecuteNextCommand()
         {
-            return true;
+            if (this.OwnerDetail.IsValid())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ExecuteNextCommand()
         {
-            this.EventAggregator.GetEvent<NextEvent>().Publish(new NextEventArgs
+            this.EventAggregator.GetEvent<AddOwnerEvent>().Publish(new OwnerEventArgs
             {
+                OwnerDetail = this.OwnerDetail.Model,
                 RegionName = RegionNames.MotorWizardRegion,
-                Source = WindowNames.MotorAddVehicleDetail
+                Source = WindowNames.MotorAddDriverDetail
             });
         }
         #endregion Commands
+
+        #region Properties
+        public OwnerDetailViewModel OwnerDetail
+        {
+            get { return this.parentViewModel.QuotationViewModel.OwnerDetail; }
+            set
+            {
+                this.parentViewModel.QuotationViewModel.OwnerDetail = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion //Properties
     }
 }

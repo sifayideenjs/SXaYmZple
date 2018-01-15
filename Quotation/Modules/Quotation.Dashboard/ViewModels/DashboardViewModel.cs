@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Microsoft.Practices.Unity;
 using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Interfaces;
+using Quotation.Infrastructure;
 
 namespace Quotation.DashboardModule.ViewModels
 {
@@ -27,8 +28,8 @@ namespace Quotation.DashboardModule.ViewModels
         /// </summary>
         private void IntializeCommands()
         {
-            this.ShowModuleAPopupCommand = new DelegateCommand(this.ShowModuleAPopup, this.CanShowModuleAPoupup);
-            this.ShowModuleAMessageCommand = new DelegateCommand(this.ShowModuleAMessage, this.CanShowModuleAMessage);
+            this.ShowModuleAPopupCommand = new RelayCommand(this.ShowModuleAPopup, this.CanShowModuleAPoupup);
+            this.ShowModuleAMessageCommand = new RelayCommand(this.ShowModuleAMessage, this.CanShowModuleAMessage);
         }
 
         /// <summary>

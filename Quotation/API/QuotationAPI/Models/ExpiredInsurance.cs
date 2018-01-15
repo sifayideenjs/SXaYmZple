@@ -13,11 +13,11 @@ namespace QuotationAPI.Models
 
         public string Name { get; set; }
         public string NRIC { get; set; }
-        public System.DateTime LicenseDate { get; set; }
+        public Nullable<System.DateTime> LicenseDate { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
         public string InsuranceQtnNo { get; set; }
-        public System.DateTime InsuranceExpiryDate { get; set; }
-        public System.DateTime RoadTaxExpiryDate { get; set; }
+        public Nullable<System.DateTime> InsuranceExpiryDate { get; set; }
+        public Nullable<System.DateTime> RoadTaxExpiryDate { get; set; }
     }
 }

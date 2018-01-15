@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Microsoft.Practices.Unity;
 using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Interfaces;
+using Quotation.Infrastructure;
 
 namespace Quotation.LoginModule.ViewModels
 {
@@ -78,7 +79,7 @@ namespace Quotation.LoginModule.ViewModels
         }
         private void IntializeCommands()
         {
-            this.LoginCommand = new DelegateCommand(this.ExecuteLoginCommand, this.CanExecuteLoginCommand);
+            this.LoginCommand = new RelayCommand(this.ExecuteLoginCommand, this.CanExecuteLoginCommand);
         }
 
         public ICommand LoginCommand { get; private set; }

@@ -37,44 +37,53 @@ namespace QuotationAPI.DALUtility
           return result;
         }
 
-        public SqlDataReader ExecuteReader(string connectionName, string storedProcName, Dictionary<string, SqlParameter> procParameters)
-        {
-            SqlDataReader dataReader;
-            using (SqlConnection connection = GetConnection(connectionName))
-            {
-                using (SqlCommand cmd = connection.CreateCommand())
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = storedProcName;
-                    foreach (var procParameter in procParameters)
-                    {
-                        cmd.Parameters.Add(procParameter.Value);
-                    }
-                    dataReader = cmd.ExecuteReader();
-                }
-            }
-            return dataReader;
-        }
+        //public SqlDataReader ExecuteReader(string connectionName, string storedProcName, Dictionary<string, SqlParameter> procParameters)
+        //{
+        //    SqlDataReader dataReader;
+        //    using (SqlConnection connection = GetConnection(connectionName))
+        //    {
+        //        using (SqlCommand cmd = connection.CreateCommand())
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.CommandText = storedProcName;
+        //            foreach (var procParameter in procParameters)
+        //            {
+        //                cmd.Parameters.Add(procParameter.Value);
+        //            }
+        //            dataReader = cmd.ExecuteReader();
+        //        }
+        //    }
+        //    return dataReader;
+        //}
 
         public DataSet ExecuteQuery(string connectionName, string storedProcName, Dictionary<string, SqlParameter> procParameters)
         {
             DataSet dataSet = new DataSet();
-            using (SqlConnection connection = GetConnection(connectionName))
+            try
             {
-                using (SqlCommand cmd = connection.CreateCommand())
+                using (SqlConnection connection = GetConnection(connectionName))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = storedProcName;
-                    foreach (var procParameter in procParameters)
+                    using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        cmd.Parameters.Add(procParameter.Value);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = storedProcName;
+                        foreach (var procParameter in procParameters)
+                        {
+                            cmd.Parameters.Add(procParameter.Value);
+                        }
+                        using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                        {
+                            dataAdapter.Fill(dataSet);
+                        }
                     }
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
-                    {
-                        dataAdapter.Fill(dataSet);
-                    }
+                    connection.Close();
                 }
             }
+            catch(Exception ex)
+            {
+                return dataSet;
+            }
+
             return dataSet;
         }
     }

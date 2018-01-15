@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="Quotation.MotorInsuranceModule.Views.Wizards.AddInsuranceDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Quotation.MotorInsuranceModule.Views.Wizards"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:prismlib="http://prismlibrary.com/"
+             xmlns:prism="http://www.codeplex.com/prism"
+             xmlns:infConstants="clr-namespace:Quotation.Infrastructure.Constants;assembly=Quotation.Infrastructure"
+             xmlns:infBehaviors="clr-namespace:Quotation.Infrastructure.Behaviors;assembly=Quotation.Infrastructure"
+             xmlns:control="clr-namespace:Quotation.Styling.Controls;assembly=Quotation.Styling"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="600" DataContext="{Binding AddInsuranceDetailViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Margin="0" Grid.Row="0" 
+                       FontSize="20"
+                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       Foreground="LightGray"
+                       >Insurance Details</Label>
+
+                <Grid Margin="5 5 5 5" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Insurance Expiry Date:</Label>
+                    <DatePicker Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding CurrentInsuranceDetails.InsuranceExpiryDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
+
+                    <!--<Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Insurance Renewal Date:</Label>
+                    <DatePicker Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding InsuranceRenewalDate, Mode=TwoWay}" Margin="5" />-->
+
+                    <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Road Tax Expiry Date:</Label>
+                    <DatePicker Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding CurrentInsuranceDetails.RoadTaxExpiryDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
+
+                    <!--<Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Road Tax Renewal Date:</Label>
+                    <DatePicker Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding RoadTaxRenewalDate, Mode=TwoWay}" Margin="5" />-->
+
+                    <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Dealer:</Label>
+                    <TextBox Grid.Row="4" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding CurrentInsuranceDetails.PreviousDealer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Agency:</Label>
+                    <TextBox Grid.Row="5" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding CurrentInsuranceDetails.Agency, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Finance Bank:</Label>
+                    <TextBox Grid.Row="6" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding CurrentInsuranceDetails.FinanceBank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
+
+                    <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Year Premium:</Label>
+                    <TextBox Grid.Row="7" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                             Text="{Binding CurrentInsuranceDetails.PrevYearPremium, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
+
+                    <!--<Button Grid.Row="8" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" Height="37" FontSize="14" IsDefault="True" Content="ADD" metro:ButtonHelper.PreserveTextCase="True" Command="{Binding AddInsuranceCommand}" Style="{StaticResource AccentedSquareButtonStyle}"/>-->
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding PreviousCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+                <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_left}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding AddInsuranceCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+                <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_save}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding NextCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+                <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
