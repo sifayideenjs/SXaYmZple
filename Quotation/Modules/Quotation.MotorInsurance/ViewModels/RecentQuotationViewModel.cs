@@ -10,13 +10,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Quotation.DataAccess;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
     public class RecentQuotationViewModel : ViewModelBase
     {
-        public RecentQuotationViewModel()
+        QuotationDb quotationDb = null;
+        private ObservableCollection<OwnerDetailViewModel> quotations;
+
+        public RecentQuotationViewModel(QuotationDb quotationDb)
         {
+            this.quotationDb = quotationDb;
             Initializate();
             this.IntializeCommands();
         }
@@ -25,20 +30,28 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         private void Initializate()
         {
-            var quotations = new List<MIQuotation>();
-#if DEBUG
-            quotations.Add(new MIQuotation() { NRIC = "XXX-YYY", InsuranceQtnNo = "123456" });
-#endif
-            //var quotationViewModels = new ObservableCollection<QuotationViewModel>(quotations.Select(q => new QuotationViewModel(q)));
+            string errorMessage = string.Empty;
+            var ownerDetails = this.quotationDb.GetAllOwnerDetails(out errorMessage);
+            this.Quotations = new ObservableCollection<OwnerDetailViewModel>(ownerDetails.Select(q => new OwnerDetailViewModel(q)));
+        }
 
-            //QuotationsViewModel = new QuotationsViewModel(quotationViewModels);
+        public ObservableCollection<OwnerDetailViewModel> Quotations
+        {
+            get
+            {
+                return quotations;
+            }
+            set
+            {
+                quotations = value;
+                OnPropertyChanged();
+            }
         }
 
         #region Commands
         private void IntializeCommands()
         {
             this.DashboardCommand = new RelayCommand(this.ExecuteDashboardCommand, this.CanExecuteDashboardCommand);
-            this.CreateOwnerCommand = new RelayCommand(this.ExecuteCreateOwnerCommand, this.CanExecuteCreateOwnerCommand);
         }
 
         public ICommand DashboardCommand { get; private set; }
@@ -53,17 +66,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.EventAggregator.GetEvent<DashboardEvent>().Publish(new DashboardEventArgs
             {
             });
-        }
-
-        public ICommand CreateOwnerCommand { get; private set; }
-
-        public bool CanExecuteCreateOwnerCommand()
-        {
-            return true;
-        }
-
-        public void ExecuteCreateOwnerCommand()
-        {
         }
         #endregion Commands
     }

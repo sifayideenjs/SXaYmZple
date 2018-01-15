@@ -30,7 +30,7 @@
                         TiltFactor="1"
                         Width="156" 
                         Height="150" 
-                        Background="#FF134577">
+                        Background="#FFFFC15C">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
                         <VisualBrush Visual="{StaticResource tile_create_new}" Stretch="Uniform" />
@@ -58,7 +58,7 @@
                         TiltFactor="1"  
                         Width="156" 
                         Height="150"
-                        Background="#FF134577">
+                        Background="#FFFFC15C">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
                         <VisualBrush Visual="{StaticResource tile_search}" Stretch="Uniform" />
@@ -73,7 +73,7 @@
                         TiltFactor="1"  
                         Width="156" 
                         Height="150"
-                        Background="#FF134577">
+                        Background="#FFFFC15C">
                     <Rectangle Fill="White" Height="45" Width="45">
                         <Rectangle.OpacityMask>
                             <VisualBrush Visual="{StaticResource tile_expired}" Stretch="Uniform" />

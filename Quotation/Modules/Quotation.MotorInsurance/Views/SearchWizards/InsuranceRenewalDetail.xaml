@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <Grid>
@@ -46,42 +47,38 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Insurance Expiry Date:</Label>
-                    <DatePicker Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding InsuranceExpiryDate, Mode=TwoWay}" Margin="5" />
+                    <DatePicker Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding CurrentInsuranceDetails.InsuranceExpiryDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
 
-                    <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Insurance Renewal Date:</Label>
-                    <DatePicker Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding InsuranceRenewalDate, Mode=TwoWay}" Margin="5" />
+                    <!--<Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Insurance Renewal Date:</Label>
+                    <DatePicker Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding InsuranceRenewalDate, Mode=TwoWay}" Margin="5" />-->
 
                     <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Road Tax Expiry Date:</Label>
-                    <DatePicker Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding RoadTaxExpiryDate, Mode=TwoWay}" Margin="5" />
+                    <DatePicker Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding CurrentInsuranceDetails.RoadTaxExpiryDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
 
-                    <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Road Tax Renewal Date:</Label>
-                    <DatePicker Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding RoadTaxRenewalDate, Mode=TwoWay}" Margin="5" />
+                    <!--<Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Road Tax Renewal Date:</Label>
+                    <DatePicker Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding RoadTaxRenewalDate, Mode=TwoWay}" Margin="5" />-->
 
                     <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Dealer:</Label>
-                    <TextBox Grid.Row="4" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding PreviousDealer, Mode=TwoWay}" Margin="5" />
+                    <TextBox Grid.Row="4" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding CurrentInsuranceDetails.PreviousDealer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
 
                     <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Agency:</Label>
-                    <TextBox Grid.Row="5" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding Agency, Mode=TwoWay}" Margin="5" />
+                    <TextBox Grid.Row="5" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding CurrentInsuranceDetails.Agency, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
 
                     <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Finance Bank:</Label>
-                    <TextBox Grid.Row="6" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding FinanceBank, Mode=TwoWay}" Margin="5" />
+                    <TextBox Grid.Row="6" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding CurrentInsuranceDetails.FinanceBank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
 
                     <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Year Premium:</Label>
-                    <RichTextBox Grid.Row="7" Grid.Column="1" VerticalContentAlignment="Center" Height="100" Margin="5">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text="{Binding PrevYearPremium}"/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
+                    <TextBox Grid.Row="7" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" Height="100"
+                             Text="{Binding CurrentInsuranceDetails.PrevYearPremium, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
 
                     <!--<Button Grid.Row="8" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" Height="37" FontSize="14" IsDefault="True" Content="ADD" metro:ButtonHelper.PreserveTextCase="True" Command="{Binding AddInsuranceCommand}" Style="{StaticResource AccentedSquareButtonStyle}"/>-->
                 </Grid>

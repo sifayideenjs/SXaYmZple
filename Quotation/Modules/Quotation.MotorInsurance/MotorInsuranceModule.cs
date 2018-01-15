@@ -12,6 +12,7 @@ namespace Quotation.MotorInsuranceModule
         {
             // Tiles
             regionManager.RegisterViewWithRegion(RegionNames.TileRegion, typeof(MotorInsuranceTiles));
+            regionManager.RegisterViewWithRegion(RegionNames.TileRegion, typeof(RecentQuotation));
 
             //// Register Views
             //Prism.Unity.UnityExtensions.RegisterTypeForNavigation<Views.ModuleAPopup>(unityContainer, PopupNames.ModuleAPopup);

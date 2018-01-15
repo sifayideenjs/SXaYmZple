@@ -89,7 +89,7 @@ namespace Quotation.DataAccess
             return errorDetail;
         }
 
-        public ErrorDetail EditOwnerDetails(OwnerDetail ownerDetail, string flag)
+        public ErrorDetail EditOwnerDetails(OwnerDetail ownerDetail)
         {
             ErrorDetail errorDetail = new ErrorDetail();
             try
@@ -113,7 +113,7 @@ namespace Quotation.DataAccess
             return errorDetail;
         }
 
-        public ErrorDetail DeleteOwnerDetails(OwnerDetail ownerDetail, string flag)
+        public ErrorDetail DeleteOwnerDetails(OwnerDetail ownerDetail)
         {
             ErrorDetail errorDetail = new ErrorDetail();
             try
@@ -183,6 +183,16 @@ namespace Quotation.DataAccess
             }
 
             return errorDetail;
+        }
+
+        public ErrorDetail EditVehicleDetails(VehicleDetail vehicleDetail)
+        {
+            return new ErrorDetail();
+        }
+
+        public ErrorDetail EditInsuranceDetails(MIQuotation insuranceDetail)
+        {
+            return new ErrorDetail();
         }
     }
 }

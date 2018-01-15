@@ -40,7 +40,7 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="OWNER / INSURED DETAILS" VerticalAlignment="Center" FontSize="18"/>
-                                <Button Grid.Column="1" Height="40" Width="40" Command="{Binding EditOwnerCommand}" Style="{StaticResource MetroCircleButtonStyle}" Margin="-5">
+                                <Button Grid.Column="1" Height="40" Width="40" DataContext="{Binding}" Command="{Binding EditOwnerCommand}" Style="{StaticResource MetroCircleButtonStyle}" Margin="-5">
                                     <Rectangle Width="15" Height="15" Fill="WhiteSmoke">
                                         <Rectangle.OpacityMask>
                                             <VisualBrush Stretch="Fill" Visual="{DynamicResource info_edit}"/>

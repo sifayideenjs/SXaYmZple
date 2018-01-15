@@ -48,6 +48,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public AddInsuranceDetailViewModel AddInsuranceDetailViewModel { get; set; }
         public QuotationSummaryViewModel QuotationSummaryViewModel { get; set; }
 
+
         #region Commands
         private void IntializeCommands()
         {

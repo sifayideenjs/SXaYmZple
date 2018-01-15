@@ -98,6 +98,7 @@
     <Compile Include="Constants\RegionNames.cs" />
     <Compile Include="Constants\ServiceNames.cs" />
     <Compile Include="Constants\WindowNames.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\YesNoToBooleanConverter.cs" />
     <Compile Include="Converters\YesNoToByteConverter.cs" />
     <Compile Include="Events\StatusBarMessageUpdateEvent.cs" />

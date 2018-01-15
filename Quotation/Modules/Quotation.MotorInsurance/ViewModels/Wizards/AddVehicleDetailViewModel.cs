@@ -134,6 +134,16 @@ namespace Quotation.MotorInsuranceModule.ViewModels.Wizards
                 OnPropertyChanged();
             }
         }
+
+        public bool IsVehicalUpdated
+        {
+            get { return this.parentViewModel.QuotationViewModel.IsVehicalUpdated; }
+            set
+            {
+                this.parentViewModel.QuotationViewModel.IsVehicalUpdated = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion //Properties
     }
 }

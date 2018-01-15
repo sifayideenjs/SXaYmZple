@@ -18,11 +18,10 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Header -->
-        <Label Grid.Row="0" Content="Motor Insurance" Foreground="LightGray" FontSize="22" Margin="5 0 0 0"/>
+        <Label Grid.Row="0" Content="Motor Insurance" Foreground="White" FontSize="22" Margin="0" Background="Gray"/>
         
         <!-- Tiles -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5 0 0 10">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5 5 0 5">
             <metro:Tile Title="New Proposal" 
                         Command="{Binding CreateQuotationCommand}"
                         HorizontalAlignment="Center"                        
@@ -30,7 +29,7 @@
                         TiltFactor="1"
                         Width="156" 
                         Height="150" 
-                        Background="#FF16B2D6">
+                        Background="#FF16B2D6" HorizontalTitleAlignment="Center" TitleFontSize="14">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
                         <VisualBrush Visual="{StaticResource tile_create_new}" Stretch="Uniform" />
@@ -39,12 +38,12 @@
             </metro:Tile>
             <!--<metro:Tile Title="Recent Quotations" 
                         Command="{Binding RecentQuotationCommand}"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Center"                        
                         VerticalAlignment="Top"
-                        TiltFactor="1"  
+                        TiltFactor="1"
                         Width="156" 
-                        Height="150"
-                        Background="#FF16B2D6">
+                        Height="150" 
+                        Background="#FF16B2D6" HorizontalTitleAlignment="Center" TitleFontSize="14">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
                         <VisualBrush Visual="{StaticResource tile_recent}" Stretch="Uniform" />
@@ -53,12 +52,12 @@
             </metro:Tile>-->
             <metro:Tile Title="Search Quotation" 
                         Command="{Binding SearchQuotationCommand}"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Center"                        
                         VerticalAlignment="Top"
-                        TiltFactor="1"  
+                        TiltFactor="1"
                         Width="156" 
-                        Height="150"
-                        Background="#FF16B2D6">
+                        Height="150" 
+                        Background="#FF16B2D6" HorizontalTitleAlignment="Center" TitleFontSize="14">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
                         <VisualBrush Visual="{StaticResource tile_search}" Stretch="Uniform" />
@@ -67,13 +66,13 @@
             </metro:Tile>
             <metro:Badged Badge="1000" BadgePlacementMode="TopRight" BadgeBackground="#FFDA1111">
                 <metro:Tile Title="Expiring Quotations"
-                        Command="{Binding ExpiringQuotationCommand}"
-                        HorizontalAlignment="Left"
+                        Command="{Binding RecentQuotationCommand}"
+                        HorizontalAlignment="Center"                        
                         VerticalAlignment="Top"
-                        TiltFactor="1"  
+                        TiltFactor="1"
                         Width="156" 
-                        Height="150"
-                        Background="#FF16B2D6">
+                        Height="150" 
+                        Background="#FF16B2D6" HorizontalTitleAlignment="Center" TitleFontSize="14">
                     <Rectangle Fill="White" Height="45" Width="45">
                         <Rectangle.OpacityMask>
                             <VisualBrush Visual="{StaticResource tile_expired}" Stretch="Uniform" />

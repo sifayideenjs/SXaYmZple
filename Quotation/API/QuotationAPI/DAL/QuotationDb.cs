@@ -141,13 +141,16 @@ namespace QuotationAPI.DAL
             cmdParameters["ERRORDESC"] = outPutParameter2;
 
             ErrorDetail errorDetail = new ErrorDetail();
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateInsuranceDetails", cmdParameters);
-            if (dataSet != null && dataSet.Tables.Count > 1)
-            {
-                var dataTable = dataSet.Tables[0];
-                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
-                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
-            }
+            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateInsuranceDetails", cmdParameters);
+            //if (dataSet != null && dataSet.Tables.Count > 1)
+            //{
+            //    var dataTable = dataSet.Tables[0];
+            //    errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+            //    errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
+            //}
+
+            errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
+            errorDetail.Info = outPutParameter2.Value.ToString();
 
             return errorDetail;
         }
@@ -183,13 +186,16 @@ namespace QuotationAPI.DAL
             cmdParameters["@ERRORDESC"] = outPutParameter2;
 
             ErrorDetail errorDetail = new ErrorDetail();
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateOwnerDetails", cmdParameters);
-            if (dataSet != null && dataSet.Tables.Count > 1)
-            {
-                var dataTable = dataSet.Tables[0];
-                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
-                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
-            }
+            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateOwnerDetails", cmdParameters);
+            //if (dataSet != null && dataSet.Tables.Count > 1)
+            //{
+            //    var dataTable = dataSet.Tables[0];
+            //    errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+            //    errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
+            //}
+
+            errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
+            errorDetail.Info = outPutParameter2.Value.ToString();
 
             return errorDetail;
         }
@@ -218,13 +224,16 @@ namespace QuotationAPI.DAL
             cmdParameters["ERRORDESC"] = outPutParameter2;
 
             ErrorDetail errorDetail = new ErrorDetail();
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateUser", cmdParameters);
-            if (dataSet != null && dataSet.Tables.Count > 1)
-            {
-                var dataTable = dataSet.Tables[0];
-                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
-                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
-            }
+            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateUser", cmdParameters);
+            //if (dataSet != null && dataSet.Tables.Count > 1)
+            //{
+            //    var dataTable = dataSet.Tables[0];
+            //    errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+            //    errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
+            //}
+
+            errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
+            errorDetail.Info = outPutParameter2.Value.ToString();
 
             return errorDetail;
         }
@@ -280,13 +289,16 @@ namespace QuotationAPI.DAL
             cmdParameters["ERRORDESC"] = outPutParameter2;
 
             ErrorDetail errorDetail = new ErrorDetail();
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateVehicleDetails", cmdParameters);
-            if (dataSet != null && dataSet.Tables.Count > 1)
-            {
-                var dataTable = dataSet.Tables[0];
-                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
-                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
-            }
+            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateVehicleDetails", cmdParameters);
+            //if (dataSet != null && dataSet.Tables.Count > 1)
+            //{
+            //    var dataTable = dataSet.Tables[0];
+            //    errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
+            //    errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
+            //}
+
+            errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
+            errorDetail.Info = outPutParameter2.Value.ToString();
 
             return errorDetail;
         }

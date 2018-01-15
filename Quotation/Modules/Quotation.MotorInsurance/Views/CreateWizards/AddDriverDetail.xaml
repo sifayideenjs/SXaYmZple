@@ -14,6 +14,7 @@
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="900" DataContext="{Binding AddDriverDetailViewModel}">
     <UserControl.Resources>
+        <infConverters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <infConverters:YesNoToBooleanConverter x:Key="YesNoToBooleanConverter"/>
     </UserControl.Resources>
     <Grid>

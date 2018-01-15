@@ -17,6 +17,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
     {
         QuotationDb quotationDb;
 
+        private bool isOwnerCreated = false;
+        private bool isDriverUpdated = true;
+        private bool isVehicalUpdated = true;
+        private bool isInsuranceUpdated = true;
+
         private OwnerDetailViewModel ownerDetail;
         private ObservableCollection<DriverDetailViewModel> driverDetails;
         private DriverDetailViewModel currentDriverDetail;
@@ -38,8 +43,29 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             this.quotationDb = quotationDb;
             SubscribeEvents();
-            this.EditOwnerCommand = new Infrastructure.RelayCommand(this.ExecuteEditOwnerCommand, this.CanExecuteEditOwnerCommand);
         }
+
+        public bool IsOwnerCreated
+        {
+            get { return isOwnerCreated; }
+            set { isOwnerCreated = value; OnPropertyChanged(); }
+        }
+        public bool IsDriverUpdated
+        {
+            get { return isDriverUpdated; }
+            set { isDriverUpdated = value; OnPropertyChanged(); }
+        }
+        public bool IsVehicalUpdated
+        {
+            get { return isVehicalUpdated; }
+            set { isVehicalUpdated = value; OnPropertyChanged(); }
+        }
+        public bool IsInsuranceUpdated
+        {
+            get { return isInsuranceUpdated; }
+            set { isInsuranceUpdated = value; OnPropertyChanged(); }
+        }
+
 
         public OwnerDetailViewModel OwnerDetail
         {
@@ -133,16 +159,34 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OwnerDetail ownerDetail = arg.OwnerDetail;
                 if (ownerDetail != null)
                 {
-                    ownerDetail.CreatedBy = "Sifayideen";
-                    ownerDetail.LastUpdatedBy = "Sifayideen";
-
-                    var errorInfo = quotationDb.AddOwnerDetails(ownerDetail);
-                    if (errorInfo.Code == 0)
+                    if(this.IsOwnerCreated == false)
                     {
-                        this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                        ownerDetail.CreatedBy = "Sifayideen";
+                        ownerDetail.LastUpdatedBy = "Sifayideen";
+
+                        var errorInfo = quotationDb.AddOwnerDetails(ownerDetail);
+                        if (errorInfo.Code == 0)
+                        {
+                            //this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                            this.IsOwnerCreated = true;
+                        }
+                        else
+                        {
+                        }
                     }
                     else
                     {
+                        ownerDetail.LastUpdatedBy = "Sifayideen";
+
+                        var errorInfo = quotationDb.EditOwnerDetails(ownerDetail);
+                        if (errorInfo.Code == 0)
+                        {
+                            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                            this.IsOwnerCreated = true;
+                        }
+                        else
+                        {
+                        }
                     }
                 }
                 else
@@ -159,6 +203,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             if (arg != null)
             {
                 this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                this.IsDriverUpdated = true;
             }
         }
 
@@ -169,14 +214,30 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 VehicleDetail vehicleDetail = arg.VehicleDetail;
                 if (vehicleDetail != null)
                 {
-                    vehicleDetail.NRIC = this.OwnerDetail.NRIC;
-                    var errorInfo = quotationDb.AddVehicleDetails(vehicleDetail);
-                    if (errorInfo.Code == 0)
+                    if(this.IsVehicalUpdated == false)
                     {
-                        this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                        vehicleDetail.NRIC = this.OwnerDetail.NRIC;
+                        var errorInfo = quotationDb.AddVehicleDetails(vehicleDetail);
+                        if (errorInfo.Code == 0)
+                        {
+                            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                            this.IsVehicalUpdated = true;
+                        }
+                        else
+                        {
+                        }
                     }
                     else
                     {
+                        var errorInfo = quotationDb.EditVehicleDetails(vehicleDetail);
+                        if (errorInfo.Code == 0)
+                        {
+                            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                            this.IsVehicalUpdated = true;
+                        }
+                        else
+                        {
+                        }
                     }
                 }
                 else
@@ -195,15 +256,31 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 MIQuotation insuranceDetail = arg.InsuranceDetail;
                 if (insuranceDetail != null)
                 {
-                    insuranceDetail.NRIC = this.OwnerDetail.NRIC;
-                    insuranceDetail.InsuranceQtnNo = "123456";
-                    var errorInfo = quotationDb.AddInsuranceDetails(insuranceDetail);
-                    if (errorInfo.Code == 0)
+                    if(this.IsInsuranceUpdated == false)
                     {
-                        this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                        insuranceDetail.NRIC = this.OwnerDetail.NRIC;
+                        insuranceDetail.InsuranceQtnNo = "123456";
+                        var errorInfo = quotationDb.AddInsuranceDetails(insuranceDetail);
+                        if (errorInfo.Code == 0)
+                        {
+                            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                            this.IsInsuranceUpdated = true;
+                        }
+                        else
+                        {
+                        }
                     }
                     else
                     {
+                        var errorInfo = quotationDb.EditInsuranceDetails(insuranceDetail);
+                        if (errorInfo.Code == 0)
+                        {
+                            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                            this.IsInsuranceUpdated = true;
+                        }
+                        else
+                        {
+                        }
                     }
                 }
                 else
@@ -213,19 +290,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             else
             {
             }
-        }
-
-
-        public System.Windows.Input.ICommand EditOwnerCommand { get; private set; }
-
-        public bool CanExecuteEditOwnerCommand()
-        {
-            return true;
-        }
-
-        public void ExecuteEditOwnerCommand()
-        {
-            this.RegionManager.RequestNavigate(RegionNames.DialogPopupRegion, WindowNames.MotorAddOwnerDetail);
         }
     }
 

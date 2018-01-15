@@ -74,7 +74,7 @@ namespace Quotation.Shell
             ModuleCatalog moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
             moduleCatalog.AddModule(typeof(Quotation.LoginModule.LoginModule));
             moduleCatalog.AddModule(typeof(Quotation.MotorInsuranceModule.MotorInsuranceModule));
-            moduleCatalog.AddModule(typeof(Quotation.TravelInsuranceModule.TravelInsuranceModule));
+            //moduleCatalog.AddModule(typeof(Quotation.TravelInsuranceModule.TravelInsuranceModule));
             moduleCatalog.AddModule(typeof(Quotation.DashboardModule.DashboardModule));
         }
         

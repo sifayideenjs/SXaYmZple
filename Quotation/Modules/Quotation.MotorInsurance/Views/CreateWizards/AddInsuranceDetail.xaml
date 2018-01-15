@@ -9,9 +9,13 @@
              xmlns:prism="http://www.codeplex.com/prism"
              xmlns:infConstants="clr-namespace:Quotation.Infrastructure.Constants;assembly=Quotation.Infrastructure"
              xmlns:infBehaviors="clr-namespace:Quotation.Infrastructure.Behaviors;assembly=Quotation.Infrastructure"
+             xmlns:infConverters="clr-namespace:Quotation.Infrastructure.Converters;assembly=Quotation.Infrastructure"
              xmlns:control="clr-namespace:Quotation.Styling.Controls;assembly=Quotation.Styling"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="600" DataContext="{Binding AddInsuranceDetailViewModel}">
+    <UserControl.Resources>
+        <infConverters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
