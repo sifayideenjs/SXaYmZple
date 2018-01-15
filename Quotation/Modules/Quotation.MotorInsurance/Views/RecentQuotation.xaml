@@ -29,20 +29,19 @@
         <!-- Header -->
         <!--<control:HeaderControl Grid.Row="0"/>-->
 
-        <Grid Grid.Row="1" Background="Gray">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <!--<Button Grid.Column="0" Height="40" Width="40" Command="{Binding DashboardCommand}" Style="{StaticResource MetroCircleButtonStyle}">
-                <Rectangle Width="15" Height="15" Fill="White">
+            <Label Grid.Column="0" Background="Gray" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Rectangle Fill="White" Height="30" Width="30">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_left}"/>
+                        <VisualBrush Visual="{StaticResource tile_expired}" Stretch="Uniform" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
-            </Button>-->
-            <Label Grid.Column="1" Content="Recent Quotations" Foreground="White" FontSize="22" Margin="0"/>
+            </Label>
+            <Label Grid.Column="1" Content="Recent Quotations" Foreground="White" FontSize="22" Margin="0" Background="Gray" HorizontalAlignment="Stretch"/>
         </Grid>
 
         <Grid Grid.Row="2" Margin="5 5 0 5">
@@ -61,7 +60,7 @@
                         <DataTemplate>
                             <metro:Tile Title="{Binding NRIC}" Command="{Binding OpenQuotationCommand}"
                         HorizontalAlignment="Center" VerticalAlignment="Top" TiltFactor="1"
-                        Width="120" Height="100" Background="#FF134577" HorizontalTitleAlignment="Center" TitleFontSize="13">
+                        Width="120" Height="100" Background="#FF134577" HorizontalTitleAlignment="Center" TitleFontSize="13" Margin="5">
                                 <Rectangle Fill="White" Height="30" Width="30" Margin="0 0 0 20">
                                     <Rectangle.OpacityMask>
                                         <VisualBrush Visual="{StaticResource appbar_doc}" Stretch="Uniform" />

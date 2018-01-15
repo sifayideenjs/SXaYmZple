@@ -22,7 +22,7 @@
         <Label Grid.Row="0" Content="Travel Insurance" Foreground="LightGray" FontSize="22" Margin="5 0 0 0"/>
 
         <!-- Tiles -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5 0 0 10">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5 15 0 15">
             <metro:Tile Title="Create Quotation"
                         Command="{Binding CreateQuotationCommand}"
                         HorizontalAlignment="Center"                        
@@ -30,7 +30,7 @@
                         TiltFactor="1"
                         Width="156" 
                         Height="150" 
-                        Background="#FFFFC15C">
+                        Background="#FFFFC15C" Margin="10 0 5 0">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
                         <VisualBrush Visual="{StaticResource tile_create_new}" Stretch="Uniform" />
@@ -44,7 +44,7 @@
                         TiltFactor="1"  
                         Width="156" 
                         Height="150"
-                        Background="#FF134577">
+                        Background="#FF134577" Margin="10 0 5 0">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
                         <VisualBrush Visual="{StaticResource tile_recent}" Stretch="Uniform" />
@@ -58,10 +58,10 @@
                         TiltFactor="1"  
                         Width="156" 
                         Height="150"
-                        Background="#FFFFC15C">
+                        Background="#FFFFC15C" Margin="10 0 5 0">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Visual="{StaticResource tile_search}" Stretch="Uniform" />
+                        <VisualBrush Visual="{StaticResource tile_search2}" Stretch="Uniform" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </metro:Tile>
@@ -73,7 +73,7 @@
                         TiltFactor="1"  
                         Width="156" 
                         Height="150"
-                        Background="#FFFFC15C">
+                        Background="#FFFFC15C" Margin="10 0 5 0">
                     <Rectangle Fill="White" Height="45" Width="45">
                         <Rectangle.OpacityMask>
                             <VisualBrush Visual="{StaticResource tile_expired}" Stretch="Uniform" />
