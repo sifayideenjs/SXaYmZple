@@ -12,7 +12,7 @@ namespace Quotation.DataAccess.Models
         public string Make { get; set; }
         public string Model { get; set; }
         public string Capacity { get; set; }
-        public System.DateTime DateOfRegistered { get; set; }
+        public Nullable<System.DateTime> DateOfRegistered { get; set; }
         public string YearMade { get; set; }
         public string RegNo { get; set; }
         public byte ParallelImport { get; set; }

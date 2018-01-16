@@ -45,6 +45,15 @@ namespace QuotationAPI.DAL
             return ownerDetails;
         }
 
+        internal DataSet GetMIQuoationDetails(string insuranceQtnNo)
+        {
+            Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
+            cmdParameters["InsuranceQtnNo"] = new SqlParameter("InsuranceQtnNo", insuranceQtnNo);
+
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetMIQuoationDetails", cmdParameters);
+            return dataSet;
+        }
+
         internal IEnumerable<ExpiredInsurance> GetInsuranceQtnTobeExpired()
         {
             List<ExpiredInsurance> expiredInsurances = new List<ExpiredInsurance>();
@@ -72,13 +81,12 @@ namespace QuotationAPI.DAL
             return expiredInsurances;
         }
 
-        internal DataSet GetMotorQuoationDetails(string nric, string insuranceQtnNo)
+        internal DataSet GetNRICDetails(string nric)
         {
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
             cmdParameters["NRIC"] = new SqlParameter("NRIC", nric);
-            cmdParameters["InsuranceQtnNo"] = new SqlParameter("InsuranceQtnNo", insuranceQtnNo);
 
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetMotorQuoationDetails", cmdParameters);
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetMIQuoationDetails", cmdParameters);
             return dataSet;
         }
 
@@ -108,51 +116,6 @@ namespace QuotationAPI.DAL
             }
 
             return userDetails;
-        }
-
-        internal ErrorDetail UpdateInsuranceDetails(MIQuotation quotationDetail)
-        {
-            Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
-            cmdParameters["NRIC"] = new SqlParameter("NRIC", quotationDetail.NRIC);
-            cmdParameters["InsuranceQtnNo"] = new SqlParameter("InsuranceQtnNo", quotationDetail.InsuranceQtnNo);
-            cmdParameters["InsuranceExpiryDate"] = new SqlParameter("InsuranceExpiryDate", quotationDetail.InsuranceExpiryDate);
-            cmdParameters["InsuranceRenewalDate"] = new SqlParameter("InsuranceRenewalDate", quotationDetail.InsuranceRenewalDate);
-            cmdParameters["RoadTaxExpiryDate"] = new SqlParameter("RoadTaxExpiryDate", quotationDetail.RoadTaxExpiryDate);
-            cmdParameters["RoadTaxRenewalDate"] = new SqlParameter("RoadTaxRenewalDate", quotationDetail.RoadTaxRenewalDate);
-            cmdParameters["PreviousDealer"] = new SqlParameter("PreviousDealer", quotationDetail.PreviousDealer);
-            cmdParameters["Agency"] = new SqlParameter("Agency", quotationDetail.Agency);
-            cmdParameters["PrevYearPremium"] = new SqlParameter("PrevYearPremium", quotationDetail.PrevYearPremium);
-            cmdParameters["FinanceBank"] = new SqlParameter("FinanceBank", quotationDetail.FinanceBank);
-            cmdParameters["InsuranceRenewed"] = new SqlParameter("InsuranceRenewed", quotationDetail.InsuranceRenewed);
-            cmdParameters["RoadTaxRenewed"] = new SqlParameter("RoadTaxRenewed", quotationDetail.RoadTaxRenewed);
-
-            SqlParameter outPutParameter1 = new SqlParameter();
-            outPutParameter1.ParameterName = "ERRORNO";
-            outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
-            outPutParameter1.Size = 255;
-            outPutParameter1.Direction = System.Data.ParameterDirection.Output;
-            cmdParameters["ERRORNO"] = outPutParameter1;
-
-            SqlParameter outPutParameter2 = new SqlParameter();
-            outPutParameter2.ParameterName = "ERRORDESC";
-            outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
-            outPutParameter2.Size = 255;
-            outPutParameter2.Direction = System.Data.ParameterDirection.Output;
-            cmdParameters["ERRORDESC"] = outPutParameter2;
-
-            ErrorDetail errorDetail = new ErrorDetail();
-            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateInsuranceDetails", cmdParameters);
-            //if (dataSet != null && dataSet.Tables.Count > 1)
-            //{
-            //    var dataTable = dataSet.Tables[0];
-            //    errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
-            //    errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
-            //}
-
-            errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
-            errorDetail.Info = outPutParameter2.Value.ToString();
-
-            return errorDetail;
         }
 
         internal ErrorDetail UpdateOwnerDetails(OwnerDetail ownerDetail, string flag)
@@ -193,6 +156,87 @@ namespace QuotationAPI.DAL
             //    errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
             //    errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
             //}
+
+            errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
+            errorDetail.Info = outPutParameter2.Value.ToString();
+
+            return errorDetail;
+        }
+
+        internal ErrorDetail UpdateDriverDetails(List<DriverDetail> driverDetails)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("InsuredName", typeof(string));
+            dataTable.Columns.Add("InsuredNRIC", typeof(string));
+            dataTable.Columns.Add("DateOfBirth", typeof(DateTime));
+            dataTable.Columns.Add("Gender", typeof(string));
+            dataTable.Columns.Add("MaritalStatus", typeof(bool));
+            //dataTable.Columns.Add("Occupation", typeof(string));
+            dataTable.Columns.Add("LicenseDate", typeof(DateTime));
+
+            foreach(var driverDetail in driverDetails)
+            {
+                dataTable.Rows.Add(driverDetail.Name, driverDetail.NRIC, driverDetail.DateOfBirth, driverDetail.Gender, driverDetail.MaritalStatus, driverDetail.LicenseDate);
+            }
+
+            Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
+            cmdParameters["UserID"] = new SqlParameter("UserID", dataTable);
+
+            SqlParameter outPutParameter1 = new SqlParameter();
+            outPutParameter1.ParameterName = "ERRORNO";
+            outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter1.Size = 50;
+            outPutParameter1.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORNO"] = outPutParameter1;
+
+            SqlParameter outPutParameter2 = new SqlParameter();
+            outPutParameter2.ParameterName = "ERRORDESC";
+            outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
+            outPutParameter2.Size = 255;
+            outPutParameter2.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORDESC"] = outPutParameter2;
+
+            ErrorDetail errorDetail = new ErrorDetail();
+            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateDriverDetails", cmdParameters);
+
+            errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
+            errorDetail.Info = outPutParameter2.Value.ToString();
+
+            return errorDetail;
+        }
+
+        internal ErrorDetail UpdateMIQuotation(MIQuotation quotationDetail)
+        {
+            Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
+            cmdParameters["NRIC"] = new SqlParameter("NRIC", quotationDetail.NRIC);
+            cmdParameters["InsuranceQtnNo"] = new SqlParameter("InsuranceQtnNo", quotationDetail.InsuranceQtnNo);
+            cmdParameters["InsuranceExpiryDate"] = new SqlParameter("InsuranceExpiryDate", quotationDetail.InsuranceExpiryDate);
+            cmdParameters["InsuranceRenewalDate"] = new SqlParameter("InsuranceRenewalDate", quotationDetail.InsuranceRenewalDate);
+            cmdParameters["RoadTaxExpiryDate"] = new SqlParameter("RoadTaxExpiryDate", quotationDetail.RoadTaxExpiryDate);
+            cmdParameters["RoadTaxRenewalDate"] = new SqlParameter("RoadTaxRenewalDate", quotationDetail.RoadTaxRenewalDate);
+            cmdParameters["PreviousDealer"] = new SqlParameter("PreviousDealer", quotationDetail.PreviousDealer);
+            cmdParameters["Agency"] = new SqlParameter("Agency", quotationDetail.Agency);
+            cmdParameters["PrevYearPremium"] = new SqlParameter("PrevYearPremium", quotationDetail.PrevYearPremium);
+            cmdParameters["FinanceBank"] = new SqlParameter("FinanceBank", quotationDetail.FinanceBank);
+            cmdParameters["InsuranceRenewed"] = new SqlParameter("InsuranceRenewed", quotationDetail.InsuranceRenewed);
+            cmdParameters["RoadTaxRenewed"] = new SqlParameter("RoadTaxRenewed", quotationDetail.RoadTaxRenewed);
+
+            SqlParameter outPutParameter1 = new SqlParameter();
+            outPutParameter1.ParameterName = "ERRORNO";
+            outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter1.Size = 255;
+            outPutParameter1.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORNO"] = outPutParameter1;
+
+            SqlParameter outPutParameter2 = new SqlParameter();
+            outPutParameter2.ParameterName = "ERRORDESC";
+            outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
+            outPutParameter2.Size = 255;
+            outPutParameter2.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["ERRORDESC"] = outPutParameter2;
+
+            ErrorDetail errorDetail = new ErrorDetail();
+            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateInsuranceDetails", cmdParameters);
 
             errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
             errorDetail.Info = outPutParameter2.Value.ToString();
@@ -321,13 +365,12 @@ namespace QuotationAPI.DAL
             return errorDetail;
         }
 
-        internal DataSet LoadComboDetails(string flag, string condition)
+        internal DataSet LoadComboDetails(string flag)
         {
             List<string> details = new List<string>();
 
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
             cmdParameters["Flag"] = new SqlParameter("Flag", flag);
-            cmdParameters["Condition"] = new SqlParameter("Condition", condition);
 
             DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.LoadComboDetails", cmdParameters);
             return dataSet;

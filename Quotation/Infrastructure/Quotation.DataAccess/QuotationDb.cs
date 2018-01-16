@@ -2,6 +2,7 @@
 using Quotation.DataAccess.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -44,6 +45,82 @@ namespace Quotation.DataAccess
 
             return ownerDetails;
         }
+
+        public DataSet GetMIQuoationDetails(string insuranceQtnNo, out string errorMessage)
+        {
+            DataSet dataSet = null;
+            errorMessage = string.Empty;
+            try
+            {
+                HttpResponseMessage responseMessage = client.GetAsync("/api/Quotation/GetMIQuoationDetails/" + insuranceQtnNo).Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    dataSet = JsonConvert.DeserializeObject<DataSet>(responseData);
+                }
+                else
+                {
+                    errorMessage = "No Record Found!";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+
+            return dataSet;
+        }
+
+        public IEnumerable<ExpiredInsurance> GetInsuranceQtnTobeExpired(out string errorMessage)
+        {
+            IEnumerable<ExpiredInsurance> expiredInsurances = null;
+            errorMessage = string.Empty;
+            try
+            {
+                HttpResponseMessage responseMessage = client.GetAsync("/api/Quotation/GetInsuranceQtnTobeExpired").Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    expiredInsurances = JsonConvert.DeserializeObject<IEnumerable<ExpiredInsurance>>(responseData);
+                }
+                else
+                {
+                    errorMessage = "No Record Found!";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+
+            return expiredInsurances;
+        }
+
+        public DataSet GetNRICDetails(string nric, out string errorMessage)
+        {
+            DataSet dataSet = null;
+            errorMessage = string.Empty;
+            try
+            {
+                HttpResponseMessage responseMessage = client.GetAsync("/api/Quotation/GetNRICDetails/" + nric).Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    dataSet = JsonConvert.DeserializeObject<DataSet>(responseData);
+                }
+                else
+                {
+                    errorMessage = "No Record Found!";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+
+            return dataSet;
+        }
+
 
         public ErrorDetail AddOwnerDetails(OwnerDetail ownerDetail)
         {
@@ -137,6 +214,31 @@ namespace Quotation.DataAccess
             return errorDetail;
         }
 
+
+        public ErrorDetail AddDriverDetails(List<DriverDetail> driverDetails)
+        {
+            ErrorDetail errorDetail = new ErrorDetail();
+            try
+            {
+                HttpResponseMessage responseMessage = client.PostAsJsonAsync("/api/Quotation/UpdateDriverDetails", driverDetails).Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    string data = responseMessage.Content.ReadAsStringAsync().Result;
+                    errorDetail = JsonConvert.DeserializeObject<ErrorDetail>(data);
+                }
+                else
+                {
+                    errorDetail.Info = responseMessage.ReasonPhrase;
+                }
+            }
+            catch (Exception ex)
+            {
+                errorDetail.Info = ex.Message;
+            }
+
+            return errorDetail;
+        }
+
         public ErrorDetail AddVehicleDetails(VehicleDetail vehicleDetail)
         {
             ErrorDetail errorDetail = new ErrorDetail();
@@ -185,6 +287,7 @@ namespace Quotation.DataAccess
             return errorDetail;
         }
 
+
         public ErrorDetail EditVehicleDetails(VehicleDetail vehicleDetail)
         {
             return new ErrorDetail();
@@ -193,6 +296,31 @@ namespace Quotation.DataAccess
         public ErrorDetail EditInsuranceDetails(MIQuotation insuranceDetail)
         {
             return new ErrorDetail();
+        }
+
+        public IEnumerable<UserDetail> GetUserDetails(string userId, out string errorMessage)
+        {
+            IEnumerable<UserDetail> userDetails = null;
+            errorMessage = string.Empty;
+            try
+            {
+                HttpResponseMessage responseMessage = client.GetAsync("/api/Quotation/GetUserDetails/" + userId).Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    userDetails = JsonConvert.DeserializeObject<IEnumerable<UserDetail>>(responseData);
+                }
+                else
+                {
+                    errorMessage = "No Record Found!";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+
+            return userDetails;
         }
     }
 }

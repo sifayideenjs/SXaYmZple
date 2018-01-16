@@ -132,6 +132,9 @@
     <Compile Include="Views\CreateWizards\AddDriverDetail.xaml.cs">
       <DependentUpon>AddDriverDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateWizards\AddQuotationDetail.xaml.cs">
+      <DependentUpon>AddQuotationDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MotorInsuranceTiles.xaml.cs">
       <DependentUpon>MotorInsuranceTiles.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreateWizards\AddDriverDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateWizards\AddQuotationDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -56,9 +56,10 @@ namespace Quotation.Shell
 
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateQuotation>(WindowNames.MotorCreateQuotation);
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.AddOwnerDetail>(WindowNames.MotorAddOwnerDetail);
-            Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateWizards.AddDriverDetail>(WindowNames.MotorAddDriverDetail);
-            Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.AddVehicleDetail>(WindowNames.MotorAddVehicleDetail);
-            Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.AddInsuranceDetail>(WindowNames.MotorAddInsuranceDetail);
+            Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateWizards.AddQuotationDetail>(WindowNames.MotorAddDriverDetail);
+            //Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateWizards.AddDriverDetail>(WindowNames.MotorAddDriverDetail);
+            //Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.AddVehicleDetail>(WindowNames.MotorAddVehicleDetail);
+            //Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.AddInsuranceDetail>(WindowNames.MotorAddInsuranceDetail);
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.QuotationSummary>(WindowNames.MotorSummaryDetail);
 
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.SearchWizards.SearchView>(WindowNames.MotorSearchQuotationDetail);

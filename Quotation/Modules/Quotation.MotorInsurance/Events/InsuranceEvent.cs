@@ -14,6 +14,8 @@ namespace Quotation.MotorInsuranceModule.Events
 
     public class InsuranceEventArgs
     {
+        public List<DriverDetail> DriverDetails { get; set; }
+        public VehicleDetail VehicleDetail { get; set; }
         public MIQuotation InsuranceDetail { get; set; }
         public string RegionName { get; set; }
         public string Source { get; set; }

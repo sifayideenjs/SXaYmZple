@@ -29,11 +29,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
             QuotationViewModel = new QuotationViewModel(quotationDb);
 
-            AddOwnerDetailViewModel = new AddOwnerDetailViewModel(this);
-            AddDriverDetailViewModel = new AddDriverDetailViewModel(this);
-            AddVehicleDetailViewModel = new AddVehicleDetailViewModel(this);
-            AddInsuranceDetailViewModel = new AddInsuranceDetailViewModel(this);
-            QuotationSummaryViewModel = new QuotationSummaryViewModel(this);
+            //AddOwnerDetailViewModel = new AddOwnerDetailViewModel(this);
+            //AddDriverDetailViewModel = new AddDriverDetailViewModel(this);
+            //AddVehicleDetailViewModel = new AddVehicleDetailViewModel(this);
+            //AddInsuranceDetailViewModel = new AddInsuranceDetailViewModel(this);
+            //QuotationSummaryViewModel = new QuotationSummaryViewModel(this);
         }
         public bool KeepAlive
         {
@@ -42,18 +42,24 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public QuotationViewModel QuotationViewModel { get; set; }
 
-        public AddOwnerDetailViewModel AddOwnerDetailViewModel { get; set; }
-        public AddDriverDetailViewModel AddDriverDetailViewModel { get; set; }
-        public AddVehicleDetailViewModel AddVehicleDetailViewModel { get; set; }
-        public AddInsuranceDetailViewModel AddInsuranceDetailViewModel { get; set; }
-        public QuotationSummaryViewModel QuotationSummaryViewModel { get; set; }
+        //public AddOwnerDetailViewModel AddOwnerDetailViewModel { get; set; }
+        //public AddDriverDetailViewModel AddDriverDetailViewModel { get; set; }
+        //public AddVehicleDetailViewModel AddVehicleDetailViewModel { get; set; }
+        //public AddInsuranceDetailViewModel AddInsuranceDetailViewModel { get; set; }
+        //public QuotationSummaryViewModel QuotationSummaryViewModel { get; set; }
 
 
         #region Commands
         private void IntializeCommands()
         {
             this.DashboardCommand = new RelayCommand(this.ExecuteDashboardCommand, this.CanExecuteDashboardCommand);
-            this.CreateOwnerCommand = new RelayCommand(this.ExecuteCreateOwnerCommand, this.CanExecuteCreateOwnerCommand);
+
+            this.CancelCommand = new RelayCommand(this.ExecuteCancelCommand, this.CanExecuteCancelCommand);
+            this.AddOwnerCommand = new RelayCommand(this.ExecuteAddOwnerCommand, this.CanExecuteAddOwnerCommand);
+            this.NextCommand = new RelayCommand(this.ExecuteNextCommand, this.CanExecuteNextCommand);
+
+            this.AddInsuranceCommand = new RelayCommand(this.ExecuteAddInsuranceCommand, this.CanExecuteAddInsuranceCommand);
+            this.PreviousCommand = new RelayCommand(this.ExecutePreviousCommand, this.CanExecutePreviousCommand);
         }
 
         public ICommand DashboardCommand { get; private set; }
@@ -70,18 +76,115 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             });
         }
 
-        public ICommand CreateOwnerCommand { get; private set; }
+        public ICommand CancelCommand { get; private set; }
 
-        public bool CanExecuteCreateOwnerCommand()
+        public bool CanExecuteCancelCommand()
         {
             return true;
         }
 
-        public void ExecuteCreateOwnerCommand()
+        public void ExecuteCancelCommand()
         {
-            this.EventAggregator.GetEvent<CreateOwnerEvent>().Publish(new CreateOwnerEventArgs
+            this.EventAggregator.GetEvent<CancelEvent>().Publish(new Events.CancelEventArgs
             {
-           });
+            });
+        }
+
+        public ICommand AddOwnerCommand { get; private set; }
+
+        public bool CanExecuteAddOwnerCommand()
+        {
+            if (this.QuotationViewModel.OwnerDetail.IsValid())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ExecuteAddOwnerCommand()
+        {
+            this.EventAggregator.GetEvent<AddOwnerEvent>().Publish(new OwnerEventArgs
+            {
+                OwnerDetail = this.QuotationViewModel.OwnerDetail.Model,
+                RegionName = RegionNames.MotorWizardRegion,
+                Source = WindowNames.MotorAddDriverDetail
+            });
+        }
+
+        public ICommand NextCommand { get; private set; }
+
+        public bool CanExecuteNextCommand()
+        {
+            if (this.QuotationViewModel.OwnerDetail.IsValid())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ExecuteNextCommand()
+        {
+            this.EventAggregator.GetEvent<AddOwnerEvent>().Publish(new OwnerEventArgs
+            {
+                OwnerDetail = this.QuotationViewModel.OwnerDetail.Model,
+                RegionName = RegionNames.MotorWizardRegion,
+                Source = WindowNames.MotorAddDriverDetail
+            });
+        }
+
+        public ICommand AddInsuranceCommand { get; private set; }
+
+        public bool CanExecuteAddInsuranceCommand()
+        {
+            if (this.QuotationViewModel.VehicleDetail.IsValid() && this.QuotationViewModel.CurrentInsuranceDetail.IsValid())
+            {
+                bool isValid = true;
+                //foreach (var dDetail in this.QuotationViewModel.DriverDetails)
+                //{
+                //    if (dDetail.IsValid() == false)
+                //    {
+                //        isValid = false;
+                //    }
+                //}
+
+                return isValid;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ExecuteAddInsuranceCommand()
+        {
+            this.EventAggregator.GetEvent<AddInsuranceEvent>().Publish(new InsuranceEventArgs
+            {
+                VehicleDetail = this.QuotationViewModel.VehicleDetail.Model,
+                InsuranceDetail = this.QuotationViewModel.CurrentInsuranceDetail.Model,
+                RegionName = RegionNames.MotorWizardRegion,
+                Source = WindowNames.MotorSummaryDetail
+            });
+        }
+        public ICommand PreviousCommand { get; private set; }
+
+        public bool CanExecutePreviousCommand()
+        {
+            return true;
+        }
+
+        public void ExecutePreviousCommand()
+        {
+            this.EventAggregator.GetEvent<PreviousEvent>().Publish(new PreviousEventArgs
+            {
+                RegionName = RegionNames.MotorWizardRegion,
+                Source = WindowNames.MotorAddVehicleDetail
+            });
         }
         #endregion Commands
 

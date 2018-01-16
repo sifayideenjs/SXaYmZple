@@ -144,3 +144,5 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsuran
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\SearchWizards\NonSearchView.baml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\SearchWizards\InsuranceRenewalDetail.baml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\SearchWizards\SearchView.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\CreateWizards\AddQuotationDetail.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\CreateWizards\AddQuotationDetail.baml

@@ -26,7 +26,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels.CreateWizards
             DataAccess.Models.DriverDetail driverDetail = new DataAccess.Models.DriverDetail()
             {
                 Name = "Kasim",
-                NRIC = "YYY",
+                DriverNRIC = "YYY",
                 DateOfBirth = new DateTime(1984, 4, 11),
                 Gender = "MALE",
                 MaritalStatus = true,
@@ -77,7 +77,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels.CreateWizards
             this.DriverDetails.Add(new DriverDetailViewModel(new DriverDetail()
             {
                 Name = CurrentDriverDetail.Name,
-                NRIC = CurrentDriverDetail.NRIC,
+                DriverNRIC = CurrentDriverDetail.NRIC,
                 DateOfBirth = CurrentDriverDetail.DateOfBirth,
                 Gender = CurrentDriverDetail.Gender,
                 MaritalStatus = CurrentDriverDetail.MaritalStatus,

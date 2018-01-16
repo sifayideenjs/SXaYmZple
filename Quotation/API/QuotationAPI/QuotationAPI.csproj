@@ -164,6 +164,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DriverDetail.cs" />
     <Compile Include="Models\ErrorDetail.cs" />
     <Compile Include="Models\ExpiredInsurance.cs" />
     <Compile Include="Models\MIQuotation.cs" />

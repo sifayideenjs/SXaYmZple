@@ -10,6 +10,8 @@ using Quotation.MotorInsuranceModule.Events;
 using Quotation.Infrastructure.Constants;
 using Quotation.DataAccess;
 using System.ComponentModel;
+using Quotation.Infrastructure.Interfaces;
+using Microsoft.Practices.Unity;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
@@ -42,6 +44,10 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public QuotationViewModel(QuotationDb quotationDb)
         {
             this.quotationDb = quotationDb;
+            this.ownerDetail = new OwnerDetailViewModel(new DataAccess.Models.OwnerDetail());
+            this.driverDetails = new ObservableCollection<DriverDetailViewModel>();
+            this.vehicleDetail = new VehicleDetailViewModel(new DataAccess.Models.VehicleDetail());
+            this.currentInsuranceDetail = new InsuranceDetailViewModel(new MIQuotation());
             SubscribeEvents();
         }
 
@@ -147,8 +153,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         private void SubscribeEvents()
         {
             this.EventAggregator.GetEvent<AddOwnerEvent>().Subscribe(OnAddOwnerView);
-            this.EventAggregator.GetEvent<SaveDriverEvent>().Subscribe(OnSaveDriverView);
-            this.EventAggregator.GetEvent<AddVehicleEvent>().Subscribe(OnAddVehicleView);
             this.EventAggregator.GetEvent<AddInsuranceEvent>().Subscribe(OnAddInsuranceView);
         }
 
@@ -167,7 +171,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         var errorInfo = quotationDb.AddOwnerDetails(ownerDetail);
                         if (errorInfo.Code == 0)
                         {
-                            //this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
                             this.IsOwnerCreated = true;
                         }
                         else
@@ -198,29 +202,38 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
         }
 
-        private void OnSaveDriverView(DriverEventArgs arg)
+        private void OnAddInsuranceView(InsuranceEventArgs arg)
         {
-            if (arg != null)
+            if (arg != null && this.VehicleDetail.IsValid() && this.CurrentInsuranceDetail.IsValid())
             {
-                this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
-                this.IsDriverUpdated = true;
-            }
-        }
+                List<DriverDetail> driverDetails = arg.DriverDetails;
+                foreach(var driver in driverDetails)
+                {
+                    driver.NRIC = this.OwnerDetail.NRIC;
+                }
+                if (this.IsDriverUpdated == false)
+                {
+                    var errorInfo = quotationDb.AddDriverDetails(driverDetails);
+                    if (errorInfo.Code == 0)
+                    {
+                        this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                        this.IsDriverUpdated = true;
+                    }
+                    else
+                    {
+                        this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", "Unable to add new Owner.");
+                    }
+                }
 
-        private void OnAddVehicleView(VehicleEventArgs arg)
-        {
-            if (arg != null && this.VehicleDetail.IsValid())
-            {
                 VehicleDetail vehicleDetail = arg.VehicleDetail;
                 if (vehicleDetail != null)
                 {
-                    if(this.IsVehicalUpdated == false)
+                    if (this.IsVehicalUpdated == false)
                     {
                         vehicleDetail.NRIC = this.OwnerDetail.NRIC;
                         var errorInfo = quotationDb.AddVehicleDetails(vehicleDetail);
                         if (errorInfo.Code == 0)
                         {
-                            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
                             this.IsVehicalUpdated = true;
                         }
                         else
@@ -232,7 +245,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         var errorInfo = quotationDb.EditVehicleDetails(vehicleDetail);
                         if (errorInfo.Code == 0)
                         {
-                            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
                             this.IsVehicalUpdated = true;
                         }
                         else
@@ -243,16 +255,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 else
                 {
                 }
-            }
-            else
-            {
-            }
-        }
 
-        private void OnAddInsuranceView(InsuranceEventArgs arg)
-        {
-            if (arg != null && this.CurrentInsuranceDetail.IsValid())
-            {
                 MIQuotation insuranceDetail = arg.InsuranceDetail;
                 if (insuranceDetail != null)
                 {
@@ -303,6 +306,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public OwnerDetailViewModel(OwnerDetail model)
         {
             this.model = model;
+            this.model.Gender = this.genderTypes.First();
+            this.model.RenewalRemindDays = this.renewalReminds.First();
         }
 
         public OwnerDetail Model
@@ -600,11 +605,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             get
             {
-                return this.model.NRIC;
+                return this.model.DriverNRIC;
             }
             set
             {
-                this.model.NRIC = value;
+                this.model.DriverNRIC = value;
                 OnPropertyChanged();
             }
         }
@@ -806,6 +811,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public VehicleDetailViewModel(VehicleDetail model)
         {
             this.model = model;
+            this.model.DateOfRegistered = null;
         }
 
         public VehicleDetail Model
@@ -860,7 +866,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public System.DateTime DateOfRegistered
+        public Nullable<System.DateTime> DateOfRegistered
         {
             get
             {
@@ -1164,7 +1170,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public System.DateTime InsuranceExpiryDate
+        public Nullable<System.DateTime> InsuranceExpiryDate
         {
             get
             {
@@ -1176,7 +1182,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public System.DateTime InsuranceRenewalDate
+        public Nullable<System.DateTime> InsuranceRenewalDate
         {
             get
             {
@@ -1188,7 +1194,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public System.DateTime RoadTaxExpiryDate
+        public Nullable<System.DateTime> RoadTaxExpiryDate
         {
             get
             {
@@ -1200,7 +1206,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public System.DateTime RoadTaxRenewalDate
+        public Nullable<System.DateTime> RoadTaxRenewalDate
         {
             get
             {

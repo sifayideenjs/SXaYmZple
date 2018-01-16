@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Quotation.DataAccess.Models
+namespace QuotationAPI.Models
 {
     public class DriverDetail
     {
-        public string NRIC { get; set; }
         public string Name { get; set; }
-        public string DriverNRIC { get; set; }
+        public string NRIC { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Gender { get; set; }
         public Nullable<bool> MaritalStatus { get; set; }

@@ -38,6 +38,27 @@ namespace QuotationAPI.Controllers
         }
 
         [HttpGet]
+        [Route("api/Quotation/GetMIQuoationDetails")]
+        [ResponseType(typeof(DataSet))]
+        public async Task<IHttpActionResult> GetMIQuoationDetails(string insuranceQtnNo)
+        {
+            try
+            {
+                DataSet dataSet = await Task.Run(() => quotationDb.GetMIQuoationDetails(insuranceQtnNo));
+                if (dataSet == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(dataSet);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [HttpGet]
         [Route("api/Quotation/GetInsuranceQtnTobeExpired")]
         [ResponseType(typeof(IEnumerable<ExpiredInsurance>))]
         public async Task<IHttpActionResult> GetInsuranceQtnTobeExpired()
@@ -59,19 +80,19 @@ namespace QuotationAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/Quotation/GetMotorQuoationDetails")]
+        [Route("api/Quotation/GetNRICDetails")]
         [ResponseType(typeof(DataSet))]
-        public async Task<IHttpActionResult> GetMotorQuoationDetails(string nric, string insuranceQtnNo)
+        public async Task<IHttpActionResult> GetNRICDetails(string nric)
         {
             try
             {
-                DataSet quotationDetails = await Task.Run(() => quotationDb.GetMotorQuoationDetails(nric, insuranceQtnNo));
-                if (quotationDetails == null)
+                DataSet dataSet = await Task.Run(() => quotationDb.GetNRICDetails(nric));
+                if (dataSet == null)
                 {
                     return NotFound();
                 }
 
-                return Ok(quotationDetails);
+                return Ok(dataSet);
             }
             catch (Exception)
             {
@@ -93,27 +114,6 @@ namespace QuotationAPI.Controllers
                 }
 
                 return Ok(userDetails);
-            }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
-        }
-
-        [HttpPost]
-        [Route("api/Quotation/AddInsuranceDetails")]
-        [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> AddInsuranceDetails([FromBody]MIQuotation quotationDetail)
-        {
-            try
-            {
-                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateInsuranceDetails(quotationDetail));
-                if (errorDetail == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(errorDetail);
             }
             catch (Exception)
             {
@@ -171,6 +171,48 @@ namespace QuotationAPI.Controllers
             try
             {
                 ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateOwnerDetails(ownerDetail, "DELETE"));
+                if (errorDetail == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(errorDetail);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [HttpPost]
+        [Route("api/Quotation/UpdateDriverDetails")]
+        [ResponseType(typeof(ErrorDetail))]
+        public async Task<IHttpActionResult> UpdateDriverDetails([FromBody]List<DriverDetail> driverDetails)
+        {
+            try
+            {
+                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateDriverDetails(driverDetails));
+                if (errorDetail == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(errorDetail);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [HttpPost]
+        [Route("api/Quotation/UpdateMIQuotation")]
+        [ResponseType(typeof(ErrorDetail))]
+        public async Task<IHttpActionResult> UpdateMIQuotation([FromBody]MIQuotation quotationDetail)
+        {
+            try
+            {
+                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateMIQuotation(quotationDetail));
                 if (errorDetail == null)
                 {
                     return NotFound();
@@ -271,11 +313,11 @@ namespace QuotationAPI.Controllers
         [HttpPost]
         [Route("api/Quotation/LoadComboDetails")]
         [ResponseType(typeof(DataSet))]
-        public async Task<IHttpActionResult> LoadComboDetails(string flag, string condition)
+        public async Task<IHttpActionResult> LoadComboDetails(string flag)
         {
             try
             {
-                DataSet details = await Task.Run(() => quotationDb.LoadComboDetails(flag, condition));
+                DataSet details = await Task.Run(() => quotationDb.LoadComboDetails(flag));
                 if (details == null)
                 {
                     return NotFound();

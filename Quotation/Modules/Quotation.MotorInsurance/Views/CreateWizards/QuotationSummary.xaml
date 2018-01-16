@@ -12,7 +12,7 @@
              xmlns:infConverters="clr-namespace:Quotation.Infrastructure.Converters;assembly=Quotation.Infrastructure"
              xmlns:control="clr-namespace:Quotation.Styling.Controls;assembly=Quotation.Styling"
              mc:Ignorable="d" Background="#FF252526"
-             d:DesignHeight="900" d:DesignWidth="800" DataContext="{Binding QuotationSummaryViewModel}">
+             d:DesignHeight="900" d:DesignWidth="800" DataContext="{Binding}">
     <UserControl.Resources>
         <infConverters:YesNoToBooleanConverter x:Key="YesNoToBooleanConverter"/>
     </UserControl.Resources>
