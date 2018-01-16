@@ -18,7 +18,7 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="600">
-    <Grid>
+    <Grid x:Name="root">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -44,7 +44,7 @@
             <Label Grid.Column="1" Content="Recent Quotations" Foreground="White" FontSize="22" Margin="0" Background="Gray" HorizontalAlignment="Stretch"/>
         </Grid>
 
-        <Grid Grid.Row="2" Margin="5 5 0 5">
+        <Grid Grid.Row="2" Margin="10 5 0 5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -58,7 +58,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <metro:Tile Title="{Binding NRIC}" Command="{Binding OpenQuotationCommand}"
+                            <metro:Tile Title="{Binding NRIC}" Command="{Binding DataContext.OpenQuotationCommand, ElementName=root}" CommandParameter="{Binding}"
                         HorizontalAlignment="Center" VerticalAlignment="Top" TiltFactor="1"
                         Width="120" Height="100" Background="#FF134577" HorizontalTitleAlignment="Center" TitleFontSize="13" Margin="5">
                                 <Rectangle Fill="White" Height="30" Width="30" Margin="0 0 0 20">

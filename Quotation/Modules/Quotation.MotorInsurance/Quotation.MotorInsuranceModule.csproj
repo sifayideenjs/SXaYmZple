@@ -98,9 +98,9 @@
   <ItemGroup>
     <Compile Include="Events\DriverEvent.cs" />
     <Compile Include="Events\InsuranceEvent.cs" />
-    <Compile Include="Events\OwnerEvent.cs" />
+    <Compile Include="Events\OwnerEvents.cs" />
+    <Compile Include="Events\QuotationEvents.cs" />
     <Compile Include="Events\VehicleEvent.cs" />
-    <Compile Include="Events\CancelEvent.cs" />
     <Compile Include="Events\CreateVehicalEvent.cs" />
     <Compile Include="Events\CreateDriverEvent.cs" />
     <Compile Include="Events\CreateOwnerEvent.cs" />
@@ -121,11 +121,7 @@
     <Compile Include="ViewModels\QuotationViewModel.cs" />
     <Compile Include="ViewModels\RecentQuotationViewModel.cs" />
     <Compile Include="ViewModels\SearchQuotationViewModel.cs" />
-    <Compile Include="ViewModels\Wizards\AddDriverDetailViewModel.cs" />
-    <Compile Include="ViewModels\Wizards\AddInsuranceDetailViewModel.cs" />
-    <Compile Include="ViewModels\Wizards\AddOwnerDetailViewModel.cs" />
-    <Compile Include="ViewModels\Wizards\AddVehicleDetailViewModel.cs" />
-    <Compile Include="ViewModels\Wizards\QuotationSummaryViewModel.cs" />
+    <Compile Include="ViewModels\ViewQuotationViewModel.cs" />
     <Compile Include="Views\CreateQuotation.xaml.cs">
       <DependentUpon>CreateQuotation.xaml</DependentUpon>
     </Compile>
@@ -164,6 +160,9 @@
     </Compile>
     <Compile Include="Views\SearchWizards\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewQuotation.xaml.cs">
+      <DependentUpon>ViewQuotation.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchWizards\SearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewQuotation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

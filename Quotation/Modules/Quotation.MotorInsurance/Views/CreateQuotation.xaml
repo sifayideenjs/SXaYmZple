@@ -48,10 +48,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ContentControl x:Name="MotorWizardRegion" Grid.Row="1" Grid.Column="0"
-                            prism:RegionManager.RegionName="{x:Static infConstants:RegionNames.MotorWizardRegion}"
-                            VerticalContentAlignment="Stretch"
-                            HorizontalContentAlignment="Stretch" />
+            <ContentControl x:Name="MotorWizardRegion" Grid.Row="1" Grid.Column="0" prism:RegionManager.RegionName="{x:Static infConstants:RegionNames.MotorWizardRegion}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" />
         </Grid>
     </Grid>
 </UserControl>

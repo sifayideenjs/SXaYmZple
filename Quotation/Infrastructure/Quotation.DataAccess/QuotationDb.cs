@@ -102,7 +102,7 @@ namespace Quotation.DataAccess
             errorMessage = string.Empty;
             try
             {
-                HttpResponseMessage responseMessage = client.GetAsync("/api/Quotation/GetNRICDetails/" + nric).Result;
+                HttpResponseMessage responseMessage = client.GetAsync("/api/Quotation/GetNRICDetails?nric=" + nric).Result;
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var responseData = responseMessage.Content.ReadAsStringAsync().Result;
@@ -215,7 +215,7 @@ namespace Quotation.DataAccess
         }
 
 
-        public ErrorDetail AddDriverDetails(List<DriverDetail> driverDetails)
+        public ErrorDetail AddDriverDetails(IEnumerable<DriverDetail> driverDetails)
         {
             ErrorDetail errorDetail = new ErrorDetail();
             try

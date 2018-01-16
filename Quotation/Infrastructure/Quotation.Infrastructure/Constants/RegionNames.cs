@@ -19,5 +19,6 @@ namespace Quotation.Infrastructure.Constants
 
         public static string MotorWizardRegion = "MotorWizardRegion";
         public static string MotorSearchRegion = "MotorSearchRegion";
+        public static string MotorQuotationRegion = "MotorQuotationRegion";
     }
 }

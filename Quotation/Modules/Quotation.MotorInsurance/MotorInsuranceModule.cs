@@ -17,5 +17,10 @@ namespace Quotation.MotorInsuranceModule
             //// Register Views
             //Prism.Unity.UnityExtensions.RegisterTypeForNavigation<Views.ModuleAPopup>(unityContainer, PopupNames.ModuleAPopup);
         }
+
+        public override void Initialize()
+        {
+
+        }
     }
 }

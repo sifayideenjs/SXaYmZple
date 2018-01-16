@@ -12,6 +12,10 @@ namespace Quotation.MotorInsuranceModule.Events
     {
     }
 
+    public class DeleteOwnerEvent : PubSubEvent<OwnerEventArgs>
+    {
+    }
+
     public class OwnerEventArgs
     {
         public OwnerDetail OwnerDetail { get; set; }

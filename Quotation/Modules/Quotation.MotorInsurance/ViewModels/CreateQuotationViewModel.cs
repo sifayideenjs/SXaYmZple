@@ -5,8 +5,6 @@ using Quotation.Infrastructure.Base;
 using Quotation.Infrastructure.Constants;
 using Quotation.MotorInsuranceModule.Events;
 using Quotation.DataAccess.Models;
-using Quotation.MotorInsuranceModule.ViewModels.CreateWizards;
-using Quotation.MotorInsuranceModule.ViewModels.Wizards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Quotation.DataAccess;
+using Quotation.Infrastructure.Interfaces;
+using Microsoft.Practices.Unity;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
-    public class CreateQuotationViewModel : ViewModelBase, IRegionMemberLifetime
+    public class CreateQuotationViewModel : ViewModelBase, INavigationAware
     {
         QuotationDb quotationDb = null;
 
@@ -26,40 +26,22 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.quotationDb = quotationDb;
             this.IntializeCommands();
             this.SubscribeEvents();
-
-            QuotationViewModel = new QuotationViewModel(quotationDb);
-
-            //AddOwnerDetailViewModel = new AddOwnerDetailViewModel(this);
-            //AddDriverDetailViewModel = new AddDriverDetailViewModel(this);
-            //AddVehicleDetailViewModel = new AddVehicleDetailViewModel(this);
-            //AddInsuranceDetailViewModel = new AddInsuranceDetailViewModel(this);
-            //QuotationSummaryViewModel = new QuotationSummaryViewModel(this);
         }
-        public bool KeepAlive
-        {
-            get { return false; }
-        }
-
+       
         public QuotationViewModel QuotationViewModel { get; set; }
-
-        //public AddOwnerDetailViewModel AddOwnerDetailViewModel { get; set; }
-        //public AddDriverDetailViewModel AddDriverDetailViewModel { get; set; }
-        //public AddVehicleDetailViewModel AddVehicleDetailViewModel { get; set; }
-        //public AddInsuranceDetailViewModel AddInsuranceDetailViewModel { get; set; }
-        //public QuotationSummaryViewModel QuotationSummaryViewModel { get; set; }
-
 
         #region Commands
         private void IntializeCommands()
         {
             this.DashboardCommand = new RelayCommand(this.ExecuteDashboardCommand, this.CanExecuteDashboardCommand);
 
-            this.CancelCommand = new RelayCommand(this.ExecuteCancelCommand, this.CanExecuteCancelCommand);
             this.AddOwnerCommand = new RelayCommand(this.ExecuteAddOwnerCommand, this.CanExecuteAddOwnerCommand);
-            this.NextCommand = new RelayCommand(this.ExecuteNextCommand, this.CanExecuteNextCommand);
+            this.DeleteOwnerCommand = new RelayCommand(this.ExecuteDeleteCommand, this.CanExecuteDeleteCommand);
 
-            this.AddInsuranceCommand = new RelayCommand(this.ExecuteAddInsuranceCommand, this.CanExecuteAddInsuranceCommand);
+            this.AddQuotationCommand = new RelayCommand(this.ExecuteAddQuotationCommand, this.CanExecuteAddQuotationCommand);
             this.PreviousCommand = new RelayCommand(this.ExecutePreviousCommand, this.CanExecutePreviousCommand);
+
+            this.PrintQuotationCommand = new RelayCommand(this.ExecutePrintQuotationCommand, this.CanExecutePrintQuotationCommand);
         }
 
         public ICommand DashboardCommand { get; private set; }
@@ -76,25 +58,38 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             });
         }
 
-        public ICommand CancelCommand { get; private set; }
+        public ICommand DeleteOwnerCommand { get; private set; }
 
-        public bool CanExecuteCancelCommand()
+        public bool CanExecuteDeleteCommand()
         {
             return true;
         }
 
-        public void ExecuteCancelCommand()
+        public async void ExecuteDeleteCommand()
         {
-            this.EventAggregator.GetEvent<CancelEvent>().Publish(new Events.CancelEventArgs
+            string title = "Create Owner";
+            string message = "Do you really want to cancel the Owner creation?";
+            if(this.QuotationViewModel.IsOwnerCreated)
             {
-            });
+                title = "Delete Owner";
+                message = "Do you really want to delete the Owner?";
+            }
+
+            var result = await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc(title, message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.AffirmativeAndNegative);
+
+            if (result == MahApps.Metro.Controls.Dialogs.MessageDialogResult.Affirmative)
+            {
+                this.EventAggregator.GetEvent<DeleteOwnerEvent>().Publish(new Events.OwnerEventArgs
+                {
+                });
+            }
         }
 
         public ICommand AddOwnerCommand { get; private set; }
 
         public bool CanExecuteAddOwnerCommand()
         {
-            if (this.QuotationViewModel.OwnerDetail.IsValid())
+            if (this.QuotationViewModel != null && this.QuotationViewModel.OwnerDetail.IsValid())
             {
                 return true;
             }
@@ -110,39 +105,15 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             {
                 OwnerDetail = this.QuotationViewModel.OwnerDetail.Model,
                 RegionName = RegionNames.MotorWizardRegion,
-                Source = WindowNames.MotorAddDriverDetail
+                Source = WindowNames.MotorAddQuotationDetail
             });
         }
 
-        public ICommand NextCommand { get; private set; }
+        public ICommand AddQuotationCommand { get; private set; }
 
-        public bool CanExecuteNextCommand()
+        public bool CanExecuteAddQuotationCommand()
         {
-            if (this.QuotationViewModel.OwnerDetail.IsValid())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public void ExecuteNextCommand()
-        {
-            this.EventAggregator.GetEvent<AddOwnerEvent>().Publish(new OwnerEventArgs
-            {
-                OwnerDetail = this.QuotationViewModel.OwnerDetail.Model,
-                RegionName = RegionNames.MotorWizardRegion,
-                Source = WindowNames.MotorAddDriverDetail
-            });
-        }
-
-        public ICommand AddInsuranceCommand { get; private set; }
-
-        public bool CanExecuteAddInsuranceCommand()
-        {
-            if (this.QuotationViewModel.VehicleDetail.IsValid() && this.QuotationViewModel.CurrentInsuranceDetail.IsValid())
+            if (this.QuotationViewModel != null && this.QuotationViewModel.VehicleDetail.IsValid() && this.QuotationViewModel.CurrentInsuranceDetail.IsValid())
             {
                 bool isValid = true;
                 //foreach (var dDetail in this.QuotationViewModel.DriverDetails)
@@ -161,16 +132,18 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
         }
 
-        public void ExecuteAddInsuranceCommand()
+        public void ExecuteAddQuotationCommand()
         {
             this.EventAggregator.GetEvent<AddInsuranceEvent>().Publish(new InsuranceEventArgs
             {
+                DriverDetails = this.QuotationViewModel.DriverDetails.Select(dd => dd.Model),
                 VehicleDetail = this.QuotationViewModel.VehicleDetail.Model,
                 InsuranceDetail = this.QuotationViewModel.CurrentInsuranceDetail.Model,
                 RegionName = RegionNames.MotorWizardRegion,
                 Source = WindowNames.MotorSummaryDetail
             });
         }
+
         public ICommand PreviousCommand { get; private set; }
 
         public bool CanExecutePreviousCommand()
@@ -183,20 +156,36 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.EventAggregator.GetEvent<PreviousEvent>().Publish(new PreviousEventArgs
             {
                 RegionName = RegionNames.MotorWizardRegion,
-                Source = WindowNames.MotorAddVehicleDetail
+                Source = WindowNames.MotorAddOwnerDetail
             });
+        }
+
+        public ICommand PrintQuotationCommand { get; private set; }
+
+        public bool CanExecutePrintQuotationCommand()
+        {
+            return true;
+        }
+
+        public void ExecutePrintQuotationCommand()
+        {
         }
         #endregion Commands
 
         #region EventAggregation
         private void SubscribeEvents()
         {
-            this.EventAggregator.GetEvent<CancelEvent>().Subscribe(OnCancelEvent);
+            this.EventAggregator.GetEvent<DeleteOwnerEvent>().Unsubscribe(OnCancelEvent);
+            this.EventAggregator.GetEvent<DeleteOwnerEvent>().Subscribe(OnCancelEvent);
+
+            this.EventAggregator.GetEvent<PreviousEvent>().Unsubscribe(OnPreviousEvent);
             this.EventAggregator.GetEvent<PreviousEvent>().Subscribe(OnPreviousEvent);
+
+            this.EventAggregator.GetEvent<NextEvent>().Unsubscribe(OnNextEvent);
             this.EventAggregator.GetEvent<NextEvent>().Subscribe(OnNextEvent);
         }
 
-        private void OnCancelEvent(CancelEventArgs arg)
+        private void OnCancelEvent(OwnerEventArgs arg)
         {
             ExecuteDashboardCommand();
         }
@@ -211,5 +200,29 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
         }
         #endregion //EventAggregation
+
+        #region INavigationAware
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            if (navigationContext.NavigationService.Region.Name == RegionNames.MainRegion)
+            {
+                QuotationViewModel = new QuotationViewModel(quotationDb);
+            }
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            if(navigationContext.NavigationService.Region.Name == RegionNames.MainRegion)
+            {
+                (QuotationViewModel as IViewModel).UnSubscribeEvents();
+                QuotationViewModel = null;
+            }
+        }
+        #endregion //INavigationAware
     }
 }

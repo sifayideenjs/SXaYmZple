@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Quotation.DataAccess;
+using System.Data;
+using Quotation.Infrastructure.Constants;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
@@ -18,6 +20,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
     {
         QuotationDb quotationDb = null;
         private ObservableCollection<OwnerDetailViewModel> quotations;
+        //private OwnerDetailViewModel selectedQuotation;
 
         public RecentQuotationViewModel(QuotationDb quotationDb)
         {
@@ -48,10 +51,24 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
         }
 
+        //public OwnerDetailViewModel SelectedQuotation
+        //{
+        //    get
+        //    {
+        //        return selectedQuotation;
+        //    }
+        //    set
+        //    {
+        //        selectedQuotation = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
         #region Commands
         private void IntializeCommands()
         {
             this.DashboardCommand = new RelayCommand(this.ExecuteDashboardCommand, this.CanExecuteDashboardCommand);
+            this.OpenQuotationCommand = new RelayCommand<OwnerDetailViewModel>(this.ExecuteOpenQuotationCommand, this.CanExecuteOpenQuotationCommand);
         }
 
         public ICommand DashboardCommand { get; private set; }
@@ -65,6 +82,29 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             this.EventAggregator.GetEvent<DashboardEvent>().Publish(new DashboardEventArgs
             {
+            });
+        }
+
+        public ICommand OpenQuotationCommand { get; private set; }
+
+        public bool CanExecuteOpenQuotationCommand(OwnerDetailViewModel quotation)
+        {
+            return true;
+        }
+
+        public void ExecuteOpenQuotationCommand(OwnerDetailViewModel quotation)
+        {
+            //string errorMessage = string.Empty;
+            //string nric = "XXX-YYY"; //quotation.NRIC;
+            //DataSet quotationDataSet = quotationDb.GetNRICDetails(nric, out errorMessage);
+
+            //DataSet quotationDataSet = quotationDb.GetMIQuoationDetails("123456", out errorMessage);
+
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorViewQuotation);
+            this.EventAggregator.GetEvent<OpenQuotationEvent>().Publish(new QuotationEventArgs
+            {
+                RegionName = RegionNames.MotorQuotationRegion,
+                Source = WindowNames.MotorSummaryDetail
             });
         }
         #endregion Commands

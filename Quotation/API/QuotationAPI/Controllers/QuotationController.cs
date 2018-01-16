@@ -187,7 +187,7 @@ namespace QuotationAPI.Controllers
         [HttpPost]
         [Route("api/Quotation/UpdateDriverDetails")]
         [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> UpdateDriverDetails([FromBody]List<DriverDetail> driverDetails)
+        public async Task<IHttpActionResult> UpdateDriverDetails([FromBody]IEnumerable<DriverDetail> driverDetails)
         {
             try
             {

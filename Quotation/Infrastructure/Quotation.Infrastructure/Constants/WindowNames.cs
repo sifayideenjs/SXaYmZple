@@ -15,11 +15,10 @@ namespace Quotation.Infrastructure.Constants
         public static string MotorRecentQuotation = "MotorRecentQuotation";
         public static string MotorSearchQuotation = "MotorSearchQuotation";
         public static string MotorExpiringQuotation = "MotorExpiringQuotation";
+        public static string MotorViewQuotation = "MotorViewQuotation";
 
         public static string MotorAddOwnerDetail = "MotorAddOwnerDetail";
-        public static string MotorAddDriverDetail = "MotorAddDriverDetail";
-        public static string MotorAddVehicleDetail = "MotorAddVehicleDetail";
-        public static string MotorAddInsuranceDetail = "MotorAddInsuranceDetail";
+        public static string MotorAddQuotationDetail = "MotorAddQuotationDetail";
         public static string MotorSummaryDetail = "MotorSummaryDetail";
 
         public static string MotorSearchQuotationDetail = "MotorSearchQuotationDetail";

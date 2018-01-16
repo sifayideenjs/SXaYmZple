@@ -12,7 +12,7 @@
              xmlns:infConverters="clr-namespace:Quotation.Infrastructure.Converters;assembly=Quotation.Infrastructure"
              xmlns:control="clr-namespace:Quotation.Styling.Controls;assembly=Quotation.Styling"
              mc:Ignorable="d"
-             d:DesignHeight="800" d:DesignWidth="1000" DataContext="{Binding QuotationViewModel}">
+             d:DesignHeight="800" d:DesignWidth="1000" DataContext="{Binding}">
     <UserControl.Resources>
         <infConverters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <infConverters:YesNoToBooleanConverter x:Key="YesNoToBooleanConverter"/>
@@ -24,7 +24,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" DataContext="{Binding QuotationViewModel}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -45,7 +45,7 @@
 
                     <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" FontFamily="{DynamicResource HeaderFontFamily}" Foreground="LightGray">Named Driver Details</Label>
 
-                    <DataGrid Grid.Row="1" MinHeight="150" ItemsSource="{Binding DriverDetails}" SelectedItem="{Binding SelectedDriverDetail}" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" metro:DataGridHelper.EnableCellEditAssist="False" >
+                    <DataGrid Grid.Row="1" MinHeight="100" ItemsSource="{Binding DriverDetails}" SelectedItem="{Binding SelectedDriverDetail}" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" metro:DataGridHelper.EnableCellEditAssist="False" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Insured Name" Binding="{Binding Name}" Width="200"/>
                             <DataGridTextColumn Header="NRIC" Binding="{Binding NRIC}" Width="100"/>
@@ -113,10 +113,10 @@
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
+                            <ColumnDefinition MinWidth="100" Width="120"/>
                             <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -189,10 +189,10 @@
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
+                            <ColumnDefinition MinWidth="100" Width="120"/>
                             <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -236,7 +236,7 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding SaveDriverCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding AddQuotationCommand}" Style="{StaticResource MetroCircleButtonStyle}">
                 <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_save}"/>

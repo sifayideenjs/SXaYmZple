@@ -20,7 +20,7 @@ using Microsoft.Practices.Unity;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
-    public class SearchQuotationViewModel : ViewModelBase, IRegionMemberLifetime
+    public class SearchQuotationViewModel : ViewModelBase
     {
         private ObservableCollection<OwnerDetail> ownerDetails = new ObservableCollection<OwnerDetail>();
         private string searchText = string.Empty;
@@ -34,11 +34,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
             searchTypes = new List<string>() { "NRIC", "Quotation No" };
             searchType = searchTypes.First();
-        }
-
-        public bool KeepAlive
-        {
-            get { return false; }
         }
 
         #region Properties

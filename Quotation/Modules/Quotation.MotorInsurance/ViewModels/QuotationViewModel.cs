@@ -15,7 +15,7 @@ using Microsoft.Practices.Unity;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
-    public class QuotationViewModel : ViewModelBase
+    public class QuotationViewModel : ViewModelBase, IViewModel
     {
         QuotationDb quotationDb;
 
@@ -44,10 +44,81 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public QuotationViewModel(QuotationDb quotationDb)
         {
             this.quotationDb = quotationDb;
+
+#if DEBUG
+            DataAccess.Models.OwnerDetail ownerDetail = new DataAccess.Models.OwnerDetail()
+            {
+                Name = "Sifayideen",
+                NRIC = "YYY-ZZZ1",
+                DateOfBirth = new DateTime(1983, 5, 7),
+                Gender = "MALE",
+                MaritalStatus = true,
+                Occupation = "Software Engineer",
+                LicenseDate = DateTime.Now,
+                Email = "sifayideen@gmail.com",
+                Address = "Chennai",
+                RenewalRemindDays = 7
+            };
+
+            this.ownerDetail = new OwnerDetailViewModel(ownerDetail);
+#else
             this.ownerDetail = new OwnerDetailViewModel(new DataAccess.Models.OwnerDetail());
+#endif
+
+#if DEBUG
+            DataAccess.Models.DriverDetail driverDetail = new DataAccess.Models.DriverDetail()
+            {
+                Name = "Kasim",
+                DriverNRIC = "YYY",
+                DateOfBirth = new DateTime(1984, 4, 11),
+                Gender = "MALE",
+                MaritalStatus = true,
+                Occupation = "Software Engineer",
+                LicenseDate = DateTime.Now
+            };
+            this.driverDetails = new ObservableCollection<DriverDetailViewModel>() { new DriverDetailViewModel(driverDetail) };
+#else
             this.driverDetails = new ObservableCollection<DriverDetailViewModel>();
+#endif
+
+#if DEBUG
+            DataAccess.Models.VehicleDetail vehicleDetail = new DataAccess.Models.VehicleDetail()
+            {
+                Make = "TOYOTA COROLLA",
+                Model = "AXIO 1.5XA",
+                YearMade = "2007",
+                Capacity = "1496CC",
+                DateOfRegistered = DateTime.Now,
+                RegNo = "SGY9152X",
+                PreviousRegNo = "SGY9152X",
+                ParallelImport = 1,
+                OffPeakVehicle = 0,
+                NCD = "10% EISTING",
+                ExistingInsurer = "AXA",
+                Claims = string.Empty
+            };
+
+            this.VehicleDetail = new VehicleDetailViewModel(vehicleDetail);
+#else
             this.vehicleDetail = new VehicleDetailViewModel(new DataAccess.Models.VehicleDetail());
+#endif
+
+#if DEBUG
+            DataAccess.Models.MIQuotation insuranceDetail = new DataAccess.Models.MIQuotation()
+            {
+                InsuranceExpiryDate = new DateTime(2019, 01, 14),
+                InsuranceRenewalDate = new DateTime(2019, 01, 14),
+                RoadTaxExpiryDate = new DateTime(2020, 01, 14),
+                RoadTaxRenewalDate = new DateTime(2020, 01, 14),
+                PreviousDealer = "CAR HOUSE",
+                Agency = "MDIVINE",
+                FinanceBank = "MAYBANK",
+                PrevYearPremium = "NIL"
+            };
+            this.CurrentInsuranceDetail = new InsuranceDetailViewModel(insuranceDetail);
+#else            
             this.currentInsuranceDetail = new InsuranceDetailViewModel(new MIQuotation());
+#endif
             SubscribeEvents();
         }
 
@@ -150,13 +221,14 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
         }
 
-        private void SubscribeEvents()
+        public void SubscribeEvents()
         {
             this.EventAggregator.GetEvent<AddOwnerEvent>().Subscribe(OnAddOwnerView);
+            this.EventAggregator.GetEvent<DeleteOwnerEvent>().Subscribe(OnDeleteOwnerEvent);
             this.EventAggregator.GetEvent<AddInsuranceEvent>().Subscribe(OnAddInsuranceView);
         }
 
-        private void OnAddOwnerView(OwnerEventArgs arg)
+        private async void OnAddOwnerView(OwnerEventArgs arg)
         {
             if (arg != null && this.OwnerDetail.IsValid())
             {
@@ -176,6 +248,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         }
                         else
                         {
+                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Create Owner", "Owner with same NRIC already exist!");
                         }
                     }
                     else
@@ -202,11 +275,39 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
         }
 
+        private void OnDeleteOwnerEvent(OwnerEventArgs arg)
+        {
+            if (arg != null)
+            {
+                OwnerDetail ownerDetail = arg.OwnerDetail;
+                if (ownerDetail != null)
+                {
+                    if (this.IsOwnerCreated == true)
+                    {
+                        var errorInfo = quotationDb.DeleteOwnerDetails(ownerDetail);
+                        if (errorInfo.Code == 0)
+                        {
+                            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+                        }
+                        else
+                        {
+                        }
+                    }
+                }
+                else
+                {
+                }
+            }
+            else
+            {
+            }
+        }
+
         private void OnAddInsuranceView(InsuranceEventArgs arg)
         {
             if (arg != null && this.VehicleDetail.IsValid() && this.CurrentInsuranceDetail.IsValid())
             {
-                List<DriverDetail> driverDetails = arg.DriverDetails;
+                IEnumerable<DriverDetail> driverDetails = arg.DriverDetails;
                 foreach(var driver in driverDetails)
                 {
                     driver.NRIC = this.OwnerDetail.NRIC;
@@ -293,6 +394,13 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             else
             {
             }
+        }
+        
+        public void UnSubscribeEvents()
+        {
+            this.EventAggregator.GetEvent<AddOwnerEvent>().Unsubscribe(OnAddOwnerView);
+            this.EventAggregator.GetEvent<DeleteOwnerEvent>().Unsubscribe(OnDeleteOwnerEvent);
+            this.EventAggregator.GetEvent<AddInsuranceEvent>().Unsubscribe(OnAddInsuranceView);
         }
     }
 
@@ -811,7 +919,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public VehicleDetailViewModel(VehicleDetail model)
         {
             this.model = model;
-            this.model.DateOfRegistered = null;
         }
 
         public VehicleDetail Model

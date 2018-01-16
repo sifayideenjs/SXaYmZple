@@ -38,7 +38,7 @@
                 <Grid Margin="5 5 5 5" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="180"/>
-                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition MinWidth="300" Width="350"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -61,7 +61,7 @@
                     <TextBox Grid.Row="0" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,  ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
 
                     <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">NRIC / Biz Reg No:</Label>
-                    <TextBox Grid.Row="1" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.NRIC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" IsEnabled="{Binding OwnerDetail.IsOwnerCreated}" Text="{Binding OwnerDetail.NRIC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
 
                     <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Date of Birth:</Label>
                     <DatePicker Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding OwnerDetail.DateOfBirth, Mode=TwoWay, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
@@ -86,14 +86,12 @@
 
                     <Label Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Renewal Reminder:</Label>
                     <ComboBox Grid.Row="9" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" ItemsSource="{Binding OwnerDetail.RenewalReminds}" SelectedItem="{Binding OwnerDetail.RenewalRemindDays, Mode=TwoWay}" SelectedIndex="0" Text="{Binding OwnerDetail.RenewalRemindDays, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
-
-                    <!--<Button Grid.Row="9" Grid.Column="1" Margin="4" HorizontalAlignment="Stretch" Height="37" FontSize="14" IsDefault="True" Content="ADD" metro:ButtonHelper.PreserveTextCase="True" Command="{Binding AddOwnerCommand}" Style="{StaticResource AccentedSquareButtonStyle}"/>-->
                 </Grid>
             </Grid>
         </ScrollViewer>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding CancelCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding DeleteOwnerCommand}" Style="{StaticResource MetroCircleButtonStyle}">
                 <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_delete}"/>
@@ -107,13 +105,13 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <Button Grid.Column="1" Height="50" Width="50" Command="{Binding NextCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+            <!--<Button Grid.Column="1" Height="50" Width="50" Command="{Binding NextCommand}" Style="{StaticResource MetroCircleButtonStyle}">
                 <Rectangle Width="25" Height="25" Fill="WhiteSmoke">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}"/>
                     </Rectangle.OpacityMask>
                 </Rectangle>
-            </Button>
+            </Button>-->
         </StackPanel>
     </Grid>
 </UserControl>

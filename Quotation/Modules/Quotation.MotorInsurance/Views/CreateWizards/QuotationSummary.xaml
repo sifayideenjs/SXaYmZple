@@ -32,7 +32,7 @@
                 </Grid.RowDefinitions>
 
                 <GroupBox Grid.Row="0" Header="Owner / Insured Details">
-                    <GroupBox.HeaderTemplate>
+                    <!--<GroupBox.HeaderTemplate>
                         <ItemContainerTemplate>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -49,11 +49,14 @@
                                 </Button>
                             </Grid>
                         </ItemContainerTemplate>
-                    </GroupBox.HeaderTemplate>
+                    </GroupBox.HeaderTemplate>-->
                     <Grid Grid.Row="1" DataContext="{Binding QuotationViewModel}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
+                            <ColumnDefinition MinWidth="100" Width="120"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -83,25 +86,22 @@
                         <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Marital Status:</Label>
                         <TextBlock Grid.Row="4" Grid.Column="1" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.MaritalStatus, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Occupation / Industry:</Label>
-                        <TextBlock Grid.Row="5" Grid.Column="1" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.Occupation, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Occupation / Industry:</Label>
+                        <TextBlock Grid.Row="0" Grid.Column="4" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.Occupation, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">License Date:</Label>
-                        <TextBlock Grid.Row="6" Grid.Column="1" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.LicenseDate, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">License Date:</Label>
+                        <TextBlock Grid.Row="1" Grid.Column="4" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.LicenseDate, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Contact / Email:</Label>
-                        <TextBlock Grid.Row="7" Grid.Column="1" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.Email, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Contact / Email:</Label>
+                        <TextBlock Grid.Row="2" Grid.Column="4" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.Email, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Address:</Label>
-                        <TextBlock Grid.Row="8" Grid.Column="1" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.Address, Mode=TwoWay}" Margin="5" />
-
-                        <Label Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Renewal Reminder:</Label>
-                        <TextBlock Grid.Row="9" Grid.Column="1" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.RenewalRemindDays, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Address:</Label>
+                        <TextBlock Grid.Row="3" Grid.Column="4" Grid.RowSpan="2" Foreground="LightGray" FontSize="14"  Text="{Binding OwnerDetail.Address, Mode=TwoWay}" Margin="5" />
                     </Grid>
                 </GroupBox>
 
                 <GroupBox Grid.Row="1" Header="Driver Details">
-                    <GroupBox.HeaderTemplate>
+                    <!--<GroupBox.HeaderTemplate>
                         <ItemContainerTemplate>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -118,7 +118,7 @@
                                 </Button>
                             </Grid>
                         </ItemContainerTemplate>
-                    </GroupBox.HeaderTemplate>
+                    </GroupBox.HeaderTemplate>-->
                     <DataGrid ItemsSource="{Binding QuotationViewModel.DriverDetails}" Style="{StaticResource AzureDataGrid}" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Insured Name" Binding="{Binding Name}" Width="200"/>
@@ -133,7 +133,7 @@
                 </GroupBox>
 
                 <GroupBox Grid.Row="2" Header="Vehicle Details">
-                    <GroupBox.HeaderTemplate>
+                    <!--<GroupBox.HeaderTemplate>
                         <ItemContainerTemplate>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -150,11 +150,14 @@
                                 </Button>
                             </Grid>
                         </ItemContainerTemplate>
-                    </GroupBox.HeaderTemplate>
+                    </GroupBox.HeaderTemplate>-->
                     <Grid Grid.Row="1" DataContext="{Binding QuotationViewModel}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
+                            <ColumnDefinition MinWidth="100" Width="120"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -189,28 +192,28 @@
                         <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Reg No Plate:</Label>
                         <TextBlock Grid.Row="5" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.RegNo, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Parallel Import:</Label>
-                        <TextBlock Grid.Row="6" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.ParallelImport, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Parallel Import:</Label>
+                        <TextBlock Grid.Row="0" Grid.Column="4" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.ParallelImport, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Off Peak Vehicle:</Label>
-                        <TextBlock Grid.Row="7" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.OffPeakVehicle, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Off Peak Vehicle:</Label>
+                        <TextBlock Grid.Row="1" Grid.Column="4" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.OffPeakVehicle, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">NCD (%):</Label>
-                        <TextBlock Grid.Row="8" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.NCD, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">NCD (%):</Label>
+                        <TextBlock Grid.Row="2" Grid.Column="4" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.NCD, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Existing Insurer:</Label>
-                        <TextBlock Grid.Row="9" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.ExistingInsurer, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Existing Insurer:</Label>
+                        <TextBlock Grid.Row="3" Grid.Column="4" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.ExistingInsurer, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="10" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Reg No:</Label>
-                        <TextBlock Grid.Row="10" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.PreviousRegNo, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Reg No:</Label>
+                        <TextBlock Grid.Row="4" Grid.Column="4" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.PreviousRegNo, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="11" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Claims (Past 3 years):</Label>
-                        <TextBlock Grid.Row="11" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.Claims, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="5" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Claims (Past 3 years):</Label>
+                        <TextBlock Grid.Row="5" Grid.Column="4" Grid.RowSpan="2" Foreground="LightGray" FontSize="14" Text="{Binding VehicleDetail.Claims, Mode=TwoWay}" Margin="5" />
                     </Grid>
                 </GroupBox>
 
                 <GroupBox Grid.Row="3" Header="Insurance Details">
-                    <GroupBox.HeaderTemplate>
+                    <!--<GroupBox.HeaderTemplate>
                         <ItemContainerTemplate>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -227,11 +230,14 @@
                                 </Button>
                             </Grid>
                         </ItemContainerTemplate>
-                    </GroupBox.HeaderTemplate>
+                    </GroupBox.HeaderTemplate>-->
                     <Grid Grid.Row="1" DataContext="{Binding QuotationViewModel}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
+                            <ColumnDefinition MinWidth="100" Width="120"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition MinWidth="300" Width="350"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -247,26 +253,20 @@
                         <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Insurance Expiry Date:</Label>
                         <TextBlock Grid.Row="0" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.InsuranceExpiryDate, Mode=TwoWay}" Margin="5" />
 
-                        <!--<Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Insurance Renewal Date:</Label>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.InsuranceRenewalDate, Mode=TwoWay}" Margin="5" />-->
+                        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Road Tax Expiry Date:</Label>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.RoadTaxExpiryDate, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Road Tax Expiry Date:</Label>
-                        <TextBlock Grid.Row="2" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.RoadTaxExpiryDate, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Dealer:</Label>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.PreviousDealer, Mode=TwoWay}" Margin="5" />
 
-                        <!--<Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Road Tax Renewal Date:</Label>
-                        <TextBlock Grid.Row="3" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.RoadTaxRenewalDate, Mode=TwoWay}" Margin="5" />-->
+                        <Label Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Agency:</Label>
+                        <TextBlock Grid.Row="0" Grid.Column="4" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.Agency, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Dealer:</Label>
-                        <TextBlock Grid.Row="4" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.PreviousDealer, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Finance Bank:</Label>
+                        <TextBlock Grid.Row="1" Grid.Column="4" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.FinanceBank, Mode=TwoWay}" Margin="5" />
 
-                        <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Agency:</Label>
-                        <TextBlock Grid.Row="5" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.Agency, Mode=TwoWay}" Margin="5" />
-
-                        <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Finance Bank:</Label>
-                        <TextBlock Grid.Row="6" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.FinanceBank, Mode=TwoWay}" Margin="5" />
-
-                        <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Year Premium:</Label>
-                        <TextBlock Grid.Row="7" Grid.Column="1" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.PrevYearPremium, Mode=TwoWay}" Margin="5" />
+                        <Label Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Foreground="LightGray" FontSize="14">Previous Year Premium:</Label>
+                        <TextBlock Grid.Row="2" Grid.Column="4" Foreground="LightGray" FontSize="14" Text="{Binding CurrentInsuranceDetail.PrevYearPremium, Mode=TwoWay}" Margin="5" />
                     </Grid>
                 </GroupBox>
             </Grid>

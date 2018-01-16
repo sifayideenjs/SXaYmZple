@@ -86,7 +86,7 @@ namespace QuotationAPI.DAL
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
             cmdParameters["NRIC"] = new SqlParameter("NRIC", nric);
 
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetMIQuoationDetails", cmdParameters);
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetNRICDetails", cmdParameters);
             return dataSet;
         }
 
@@ -163,7 +163,7 @@ namespace QuotationAPI.DAL
             return errorDetail;
         }
 
-        internal ErrorDetail UpdateDriverDetails(List<DriverDetail> driverDetails)
+        internal ErrorDetail UpdateDriverDetails(IEnumerable<DriverDetail> driverDetails)
         {
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("InsuredName", typeof(string));
