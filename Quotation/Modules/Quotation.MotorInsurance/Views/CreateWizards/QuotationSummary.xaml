@@ -121,12 +121,14 @@
                     </GroupBox.HeaderTemplate>-->
                     <DataGrid ItemsSource="{Binding QuotationViewModel.DriverDetails}" Style="{StaticResource AzureDataGrid}" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Insured Name" Binding="{Binding Name}" Width="200"/>
-                            <DataGridTextColumn Header="NRIC" Binding="{Binding NRIC}" Width="100"/>
+                            <DataGridTextColumn Header="Insured Name" Binding="{Binding InsuredName}" Width="200"/>
+                            <DataGridTextColumn Header="Insured NRIC" Binding="{Binding InsuredNRIC}" Width="100"/>
+                            <DataGridTextColumn Header="Biz Reg No" Binding="{Binding BizRegNo}" Width="100"/>
                             <DataGridTextColumn Header="Date of Birth" Binding="{Binding DateOfBirth}" Width="150"/>
                             <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="80"/>
                             <DataGridTextColumn Header="Marital Status" Binding="{Binding MaritalStatus, Converter={StaticResource YesNoToBooleanConverter}}" Width="120"/>
                             <DataGridTextColumn Header="Occupation" Binding="{Binding Occupation}" Width="200"/>
+                            <DataGridTextColumn Header="Industry" Binding="{Binding Industry}" Width="200"/>
                             <DataGridTextColumn Header="License Date" Binding="{Binding LicenseDate}" Width="150"/>
                         </DataGrid.Columns>
                     </DataGrid>

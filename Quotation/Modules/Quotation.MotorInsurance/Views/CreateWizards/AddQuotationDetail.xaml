@@ -47,8 +47,9 @@
 
                     <DataGrid Grid.Row="1" MinHeight="100" ItemsSource="{Binding DriverDetails}" SelectedItem="{Binding SelectedDriverDetail}" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" metro:DataGridHelper.EnableCellEditAssist="False" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Insured Name" Binding="{Binding Name}" Width="200"/>
-                            <DataGridTextColumn Header="NRIC" Binding="{Binding NRIC}" Width="100"/>
+                            <DataGridTextColumn Header="Insured Name" Binding="{Binding InsuredName}" Width="200"/>
+                            <DataGridTextColumn Header="Insured NRIC" Binding="{Binding InsuredNRIC}" Width="100"/>
+                            <DataGridTextColumn Header="Biz Reg No" Binding="{Binding BizRegNo}" Width="100"/>
                             <DataGridTemplateColumn Header="Date of Birth" Width="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -71,6 +72,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Occupation" Binding="{Binding Occupation}" Width="200"/>
+                            <DataGridTextColumn Header="Industry" Binding="{Binding Industry}" Width="200"/>
                             <DataGridTemplateColumn Header="License Date" Width="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

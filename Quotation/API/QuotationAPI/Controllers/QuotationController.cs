@@ -185,13 +185,13 @@ namespace QuotationAPI.Controllers
         }
 
         [HttpPost]
-        [Route("api/Quotation/UpdateDriverDetails")]
+        [Route("api/Quotation/UpdateDriverDetails/{nric}")]
         [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> UpdateDriverDetails([FromBody]IEnumerable<DriverDetail> driverDetails)
+        public async Task<IHttpActionResult> UpdateDriverDetails(string nric, IEnumerable<DriverDetail> driverDetails)
         {
             try
             {
-                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateDriverDetails(driverDetails));
+                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateDriverDetails(nric, driverDetails));
                 if (errorDetail == null)
                 {
                     return NotFound();
@@ -206,7 +206,7 @@ namespace QuotationAPI.Controllers
         }
 
         [HttpPost]
-        [Route("api/Quotation/UpdateMIQuotation")]
+        [Route("api/Quotation/AddInsuranceDetails")]
         [ResponseType(typeof(ErrorDetail))]
         public async Task<IHttpActionResult> UpdateMIQuotation([FromBody]MIQuotation quotationDetail)
         {

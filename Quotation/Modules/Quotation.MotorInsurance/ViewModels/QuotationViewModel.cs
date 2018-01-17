@@ -73,12 +73,14 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 #if DEBUG
             DataAccess.Models.DriverDetail driverDetail = new DataAccess.Models.DriverDetail()
             {
-                Name = "Kasim",
-                DriverNRIC = "YYY",
+                InsuredName = "Kasim",
+                InsuredNRIC = "YYY",
+                BizRegNo = "2233",
                 DateOfBirth = new DateTime(1984, 4, 11),
                 Gender = "MALE",
                 MaritalStatus = true,
                 Occupation = "Software Engineer",
+                Industry = "IT",
                 LicenseDate = DateTime.Now
             };
             this.driverDetails = new ObservableCollection<DriverDetailViewModel>() { new DriverDetailViewModel(driverDetail) };
@@ -253,7 +255,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         }
                         else
                         {
-                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Create Owner", "Owner with same NRIC already exist!");
+                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", "Owner with same NRIC already exist!");
                         }
                     }
                     else
@@ -273,6 +275,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 }
                 else
                 {
+                    await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", "Unable to add Owner details");
+                    return;
                 }
             }
             else
@@ -319,7 +323,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 }
                 if (this.IsDriverUpdated == false)
                 {
-                    var errorInfo = quotationDb.AddDriverDetails(driverDetails);
+                    var errorInfo = quotationDb.AddDriverDetails(this.OwnerDetail.NRIC, driverDetails);
                     if (errorInfo.Code == 0)
                     {
                         this.IsDriverUpdated = true;
@@ -717,27 +721,39 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             get { return model; }
         }
-        public string Name
+        public string InsuredName
         {
             get
             {
-                return this.model.Name;
+                return this.model.InsuredName;
             }
             set
             {
-                this.model.Name = value;
+                this.model.InsuredName = value;
                 OnPropertyChanged();
             }
         }
-        public string NRIC
+        public string InsuredNRIC
         {
             get
             {
-                return this.model.DriverNRIC;
+                return this.model.InsuredNRIC;
             }
             set
             {
-                this.model.DriverNRIC = value;
+                this.model.InsuredNRIC = value;
+                OnPropertyChanged();
+            }
+        }
+        public string BizRegNo
+        {
+            get
+            {
+                return this.model.BizRegNo;
+            }
+            set
+            {
+                this.model.BizRegNo = value;
                 OnPropertyChanged();
             }
         }
@@ -813,6 +829,18 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
+        public string Industry
+        {
+            get
+            {
+                return this.model.Industry;
+            }
+            set
+            {
+                this.model.Industry = value;
+                OnPropertyChanged();
+            }
+        }
         public Nullable<System.DateTime> LicenseDate
         {
             get
@@ -845,8 +873,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             string validationMessage = string.Empty;
             switch (propertyName)
             {
-                case "Name":
-                    if (string.IsNullOrEmpty(this.Name))
+                case "InsuredName":
+                    if (string.IsNullOrEmpty(this.InsuredName))
                     {
                         validationMessage = "Please enter Insurer name";
                     }
@@ -855,10 +883,20 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         validationMessage = string.Empty;
                     }
                     break;
-                case "NRIC":
-                    if (string.IsNullOrEmpty(this.NRIC))
+                case "InsuredNRIC":
+                    if (string.IsNullOrEmpty(this.InsuredNRIC))
                     {
-                        validationMessage = "Please enter NRIC number";
+                        validationMessage = "Please enter Insurer NRIC number";
+                    }
+                    else
+                    {
+                        validationMessage = string.Empty;
+                    }
+                    break;
+                case "BizRegNo":
+                    if (string.IsNullOrEmpty(this.BizRegNo))
+                    {
+                        validationMessage = "Please enter Biz Reg number";
                     }
                     else
                     {
@@ -885,6 +923,16 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         validationMessage = string.Empty;
                     }
                     break;
+                case "Industry":
+                    if (string.IsNullOrEmpty(this.Industry))
+                    {
+                        validationMessage = "Please enter an Industry";
+                    }
+                    else
+                    {
+                        validationMessage = string.Empty;
+                    }
+                    break;
                 case "LicenseDate":
                     if (this.LicenseDate == null)
                     {
@@ -902,10 +950,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         internal bool IsValid()
         {
-            if (string.IsNullOrEmpty(Name) == false &&
-                string.IsNullOrEmpty(NRIC) == false &&
+            if (string.IsNullOrEmpty(InsuredName) == false &&
+                string.IsNullOrEmpty(InsuredNRIC) == false &&
                 DateOfBirth != null &&
                 string.IsNullOrEmpty(Gender) == false &&
+                string.IsNullOrEmpty(Occupation) == false &&
                 string.IsNullOrEmpty(Occupation) == false &&
                 LicenseDate != null)
             {
@@ -919,12 +968,13 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         internal void ClearDetail()
         {
-            this.Name = string.Empty;
-            this.NRIC = string.Empty;
+            this.InsuredName = string.Empty;
+            this.InsuredNRIC = string.Empty;
             this.DateOfBirth = null;
             this.Gender = string.Empty;
             this.MaritalStatus = false;
             this.Occupation = string.Empty;
+            this.Industry = string.Empty;
             this.LicenseDate = null;
         }
         #endregion //Validation

@@ -215,12 +215,12 @@ namespace Quotation.DataAccess
         }
 
 
-        public ErrorDetail AddDriverDetails(IEnumerable<DriverDetail> driverDetails)
+        public ErrorDetail AddDriverDetails(string nric, IEnumerable<DriverDetail> driverDetails)
         {
             ErrorDetail errorDetail = new ErrorDetail();
             try
             {
-                HttpResponseMessage responseMessage = client.PostAsJsonAsync("/api/Quotation/UpdateDriverDetails", driverDetails).Result;
+                HttpResponseMessage responseMessage = client.PostAsJsonAsync("/api/Quotation/UpdateDriverDetails/" + nric , driverDetails).Result;
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     string data = responseMessage.Content.ReadAsStringAsync().Result;

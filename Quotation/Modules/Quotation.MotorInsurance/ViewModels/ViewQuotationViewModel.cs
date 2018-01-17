@@ -80,10 +80,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     VehicleDetail vehicleDetail = GetVehicleDetail(arg.QuotationDataSet.Tables[2]);
                     MIQuotation insuranceDetail = GetInsuranceDetail(arg.QuotationDataSet.Tables[3]);
                     QuotationViewModel = new QuotationViewModel(quotationDb, ownerDetail, driverDetails, vehicleDetail, insuranceDetail);
+
+                    //ClearRegions(RegionNames.MotorWizardRegion);
+                    this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
                 }
             }
-            //ClearRegions(RegionNames.MotorWizardRegion);
-            this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
         }
         #endregion //EventAggregation
 
@@ -150,44 +151,30 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     Address = row.Field<string>("Address"),
                    // RenewalRemindDays = row.Field<short?>("RenewalRemindDays"),
                 };
-
-                //ownerDetail = new OwnerDetail();
-                //ownerDetail.Name = row.Field<string>("Name");
-                //ownerDetail.NRIC = row.Field<string>("NRIC");
-                //ownerDetail.DateOfBirth = row.Field<DateTime?>("DateOfBirth");
-                //ownerDetail.Gender = row.Field<string>("Gender");
-                //ownerDetail.MaritalStatus = row.Field<bool?>("MaritalStatus");
-                //ownerDetail.Occupation = row.Field<string>("Occupation");
-                //ownerDetail.LicenseDate = row.Field<DateTime?>("LicenseDate");
-                //ownerDetail.CreatedBy = row.Field<string>("CreatedBy");
-                //ownerDetail.CreatedDate = row.Field<DateTime?>("CreatedDate");
-                //ownerDetail.LastUpdatedBy = row.Field<string>("LastUpdatedBy");
-                //ownerDetail.LastUpdatedDate = row.Field<DateTime?>("LastUpdatedDate");
-                //ownerDetail.Email = row.Field<string>("Email");
-                //ownerDetail.Address = row.Field<string>("Address");
-                //ownerDetail.RenewalRemindDays = row.Field<short?>("RenewalRemindDays");
             }
             return ownerDetail;
         }
         private List<DriverDetail> GetDriverDetails(DataTable dataTable)
         {
             List<DriverDetail> driverDetails = new List<DriverDetail>();
-            //if (dataTable != null && dataTable.Rows.Count > 0)
-            //{
-            //    driverDetails = dataTable.AsEnumerable().Select(row => new DriverDetail
-            //    {
-            //        NRIC = row.Field<string>("NRIC"),
-            //        Name = row.Field<string>("InsuredName"),
-            //        DriverNRIC = row.Field<string>("InsuredNRIC"),
-            //        DateOfBirth = row.Field<DateTime?>("DateofBirth"),
-            //        Gender = row.Field<string>("Gender"),
-            //        MaritalStatus = row.Field<bool?>("MaritalStatus"),
-            //        LicenseDate = row.Field<DateTime?>("LicenseDate"),
-            //    }).ToList();
-            //}
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                driverDetails = dataTable.AsEnumerable().Select(row => new DriverDetail
+                {
+                    NRIC = row.Field<string>("NRIC"),
+                    InsuredName = row.Field<string>("InsuredName"),
+                    InsuredNRIC = row.Field<string>("InsuredNRIC"),
+                    BizRegNo = row.Field<string>("BizRegNo"),
+                    DateOfBirth = row.Field<DateTime?>("DateofBirth"),
+                    Gender = row.Field<string>("Gender"),
+                    MaritalStatus = int.Parse(row["MaritalStatus"].ToString()) == 1 ? true : false,
+                    Occupation = row.Field<string>("Occupation"),
+                    Industry = row.Field<string>("Industry"),
+                    LicenseDate = row.Field<DateTime?>("LicenseDate"),
+                }).ToList();
+            }
             return driverDetails;
         }
-
         private VehicleDetail GetVehicleDetail(DataTable dataTable)
         {
             VehicleDetail vehicleDetail = null;
@@ -203,8 +190,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     DateOfRegistered = row.Field<DateTime?>("DateOfRegistered"),
                     YearMade = row.Field<string>("YearMade"),
                     RegNo = row.Field<string>("RegNo"),
-                    ParallelImport = (byte)row["ParallelImport"],
-                    OffPeakVehicle = (byte)row["OffPeakVehicle"],
+                    ParallelImport = int.Parse(row["ParallelImport"].ToString()),
+                    OffPeakVehicle = int.Parse(row["OffPeakVehicle"].ToString()),
                     NCD = row.Field<string>("NCD"),
                     ExistingInsurer = row.Field<string>("ExistingInsurer"),
                     PreviousRegNo = row.Field<string>("PreviousRegNo"),
@@ -213,7 +200,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
             return vehicleDetail;
         }
-
         private MIQuotation GetInsuranceDetail(DataTable dataTable)
         {
             List<MIQuotation> insuranceDetails = new List<MIQuotation>();
@@ -231,8 +217,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     Agency = row.Field<string>("Agency"),
                     PrevYearPremium = row.Field<string>("PrevYearPremium"),
                     FinanceBank = row.Field<string>("FinanceBank"),
-                    InsuranceRenewed = row.Field<byte>("InsuranceRenewed"),
-                    RoadTaxRenewed = row.Field<byte>("RoadTaxRenewed"),
+                    InsuranceRenewed = int.Parse(row["InsuranceRenewed"].ToString()),
+                    RoadTaxRenewed = int.Parse(row["RoadTaxRenewed"].ToString()),
                 }).ToList();
             }
             return insuranceDetails.FirstOrDefault();

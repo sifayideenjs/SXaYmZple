@@ -13,6 +13,8 @@ using System.Windows.Input;
 using Quotation.DataAccess;
 using System.Data;
 using Quotation.Infrastructure.Constants;
+using Quotation.Infrastructure.Interfaces;
+using Microsoft.Practices.Unity;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
@@ -92,21 +94,28 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             return true;
         }
 
-        public void ExecuteOpenQuotationCommand(OwnerDetailViewModel quotation)
+        public async void ExecuteOpenQuotationCommand(OwnerDetailViewModel quotation)
         {
             string errorMessage = string.Empty;
-            //string nric = "XXX-YYY"; //quotation.NRIC;
+            string quotationNo = "1234567";
             //DataSet quotationDataSet = quotationDb.GetNRICDetails(nric, out errorMessage);
 
-            DataSet quotationDataSet = quotationDb.GetMIQuoationDetails("123456", out errorMessage);
-
-            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorViewQuotation);
-            this.EventAggregator.GetEvent<OpenQuotationEvent>().Publish(new QuotationEventArgs
+            DataSet quotationDataSet = quotationDb.GetMIQuoationDetails(quotationNo, out errorMessage);
+            if(!string.IsNullOrEmpty(errorMessage))
             {
-                QuotationDataSet = quotationDataSet,
-                RegionName = RegionNames.MotorQuotationRegion,
-                Source = WindowNames.MotorSummaryDetail
-            });
+                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", errorMessage);
+                return;
+            }
+            else
+            {
+                this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorViewQuotation);
+                this.EventAggregator.GetEvent<OpenQuotationEvent>().Publish(new QuotationEventArgs
+                {
+                    QuotationDataSet = quotationDataSet,
+                    RegionName = RegionNames.MotorQuotationRegion,
+                    Source = WindowNames.MotorSummaryDetail
+                });
+            }
         }
         #endregion Commands
     }

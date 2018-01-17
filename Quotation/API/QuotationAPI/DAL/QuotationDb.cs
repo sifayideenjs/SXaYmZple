@@ -163,24 +163,27 @@ namespace QuotationAPI.DAL
             return errorDetail;
         }
 
-        internal ErrorDetail UpdateDriverDetails(IEnumerable<DriverDetail> driverDetails)
+        internal ErrorDetail UpdateDriverDetails(string nric, IEnumerable<DriverDetail> driverDetails)
         {
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("InsuredName", typeof(string));
             dataTable.Columns.Add("InsuredNRIC", typeof(string));
+            dataTable.Columns.Add("BizRegNo", typeof(string));
             dataTable.Columns.Add("DateOfBirth", typeof(DateTime));
             dataTable.Columns.Add("Gender", typeof(string));
             dataTable.Columns.Add("MaritalStatus", typeof(bool));
-            //dataTable.Columns.Add("Occupation", typeof(string));
+            dataTable.Columns.Add("Occupation", typeof(string));
+            dataTable.Columns.Add("Industry", typeof(string));
             dataTable.Columns.Add("LicenseDate", typeof(DateTime));
 
             foreach(var driverDetail in driverDetails)
             {
-                dataTable.Rows.Add(driverDetail.Name, driverDetail.NRIC, driverDetail.DateOfBirth, driverDetail.Gender, driverDetail.MaritalStatus, driverDetail.LicenseDate);
+                dataTable.Rows.Add(driverDetail.InsuredName, driverDetail.InsuredNRIC, driverDetail.BizRegNo, driverDetail.DateOfBirth, driverDetail.Gender, driverDetail.MaritalStatus, driverDetail.Occupation, driverDetail.Industry, driverDetail.LicenseDate);
             }
 
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
-            cmdParameters["UserID"] = new SqlParameter("UserID", dataTable);
+            cmdParameters["NRIC"] = new SqlParameter("NRIC", nric);
+            cmdParameters["DriverDetails"] = new SqlParameter("DriverDetails", dataTable);
 
             SqlParameter outPutParameter1 = new SqlParameter();
             outPutParameter1.ParameterName = "ERRORNO";
@@ -236,7 +239,7 @@ namespace QuotationAPI.DAL
             cmdParameters["ERRORDESC"] = outPutParameter2;
 
             ErrorDetail errorDetail = new ErrorDetail();
-            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateInsuranceDetails", cmdParameters);
+            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateMIQuotation", cmdParameters);
 
             errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
             errorDetail.Info = outPutParameter2.Value.ToString();
