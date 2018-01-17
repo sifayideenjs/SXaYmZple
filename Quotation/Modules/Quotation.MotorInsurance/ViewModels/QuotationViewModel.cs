@@ -20,9 +20,9 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         QuotationDb quotationDb;
 
         private bool isOwnerCreated = false;
-        private bool isDriverUpdated = true;
-        private bool isVehicalUpdated = true;
-        private bool isInsuranceUpdated = true;
+        private bool isDriverUpdated = false;
+        private bool isVehicalUpdated = false;
+        private bool isInsuranceUpdated = false;
 
         private OwnerDetailViewModel ownerDetail;
         private ObservableCollection<DriverDetailViewModel> driverDetails;
@@ -308,7 +308,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
         }
 
-        private void OnAddInsuranceView(InsuranceEventArgs arg)
+        private async void OnAddInsuranceView(InsuranceEventArgs arg)
         {
             if (arg != null && this.VehicleDetail.IsValid() && this.CurrentInsuranceDetail.IsValid())
             {
@@ -322,12 +322,12 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     var errorInfo = quotationDb.AddDriverDetails(driverDetails);
                     if (errorInfo.Code == 0)
                     {
-                        this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
                         this.IsDriverUpdated = true;
                     }
                     else
                     {
-                        this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", "Unable to add new Owner.");
+                        await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", errorInfo.Info);
+                        return;
                     }
                 }
 
@@ -344,6 +344,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         }
                         else
                         {
+                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", errorInfo.Info);
+                            return;
                         }
                     }
                     else
@@ -355,11 +357,15 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         }
                         else
                         {
+                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", errorInfo.Info);
+                            return;
                         }
                     }
                 }
                 else
                 {
+                    await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", "Unable to add Vehicle details");
+                    return;
                 }
 
                 MIQuotation insuranceDetail = arg.InsuranceDetail;
@@ -368,7 +374,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     if(this.IsInsuranceUpdated == false)
                     {
                         insuranceDetail.NRIC = this.OwnerDetail.NRIC;
-                        insuranceDetail.InsuranceQtnNo = "123456";
+                        insuranceDetail.InsuranceQtnNo = "1234567";
                         var errorInfo = quotationDb.AddInsuranceDetails(insuranceDetail);
                         if (errorInfo.Code == 0)
                         {
@@ -377,6 +383,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         }
                         else
                         {
+                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", errorInfo.Info);
+                            return;
                         }
                     }
                     else
@@ -389,11 +397,15 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         }
                         else
                         {
+                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", errorInfo.Info);
+                            return;
                         }
                     }
                 }
                 else
                 {
+                    await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", "Unable to add Insurance details");
+                    return;
                 }
             }
             else
@@ -419,8 +431,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public OwnerDetailViewModel(OwnerDetail model)
         {
             this.model = model;
-            this.model.Gender = this.genderTypes.First();
-            this.model.RenewalRemindDays = this.renewalReminds.First();
+            if(this.model != null)
+            {
+                this.model.Gender = this.genderTypes.First();
+                this.model.RenewalRemindDays = this.renewalReminds.First();
+            }
         }
 
         public OwnerDetail Model

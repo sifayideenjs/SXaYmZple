@@ -203,8 +203,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     DateOfRegistered = row.Field<DateTime?>("DateOfRegistered"),
                     YearMade = row.Field<string>("YearMade"),
                     RegNo = row.Field<string>("RegNo"),
-                    //ParallelImport = (int)row["ParallelImport"],
-                    //OffPeakVehicle = (int)row["OffPeakVehicle"],
+                    ParallelImport = (byte)row["ParallelImport"],
+                    OffPeakVehicle = (byte)row["OffPeakVehicle"],
                     NCD = row.Field<string>("NCD"),
                     ExistingInsurer = row.Field<string>("ExistingInsurer"),
                     PreviousRegNo = row.Field<string>("PreviousRegNo"),
@@ -231,8 +231,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     Agency = row.Field<string>("Agency"),
                     PrevYearPremium = row.Field<string>("PrevYearPremium"),
                     FinanceBank = row.Field<string>("FinanceBank"),
-                    //InsuranceRenewed = row.Field<int>("InsuranceRenewed"),
-                    //RoadTaxRenewed = row.Field<int>("RoadTaxRenewed"),
+                    InsuranceRenewed = row.Field<byte>("InsuranceRenewed"),
+                    RoadTaxRenewed = row.Field<byte>("RoadTaxRenewed"),
                 }).ToList();
             }
             return insuranceDetails.FirstOrDefault();
