@@ -94,15 +94,16 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecuteOpenQuotationCommand(OwnerDetailViewModel quotation)
         {
-            //string errorMessage = string.Empty;
+            string errorMessage = string.Empty;
             //string nric = "XXX-YYY"; //quotation.NRIC;
             //DataSet quotationDataSet = quotationDb.GetNRICDetails(nric, out errorMessage);
 
-            //DataSet quotationDataSet = quotationDb.GetMIQuoationDetails("123456", out errorMessage);
+            DataSet quotationDataSet = quotationDb.GetMIQuoationDetails("123456", out errorMessage);
 
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorViewQuotation);
             this.EventAggregator.GetEvent<OpenQuotationEvent>().Publish(new QuotationEventArgs
             {
+                QuotationDataSet = quotationDataSet,
                 RegionName = RegionNames.MotorQuotationRegion,
                 Source = WindowNames.MotorSummaryDetail
             });

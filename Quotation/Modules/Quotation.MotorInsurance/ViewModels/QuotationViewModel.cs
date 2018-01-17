@@ -32,12 +32,17 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         private ObservableCollection<InsuranceDetailViewModel> insuranceDetails;
         private InsuranceDetailViewModel currentInsuranceDetail;
 
-        public QuotationViewModel(OwnerDetail ownerDetail, List<DriverDetail> driverDetails, VehicleDetail vehicleDetail, List<MIQuotation> insuranceDetails)
+        public QuotationViewModel(QuotationDb quotationDb, OwnerDetail ownerDetail, List<DriverDetail> driverDetails, VehicleDetail vehicleDetail, MIQuotation insuranceDetail)
         {
+            this.quotationDb = quotationDb;
             this.ownerDetail = new OwnerDetailViewModel(ownerDetail);
-            this.driverDetails = new ObservableCollection<DriverDetailViewModel>(driverDetails.Select(d => new DriverDetailViewModel(d)));
+            this.driverDetails = new ObservableCollection<DriverDetailViewModel>();
+            if (driverDetails != null && driverDetails.Count > 0)
+            {
+                this.driverDetails = new ObservableCollection<DriverDetailViewModel>(driverDetails.Select(d => new DriverDetailViewModel(d)));
+            }
             this.vehicleDetail = new VehicleDetailViewModel(vehicleDetail);
-            this.insuranceDetails = new ObservableCollection<InsuranceDetailViewModel>(insuranceDetails.Select(i => new InsuranceDetailViewModel(i)));
+            this.currentInsuranceDetail = new InsuranceDetailViewModel(insuranceDetail);
             SubscribeEvents();
         }
 
@@ -566,7 +571,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public Nullable<short> RenewalRemindDays
+        public Nullable<int> RenewalRemindDays
         {
             get
             {
@@ -1021,7 +1026,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public byte ParallelImport
+        public int ParallelImport
         {
             get
             {
@@ -1033,7 +1038,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public byte OffPeakVehicle
+        public int OffPeakVehicle
         {
             get
             {
@@ -1373,7 +1378,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public byte InsuranceRenewed
+        public int InsuranceRenewed
         {
             get
             {
@@ -1385,7 +1390,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public byte RoadTaxRenewed
+        public int RoadTaxRenewed
         {
             get
             {

@@ -24,6 +24,6 @@ namespace QuotationAPI.Models
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public Nullable<short> RenewalRemindDays { get; set; }
+        public Nullable<int> RenewalRemindDays { get; set; }
     }
 }

@@ -15,8 +15,8 @@ namespace Quotation.DataAccess.Models
         public Nullable<System.DateTime> DateOfRegistered { get; set; }
         public string YearMade { get; set; }
         public string RegNo { get; set; }
-        public byte ParallelImport { get; set; }
-        public byte OffPeakVehicle { get; set; }
+        public int ParallelImport { get; set; }
+        public int OffPeakVehicle { get; set; }
         public string NCD { get; set; }
         public string ExistingInsurer { get; set; }
         public string PreviousRegNo { get; set; }

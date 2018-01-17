@@ -52,7 +52,7 @@ namespace Quotation.DataAccess
             errorMessage = string.Empty;
             try
             {
-                HttpResponseMessage responseMessage = client.GetAsync("/api/Quotation/GetMIQuoationDetails/" + insuranceQtnNo).Result;
+                HttpResponseMessage responseMessage = client.GetAsync("/api/Quotation/GetMIQuoationDetails?insuranceQtnNo=" + insuranceQtnNo).Result;
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var responseData = responseMessage.Content.ReadAsStringAsync().Result;

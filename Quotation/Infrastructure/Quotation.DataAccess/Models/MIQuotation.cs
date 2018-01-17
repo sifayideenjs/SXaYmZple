@@ -18,7 +18,7 @@ namespace Quotation.DataAccess.Models
         public string Agency { get; set; }
         public string PrevYearPremium { get; set; }
         public string FinanceBank { get; set; }
-        public byte InsuranceRenewed { get; set; }
-        public byte RoadTaxRenewed { get; set; }
+        public int InsuranceRenewed { get; set; }
+        public int RoadTaxRenewed { get; set; }
     }
 }
