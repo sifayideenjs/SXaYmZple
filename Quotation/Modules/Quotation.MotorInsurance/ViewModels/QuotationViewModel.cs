@@ -12,6 +12,7 @@ using Quotation.DataAccess;
 using System.ComponentModel;
 using Quotation.Infrastructure.Interfaces;
 using Microsoft.Practices.Unity;
+using System.Data;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
@@ -43,6 +44,37 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
             this.vehicleDetail = new VehicleDetailViewModel(vehicleDetail);
             this.currentInsuranceDetail = new InsuranceDetailViewModel(insuranceDetail);
+            SubscribeEvents();
+        }
+
+        public QuotationViewModel(DataSet dataSet)
+        {
+            if (dataSet != null && dataSet.Tables.Count == 4)
+            {
+                OwnerDetail ownerDetail = GetOwnerDetail(dataSet.Tables[0]);
+                this.ownerDetail = new OwnerDetailViewModel(ownerDetail);
+
+                List<DriverDetail> driverDetails = GetDriverDetails(dataSet.Tables[1]);
+                this.driverDetails = new ObservableCollection<DriverDetailViewModel>();
+                if (driverDetails != null && driverDetails.Count > 0)
+                {
+                    this.driverDetails = new ObservableCollection<DriverDetailViewModel>(driverDetails.Select(d => new DriverDetailViewModel(d)));
+                }
+
+                VehicleDetail vehicleDetail = GetVehicleDetail(dataSet.Tables[2]);
+                this.vehicleDetail = new VehicleDetailViewModel(vehicleDetail);
+
+                MIQuotation insuranceDetail = GetInsuranceDetail(dataSet.Tables[3]);
+                this.currentInsuranceDetail = new InsuranceDetailViewModel(insuranceDetail);
+            }
+            else
+            {
+                this.ownerDetail = new OwnerDetailViewModel(new DataAccess.Models.OwnerDetail());
+                this.driverDetails = new ObservableCollection<DriverDetailViewModel>();
+                this.vehicleDetail = new VehicleDetailViewModel(new DataAccess.Models.VehicleDetail());
+                this.currentInsuranceDetail = new InsuranceDetailViewModel(new MIQuotation());
+            }
+
             SubscribeEvents();
         }
 
@@ -423,6 +455,106 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.EventAggregator.GetEvent<DeleteOwnerEvent>().Unsubscribe(OnDeleteOwnerEvent);
             this.EventAggregator.GetEvent<AddInsuranceEvent>().Unsubscribe(OnAddInsuranceView);
         }
+
+        #region Helper
+
+
+        private OwnerDetail GetOwnerDetail(DataTable dataTable)
+        {
+            OwnerDetail ownerDetail = null;
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+                ownerDetail = new OwnerDetail
+                {
+                    Name = row.Field<string>("Name"),
+                    NRIC = row.Field<string>("NRIC"),
+                    DateOfBirth = row.Field<DateTime?>("DateOfBirth"),
+                    Gender = row.Field<string>("Gender"),
+                    MaritalStatus = row.Field<bool?>("MaritalStatus"),
+                    Occupation = row.Field<string>("Occupation"),
+                    LicenseDate = row.Field<DateTime?>("LicenseDate"),
+                    CreatedBy = row.Field<string>("CreatedBy"),
+                    CreatedDate = row.Field<DateTime?>("CreatedDate"),
+                    LastUpdatedBy = row.Field<string>("LastUpdatedBy"),
+                    LastUpdatedDate = row.Field<DateTime?>("LastUpdatedDate"),
+                    Email = row.Field<string>("Email"),
+                    Address = row.Field<string>("Address"),
+                    // RenewalRemindDays = row.Field<short?>("RenewalRemindDays"),
+                };
+            }
+            return ownerDetail;
+        }
+        private List<DriverDetail> GetDriverDetails(DataTable dataTable)
+        {
+            List<DriverDetail> driverDetails = new List<DriverDetail>();
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                driverDetails = dataTable.AsEnumerable().Select(row => new DriverDetail
+                {
+                    NRIC = row.Field<string>("NRIC"),
+                    InsuredName = row.Field<string>("InsuredName"),
+                    InsuredNRIC = row.Field<string>("InsuredNRIC"),
+                    BizRegNo = row.Field<string>("BizRegNo"),
+                    DateOfBirth = row.Field<DateTime?>("DateofBirth"),
+                    Gender = row.Field<string>("Gender"),
+                    MaritalStatus = int.Parse(row["MaritalStatus"].ToString()) == 1 ? true : false,
+                    Occupation = row.Field<string>("Occupation"),
+                    Industry = row.Field<string>("Industry"),
+                    LicenseDate = row.Field<DateTime?>("LicenseDate"),
+                }).ToList();
+            }
+            return driverDetails;
+        }
+        private VehicleDetail GetVehicleDetail(DataTable dataTable)
+        {
+            VehicleDetail vehicleDetail = null;
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+                vehicleDetail = new VehicleDetail
+                {
+                    NRIC = row.Field<string>("NRIC"),
+                    Make = row.Field<string>("Make"),
+                    Model = row.Field<string>("Model"),
+                    Capacity = row.Field<string>("Capacity"),
+                    DateOfRegistered = row.Field<DateTime?>("DateOfRegistered"),
+                    YearMade = row.Field<string>("YearMade"),
+                    RegNo = row.Field<string>("RegNo"),
+                    ParallelImport = int.Parse(row["ParallelImport"].ToString()),
+                    OffPeakVehicle = int.Parse(row["OffPeakVehicle"].ToString()),
+                    NCD = row.Field<string>("NCD"),
+                    ExistingInsurer = row.Field<string>("ExistingInsurer"),
+                    PreviousRegNo = row.Field<string>("PreviousRegNo"),
+                    Claims = row.Field<string>("Claims")
+                };
+            }
+            return vehicleDetail;
+        }
+        private MIQuotation GetInsuranceDetail(DataTable dataTable)
+        {
+            List<MIQuotation> insuranceDetails = new List<MIQuotation>();
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                insuranceDetails = dataTable.AsEnumerable().Select(row => new MIQuotation
+                {
+                    NRIC = row.Field<string>("NRIC"),
+                    InsuranceQtnNo = row.Field<string>("InsuranceQtnNo"),
+                    InsuranceExpiryDate = row.Field<DateTime?>("InsuranceExpiryDate"),
+                    InsuranceRenewalDate = row.Field<DateTime?>("InsuranceRenewalDate"),
+                    RoadTaxExpiryDate = row.Field<DateTime?>("RoadTaxExpiryDate"),
+                    RoadTaxRenewalDate = row.Field<DateTime?>("RoadTaxRenewalDate"),
+                    PreviousDealer = row.Field<string>("PreviousDealer"),
+                    Agency = row.Field<string>("Agency"),
+                    PrevYearPremium = row.Field<string>("PrevYearPremium"),
+                    FinanceBank = row.Field<string>("FinanceBank"),
+                    InsuranceRenewed = int.Parse(row["InsuranceRenewed"].ToString()),
+                    RoadTaxRenewed = int.Parse(row["RoadTaxRenewed"].ToString()),
+                }).ToList();
+            }
+            return insuranceDetails.FirstOrDefault();
+        }
+        #endregion //Helper
     }
 
     public class OwnerDetailViewModel : ViewModelBase, IDataErrorInfo
