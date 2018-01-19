@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Quotation.MotorInsuranceModule.Views.CreateWizards"
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:prismlib="http://prismlibrary.com/"
              xmlns:prism="http://www.codeplex.com/prism"
              xmlns:infConstants="clr-namespace:Quotation.Infrastructure.Constants;assembly=Quotation.Infrastructure"
@@ -45,7 +46,7 @@
 
                     <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" FontFamily="{DynamicResource HeaderFontFamily}" Foreground="LightGray">Named Driver Details</Label>
 
-                    <DataGrid Grid.Row="1" MinHeight="100" ItemsSource="{Binding DriverDetails}" SelectedItem="{Binding SelectedDriverDetail}" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" metro:DataGridHelper.EnableCellEditAssist="False" >
+                    <DataGrid Grid.Row="1" MinHeight="100" ItemsSource="{Binding DriverDetails}" SelectedItem="{Binding SelectedDriverDetail}" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" material:DataGridAssist.EnableEditBoxAssist="False" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Insured Name" Binding="{Binding InsuredName}" Width="200"/>
                             <DataGridTextColumn Header="Insured NRIC" Binding="{Binding InsuredNRIC}" Width="100"/>

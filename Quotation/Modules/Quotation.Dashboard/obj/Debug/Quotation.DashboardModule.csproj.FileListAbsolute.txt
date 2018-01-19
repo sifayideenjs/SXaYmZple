@@ -92,3 +92,6 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule.pdb
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Styling.dll
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Styling.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignColors.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignThemes.MahApps.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignThemes.Wpf.dll

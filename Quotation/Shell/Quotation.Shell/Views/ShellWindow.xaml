@@ -20,10 +20,9 @@
                    mc:Ignorable="d"
                    WindowState="Maximized"
                    Title="PROPOSIFY | V1.0" Height="600" Width="800"
-                   Background="#FF272226"
                    Icon="{StaticResource logo_bw}" TitlebarHeight="45">
 
-    <!--#FF252526-->
+    <!--#FF252526  #FF272226-->
     <!-- LeftWindow Commands -->
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands x:Name="leftWindowCommandsRegion" />

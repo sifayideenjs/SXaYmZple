@@ -76,3 +76,6 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.In
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\obj\Debug\Quotation.Infrastructure.pdb
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\obj\Debug\Quotation.Infrastructure.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\obj\Debug\Quotation.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignColors.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignThemes.MahApps.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignThemes.Wpf.dll

@@ -84,3 +84,6 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelIns
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\en-US\Quotation.TravelInsuranceModule.resources.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Quotation.TravelInsuranceModule.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\obj\Debug\Quotation.TravelInsuranceModule.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\bin\Debug\MaterialDesignColors.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\bin\Debug\MaterialDesignThemes.MahApps.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.TravelInsurance\bin\Debug\MaterialDesignThemes.Wpf.dll

@@ -30,7 +30,7 @@
                         TiltFactor="1"
                         Width="156" 
                         Height="150" 
-                        Background="#FFFFC15C" Margin="10 0 5 0">
+                        Background="#FFFFC15C" Margin="10 0 5 0" HorizontalContentAlignment="Center">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
                         <VisualBrush Visual="{StaticResource tile_create_new}" Stretch="Uniform" />
@@ -65,7 +65,7 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </metro:Tile>
-            <metro:Badged Badge="1000" BadgePlacementMode="TopRight" BadgeBackground="#FFDA1111">
+            <!--<metro:Badged Badge="1000" BadgePlacementMode="TopRight" BadgeBackground="#FFDA1111">
                 <metro:Tile Title="Expiring Quotations"
                         Command="{Binding ExpiringQuotationCommand}"
                         HorizontalAlignment="Left"
@@ -80,7 +80,7 @@
                         </Rectangle.OpacityMask>
                     </Rectangle>
                 </metro:Tile>
-            </metro:Badged>
+            </metro:Badged>-->
         </StackPanel>
     </Grid>
 </UserControl>

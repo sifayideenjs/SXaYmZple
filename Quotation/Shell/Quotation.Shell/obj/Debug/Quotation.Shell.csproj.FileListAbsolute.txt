@@ -214,3 +214,6 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debu
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Quotation.DataAccess.pdb
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Newtonsoft.Json.xml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\MaterialDesignColors.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\MaterialDesignThemes.MahApps.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\MaterialDesignThemes.Wpf.dll
