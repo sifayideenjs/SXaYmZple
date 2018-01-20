@@ -8,6 +8,6 @@ namespace Quotation.Infrastructure.Constants
 {
     public static class PopupNames
     {
-        public const string ModuleAPopup = "ModuleAPopup";
+        public const string ReportModule_Motor = "ReportModule_Motor";
     }
 }

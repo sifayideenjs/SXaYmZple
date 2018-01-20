@@ -33,14 +33,14 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Height="40" Width="40" Command="{Binding DashboardCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+            <Button Grid.Column="0" Height="40" Width="40" Command="{Binding DashboardCommand}" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" Margin="2">
                 <Rectangle Width="15" Height="15" Fill="White">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_left}"/>
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <Label Grid.Column="1" Content="Create Quotation" Foreground="White" FontSize="22" Margin="5 0 0 0"/>
+            <Label Grid.Column="1" Content="Create Quotation" Foreground="White" FontSize="22" Margin="5 0 0 0" VerticalContentAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Row="2" Margin="45 0 5 0">

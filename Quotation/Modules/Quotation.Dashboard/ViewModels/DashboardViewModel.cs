@@ -44,7 +44,7 @@ namespace Quotation.DashboardModule.ViewModels
 
         public void ShowModuleAPopup()
         {
-            this.RegionManager.RequestNavigate(RegionNames.SubMainRegion, PopupNames.ModuleAPopup);
+            //this.RegionManager.RequestNavigate(RegionNames.SubMainRegion, PopupNames.ModuleAPopup);
         }
 
         /// <summary>

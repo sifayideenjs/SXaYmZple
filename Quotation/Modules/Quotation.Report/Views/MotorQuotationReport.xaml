@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Quotation.ReportModule.Views.MotorQuotationReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Quotation.ReportModule"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:localViewModel="clr-namespace:Quotation.ReportModule.ViewModels"
+             xmlns:localUtility="clr-namespace:Quotation.ReportModule.Utility"
+             xmlns:rviewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"
+             xmlns:prism="http://prismlibrary.com/"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" DataContext="{Binding}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <rviewer:CrystalReportsViewer x:Name="CrystalReportsViewer" Grid.Row="1" ShowNextPageButton="False" ShowLogo="False" ShowGoToPageButton="False" ShowCopyButton="False" ShowSearchTextButton="False" ShowStatusbar="True" ShowToggleSidePanelButton="False" ShowToolbar="False" ShowRefreshButton="True" ShowPrintButton="True" ShowPrevPageButton="False" metro:ControlsHelper.ContentCharacterCasing="Upper" ToggleSidePanel="None" />
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+            <Button Height="50" Width="50" Command="{Binding PrintReportCommand}" Style="{StaticResource  MaterialDesignFloatingActionDarkButton}" Margin="10 0">
+                <material:PackIcon Kind="Printer" Height="30" Width="30" />
+            </Button>
+            <Button Height="50" Width="50" Command="{Binding ExportReportCommand}" Style="{StaticResource  MaterialDesignFloatingActionDarkButton}" Margin="5 0">
+                <material:PackIcon Kind="ContentSave" Height="30" Width="30" />
+            </Button>
+            <Button Height="50" Width="50" Command="{Binding RefreshReportCommand}" Style="{StaticResource  MaterialDesignFloatingActionDarkButton}" Margin="5 0">
+                <material:PackIcon Kind="Refresh" Height="30" Width="30" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

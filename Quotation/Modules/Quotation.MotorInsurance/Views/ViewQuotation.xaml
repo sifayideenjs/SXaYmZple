@@ -33,8 +33,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Height="40" Width="40" Command="{Binding DashboardCommand}" Style="{StaticResource MetroCircleButtonStyle}">
-                <Rectangle Width="15" Height="15" Fill="White">
+            <Button Grid.Column="0" Height="40" Width="40" Command="{Binding DashboardCommand}" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" Margin="2"  VerticalContentAlignment="Center">
+            <Rectangle Width="15" Height="15" Fill="White">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_left}"/>
                     </Rectangle.OpacityMask>

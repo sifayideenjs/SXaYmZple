@@ -19,6 +19,7 @@ using Quotation.Infrastructure.Interfaces;
 using Microsoft.Practices.Unity;
 using System.Data;
 using Quotation.DataAccess;
+using Quotation.Infrastructure.Events;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
@@ -197,6 +198,10 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecutePrintQuotationCommand()
         {
+            NavigationParameters navParameters = new NavigationParameters();
+            navParameters.Add("ReportDataSet", searchDataSet);
+
+            this.RegionManager.RequestNavigate(RegionNames.MotorSearchRegion, PopupNames.ReportModule_Motor, navParameters);
         }
 
 
@@ -241,8 +246,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             if (navigationContext.NavigationService.Region.Name == RegionNames.MainRegion)
             {
-                (QuotationViewModel as IViewModel).UnSubscribeEvents();
-                QuotationViewModel = null;
+                if(QuotationViewModel != null)
+                {
+                    (QuotationViewModel as IViewModel).UnSubscribeEvents();
+                    QuotationViewModel = null;
+                }
             }
         }
         #endregion //INavigationAware

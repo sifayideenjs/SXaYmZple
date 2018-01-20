@@ -34,17 +34,17 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Height="40" Width="40" Command="{Binding DashboardCommand}" Style="{StaticResource MetroCircleButtonStyle}">
+            <Button Grid.Column="0" Height="40" Width="40" Command="{Binding DashboardCommand}" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" Margin="2">
                 <Rectangle Width="15" Height="15" Fill="White">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_left}"/>
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <Label Grid.Column="1" Content="Search Quotation" Margin="5 0 0 0" FontSize="20" FontFamily="{DynamicResource HeaderFontFamily}" Foreground="LightGray"/>
+            <Label Grid.Column="1" Content="Search Quotation" Margin="5 0 0 0" FontSize="20" FontFamily="{DynamicResource HeaderFontFamily}" Foreground="LightGray" VerticalContentAlignment="Center"/>
         </Grid>
 
-        <Grid Grid.Row="2" Margin="45 0 5 0">
+        <Grid Grid.Row="2" Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="10" />
@@ -52,7 +52,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Margin="20 0 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250"/>
                     <ColumnDefinition Width="10"/>
@@ -66,15 +66,15 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Content="Search Type" Foreground="LightGray" FontSize="14"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Search Type" FontSize="14"/>
                 <ComboBox Grid.Row="1" metro:TextBoxHelper.Watermark="Select Search type" Height="30" Margin="5 0 0 0" SelectedItem="{Binding SearchType, Mode=TwoWay}" ItemsSource="{Binding Path=SearchTypes}" SelectedIndex="0">
                 </ComboBox>
 
-                <Label Grid.Row="0" Grid.Column="2" Content="Search Text" Foreground="LightGray" FontSize="14"/>
+                <Label Grid.Row="0" Grid.Column="2" Content="Search Text" FontSize="14"/>
                 <TextBox Grid.Row="1" Grid.Column="2" metro:TextBoxHelper.ClearTextButton="True" metro:TextBoxHelper.Watermark="Enter Search text" VerticalContentAlignment="Center" Height="30" Margin="5 0 0 0" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
-                <Button Grid.Row="1" Grid.Column="3" Height="35" Width="35" Command="{Binding SearchQuotationCommand}" Style="{StaticResource MetroCircleButtonStyle}" HorizontalAlignment="Left" Margin="5 0 0 0">
-                    <Rectangle Width="13" Height="13" Fill="WhiteSmoke">
+                <Button Grid.Row="1" Grid.Column="3" Height="45" Width="45" Command="{Binding SearchQuotationCommand}" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" HorizontalAlignment="Left" Margin="5 0 0 0">
+                    <Rectangle Width="20" Height="20" Fill="WhiteSmoke">
                         <Rectangle.OpacityMask>
                             <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_right}"/>
                         </Rectangle.OpacityMask>

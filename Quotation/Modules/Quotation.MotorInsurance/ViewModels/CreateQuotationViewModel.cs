@@ -140,7 +140,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 VehicleDetail = this.QuotationViewModel.VehicleDetail.Model,
                 InsuranceDetail = this.QuotationViewModel.CurrentInsuranceDetail.Model,
                 RegionName = RegionNames.MotorWizardRegion,
-                Source = WindowNames.MotorSummaryDetail
+                //Source = WindowNames.MotorSummaryDetail
+                Source = PopupNames.ReportModule_Motor
             });
         }
 
@@ -169,6 +170,10 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecutePrintQuotationCommand()
         {
+            NavigationParameters navParameters = new NavigationParameters();
+            navParameters.Add("ReportDataSet", this.QuotationViewModel.QuotationDataSet);
+
+            this.RegionManager.RequestNavigate(RegionNames.MotorSearchRegion, PopupNames.ReportModule_Motor, navParameters);
         }
         #endregion Commands
 

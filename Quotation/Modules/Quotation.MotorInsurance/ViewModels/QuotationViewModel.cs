@@ -25,6 +25,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         private bool isVehicalUpdated = false;
         private bool isInsuranceUpdated = false;
 
+        private DataSet quotationDataSet = null;
+
         private OwnerDetailViewModel ownerDetail;
         private ObservableCollection<DriverDetailViewModel> driverDetails;
         private DriverDetailViewModel currentDriverDetail;
@@ -49,6 +51,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public QuotationViewModel(DataSet dataSet)
         {
+            this.QuotationDataSet = dataSet;
+
             if (dataSet != null && dataSet.Tables.Count == 4)
             {
                 OwnerDetail ownerDetail = GetOwnerDetail(dataSet.Tables[0]);
@@ -159,6 +163,12 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.currentInsuranceDetail = new InsuranceDetailViewModel(new MIQuotation());
 #endif
             SubscribeEvents();
+        }
+
+        public DataSet QuotationDataSet
+        {
+            get { return quotationDataSet; }
+            set { quotationDataSet = value; OnPropertyChanged(); }
         }
 
         public bool IsOwnerCreated

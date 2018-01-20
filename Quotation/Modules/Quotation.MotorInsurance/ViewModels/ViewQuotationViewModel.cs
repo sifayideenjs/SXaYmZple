@@ -4,6 +4,7 @@ using Quotation.DataAccess.Models;
 using Quotation.Infrastructure;
 using Quotation.Infrastructure.Base;
 using Quotation.Infrastructure.Constants;
+using Quotation.Infrastructure.Events;
 using Quotation.Infrastructure.Interfaces;
 using Quotation.MotorInsuranceModule.Events;
 using System;
@@ -59,6 +60,10 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecutePrintQuotationCommand()
         {
+            NavigationParameters navParameters = new NavigationParameters();
+            navParameters.Add("ReportDataSet", this.QuotationViewModel.QuotationDataSet);
+
+            this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, PopupNames.ReportModule_Motor, navParameters);
         }
         #endregion Commands
 

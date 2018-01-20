@@ -70,6 +70,8 @@ namespace Quotation.Shell
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.ViewQuotation>(WindowNames.MotorViewQuotation);
 
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.SearchQuotation>(WindowNames.MotorSearchQuotation);
+
+           // Container.RegisterTypeForNavigation<Quotation.ReportModule.MotorQuotationReport>(WindowNames.ReportView);
         }
         
         protected override void ConfigureModuleCatalog()
@@ -79,6 +81,7 @@ namespace Quotation.Shell
             moduleCatalog.AddModule(typeof(Quotation.MotorInsuranceModule.MotorInsuranceModule));
             //moduleCatalog.AddModule(typeof(Quotation.TravelInsuranceModule.TravelInsuranceModule));
             moduleCatalog.AddModule(typeof(Quotation.DashboardModule.DashboardModule));
+            moduleCatalog.AddModule(typeof(Quotation.ReportModule.ReportModule));
         }
         
         private void RegisterServices()

@@ -23,7 +23,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  Foreground="White" FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>
+            <Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>
 
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
 
@@ -41,23 +41,23 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0" VerticalAlignment="Center" Target="{Binding ElementName=usernameTextBox}" Foreground="White" FontSize="15" IsTabStop="False">
+                    <Label Grid.Row="0" VerticalAlignment="Center" Target="{Binding ElementName=usernameTextBox}" FontSize="15" IsTabStop="False">
                         <AccessText Text="_Username"/>
                     </Label>
                     <TextBox x:Name="usernameTextBox" Grid.Row="1" Grid.ColumnSpan="2" metro:TextBoxHelper.ClearTextButton="True" Height="33" Width="250" VerticalContentAlignment="Center" Text="{Binding User, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true}"/>
 
-                    <Label Grid.Row="2" VerticalAlignment="Bottom" Target="{Binding ElementName=passwordTextBox}" Foreground="White" FontSize="15" IsTabStop="False">
+                    <Label Grid.Row="2" VerticalAlignment="Bottom" Target="{Binding ElementName=passwordTextBox}" FontSize="15" IsTabStop="False">
                         <AccessText Text="_Password"/>
                     </Label>
                     <PasswordBox x:Name="passwordTextBox" Grid.Row="3" Grid.ColumnSpan="2" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Height="33" Width="250" FontFamily="Calibri" />
 
                     <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="0 25 0 0">
-                        <Button HorizontalAlignment="Stretch" TabIndex="3" Height="37" Width="254" IsDefault="True" Content="LOGIN" metro:ButtonHelper.PreserveTextCase="True" Command="{Binding LoginCommand}" Style="{StaticResource AccentedSquareButtonStyle}"/>
+                        <Button HorizontalAlignment="Stretch" TabIndex="3" Height="37" Width="254" IsDefault="True" Content="LOGIN" metro:ButtonHelper.PreserveTextCase="True" Command="{Binding LoginCommand}" Style="{StaticResource MaterialDesignRaisedDarkButton}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>
 
-            <TextBlock Grid.Row="2" Margin="5" Text="{Binding ErrorMessage, Mode=TwoWay}" Foreground="Blue" FontSize="14" FontFamily="Segoe UI Light" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold" />
+            <TextBlock Grid.Row="2" Margin="5" Text="{Binding ErrorMessage, Mode=TwoWay}" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold" />
         </Grid>
     </Border>
 </UserControl>

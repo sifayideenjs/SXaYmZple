@@ -36,7 +36,7 @@
         
         <!-- Tiles -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5 15 0 15">
-            <metro:Tile Title="New Proposal" 
+            <metro:Tile Title="Proposal" 
                         Command="{Binding CreateQuotationCommand}"
                         HorizontalAlignment="Center"                        
                         VerticalAlignment="Top"
@@ -46,7 +46,7 @@
                         Background="#FF16B2D6" HorizontalContentAlignment="Center" TitleFontSize="14" Margin="10 0 5 0">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Visual="{StaticResource appbar_add}" Stretch="Uniform" />
+                        <VisualBrush Visual="{StaticResource appbar_add02}" Stretch="Uniform" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </metro:Tile>
@@ -74,7 +74,7 @@
                         Background="#FF16B2D6" HorizontalContentAlignment="Center" TitleFontSize="14" Margin="10 0 5 0">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Visual="{StaticResource tile_search2}" Stretch="Uniform" />
+                        <VisualBrush Visual="{StaticResource tile_search3}" Stretch="Uniform" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </metro:Tile>

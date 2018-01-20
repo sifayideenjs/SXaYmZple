@@ -41,7 +41,7 @@ namespace Quotation.TravelInsuranceModule.ViewModels
 
         public void ExecuteCreateQuotationCommand()
         {
-            this.RegionManager.RequestNavigate(RegionNames.SubMainRegion, PopupNames.ModuleAPopup);
+           // this.RegionManager.RequestNavigate(RegionNames.SubMainRegion, PopupNames.ModuleAPopup);
         }
 
         public bool CanExecuteRecentQuotationCommand()
@@ -61,7 +61,7 @@ namespace Quotation.TravelInsuranceModule.ViewModels
 
         public void ExecuteSearchQuotationCommand()
         {
-            this.RegionManager.RequestNavigate(RegionNames.SubMainRegion, PopupNames.ModuleAPopup);
+            //this.RegionManager.RequestNavigate(RegionNames.SubMainRegion, PopupNames.ModuleAPopup);
         }
 
         public bool CanExecuteExpiringQuotationCommand()

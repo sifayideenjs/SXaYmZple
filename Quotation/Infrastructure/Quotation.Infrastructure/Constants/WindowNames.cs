@@ -24,5 +24,7 @@ namespace Quotation.Infrastructure.Constants
         public static string MotorSearchQuotationDetail = "MotorSearchQuotationDetail";
         public static string MotorNonSearchDetail = "MotorNonSearchDetail";
         public static string MotorInsuranceRenewalDetail = "MotorInsuranceRenewalDetail";
+
+        public static string ReportView = "ReportView";
     }
 }

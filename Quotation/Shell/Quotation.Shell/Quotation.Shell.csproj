@@ -190,6 +190,10 @@
       <Project>{97c8f8f9-d101-4c2c-8151-90782a360162}</Project>
       <Name>Quotation.MotorInsuranceModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Quotation.Report\Quotation.ReportModule.csproj">
+      <Project>{9bec1ae7-b45f-4e30-b648-ec90f52f4fb2}</Project>
+      <Name>Quotation.ReportModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\Quotation.TravelInsurance\Quotation.TravelInsuranceModule.csproj">
       <Project>{b74fbf16-ec1e-49ce-8f68-99eb7265d124}</Project>
       <Name>Quotation.TravelInsuranceModule</Name>
