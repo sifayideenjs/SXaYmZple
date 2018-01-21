@@ -97,3 +97,12 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignColors.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignThemes.MahApps.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Core.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Core.pdb
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UsernameTitlebarCommands.g.cs
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UsernameTitlebarCommands.baml

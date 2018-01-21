@@ -171,7 +171,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             catch (Exception ex)
             {
                 this.ErrorInfo = ex.Message;
-                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Search", ex.Message);
+                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Search", string.Format("ERROR: {0}", ex.Message));
             }
         }
 
@@ -228,6 +228,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
         }
         #endregion //Commands
+
         #region INavigationAware
         public void OnNavigatedTo(NavigationContext navigationContext)
         {

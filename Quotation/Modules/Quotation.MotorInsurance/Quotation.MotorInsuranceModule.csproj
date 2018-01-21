@@ -227,6 +227,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\Quotation.Core\Quotation.Core.csproj">
+      <Project>{c8c4fb74-febd-49bc-a46f-41f998cc2ce1}</Project>
+      <Name>Quotation.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\Quotation.DataAccess\Quotation.DataAccess.csproj">
       <Project>{fff4b040-cc7b-46a7-acb1-7d484f809c72}</Project>
       <Name>Quotation.DataAccess</Name>

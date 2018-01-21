@@ -10,5 +10,6 @@ namespace Quotation.Infrastructure.Constants
     {
         public static string LocalizerService = "LocalizerService";
         public static string MetroMessageDisplayService = "MetroMessageDisplayService";
+        public static string AuthenticationService = "AuthenticationService";
     }
 }

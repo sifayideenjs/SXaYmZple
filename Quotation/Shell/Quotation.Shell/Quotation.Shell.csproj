@@ -170,6 +170,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\Quotation.Core\Quotation.Core.csproj">
+      <Project>{c8c4fb74-febd-49bc-a46f-41f998cc2ce1}</Project>
+      <Name>Quotation.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\Quotation.Infrastructure\Quotation.Infrastructure.csproj">
       <Project>{de912131-546f-40a9-9c3f-7016957ea613}</Project>
       <Name>Quotation.Infrastructure</Name>

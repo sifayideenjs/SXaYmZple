@@ -11,10 +11,14 @@
              Orientation="Horizontal"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="300">
-    <Button Command="{x:Static inf:ApplicationCommands.ShowFlyoutCommand}"
-            CommandParameter="{x:Static constants:FlyoutNames.ModuleAC1Flyout}">
-        <StackPanel Orientation="Horizontal">            
-            <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="Logout" />
+    <Button Command="{x:Static inf:ApplicationCommands.ShowFlyoutCommand}" CommandParameter="{x:Static constants:FlyoutNames.ModuleAC1Flyout}" Visibility="{Binding CanUserSignUp}">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="0" VerticalAlignment="Center" Text="Sign Up" />
+        </StackPanel>
+    </Button>
+    <Button Command="{Binding LogoutCommand}" CommandParameter="Logout" Visibility="{Binding CanUserLogout}">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="0" VerticalAlignment="Center" Text="Logout" />
         </StackPanel>
     </Button>
 </StackPanel>

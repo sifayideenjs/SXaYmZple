@@ -9,6 +9,8 @@ namespace Quotation.Infrastructure.Constants
     public static class WindowNames
     {
         public static string MainWindowName = "MainWindowName";
+        public static string LoginView = "LoginView";
+
         public static string Dashboard = "Dashboard";
 
         public static string MotorCreateQuotation = "MotorCreateQuotation";

@@ -17,54 +17,6 @@ namespace Quotation.DashboardModule.ViewModels
     {
         public DashboardViewModel()
         {
-            // Initialize commands
-            this.IntializeCommands();
         }
-
-        #region Commands
-
-        /// <summary>
-        /// Initialize commands
-        /// </summary>
-        private void IntializeCommands()
-        {
-            this.ShowModuleAPopupCommand = new RelayCommand(this.ShowModuleAPopup, this.CanShowModuleAPoupup);
-            this.ShowModuleAMessageCommand = new RelayCommand(this.ShowModuleAMessage, this.CanShowModuleAMessage);
-        }
-
-        /// <summary>
-        /// Show popup
-        /// </summary>
-        public ICommand ShowModuleAPopupCommand { get; private set; }
-
-        public bool CanShowModuleAPoupup()
-        {
-            return true;
-        }
-
-        public void ShowModuleAPopup()
-        {
-            //this.RegionManager.RequestNavigate(RegionNames.SubMainRegion, PopupNames.ModuleAPopup);
-        }
-
-        /// <summary>
-        /// Show popup
-        /// </summary>
-        public ICommand ShowModuleAMessageCommand { get; private set; }
-
-        public bool CanShowModuleAMessage()
-        {
-            return true;
-        }
-
-        /// <summary>
-        /// Show message
-        /// </summary>
-        public void ShowModuleAMessage()
-        {
-            this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Module A Message", "This is a message from Module A");
-        }
-
-        #endregion Commands
     }
 }

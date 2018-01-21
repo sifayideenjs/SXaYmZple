@@ -78,6 +78,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -109,11 +111,15 @@
     </Compile>
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\RightTitlebarCommandsViewModel.cs" />
+    <Compile Include="ViewModels\UsernameTitlebarCommandsViewModel.cs" />
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RightTitlebarCommands.xaml.cs">
       <DependentUpon>RightTitlebarCommands.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsernameTitlebarCommands.xaml.cs">
+      <DependentUpon>UsernameTitlebarCommands.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +135,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UsernameTitlebarCommands.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
@@ -139,6 +149,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\Quotation.Core\Quotation.Core.csproj">
+      <Project>{c8c4fb74-febd-49bc-a46f-41f998cc2ce1}</Project>
+      <Name>Quotation.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\Quotation.Infrastructure\Quotation.Infrastructure.csproj">
       <Project>{de912131-546f-40a9-9c3f-7016957ea613}</Project>
       <Name>Quotation.Infrastructure</Name>

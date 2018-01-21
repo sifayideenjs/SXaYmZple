@@ -9,6 +9,9 @@ using Quotation.Infrastructure.Services;
 using Quotation.Infrastructure;
 using Quotation.Infrastructure.Interfaces;
 using Prism.Logging;
+using Quotation.Core;
+using System;
+using System.Threading;
 
 namespace Quotation.Shell
 {
@@ -23,6 +26,11 @@ namespace Quotation.Shell
         protected override void InitializeShell()
         {
             base.InitializeShell();
+
+            //Create a Custom Principal with an Anonymous Identity at startup
+            CustomPrincipal customPrincipal = new CustomPrincipal();
+            AppDomain.CurrentDomain.SetThreadPrincipal(customPrincipal);
+            //Thread.CurrentPrincipal = customPrincipal;
 
             // Register views
             var regionManager = this.Container.Resolve<IRegionManager>();
@@ -51,6 +59,8 @@ namespace Quotation.Shell
 
             Container.RegisterType<IApplicationCommands, ApplicationCommandsProxy>();
             Container.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
+
+            Container.RegisterTypeForNavigation<Quotation.LoginModule.Views.LoginView>(WindowNames.LoginView);
 
             Container.RegisterTypeForNavigation< Quotation.DashboardModule.Views.Dashboard> (WindowNames.Dashboard);
 
@@ -86,6 +96,7 @@ namespace Quotation.Shell
         
         private void RegisterServices()
         {
+            Container.RegisterInstance<IAuthenticationService>(ServiceNames.AuthenticationService, Container.Resolve<AuthenticationService>(), new ContainerControlledLifetimeManager());
             Container.RegisterInstance<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService, Container.Resolve<MetroMessageDisplayService>(), new ContainerControlledLifetimeManager());
         }
         

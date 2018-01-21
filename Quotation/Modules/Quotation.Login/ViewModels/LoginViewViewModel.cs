@@ -10,60 +10,52 @@ using Microsoft.Practices.Unity;
 using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Interfaces;
 using Quotation.Infrastructure;
+using System.Windows.Controls;
+using Quotation.Infrastructure.Models;
+using System.Threading;
+using Quotation.Core;
+using Quotation.Infrastructure.Events;
 
 namespace Quotation.LoginModule.ViewModels
 {
     public class LoginViewViewModel : ViewModelBase
     {
-        private string _user;
-        private string _password;
+        #region Fields
+        private readonly IAuthenticationService _authenticationService;
+        private string _username;
         private string _error = string.Empty;
+        private string _status = string.Empty;
+        #endregion //Fields
 
+        #region Constructor
         public LoginViewViewModel()
         {
+            this._authenticationService = this.Container.Resolve<IAuthenticationService>(ServiceNames.AuthenticationService);
             this.IntializeCommands();
 
 #if DEBUG
-            User = "admin";
-            Password = "admin";
+            Username = "Mark";
 #endif
         }
+        #endregion //Constructor
 
-        //#region ** IDataErrorInfo
-
-        //public string this[string columnName]
-        //{
-        //    get
-        //    {
-        //        var err = string.Empty;
-
-        //        if (columnName == "User" && string.IsNullOrEmpty(User))
-        //            err = "User name cannot be empty";
-        //        else if (columnName == "Password" && string.IsNullOrEmpty(User))
-        //            err = "Password cannot be empty";
-
-        //        return err;
-        //    }
-        //}
-
-        //#endregion
-
-        public string Password
+        #region Properties
+        public string Username
         {
-            get { return _password; }
+            get { return _username; }
             set
             {
-                _password = value;
+                _username = value;
                 OnPropertyChanged();
             }
         }
 
-        public string User
+        public string Status
         {
-            get { return _user; }
+            get { return _status; }
             set
             {
-                _user = value;
+                _status = value;
                 OnPropertyChanged();
             }
         }
@@ -77,23 +69,87 @@ namespace Quotation.LoginModule.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public bool IsAuthenticated
+        {
+            get { return Thread.CurrentPrincipal.Identity.IsAuthenticated; }
+        }
+        #endregion //Properties
+
+        #region Commands
         private void IntializeCommands()
         {
-            this.LoginCommand = new RelayCommand(this.ExecuteLoginCommand, this.CanExecuteLoginCommand);
+            this.LoginCommand = new RelayCommand<object>(this.ExecuteLoginCommand, this.CanExecuteLoginCommand);
+            this.LogoutCommand = new RelayCommand(this.ExecuteLogoutCommand, this.CanExecuteLogoutCommand);
         }
 
         public ICommand LoginCommand { get; private set; }
 
-        public bool CanExecuteLoginCommand()
+        public bool CanExecuteLoginCommand(object parameter)
         {
             return true;
         }
 
-        public void ExecuteLoginCommand()
+        public void ExecuteLoginCommand(object parameter)
         {
-            //this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.DashboardWindow);
-            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.Dashboard);
+            PasswordBox passwordBox = parameter as PasswordBox;
+            string clearTextPassword = passwordBox.Password;
+#if DEBUG
+            if(_username == "Mark") clearTextPassword = "Mark";
+            else if (_username == "John") clearTextPassword = "John";
+#endif
+            try
+            {
+                //Validate Credentials through the Authentication Service
+                User user = _authenticationService.AuthenticateUser(Username, clearTextPassword);
+
+                //Get the Current Principal Object
+                CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
+                if (customPrincipal == null)
+                {
+                    throw new ArgumentException("The application's default thread principal must be set to a CustomPrincipal object on startup.");
+                }
+
+                //Authenticate the user
+                customPrincipal.Identity = new CustomIdentity(user.Username, user.Roles);
+
+                //Update UI
+                OnPropertyChanged("IsAuthenticated");
+                Username = string.Empty;
+                passwordBox.Password = string.Empty;
+                Status = string.Empty;
+
+                this.EventAggregator.GetEvent<LoginEvent>().Publish(new LoginEventArgs
+                {
+                    User = user,
+                    ActionType = "Login"
+                });
+
+                this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.Dashboard);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                Status = "Login failed! Please provide some valid credentials.";
+                this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Login", Status);
+            }
+            catch (Exception ex)
+            {
+                Status = string.Format("ERROR: {0}", ex.Message);
+                this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Login", Status);
+            }
         }
 
+        public ICommand LogoutCommand { get; private set; }
+
+        public bool CanExecuteLogoutCommand()
+        {
+            return true;
+        }
+
+        public void ExecuteLogoutCommand()
+        {
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.LoginView);
+        }
+        #endregion //Commands
     }
 }

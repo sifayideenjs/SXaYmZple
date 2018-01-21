@@ -81,3 +81,14 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.In
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignColors.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignThemes.MahApps.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Quotation.DataAccess.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Quotation.DataAccess.pdb
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Newtonsoft.Json.xml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\System.Net.Http.Formatting.xml

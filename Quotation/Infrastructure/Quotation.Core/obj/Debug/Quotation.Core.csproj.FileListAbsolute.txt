@@ -1,0 +1,5 @@
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\bin\Debug\Quotation.Core.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\bin\Debug\Quotation.Core.pdb
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\obj\Debug\Quotation.Core.csprojResolveAssemblyReference.cache
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\obj\Debug\Quotation.Core.dll
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\obj\Debug\Quotation.Core.pdb

@@ -8,7 +8,6 @@
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
-             lex:LocalizeDictionary.DesignCulture="de-DE"        
              lex:ResxLocalizationProvider.DefaultAssembly="Quotation.LoginModule"
              lex:ResxLocalizationProvider.DefaultDictionary="Resources"
              prism:ViewModelLocator.AutoWireViewModel="True"
@@ -24,32 +23,34 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>
+            <!--<Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>-->
 
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
 
-                <DockPanel LastChildFill="True">
+                <!--<DockPanel LastChildFill="True">
                     <Image Margin="3" Width="150" Height="120" DockPanel.Dock="Bottom" Source="{StaticResource logo}"/>
-                </DockPanel>
+                </DockPanel>-->
 
                 <Grid Margin="0 20 0 0">
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
                         <RowDefinition Height="50"/>
-                        <RowDefinition/>
                         <RowDefinition Height="50"/>
-                        <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
                     <!--<Label Grid.Row="0" VerticalAlignment="Center" Target="{Binding ElementName=usernameTextBox}" FontSize="15" IsTabStop="False">
                         <AccessText Text="_Username"/>
                     </Label>-->
-                    <TextBox x:Name="usernameTextBox" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignFloatingHintTextBox}" metro:TextBoxHelper.ClearTextButton="True" Height="33" Width="250" VerticalContentAlignment="Center" Text="{Binding User, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true}">
+                    <material:PackIcon Kind="Account" Grid.Row="0" Margin="10 10 10 0" Height="20" Width="20" VerticalAlignment="Center"/>
+                    <TextBox x:Name="usernameTextBox" Grid.Row="0" Grid.Column="1" Margin="0 0 0 0" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="50" Width="250" VerticalContentAlignment="Center" Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=true}">
                         <material:HintAssist.Hint>
-                            <StackPanel Orientation="Horizontal" >
-                                <material:PackIcon Kind="Account" Margin="1 -5 0 0" Height="20" Width="20"/>
-                                <TextBlock VerticalAlignment="Center" FontSize="14">Username</TextBlock>
+                            <StackPanel Orientation="Horizontal" >                                
+                                <TextBlock VerticalAlignment="Center" FontSize="18" Margin="0 -6 0 -2">Username</TextBlock>
                             </StackPanel>
                         </material:HintAssist.Hint>
                     </TextBox>
@@ -57,17 +58,17 @@
                     <!--<Label Grid.Row="2" VerticalAlignment="Bottom" Target="{Binding ElementName=passwordTextBox}" FontSize="15" IsTabStop="False">
                         <AccessText Text="_Password"/>
                     </Label>-->
-                    <PasswordBox x:Name="passwordTextBox" Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Height="33" Width="250" >
+                    <material:PackIcon Kind="Key" Grid.Row="1" Margin="10 10 10 0" Height="20" Width="20" VerticalAlignment="Center"/>
+                    <PasswordBox x:Name="passwordTextBox" Grid.Row="1" Grid.Column="1" Margin="0 0 0 0" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Height="50" Width="250" >
                         <material:HintAssist.Hint>
                             <StackPanel Orientation="Horizontal" >
-                                <material:PackIcon Kind="Key" Margin="1 -5 0 0" Height="20" Width="20"/>
-                                <TextBlock VerticalAlignment="Center" FontSize="14">Password</TextBlock>
+                                <TextBlock VerticalAlignment="Center" FontSize="18" Margin="0 -6 0 -2">Password</TextBlock>
                             </StackPanel>
                         </material:HintAssist.Hint>
                     </PasswordBox>
 
-                    <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="0 25 0 0">
-                        <Button HorizontalAlignment="Stretch" TabIndex="3" Height="37" Width="254" IsDefault="True" Content="LOGIN" metro:ButtonHelper.PreserveTextCase="True" Command="{Binding LoginCommand}" Style="{StaticResource MaterialDesignRaisedDarkButton}"/>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 25 0 0">
+                        <Button HorizontalAlignment="Stretch" TabIndex="3" Height="37" IsDefault="True" Content="LOGIN" metro:ButtonHelper.PreserveTextCase="True" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=passwordTextBox}" Style="{StaticResource MaterialDesignRaisedDarkButton}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

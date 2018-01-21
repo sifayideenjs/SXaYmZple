@@ -13,6 +13,9 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="670">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -107,6 +110,16 @@
                         <VisualBrush Visual="{StaticResource tile_expired}" Stretch="Uniform" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
+            </metro:Tile>
+            <metro:Tile Title="User Management" Visibility="{Binding CanUserManagement}"
+                        Command="{Binding RecentQuotationCommand}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        TiltFactor="1"
+                        Width="156" 
+                        Height="150" 
+                        Background="#FF16B2D6" HorizontalContentAlignment="Center" TitleFontSize="14" Margin="10 0 5 0">
+                <material:PackIcon Kind="Account" Height="50" Width="50"/>
             </metro:Tile>
         </StackPanel>
     </Grid>

@@ -12,16 +12,38 @@ using Quotation.Infrastructure.Interfaces;
 using Quotation.MotorInsuranceModule.Events;
 using Prism.Regions;
 using Quotation.Infrastructure;
+using System.Threading;
+using Quotation.Core;
+using System.Windows;
+using Quotation.Infrastructure.Events;
+using Quotation.Infrastructure.Models;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
     public class MotorInsuranceTilesViewModel : ViewModelBase
     {
+        private Visibility canUserManagement = Visibility.Collapsed;
+
         public MotorInsuranceTilesViewModel()
         {
+            bool isAdministrator = IsUserAdministrator();
+            this.CanUserManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
+
             this.IntializeCommands();
             this.SubscribeEvents();
         }
+
+        #region Properties
+        public Visibility CanUserManagement
+        {
+            get { return canUserManagement; }
+            set
+            {
+                canUserManagement = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion //Properties
 
         #region Commands
         private void IntializeCommands()
@@ -85,8 +107,50 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         #region EventAggregation
         private void SubscribeEvents()
         {
+            this.EventAggregator.GetEvent<LoginEvent>().Subscribe(OnLoginEvent);
             this.EventAggregator.GetEvent<DashboardEvent>().Subscribe(OnDashboardView);
             this.EventAggregator.GetEvent<CreateOwnerEvent>().Subscribe(OnCreateOwnerView);
+        }
+
+        private void OnLoginEvent(LoginEventArgs arg)
+        {
+            if (arg != null)
+            {
+                switch (arg.ActionType)
+                {
+                    case "Login":
+                        {
+                            //if (arg.User != null)
+                            //{
+                            //    User user = arg.User;                                
+                            //}
+
+                            bool isAdministrator = IsUserAdministrator();
+                            this.CanUserManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
+                            break;
+                        }
+                    case "SignUp":
+                        {
+                            break;
+                        }
+                    case "Logout":
+                        {
+                            break;
+                        }
+                }
+            }
+        }
+
+        private static bool IsUserAdministrator()
+        {
+            bool isAdministrator = false;
+            CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
+            if (customPrincipal != null)
+            {
+                isAdministrator = customPrincipal.IsInRole(RoleNames.Administrator);
+            }
+
+            return isAdministrator;
         }
 
         private void OnCreateOwnerView(CreateOwnerEventArgs arg)
