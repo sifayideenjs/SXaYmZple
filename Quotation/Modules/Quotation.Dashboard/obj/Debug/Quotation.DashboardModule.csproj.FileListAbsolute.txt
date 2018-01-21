@@ -106,3 +106,11 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bi
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Core.pdb
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UsernameTitlebarCommands.g.cs
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UsernameTitlebarCommands.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Core.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Core.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UsernameTitlebarCommands.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UsernameTitlebarCommands.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\AddUserDialog.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UserManagement.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\AddUserDialog.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UserManagement.baml

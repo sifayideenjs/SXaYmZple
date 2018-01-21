@@ -98,7 +98,7 @@
                 </metro:Tile>
             </metro:Badged>-->
             <metro:Tile Title="Expiring Quotations"
-                        Command="{Binding RecentQuotationCommand}"
+                        Command="{Binding ExpiringQuotationCommand}"
                         HorizontalAlignment="Center"                        
                         VerticalAlignment="Top"
                         TiltFactor="1"
@@ -112,14 +112,14 @@
                 </Rectangle>
             </metro:Tile>
             <metro:Tile Title="User Management" Visibility="{Binding CanUserManagement}"
-                        Command="{Binding RecentQuotationCommand}"
+                        Command="{Binding ExpiringQuotationCommand}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         TiltFactor="1"
                         Width="156" 
                         Height="150" 
                         Background="#FF16B2D6" HorizontalContentAlignment="Center" TitleFontSize="14" Margin="10 0 5 0">
-                <material:PackIcon Kind="Account" Height="50" Width="50"/>
+                <material:PackIcon Kind="AccountSettings" Height="50" Width="50"/>
             </metro:Tile>
         </StackPanel>
     </Grid>

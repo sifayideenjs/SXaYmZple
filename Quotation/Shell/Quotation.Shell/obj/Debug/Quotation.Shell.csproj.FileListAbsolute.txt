@@ -477,3 +477,5 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debu
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\zh-CHT\SAPBusinessObjects.WPF.ViewerShared.resources.dll
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Quotation.Core.dll
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Quotation.Core.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Quotation.Core.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\Quotation.Core.pdb

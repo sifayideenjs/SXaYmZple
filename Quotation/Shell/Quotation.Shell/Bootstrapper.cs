@@ -81,7 +81,9 @@ namespace Quotation.Shell
 
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.SearchQuotation>(WindowNames.MotorSearchQuotation);
 
-           // Container.RegisterTypeForNavigation<Quotation.ReportModule.MotorQuotationReport>(WindowNames.ReportView);
+            Container.RegisterTypeForNavigation<Quotation.DashboardModule.Views.UserManagement>(WindowNames.UserManagementView);
+
+            // Container.RegisterTypeForNavigation<Quotation.ReportModule.MotorQuotationReport>(WindowNames.ReportView);
         }
         
         protected override void ConfigureModuleCatalog()

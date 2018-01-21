@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\
 Quotation.DashboardModule
 none
 false
 DEBUG;TRACE
 
-3254108123
+5670933005
 
-9-1080694340
-83319804100
-Views\Dashboard.xaml;Views\RightTitlebarCommands.xaml;Views\UsernameTitlebarCommands.xaml;
+14-62432621
+831636979625
+Views\AddUserDialog.xaml;Views\Dashboard.xaml;Views\RightTitlebarCommands.xaml;Views\UserManagement.xaml;Views\UsernameTitlebarCommands.xaml;
 
 False
 

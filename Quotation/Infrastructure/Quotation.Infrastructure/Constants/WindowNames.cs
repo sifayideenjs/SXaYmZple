@@ -28,5 +28,6 @@ namespace Quotation.Infrastructure.Constants
         public static string MotorInsuranceRenewalDetail = "MotorInsuranceRenewalDetail";
 
         public static string ReportView = "ReportView";
+        public static string UserManagementView = "UserManagementView";
     }
 }

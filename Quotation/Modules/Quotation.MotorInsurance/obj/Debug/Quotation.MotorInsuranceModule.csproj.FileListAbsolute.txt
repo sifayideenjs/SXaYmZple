@@ -152,3 +152,5 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsuran
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\Quotation.Core.dll
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\Quotation.Core.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\Quotation.Core.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\Quotation.Core.pdb

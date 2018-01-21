@@ -10,9 +10,6 @@
              xmlns:infConstants="clr-namespace:Quotation.Infrastructure.Constants;assembly=Quotation.Infrastructure"
              xmlns:infBehaviors="clr-namespace:Quotation.Infrastructure.Behaviors;assembly=Quotation.Infrastructure"
              xmlns:control="clr-namespace:Quotation.Styling.Controls;assembly=Quotation.Styling"
-             xmlns:lex="http://wpflocalizeextension.codeplex.com"
-             lex:ResxLocalizationProvider.DefaultAssembly="Quotation.DashboardModule"
-             lex:ResxLocalizationProvider.DefaultDictionary="Resources"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="600">

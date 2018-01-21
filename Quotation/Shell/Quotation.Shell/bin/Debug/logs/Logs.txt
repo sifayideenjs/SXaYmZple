@@ -9885,3 +9885,255 @@
 2018-01-21 18:37:28.6821|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
 2018-01-21 18:37:29.1104|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
 2018-01-21 18:37:29.8408|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-21 21:27:46.6104|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-21 21:27:46.6504|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-21 21:27:46.6534|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-21 21:27:46.6734|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-21 21:27:46.7244|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-21 21:27:46.7354|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-21 21:27:46.8444|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-21 21:27:46.8584|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-21 21:27:46.8735|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-21 21:27:46.8735|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-21 21:27:46.8865|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-21 21:27:46.8865|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-21 21:27:47.9288|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-21 21:27:48.0788|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-21 21:27:48.0788|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-21 21:27:48.1088|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-21 21:27:48.4259|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-21 21:27:49.3512|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-21 21:45:10.3326|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-21 21:45:10.3586|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-21 21:45:10.3586|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-21 21:45:10.3806|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-21 21:45:10.4306|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-21 21:45:10.4446|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-21 21:45:10.5316|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-21 21:45:10.5316|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-21 21:45:10.5316|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-21 21:45:10.5446|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-21 21:45:10.5446|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-21 21:45:10.5446|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-21 21:45:11.5589|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-21 21:45:11.6699|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-21 21:45:11.6699|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-21 21:45:11.6959|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-21 21:45:12.7583|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-21 21:45:13.6355|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-21 23:05:53.7482|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-21 23:05:53.8693|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-21 23:05:53.8963|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-21 23:05:55.3127|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-21 23:05:55.6228|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-21 23:05:55.7048|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-21 23:05:55.9799|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-21 23:05:55.9799|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-21 23:05:55.9799|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-21 23:05:56.3200|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-21 23:05:56.5560|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-21 23:05:56.6221|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-21 23:05:58.9847|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-21 23:05:59.4459|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-21 23:05:59.4459|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-21 23:05:59.4749|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-21 23:06:01.1704|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-21 23:06:02.7188|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-21 23:07:29.3715|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-21 23:07:29.3975|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-21 23:07:29.3975|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-21 23:07:29.4185|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-21 23:07:29.4716|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-21 23:07:29.4856|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-21 23:07:29.5686|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-21 23:07:29.5686|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-21 23:07:29.5766|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-21 23:07:29.5766|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-21 23:07:29.5906|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-21 23:07:29.5906|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-21 23:07:30.7509|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-21 23:07:30.9180|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-21 23:07:30.9180|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-21 23:07:30.9470|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-21 23:07:31.3211|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-21 23:07:32.2564|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-21 23:21:01.7313|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-21 23:21:01.7984|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-21 23:21:01.8414|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-21 23:21:01.9524|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-21 23:21:02.0424|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-21 23:21:02.0594|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-21 23:21:02.1365|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-21 23:21:02.1365|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-21 23:21:02.1365|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-21 23:21:02.1535|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-21 23:21:02.1535|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-21 23:21:02.1535|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-21 23:21:03.3008|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-21 23:21:03.4518|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-21 23:21:03.4518|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-21 23:21:03.4828|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-21 23:21:03.9000|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-21 23:21:04.7702|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-21 23:44:54.3398|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-21 23:44:54.4158|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-21 23:44:54.4238|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-21 23:44:54.4558|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-21 23:44:54.5318|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-21 23:44:54.5438|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-21 23:44:54.6239|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-21 23:44:54.6239|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-21 23:44:54.6239|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-21 23:44:54.6379|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-21 23:44:54.6379|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-21 23:44:54.6379|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-21 23:44:55.8182|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-21 23:44:55.9763|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-21 23:44:55.9763|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-21 23:44:56.0053|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-21 23:44:56.3924|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-21 23:44:57.2746|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-21 23:52:10.6536|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-21 23:52:10.7006|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-21 23:52:10.7286|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-21 23:52:10.7576|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-21 23:52:10.8917|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-21 23:52:10.9327|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-21 23:52:11.0637|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-21 23:52:11.0637|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-21 23:52:11.0637|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-21 23:52:11.0787|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-21 23:52:11.0787|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-21 23:52:11.0787|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-21 23:52:12.2490|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-21 23:52:12.3981|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-21 23:52:12.4051|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-21 23:52:12.4371|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-21 23:52:12.7862|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-21 23:52:13.6604|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-21 23:58:04.5496|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-21 23:58:04.5756|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-21 23:58:04.5756|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-21 23:58:04.5956|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-21 23:58:04.6586|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-21 23:58:04.6716|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-21 23:58:04.7516|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-21 23:58:04.7516|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-21 23:58:04.7516|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-21 23:58:04.7646|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-21 23:58:04.7646|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-21 23:58:04.7646|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-21 23:58:05.9870|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-21 23:58:06.0970|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-21 23:58:06.0970|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-21 23:58:06.1230|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-21 23:58:06.4271|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-21 23:58:07.3154|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-22 00:00:19.9962|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-22 00:00:20.0612|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-22 00:00:20.0612|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-22 00:00:20.1123|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-22 00:00:20.2013|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-22 00:00:20.2143|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-22 00:00:20.2893|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-22 00:00:20.2913|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-22 00:00:20.2913|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-22 00:00:20.2913|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-22 00:00:20.3053|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-22 00:00:20.3053|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-22 00:00:21.8948|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-22 00:00:22.0568|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-22 00:00:22.0568|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-22 00:00:22.0848|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-22 00:00:22.5549|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-22 00:00:23.9483|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-22 00:01:19.0371|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-22 00:01:19.1111|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-22 00:01:19.1381|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-22 00:01:19.1871|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-22 00:01:19.3542|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-22 00:01:19.3822|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-22 00:01:19.4992|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-22 00:01:19.4992|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-22 00:01:19.4992|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-22 00:01:19.5152|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-22 00:01:19.5152|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-22 00:01:19.5152|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-22 00:01:21.0366|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-22 00:01:21.1977|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-22 00:01:21.1977|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-22 00:01:21.2247|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-22 00:01:21.5208|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-22 00:01:22.4421|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-22 00:03:35.2799|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-22 00:03:35.3760|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-22 00:03:35.4250|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-22 00:03:35.4530|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-22 00:03:35.5390|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-22 00:03:35.5580|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-22 00:03:35.6651|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-22 00:03:35.7051|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-22 00:03:35.7051|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-22 00:03:35.7191|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-22 00:03:35.7191|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-22 00:03:35.7281|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-22 00:03:36.9484|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-22 00:03:37.1305|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-22 00:03:37.1345|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-22 00:03:37.1625|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-22 00:03:37.4756|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-22 00:03:38.3528|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-22 00:05:05.9138|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-22 00:05:05.9888|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-22 00:05:06.0608|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-22 00:05:06.0959|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-22 00:05:06.3209|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-22 00:05:06.4109|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-22 00:05:06.6040|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-22 00:05:06.6040|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-22 00:05:06.6040|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-22 00:05:06.6200|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-22 00:05:06.6200|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-22 00:05:06.6200|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-22 00:05:08.0194|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-22 00:05:08.1564|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-22 00:05:08.1564|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-22 00:05:08.1915|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-22 00:05:08.6496|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-22 00:05:09.5348|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-22 00:07:19.1008|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-22 00:07:19.1558|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-22 00:07:19.1668|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-22 00:07:19.2178|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-22 00:07:19.4459|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-22 00:07:19.4799|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-22 00:07:19.6620|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-22 00:07:19.6620|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-22 00:07:19.6700|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-22 00:07:19.6850|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-22 00:07:19.6850|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-22 00:07:19.7030|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-22 00:07:20.9693|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-22 00:07:21.1324|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-22 00:07:21.1364|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-22 00:07:21.1614|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-22 00:07:21.7136|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-22 00:07:22.6228|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.
+2018-01-22 00:08:03.0644|DEBUG|Quotation.Shell.Logging.NLogLogger|Logger was created successfully.
+2018-01-22 00:08:03.1044|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating module catalog.
+2018-01-22 00:08:03.1044|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring module catalog.
+2018-01-22 00:08:03.1574|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating Unity container.
+2018-01-22 00:08:03.3894|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the Unity container.
+2018-01-22 00:08:03.4515|DEBUG|Quotation.Shell.Logging.NLogLogger|Adding UnityBootstrapperExtension to container.
+2018-01-22 00:08:03.5755|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring ServiceLocator singleton.
+2018-01-22 00:08:03.6125|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring the ViewModelLocator to use Unity.
+2018-01-22 00:08:03.6395|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring region adapters.
+2018-01-22 00:08:03.6665|DEBUG|Quotation.Shell.Logging.NLogLogger|Configuring default region behaviors.
+2018-01-22 00:08:03.7005|DEBUG|Quotation.Shell.Logging.NLogLogger|Registering Framework Exception Types.
+2018-01-22 00:08:03.7215|DEBUG|Quotation.Shell.Logging.NLogLogger|Creating the shell.
+2018-01-22 00:08:04.9159|INFO|Quotation.Shell.Logging.NLogLogger|MainViewModel created
+2018-01-22 00:08:05.0829|DEBUG|Quotation.Shell.Logging.NLogLogger|Setting the RegionManager.
+2018-01-22 00:08:05.0879|DEBUG|Quotation.Shell.Logging.NLogLogger|Updating Regions.
+2018-01-22 00:08:05.1149|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing the shell.
+2018-01-22 00:08:05.4400|DEBUG|Quotation.Shell.Logging.NLogLogger|Initializing modules.
+2018-01-22 00:08:06.3293|DEBUG|Quotation.Shell.Logging.NLogLogger|Bootstrapper sequence completed.

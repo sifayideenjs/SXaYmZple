@@ -92,3 +92,9 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infra
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Quotation.DataAccess.pdb
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Newtonsoft.Json.xml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Quotation.DataAccess.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Quotation.DataAccess.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\System.Net.Http.Formatting.xml

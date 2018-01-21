@@ -96,3 +96,5 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\De
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\Quotation.Core.dll
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\Quotation.Core.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\Quotation.Core.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\Quotation.Core.pdb
