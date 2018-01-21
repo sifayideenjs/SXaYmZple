@@ -149,3 +149,5 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsu
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\MaterialDesignColors.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\MaterialDesignThemes.MahApps.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\MaterialDesignThemes.Wpf.xml

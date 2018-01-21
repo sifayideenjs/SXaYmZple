@@ -13,8 +13,8 @@ DEBUG;TRACE
 111005908775
 
 37-572126805
-83787384361
+831896481421
 Views\CreateQuotation.xaml;Views\CreateWizards\AddQuotationDetail.xaml;Views\MotorInsuranceTiles.xaml;Views\RecentQuotation.xaml;Views\SearchQuotation.xaml;Views\CreateWizards\AddOwnerDetail.xaml;Views\CreateWizards\QuotationSummary.xaml;Views\SearchWizards\NonSearchView.xaml;Views\SearchWizards\InsuranceRenewalDetail.xaml;Views\SearchWizards\SearchView.xaml;Views\ViewQuotation.xaml;
 
-False
+True
 

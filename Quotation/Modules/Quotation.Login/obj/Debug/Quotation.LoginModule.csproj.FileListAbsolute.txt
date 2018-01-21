@@ -87,3 +87,5 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\MaterialDesignColors.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\MaterialDesignThemes.MahApps.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\MaterialDesignThemes.Wpf.xml

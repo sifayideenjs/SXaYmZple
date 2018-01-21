@@ -349,3 +349,5 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\D
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\tr\SAPBusinessObjects.WPF.ViewerShared.resources.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\zh-CHS\SAPBusinessObjects.WPF.ViewerShared.resources.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\zh-CHT\SAPBusinessObjects.WPF.ViewerShared.resources.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Shell\Quotation.Shell\bin\Debug\MaterialDesignThemes.Wpf.xml

@@ -158,3 +158,5 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\bi
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\bin\Debug\Quotation.Styling.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\bin\Debug\Quotation.Styling.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\bin\Debug\MaterialDesignThemes.Wpf.xml
