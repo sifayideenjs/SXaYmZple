@@ -14,6 +14,7 @@ using System.Windows.Input;
 using Quotation.DataAccess;
 using Quotation.Infrastructure.Interfaces;
 using Microsoft.Practices.Unity;
+using Quotation.Infrastructure.Events;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {

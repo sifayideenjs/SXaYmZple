@@ -8,12 +8,18 @@ namespace Quotation.Infrastructure.Models
 {
     public class User
     {
-        public User(string username, string[] roles)
+        public User(string name, string username, string[] roles)
         {
+            Name = name;
             Username = username;
             Roles = roles;
         }
         public string Username
+        {
+            get;
+            set;
+        }
+        public string Name
         {
             get;
             set;

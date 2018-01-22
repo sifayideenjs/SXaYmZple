@@ -103,32 +103,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DashboardModule.cs" />
-    <Compile Include="Events\UserAccountEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AddUserDialogViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
-    <Compile Include="ViewModels\RightTitlebarCommandsViewModel.cs" />
-    <Compile Include="ViewModels\UserManagementViewModel.cs" />
-    <Compile Include="ViewModels\UsernameTitlebarCommandsViewModel.cs" />
-    <Compile Include="Views\AddUserDialog.xaml.cs">
-      <DependentUpon>AddUserDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RightTitlebarCommands.xaml.cs">
-      <DependentUpon>RightTitlebarCommands.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UserManagement.xaml.cs">
-      <DependentUpon>UserManagement.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UsernameTitlebarCommands.xaml.cs">
-      <DependentUpon>UsernameTitlebarCommands.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -136,23 +119,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\AddUserDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Dashboard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RightTitlebarCommands.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UserManagement.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UsernameTitlebarCommands.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

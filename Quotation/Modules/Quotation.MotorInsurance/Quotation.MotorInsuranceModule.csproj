@@ -116,7 +116,6 @@
     <Compile Include="Events\CreateVehicalEvent.cs" />
     <Compile Include="Events\CreateDriverEvent.cs" />
     <Compile Include="Events\CreateOwnerEvent.cs" />
-    <Compile Include="Events\DashboardEvent.cs" />
     <Compile Include="Events\NextEvent.cs" />
     <Compile Include="Events\PreviousEvent.cs" />
     <Compile Include="Events\SearchQuotationEvent.cs" />

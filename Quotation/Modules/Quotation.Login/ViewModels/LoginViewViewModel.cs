@@ -15,6 +15,7 @@ using Quotation.Infrastructure.Models;
 using System.Threading;
 using Quotation.Core;
 using Quotation.Infrastructure.Events;
+using Prism.Regions;
 
 namespace Quotation.LoginModule.ViewModels
 {
@@ -34,7 +35,7 @@ namespace Quotation.LoginModule.ViewModels
             this.IntializeCommands();
 
 #if DEBUG
-            Username = "Mark";
+            Username = "Admin";
 #endif
         }
         #endregion //Constructor
@@ -96,7 +97,7 @@ namespace Quotation.LoginModule.ViewModels
             string clearTextPassword = passwordBox.Password;
 #if DEBUG
             if(_username == "Mark") clearTextPassword = "Mark";
-            else if (_username == "John") clearTextPassword = "John";
+            else if (_username == "Admin") clearTextPassword = "Admin123$";
 #endif
             try
             {
@@ -126,6 +127,7 @@ namespace Quotation.LoginModule.ViewModels
                 });
 
                 this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.Dashboard);
+                //this.RegionManager.RequestNavigate(RegionNames.RightWindowCommandsRegion, FlyoutNames.LoginAdminFlyout);
             }
             catch (UnauthorizedAccessException)
             {
@@ -148,8 +150,33 @@ namespace Quotation.LoginModule.ViewModels
 
         public void ExecuteLogoutCommand()
         {
+            CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
+            if (customPrincipal != null)
+            {
+                customPrincipal.Identity = new AnonymousIdentity();
+                OnPropertyChanged("IsAuthenticated");
+                Status = string.Empty;
+            }
+
+            ClearRegions(RegionNames.MainRegion);
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.LoginView);
         }
         #endregion //Commands
+
+        private void ClearRegions(string regionName)
+        {
+            if (this.RegionManager.Regions.ContainsRegionWithName(regionName))
+            {
+                IRegion region = this.RegionManager.Regions[regionName];
+                if (region != null)
+                {
+                    var views = region.Views;
+                    foreach (var view in views)
+                    {
+                        region.Remove(view);
+                    }
+                }
+            }
+        }
     }
 }

@@ -32,21 +32,6 @@ namespace Quotation.Shell
             AppDomain.CurrentDomain.SetThreadPrincipal(customPrincipal);
             //Thread.CurrentPrincipal = customPrincipal;
 
-            // Register views
-            var regionManager = this.Container.Resolve<IRegionManager>();
-            if (regionManager != null)
-            {
-                //Prism.Unity.UnityExtensions.RegisterTypeForNavigation<Views.MainWindow>(this.Container, WindowNames.DashboardWindow);
-                //regionManager.RegisterViewWithRegion(RegionNames.MainRegion, typeof(MainWindow));
-
-                // Add right windows commands
-                //regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(RightTitlebarCommands));
-                // Add flyouts
-                //regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(ShellSettingsFlyout));
-                // Add tiles to MainRegion
-                //regionManager.RegisterViewWithRegion(RegionNames.MainRegion, typeof(HomeTiles));
-            }
-
             // Register services
             this.RegisterServices();
 
@@ -61,15 +46,14 @@ namespace Quotation.Shell
             Container.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
 
             Container.RegisterTypeForNavigation<Quotation.LoginModule.Views.LoginView>(WindowNames.LoginView);
+            Container.RegisterTypeForNavigation<Quotation.LoginModule.Views.UserManagement>(WindowNames.UserManagementView);
+            //Container.RegisterTypeForNavigation<Quotation.LoginModule.Views.AdministrationTitlebar>(FlyoutNames.LoginAdminFlyout);
 
             Container.RegisterTypeForNavigation< Quotation.DashboardModule.Views.Dashboard> (WindowNames.Dashboard);
 
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateQuotation>(WindowNames.MotorCreateQuotation);
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.AddOwnerDetail>(WindowNames.MotorAddOwnerDetail);
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateWizards.AddQuotationDetail>(WindowNames.MotorAddQuotationDetail);
-            //Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateWizards.AddDriverDetail>(WindowNames.MotorAddDriverDetail);
-            //Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.AddVehicleDetail>(WindowNames.MotorAddVehicleDetail);
-            //Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.AddInsuranceDetail>(WindowNames.MotorAddInsuranceDetail);
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.QuotationSummary>(WindowNames.MotorSummaryDetail);
 
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.SearchWizards.SearchView>(WindowNames.MotorSearchQuotationDetail);
@@ -80,8 +64,6 @@ namespace Quotation.Shell
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.ViewQuotation>(WindowNames.MotorViewQuotation);
 
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.SearchQuotation>(WindowNames.MotorSearchQuotation);
-
-            Container.RegisterTypeForNavigation<Quotation.DashboardModule.Views.UserManagement>(WindowNames.UserManagementView);
 
             // Container.RegisterTypeForNavigation<Quotation.ReportModule.MotorQuotationReport>(WindowNames.ReportView);
         }

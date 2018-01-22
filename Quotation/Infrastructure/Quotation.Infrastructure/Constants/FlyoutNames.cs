@@ -17,5 +17,7 @@ namespace Quotation.Infrastructure.Constants
 
         // ModuleB-Flyouts
         public static string ModuleBC1Flyout = "ModuleBC1Flyout";
+
+        public static string LoginAdminFlyout = "LoginAdminFlyout";
     }
 }

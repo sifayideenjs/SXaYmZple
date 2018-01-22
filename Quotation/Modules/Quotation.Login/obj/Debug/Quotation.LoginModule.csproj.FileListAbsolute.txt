@@ -98,3 +98,15 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\De
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\Quotation.Core.pdb
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\Quotation.Core.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\Quotation.Core.pdb
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\AddUserDialog.g.cs
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\RightTitlebar.g.cs
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\UserManagement.g.cs
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\UsernameTitlebar.g.cs
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\AddUserDialog.baml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\RightTitlebar.baml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\UserManagement.baml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\UsernameTitlebar.baml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\LoginViewTiles.g.cs
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\LoginViewTiles.baml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\AdministrationTitlebar.g.cs
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\AdministrationTitlebar.baml

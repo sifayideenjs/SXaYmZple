@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\
 Quotation.LoginModule
 none
 false
 DEBUG;TRACE
 
-1-1206739958
+71883835889
 
-5-457739995
-82-2086993964
-Views\LoginView.xaml;
+17142665551
+82152527154
+Views\AddUserDialog.xaml;Views\AdministrationTitlebar.xaml;Views\LoginView.xaml;Views\LoginViewTiles.xaml;Views\RightTitlebar.xaml;Views\UserManagement.xaml;Views\UsernameTitlebar.xaml;
 
 False
 

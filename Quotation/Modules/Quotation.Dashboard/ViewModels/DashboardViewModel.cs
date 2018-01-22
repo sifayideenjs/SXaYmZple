@@ -10,6 +10,7 @@ using Microsoft.Practices.Unity;
 using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Interfaces;
 using Quotation.Infrastructure;
+using Quotation.Infrastructure.Events;
 
 namespace Quotation.DashboardModule.ViewModels
 {
@@ -17,6 +18,19 @@ namespace Quotation.DashboardModule.ViewModels
     {
         public DashboardViewModel()
         {
+            SubscribeEvents();
         }
+
+        #region EventAggregation
+        private void SubscribeEvents()
+        {
+            this.EventAggregator.GetEvent<DashboardEvent>().Subscribe(OnDashboardView);
+        }
+
+        private void OnDashboardView(DashboardEventArgs arg)
+        {
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.Dashboard);
+        }
+        #endregion //EventAggregation
     }
 }

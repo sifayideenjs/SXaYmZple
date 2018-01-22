@@ -108,7 +108,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         private void SubscribeEvents()
         {
             this.EventAggregator.GetEvent<LoginEvent>().Subscribe(OnLoginEvent);
-            this.EventAggregator.GetEvent<DashboardEvent>().Subscribe(OnDashboardView);
             this.EventAggregator.GetEvent<CreateOwnerEvent>().Subscribe(OnCreateOwnerView);
         }
 
@@ -156,11 +155,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         private void OnCreateOwnerView(CreateOwnerEventArgs arg)
         {
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
-        }
-
-        private void OnDashboardView(DashboardEventArgs arg)
-        {
-            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.Dashboard);
         }
         #endregion //EventAggregation
 

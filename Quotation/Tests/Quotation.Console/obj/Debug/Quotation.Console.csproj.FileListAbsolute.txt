@@ -1,0 +1,6 @@
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\bin\Debug\Quotation.Console.exe.config
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\bin\Debug\Quotation.Console.exe
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\bin\Debug\Quotation.Console.pdb
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\obj\Debug\Quotation.Console.csprojResolveAssemblyReference.cache
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\obj\Debug\Quotation.Console.exe
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\obj\Debug\Quotation.Console.pdb

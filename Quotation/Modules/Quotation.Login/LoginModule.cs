@@ -14,6 +14,11 @@ namespace Quotation.LoginModule
             //unityContainer.RegisterType<LoginViewViewModel>();
             // Tiles
             regionManager.RegisterViewWithRegion(RegionNames.MainRegion, typeof(LoginView));
+            regionManager.RegisterViewWithRegion(RegionNames.TileRegion, typeof(LoginViewTiles));
+
+            // Titlebar
+            regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(UsernameTitlebar));
+            regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(RightTitlebar));
         }
     }
 }

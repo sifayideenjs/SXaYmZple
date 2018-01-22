@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\
 Quotation.MotorInsuranceModule
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 111005908775
 
-37-572126805
-84-572967524
+361580076344
+84872930737
 Views\CreateQuotation.xaml;Views\CreateWizards\AddQuotationDetail.xaml;Views\MotorInsuranceTiles.xaml;Views\RecentQuotation.xaml;Views\SearchQuotation.xaml;Views\CreateWizards\AddOwnerDetail.xaml;Views\CreateWizards\QuotationSummary.xaml;Views\SearchWizards\NonSearchView.xaml;Views\SearchWizards\InsuranceRenewalDetail.xaml;Views\SearchWizards\SearchView.xaml;Views\ViewQuotation.xaml;
 
-True
+False
 

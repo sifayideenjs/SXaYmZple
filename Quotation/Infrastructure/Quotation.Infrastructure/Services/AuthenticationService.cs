@@ -13,11 +13,18 @@ namespace Quotation.Infrastructure.Services
     {
         private class InternalUserData
         {
-            public InternalUserData(string username, string hashedPassword, string[] roles)
+            public InternalUserData(string name, string username, string hashedPassword, string[] roles)
             {
+                Name = name;
                 Username = username;
                 HashedPassword = hashedPassword;
                 Roles = roles;
+            }
+
+            public string Name
+            {
+                get;
+                private set;
             }
 
             public string Username
@@ -41,8 +48,10 @@ namespace Quotation.Infrastructure.Services
 
         private static readonly List<InternalUserData> _users = new List<InternalUserData>()
         {
-            new InternalUserData("Mark", "MB5PYIsbI2YzCUe34Q5ZU2VferIoI4Ttd+ydolWV0OE=", new string[] { "Administrator" }),
-            new InternalUserData("John", "hMaLizwzOQ5LeOnMuj+C6W75Zl5CXXYbwDSHWW9ZOXc=", new string[] { })
+            new InternalUserData("Administrator", "Admin", "XYe3Vs7WzqV+aglmNmwxZg0XhDN0560nL6c0imwiUbU=", new string[] { "Administrator" }),
+            new InternalUserData("Mark Zuckerberg", "Mark", "3t+xSzmHldJCtbneg/o3ISj4ISxYANB5iLJqHLKOgoY=", new string[] { "Administrator" }),
+            new InternalUserData("Satya Nadella", "Satya", "1TwZVFwIbBPmx7tG+O7xxDrJTdWCvrA0B45zDPkmito=", new string[] { }),
+            new InternalUserData("Sundar Pichai", "Pichai", "+JmEE5Mbfcxj5n45JiyVIZX3hsp/3BU/M847cBuoXUY=", new string[] { })
         };
 
         public User AuthenticateUser(string username, string clearTextPassword)
@@ -53,13 +62,13 @@ namespace Quotation.Infrastructure.Services
                 throw new UnauthorizedAccessException("Access denied. Please provide some valid credentials.");
             }
 
-            return new User(userData.Username, userData.Roles);
+            return new User(userData.Name, userData.Username, userData.Roles);
         }
 
         private string CalculateHash(string clearTextPassword, string salt)
         {
             // Convert the salted password to a byte array
-            byte[] saltedHashBytes = Encoding.UTF8.GetBytes(clearTextPassword + salt);
+            byte[] saltedHashBytes = Encoding.UTF8.GetBytes(clearTextPassword + salt.ToUpper());
             // Use the hash algorithm to calculate the hash
             HashAlgorithm algorithm = new SHA256Managed();
             byte[] hash = algorithm.ComputeHash(saltedHashBytes);

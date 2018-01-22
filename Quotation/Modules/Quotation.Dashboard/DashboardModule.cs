@@ -11,8 +11,8 @@ namespace Quotation.DashboardModule
         public DashboardModule(IUnityContainer unityContainer, IRegionManager regionManager) : base(unityContainer, regionManager)
         {
             // Titlebar
-            regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(UsernameTitlebarCommands));
-            regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(RightTitlebarCommands));
+            //regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(UsernameTitlebarCommands));
+            //regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(RightTitlebarCommands));
         }
     }
 }
