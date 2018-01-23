@@ -110,3 +110,6 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\De
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\LoginViewTiles.baml
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\AdministrationTitlebar.g.cs
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\AdministrationTitlebar.baml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\GroupManagement.g.cs
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\GroupManagement.baml
+C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\GeneratedInternalTypeHelper.g.cs

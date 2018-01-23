@@ -61,14 +61,6 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <!--<metro:Tile Title="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Top" TiltFactor="1" Width="120" Height="120" Background="#FF134577" HorizontalContentAlignment="Center" TitleFontSize="13" Margin="5">
-                                <Rectangle Fill="White" Height="30" Width="30" Margin="0 0 0 20">
-                                    <Rectangle.OpacityMask>
-                                        <VisualBrush Visual="{StaticResource appbar_doc2}" Stretch="Uniform" />
-                                    </Rectangle.OpacityMask>
-                                </Rectangle>
-                            </metro:Tile>-->
-
                             <material:Flipper Style="{StaticResource MaterialDesignCardFlipper}" Margin="0 30 0 0">
                                 <material:Flipper.FrontContent>
                                     <Grid Height="236" Width="200">
@@ -80,7 +72,7 @@
                                             <material:PackIcon Kind="AccountCircle" Height="128" Width="128" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                         </material:ColorZone>
                                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock>James Willock</TextBlock>
+                                            <TextBlock Text="{Binding Name}"/>
                                             <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static material:Flipper.FlipCommand}" Margin="0 4 0 0">EDIT</Button>
                                         </StackPanel>
                                     </Grid>
@@ -106,12 +98,9 @@
                                                 <RowDefinition />
                                                 <RowDefinition />
                                             </Grid.RowDefinitions>
-                                            <TextBox material:HintAssist.Hint="Name" material:HintAssist.IsFloating="True" Margin="0 12 0 0">James</TextBox>
-                                            <TextBox Grid.Row="1" material:HintAssist.Hint="Username" material:HintAssist.IsFloating="True" Margin="0 12 0 0">Willock</TextBox>
-                                            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 12 0 0" HorizontalAlignment="Right">
-                                                <TextBlock VerticalAlignment="Center">Is Administrator</TextBlock>
-                                                <ToggleButton Margin="8 0 0 0"></ToggleButton>
-                                            </StackPanel>
+                                            <TextBox material:HintAssist.Hint="Name" material:HintAssist.IsFloating="True" Margin="0 12 0 0" Text="{Binding Name}"/>
+                                            <TextBox Grid.Row="1" material:HintAssist.Hint="Username" material:HintAssist.IsFloating="True" Margin="0 12 0 0" Text="{Binding Username}"/>
+                                            <ComboBox Grid.Row="2" material:HintAssist.Hint="Group" Margin="0 12 0 0" ItemsSource="{Binding Groups}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedGroup}"/>
                                             <Button Grid.Row="3" Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static material:Flipper.FlipCommand}" Margin="0 4 0 0">SAVE</Button>
                                         </Grid>
                                     </Grid>
@@ -119,15 +108,10 @@
                             </material:Flipper>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                    <!--<system:String>Item #1</system:String>
-                        <system:String>Item #2</system:String>
-                        <system:String>Item #3</system:String>
-                        <system:String>Item #4</system:String>
-                        <system:String>Item #5</system:String>-->
                 </ItemsControl>
             </ScrollViewer>
         </Grid>
 
-        <material:DialogHost Identifier="RootDialog" Grid.Row="0" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <material:DialogHost Identifier="UserDialog" Grid.Row="0" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 </UserControl>

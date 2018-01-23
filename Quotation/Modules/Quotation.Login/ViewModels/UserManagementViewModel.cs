@@ -16,7 +16,7 @@ namespace Quotation.LoginModule.ViewModels
 {
     public class UserManagementViewModel : ViewModelBase
     {
-        private ObservableCollection<string> users = new ObservableCollection<string>();
+        private ObservableCollection<UserViewModel> users = new ObservableCollection<UserViewModel>();
 
         public UserManagementViewModel()
         {
@@ -24,12 +24,14 @@ namespace Quotation.LoginModule.ViewModels
             IntializeCommands();
 
 #if DEBUG
-
+            List<GroupRoleViewModel> roles = new List<GroupRoleViewModel>() { new GroupRoleViewModel("Super-Administrator", false), new GroupRoleViewModel("Administrator", false), new GroupRoleViewModel("User", true) };
+            UserViewModel user1 = new UserViewModel("Super Administrator", "Admin", "Admin123$", roles);
+            this.Users.Add(user1);
 #endif
         }
 
         #region Properties
-        public ObservableCollection<string> Users
+        public ObservableCollection<UserViewModel> Users
         {
             get { return users; }
             set
@@ -75,7 +77,7 @@ namespace Quotation.LoginModule.ViewModels
                 DataContext = new AddUserDialogViewModel()
             };
 
-            var result = await DialogHost.Show(view, "RootDialog", ExtendedOpenedEventHandler);
+            var result = await DialogHost.Show(view, "UserDialog", ExtendedOpenedEventHandler);
         }
 
         private void ExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
@@ -97,7 +99,7 @@ namespace Quotation.LoginModule.ViewModels
                 {
                     case "UserAdd":
                         {
-                            this.Users.Add(arg.Username);
+                            //this.Users.Add(arg.Username);
                             break;
                         }
                 }

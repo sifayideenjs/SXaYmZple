@@ -55,7 +55,8 @@ namespace Quotation.LoginModule.Models
 
     public class ApplicationGroupRole
     {
-        public string ApplicationGroupId { get; set; }
         public string ApplicationRoleId { get; set; }
+        public string Name { get; set; }
+        public string ApplicationGroupId { get; set; }
     }
 }

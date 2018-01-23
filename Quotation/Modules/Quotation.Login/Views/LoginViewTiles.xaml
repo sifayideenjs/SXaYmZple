@@ -46,6 +46,16 @@
                         Background="#FF16B2D6" HorizontalContentAlignment="Center" TitleFontSize="14" Margin="10 0 5 0">
                 <material:PackIcon Kind="AccountSettings" Height="50" Width="50"/>
             </metro:Tile>
+            <metro:Tile Title="Group Management" Visibility="{Binding CanGroupManagement}"
+                        Command="{Binding GroupManagementCommand}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        TiltFactor="1"
+                        Width="156" 
+                        Height="150" 
+                        Background="#FF16B2D6" HorizontalContentAlignment="Center" TitleFontSize="14" Margin="10 0 5 0">
+                <material:PackIcon Kind="AccountMultipleOutline" Height="50" Width="50"/>
+            </metro:Tile>
         </StackPanel>
     </Grid>
 

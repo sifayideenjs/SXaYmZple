@@ -48,10 +48,10 @@ namespace Quotation.Infrastructure.Services
 
         private static readonly List<InternalUserData> _users = new List<InternalUserData>()
         {
-            new InternalUserData("Administrator", "Admin", "XYe3Vs7WzqV+aglmNmwxZg0XhDN0560nL6c0imwiUbU=", new string[] { "Administrator" }),
+            new InternalUserData("Super Administrator", "Admin", "XYe3Vs7WzqV+aglmNmwxZg0XhDN0560nL6c0imwiUbU=", new string[] { "Super-Administrator" }),
             new InternalUserData("Mark Zuckerberg", "Mark", "3t+xSzmHldJCtbneg/o3ISj4ISxYANB5iLJqHLKOgoY=", new string[] { "Administrator" }),
-            new InternalUserData("Satya Nadella", "Satya", "1TwZVFwIbBPmx7tG+O7xxDrJTdWCvrA0B45zDPkmito=", new string[] { }),
-            new InternalUserData("Sundar Pichai", "Pichai", "+JmEE5Mbfcxj5n45JiyVIZX3hsp/3BU/M847cBuoXUY=", new string[] { })
+            new InternalUserData("Satya Nadella", "Satya", "1TwZVFwIbBPmx7tG+O7xxDrJTdWCvrA0B45zDPkmito=", new string[] { "User" }),
+            new InternalUserData("Sundar Pichai", "Pichai", "+JmEE5Mbfcxj5n45JiyVIZX3hsp/3BU/M847cBuoXUY=", new string[] { "User" })
         };
 
         public User AuthenticateUser(string username, string clearTextPassword)

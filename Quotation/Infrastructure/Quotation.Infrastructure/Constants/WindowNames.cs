@@ -29,5 +29,6 @@ namespace Quotation.Infrastructure.Constants
 
         public static string ReportView = "ReportView";
         public static string UserManagementView = "UserManagementView";
+        public static string GroupManagementView = "GroupManagementView";
     }
 }

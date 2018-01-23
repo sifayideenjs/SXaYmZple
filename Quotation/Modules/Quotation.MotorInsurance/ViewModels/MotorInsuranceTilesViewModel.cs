@@ -100,7 +100,6 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecuteExpiringQuotationCommand()
         {
-            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.UserManagementView);
         }
         #endregion Commands
 

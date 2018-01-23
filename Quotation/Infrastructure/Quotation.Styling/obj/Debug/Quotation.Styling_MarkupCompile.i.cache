@@ -16,5 +16,5 @@ DEBUG;TRACE
 13738642453
 BitmapGraphics\Icons.xaml;Controls\HeaderControl.xaml;LookAndFeel.xaml;Styles\Popup.xaml;Styles\Label.xaml;
 
-True
+False
 

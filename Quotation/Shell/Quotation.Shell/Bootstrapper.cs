@@ -47,6 +47,7 @@ namespace Quotation.Shell
 
             Container.RegisterTypeForNavigation<Quotation.LoginModule.Views.LoginView>(WindowNames.LoginView);
             Container.RegisterTypeForNavigation<Quotation.LoginModule.Views.UserManagement>(WindowNames.UserManagementView);
+            Container.RegisterTypeForNavigation<Quotation.LoginModule.Views.GroupManagement>(WindowNames.GroupManagementView);
             //Container.RegisterTypeForNavigation<Quotation.LoginModule.Views.AdministrationTitlebar>(FlyoutNames.LoginAdminFlyout);
 
             Container.RegisterTypeForNavigation< Quotation.DashboardModule.Views.Dashboard> (WindowNames.Dashboard);

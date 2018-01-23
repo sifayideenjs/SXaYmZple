@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="ViewModels\AddUserDialogViewModel.cs" />
     <Compile Include="ViewModels\AdministrationTitlebarViewModel.cs" />
+    <Compile Include="ViewModels\GroupManagementViewModel.cs" />
     <Compile Include="ViewModels\LoginViewTilesViewModel.cs" />
     <Compile Include="ViewModels\LoginViewViewModel.cs" />
     <Compile Include="ViewModels\RightTitlebarViewModel.cs" />
@@ -122,6 +123,9 @@
     </Compile>
     <Compile Include="Views\AdministrationTitlebar.xaml.cs">
       <DependentUpon>AdministrationTitlebar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GroupManagement.xaml.cs">
+      <DependentUpon>GroupManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -149,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdministrationTitlebar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GroupManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -18,12 +18,11 @@ namespace Quotation.LoginModule.ViewModels
     public class LoginViewTilesViewModel : ViewModelBase
     {
         private Visibility canUserManagement = Visibility.Collapsed;
+        private Visibility canGroupManagement = Visibility.Collapsed;
 
         public LoginViewTilesViewModel()
         {
-            bool isAdministrator = IsUserAdministrator();
-            this.CanUserManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
-
+            this.InitializeUI();
             this.IntializeCommands();
             this.SubscribeEvents();
         }
@@ -38,12 +37,23 @@ namespace Quotation.LoginModule.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public Visibility CanGroupManagement
+        {
+            get { return canGroupManagement; }
+            set
+            {
+                canGroupManagement = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion //Properties
 
         #region Commands
         private void IntializeCommands()
         {
             this.UserManagementCommand = new RelayCommand(this.ExecuteUserManagementCommand, this.CanExecuteUserManagementCommand);
+            this.GroupManagementCommand = new RelayCommand(this.ExecuteGroupManagementCommand, this.CanExecuteUserManagementCommand);
         }
 
         public ICommand UserManagementCommand { get; private set; }
@@ -57,6 +67,19 @@ namespace Quotation.LoginModule.ViewModels
         {
             //ClearRegions(RegionNames.MainRegion);
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.UserManagementView);
+        }
+
+        public ICommand GroupManagementCommand { get; private set; }
+
+        public bool CanExecuteGroupManagementCommand()
+        {
+            return true;
+        }
+
+        public void ExecuteGroupManagementCommand()
+        {
+            //ClearRegions(RegionNames.MainRegion);
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.GroupManagementView);
         }
         #endregion Commands
 
@@ -74,13 +97,7 @@ namespace Quotation.LoginModule.ViewModels
                 {
                     case "Login":
                         {
-                            //if (arg.User != null)
-                            //{
-                            //    User user = arg.User;                                
-                            //}
-
-                            bool isAdministrator = IsUserAdministrator();
-                            this.CanUserManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
+                            this.InitializeUI();
                             break;
                         }
                     case "SignUp":
@@ -95,7 +112,28 @@ namespace Quotation.LoginModule.ViewModels
             }
         }
 
-        private static bool IsUserAdministrator()
+        private void InitializeUI()
+        {
+            bool isSuperAdministrator = IsSuperAdministrator();
+            bool isAdministrator = IsAdministrator();
+            if (isSuperAdministrator)
+            {
+                this.CanGroupManagement = isSuperAdministrator ? Visibility.Visible : Visibility.Collapsed;
+                this.CanUserManagement = isSuperAdministrator ? Visibility.Visible : Visibility.Collapsed;
+            }
+            else if(isAdministrator)
+            {
+                this.CanGroupManagement = isAdministrator ? Visibility.Collapsed : Visibility.Visible;
+                this.CanUserManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
+            }
+            else
+            {
+                this.CanGroupManagement = Visibility.Collapsed;
+                this.CanUserManagement = Visibility.Collapsed;
+            }
+        }
+
+        private static bool IsAdministrator()
         {
             bool isAdministrator = false;
             CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
@@ -106,8 +144,21 @@ namespace Quotation.LoginModule.ViewModels
 
             return isAdministrator;
         }
+
+        private static bool IsSuperAdministrator()
+        {
+            bool isSuperAdministrator = false;
+            CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
+            if (customPrincipal != null)
+            {
+                isSuperAdministrator = customPrincipal.IsInRole(RoleNames.SuperAdministrator);
+            }
+
+            return isSuperAdministrator;
+        }
         #endregion //EventAggregation
 
+        #region IRegion
         private void ClearRegions(string regionName)
         {
             if (this.RegionManager.Regions.ContainsRegionWithName(regionName))
@@ -123,5 +174,6 @@ namespace Quotation.LoginModule.ViewModels
                 }
             }
         }
+        #endregion //IRegion
     }
 }
