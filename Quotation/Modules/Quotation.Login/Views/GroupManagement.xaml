@@ -62,13 +62,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <material:Card Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" Width="200" Margin="10">
+                            <material:Card Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" Width="auto" Margin="10">
                                 <StackPanel>
                                     <TextBlock Margin="16 5 12 5" FontSize="16" Text="{Binding Name}"/>
                                     <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}"/>
-                                    <ItemsControl  ItemsSource="{Binding Roles}" Grid.IsSharedSizeScope="True" Margin="16 4 16 0">
+                                    <ItemsControl  ItemsSource="{Binding Forms}" Grid.IsSharedSizeScope="True" Margin="16 4 16 0">
                                         <ItemsControl.ItemTemplate>
-                                            <DataTemplate DataType="{x:Type viewmodel:GroupRoleViewModel}">
+                                            <DataTemplate DataType="{x:Type viewmodel:GroupFormViewModel}">
                                                 <Border x:Name="Border" Padding="8">
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>

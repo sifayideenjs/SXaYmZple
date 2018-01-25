@@ -90,33 +90,33 @@ namespace QuotationAPI.DAL
             return dataSet;
         }
 
-        internal IEnumerable<UserDetail> GetUserDetails(string userId)
-        {
-            List<UserDetail> userDetails = new List<UserDetail>();
+        //internal IEnumerable<UserDetail> GetUserDetails(string userId)
+        //{
+        //    List<UserDetail> userDetails = new List<UserDetail>();
 
-            Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
-            cmdParameters["UserID"] = new SqlParameter("UserID", userId);
+        //    Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
+        //    cmdParameters["UserID"] = new SqlParameter("UserID", userId);
 
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetUserDetails", cmdParameters);
+        //    DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.GetUserDetails", cmdParameters);
 
-            if (dataSet != null)
-            {
-                var dataTable = dataSet.Tables[0];
-                userDetails = dataTable.AsEnumerable().Select(row =>
-                                new UserDetail
-                                {
-                                    UserID = row.Field<int>("UserID"),
-                                    UserName = row.Field<string>("UserName"),
-                                    Password = row.Field<string>("Password"),
-                                    CreatedBy = row.Field<string>("CreatedBy"),
-                                    CreatedDate = row.Field<DateTime?>("CreatedDate"),
-                                    LastUpdatedBy = row.Field<string>("LastUpdatedBy"),
-                                    LastUpdatedDate = row.Field<DateTime?>("LastUpdatedDate")
-                                }).ToList();
-            }
+        //    if (dataSet != null)
+        //    {
+        //        var dataTable = dataSet.Tables[0];
+        //        userDetails = dataTable.AsEnumerable().Select(row =>
+        //                        new UserDetail
+        //                        {
+        //                            UserID = row.Field<int>("UserID"),
+        //                            UserName = row.Field<string>("UserName"),
+        //                            Password = row.Field<string>("Password"),
+        //                            CreatedBy = row.Field<string>("CreatedBy"),
+        //                            CreatedDate = row.Field<DateTime?>("CreatedDate"),
+        //                            LastUpdatedBy = row.Field<string>("LastUpdatedBy"),
+        //                            LastUpdatedDate = row.Field<DateTime?>("LastUpdatedDate")
+        //                        }).ToList();
+        //    }
 
-            return userDetails;
-        }
+        //    return userDetails;
+        //}
 
         internal ErrorDetail UpdateOwnerDetails(OwnerDetail ownerDetail, string flag)
         {
@@ -285,25 +285,6 @@ namespace QuotationAPI.DAL
             return errorDetail;
         }
 
-        internal ErrorDetail UpdateUserFormRights(UserFormRight userFormRight)
-        {
-            Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
-            cmdParameters["UserID"] = new SqlParameter("UserID", userFormRight.UserID);
-            cmdParameters["FormID"] = new SqlParameter("FormID", userFormRight.FormID);
-            cmdParameters["Options"] = new SqlParameter("Options", userFormRight.Options);
-
-            ErrorDetail errorDetail = new ErrorDetail();
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UpdateUserFormRights", cmdParameters);
-            if (dataSet != null && dataSet.Tables.Count > 1)
-            {
-                var dataTable = dataSet.Tables[0];
-                errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
-                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
-            }
-
-            return errorDetail;
-        }
-
         internal ErrorDetail UpdateVehicleDetails(VehicleDetail vehicleDetail)
         {
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
@@ -346,24 +327,6 @@ namespace QuotationAPI.DAL
 
             errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
             errorDetail.Info = outPutParameter2.Value.ToString();
-
-            return errorDetail;
-        }
-
-        internal ErrorDetail ValidateUser(string userName, string password)
-        {
-            Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
-            cmdParameters["UserName"] = new SqlParameter("UserName", userName);
-            cmdParameters["Password"] = new SqlParameter("Password", password);
-
-            ErrorDetail errorDetail = new ErrorDetail();
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.sp_UserValidate", cmdParameters);
-            if (dataSet != null && dataSet.Tables.Count > 1)
-            {
-                var dataTable = dataSet.Tables[0];
-                //errorDetail.Code = dataTable.Rows[0].Field<int>("@ERRORNO");
-                errorDetail.Info = dataTable.Rows[0].Field<string>("@ERRORDESC");
-            }
 
             return errorDetail;
         }

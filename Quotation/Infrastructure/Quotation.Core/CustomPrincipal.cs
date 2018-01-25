@@ -25,7 +25,7 @@ namespace Quotation.Core
 
         public bool IsInRole(string role)
         {
-            return _identity.Roles.Contains(role);
+            return _identity.Role.Equals(role);
         }
         #endregion
     }

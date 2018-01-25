@@ -98,3 +98,5 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.In
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Quotation.DataAccess.pdb
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Quotation.Core.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Infrastructure\bin\Debug\Quotation.Core.pdb

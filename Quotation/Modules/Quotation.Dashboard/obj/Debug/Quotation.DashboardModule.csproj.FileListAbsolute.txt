@@ -74,11 +74,9 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\WPFLocalizeExtension.xml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\Dashboard.g.cs
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\RightTitlebarCommands.g.cs
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule_MarkupCompile.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule_MarkupCompile.lref
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\Dashboard.baml
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\RightTitlebarCommands.baml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule.g.resources
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule.Properties.Resources.resources
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Quotation.DashboardModule.Properties.Resources.de-DE.resources
@@ -104,9 +102,3 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bi
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Core.pdb
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Core.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\bin\Debug\Quotation.Core.pdb
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UsernameTitlebarCommands.g.cs
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UsernameTitlebarCommands.baml
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\AddUserDialog.g.cs
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UserManagement.g.cs
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\AddUserDialog.baml
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Dashboard\obj\Debug\Views\UserManagement.baml

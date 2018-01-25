@@ -51,12 +51,17 @@
     <Compile Include="Models\DriverDetail.cs" />
     <Compile Include="Models\ErrorDetail.cs" />
     <Compile Include="Models\ExpiredInsurance.cs" />
+    <Compile Include="Models\FormDetail.cs" />
+    <Compile Include="Models\GroupDetail.cs" />
+    <Compile Include="Models\GroupFormRight.cs" />
     <Compile Include="Models\MIQuotation.cs" />
     <Compile Include="Models\OwnerDetail.cs" />
     <Compile Include="Models\UserDetail.cs" />
+    <Compile Include="Models\UserGroupDetail.cs" />
     <Compile Include="Models\VehicleDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuotationDb.cs" />
+    <Compile Include="UserManagementDb.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

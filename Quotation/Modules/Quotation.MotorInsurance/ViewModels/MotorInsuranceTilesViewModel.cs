@@ -16,7 +16,6 @@ using System.Threading;
 using Quotation.Core;
 using System.Windows;
 using Quotation.Infrastructure.Events;
-using Quotation.Infrastructure.Models;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {

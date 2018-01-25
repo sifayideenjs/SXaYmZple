@@ -7,6 +7,10 @@ namespace QuotationAPI.Models
 {
     public class ErrorDetail
     {
+        public ErrorDetail()
+        {
+            Code = -1;
+        }
         public int Code { get; set; }
         public string Info { get; set; }
     }

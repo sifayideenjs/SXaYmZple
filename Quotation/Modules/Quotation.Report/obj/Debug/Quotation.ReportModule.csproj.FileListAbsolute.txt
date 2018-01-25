@@ -322,3 +322,5 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\obj\D
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\obj\Debug\Quotation.ReportModule.csproj.GenerateResource.Cache
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\obj\Debug\Quotation.ReportModule.dll
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\obj\Debug\Quotation.ReportModule.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\bin\Debug\Quotation.Core.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Report\bin\Debug\Quotation.Core.pdb

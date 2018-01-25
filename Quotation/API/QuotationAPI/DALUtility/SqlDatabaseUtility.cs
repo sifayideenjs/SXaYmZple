@@ -20,21 +20,28 @@ namespace QuotationAPI.DALUtility
 
         public int ExecuteNonQuery(string connectionName, string storedProcName, Dictionary<string, SqlParameter> procParameters)
         {
-          int result;
-          using (SqlConnection connection = GetConnection(connectionName))
-          {
-                using (SqlCommand cmd = connection.CreateCommand())
+            int result = -1;
+            try
+            {
+                using (SqlConnection connection = GetConnection(connectionName))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = storedProcName;
-                    foreach (var procParameter in procParameters)
+                    using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        cmd.Parameters.Add(procParameter.Value);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = storedProcName;
+                        foreach (var procParameter in procParameters)
+                        {
+                            cmd.Parameters.Add(procParameter.Value);
+                        }
+                        result = cmd.ExecuteNonQuery();
                     }
-                    result = cmd.ExecuteNonQuery();
                 }
-          }
-          return result;
+            }
+            catch(Exception ex)
+            {
+                return -1;
+            }
+            return result;
         }
 
         //public SqlDataReader ExecuteReader(string connectionName, string storedProcName, Dictionary<string, SqlParameter> procParameters)

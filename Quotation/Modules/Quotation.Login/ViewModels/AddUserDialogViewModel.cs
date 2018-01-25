@@ -1,7 +1,9 @@
 ﻿using MaterialDesignThemes.Wpf;
 using Quotation.Core;
+using Quotation.DataAccess.Models;
 using Quotation.Infrastructure;
 using Quotation.Infrastructure.Base;
+using Quotation.LoginModule.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,44 +14,23 @@ using System.Windows.Input;
 
 namespace Quotation.LoginModule.ViewModels
 {
-    public class AddUserDialogViewModel : ViewModelBase, IDataErrorInfo
+    public class AddUserDialogViewModel : ViewModelBase
     {
-        private string name = string.Empty;
-        private string username = string.Empty;
-        private bool isAdministrator = false;
+        private UserViewModel userViewModel = null;
 
-        public AddUserDialogViewModel()
+        public AddUserDialogViewModel(UserViewModel userViewModel)
         {
+            this.userViewModel = userViewModel;
             IntializeCommands();
         }
 
         #region Properties
-        public string Name
+        public UserViewModel User
         {
-            get { return name; }
+            get { return userViewModel; }
             set
             {
-                name = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Username
-        {
-            get { return username; }
-            set
-            {
-                username = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool IsAdministrator
-        {
-            get { return isAdministrator; }
-            set
-            {
-                isAdministrator = value;
+                userViewModel = value;
                 OnPropertyChanged();
             }
         }
@@ -66,7 +47,7 @@ namespace Quotation.LoginModule.ViewModels
 
         public bool CanExecuteAddCommand()
         {
-            if (string.IsNullOrEmpty(this.Name) == false && string.IsNullOrEmpty(this.Username) == false) return true;
+            if (string.IsNullOrEmpty(this.User.Name) == false && string.IsNullOrEmpty(this.User.Username) == false && this.User.SelectedGroup != null) return true;
             else return false;
         }
 
@@ -74,8 +55,8 @@ namespace Quotation.LoginModule.ViewModels
         {
             this.EventAggregator.GetEvent<UserAccountEvent>().Publish(new UserAccountEventArg
             {
-                Username = this.Username,
-                ActionType = "UserAdd"
+                User = this.User,
+                ActionType = UserAccountAction.UserAdded
             });
             DialogHost.CloseDialogCommand.Execute(true, null);
         }
@@ -92,50 +73,5 @@ namespace Quotation.LoginModule.ViewModels
             DialogHost.CloseDialogCommand.Execute(false, null);
         }
         #endregion Commands
-
-        #region Validation
-        public string Error
-        {
-            get;
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return Validate(columnName);
-            }
-        }
-
-        private string Validate(string propertyName)
-        {
-            string validationMessage = string.Empty;
-            switch (propertyName)
-            {
-                case "Name":
-                    if (string.IsNullOrEmpty(this.Name))
-                    {
-                        validationMessage = "Please enter Name";
-                    }
-                    else
-                    {
-                        validationMessage = string.Empty;
-                    }
-                    break;
-                case "Username":
-                    if (string.IsNullOrEmpty(this.Name))
-                    {
-                        validationMessage = "Please enter User Name";
-                    }
-                    else
-                    {
-                        validationMessage = string.Empty;
-                    }
-                    break;
-            }
-
-            return validationMessage;
-        }
-        #endregion //Validation
     }
 }

@@ -1,33 +1,88 @@
 ﻿using MaterialDesignThemes.Wpf;
 using Quotation.Core;
+using Quotation.DataAccess;
+using Quotation.DataAccess.Models;
 using Quotation.Infrastructure;
 using Quotation.Infrastructure.Base;
+using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Events;
+using Quotation.Infrastructure.Interfaces;
+using Quotation.LoginModule.Events;
 using Quotation.LoginModule.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Practices.Unity;
 using System.Windows.Input;
 
 namespace Quotation.LoginModule.ViewModels
 {
     public class UserManagementViewModel : ViewModelBase
     {
+        private UserManagementDb userManagementDb = null;
+        private List<GroupDetail> groupDetails = null;
         private ObservableCollection<UserViewModel> users = new ObservableCollection<UserViewModel>();
 
-        public UserManagementViewModel()
+        public UserManagementViewModel(UserManagementDb userManagementDb)
         {
+            this.userManagementDb = userManagementDb;
             SubscribeEvents();
             IntializeCommands();
+            InitializeUsers();
+        }
 
-#if DEBUG
-            List<GroupRoleViewModel> roles = new List<GroupRoleViewModel>() { new GroupRoleViewModel("Super-Administrator", false), new GroupRoleViewModel("Administrator", false), new GroupRoleViewModel("User", true) };
-            UserViewModel user1 = new UserViewModel("Super Administrator", "Admin", "Admin123$", roles);
-            this.Users.Add(user1);
-#endif
+        private void InitializeUsers()
+        {
+            string errorMessage = string.Empty;
+
+            var groupdataset = this.userManagementDb.LoadComboDetails("GROUP", out errorMessage);
+            groupDetails = GetGroupDetails(groupdataset);
+
+            var userdataset = userManagementDb.LoadComboDetails("USER", out errorMessage);
+            var userDetails = GetUserDetails(userdataset);
+
+            this.Users = new ObservableCollection<UserViewModel>(userDetails.Select(ud => new UserViewModel(userManagementDb, groupDetails, ud)));
+        }
+
+        private List<UserGroupDetail> GetUserDetails(DataSet dataset)
+        {
+            List<UserGroupDetail> userDetails = new List<UserGroupDetail>();
+            if (dataset != null && dataset.Tables.Count > 0)
+            {
+                DataTable dataTable = dataset.Tables[0];
+                if (dataTable != null && dataTable.Rows.Count > 0)
+                {
+                    userDetails = dataTable.AsEnumerable().Select(row => new UserGroupDetail
+                    {
+                        UserID = row.Field<string>("UserID"),
+                        UserName = row.Field<string>("UserName"),
+                        GroupID = row.Field<string>("GroupID")
+                    }).ToList();
+                }
+            }
+            return userDetails;
+        }
+
+        private List<GroupDetail> GetGroupDetails(DataSet dataset)
+        {
+            List<GroupDetail> groupDetails = new List<GroupDetail>();
+            if (dataset != null && dataset.Tables.Count > 0)
+            {
+                DataTable dataTable = dataset.Tables[0];
+                if (dataTable != null && dataTable.Rows.Count > 0)
+                {
+                    groupDetails = dataTable.AsEnumerable().Select(row => new GroupDetail
+                    {
+                        GroupID = row.Field<string>("GroupID"),
+                        GroupName = row.Field<string>("GroupName")
+                    }).ToList();
+                }
+            }
+            return groupDetails;
         }
 
         #region Properties
@@ -74,7 +129,7 @@ namespace Quotation.LoginModule.ViewModels
         {
             var view = new AddUserDialog
             {
-                DataContext = new AddUserDialogViewModel()
+                DataContext = new AddUserDialogViewModel(new UserViewModel(this.userManagementDb, groupDetails))
             };
 
             var result = await DialogHost.Show(view, "UserDialog", ExtendedOpenedEventHandler);
@@ -91,15 +146,74 @@ namespace Quotation.LoginModule.ViewModels
             this.EventAggregator.GetEvent<UserAccountEvent>().Subscribe(OnUserAccountEvent);
         }
 
-        private void OnUserAccountEvent(UserAccountEventArg arg)
+        private async void OnUserAccountEvent(UserAccountEventArg arg)
         {
-            if (arg != null)
+            if (arg != null && arg.User != null)
             {
                 switch (arg.ActionType)
                 {
-                    case "UserAdd":
+                    case UserAccountAction.UserAdded:
                         {
-                            //this.Users.Add(arg.Username);
+                            var userDetail = new UserDetail()
+                            {
+                                UserID = "0",
+                                UserName = arg.User.Name,
+                                Password = arg.User.Password,
+                                GroupID = arg.User.SelectedGroup.GroupID
+                            };
+                            var errorInfo = this.userManagementDb.UpdateUser(userDetail, "ADD", "Admin");
+                            if (errorInfo.Code == 0)
+                            {
+                                this.Users.Add(arg.User);
+                            }
+                            else
+                            {
+                                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New User", errorInfo.Info);
+                            }
+                            break;
+                        }
+                    case UserAccountAction.UserEdited:
+                        {
+                            var userDetail = new UserDetail()
+                            {
+                                UserID = arg.User.ID,
+                                UserName = arg.User.Name,
+                                //Password = arg.User.Password,
+                                GroupID = arg.User.SelectedGroup.GroupID
+                            };
+                            var errorInfo = this.userManagementDb.UpdateUser(userDetail, "EDIT", "Admin");
+                            if (errorInfo.Code == 0)
+                            {
+                            }
+                            else
+                            {
+                                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Edit User", errorInfo.Info);
+                            }
+                            break;
+                        }
+                    case UserAccountAction.UserDeleted:
+                        {
+                            var userDetail = new UserDetail()
+                            {
+                                UserID = arg.User.ID,
+                                UserName = arg.User.Name,
+                                Password = arg.User.Password,
+                                GroupID = arg.User.SelectedGroup.GroupID
+                            };
+                            var errorInfo = this.userManagementDb.UpdateUser(userDetail, "DELETE", "Admin");
+                            if (errorInfo.Code == 0)
+                            {
+                                this.Users.Remove(arg.User);
+                            }
+                            else
+                            {
+                                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Delete User", errorInfo.Info);
+                            }
+                            break;
+                        }
+                    case UserAccountAction.OperationFailed:
+                        {
+                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("User Operation", "Unable to perform this operation");
                             break;
                         }
                 }

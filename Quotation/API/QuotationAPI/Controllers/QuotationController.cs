@@ -100,27 +100,6 @@ namespace QuotationAPI.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("api/Quotation/GetUserDetails")]
-        [ResponseType(typeof(IEnumerable<UserDetail>))]
-        public async Task<IHttpActionResult> GetUserDetails(string userId)
-        {
-            try
-            {
-                IEnumerable<UserDetail> userDetails = await Task.Run(() => quotationDb.GetUserDetails(userId));
-                if (userDetails == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(userDetails);
-            }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
-        }
-
         [HttpPost]
         [Route("api/Quotation/AddOwnerDetails")]
         [ResponseType(typeof(ErrorDetail))]
@@ -227,48 +206,6 @@ namespace QuotationAPI.Controllers
         }
 
         [HttpPost]
-        [Route("api/Quotation/UpdateUser")]
-        [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> UpdateUser([FromBody]UserDetail userDetail)
-        {
-            try
-            {
-                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateUser(userDetail));
-                if (errorDetail == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(errorDetail);
-            }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
-        }
-
-        [HttpPost]
-        [Route("api/Quotation/UpdateUserFormRights")]
-        [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> UpdateUserFormRights([FromBody]UserFormRight userFormRight)
-        {
-            try
-            {
-                ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateUserFormRights(userFormRight));
-                if (errorDetail == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(errorDetail);
-            }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
-        }
-
-        [HttpPost]
         [Route("api/Quotation/AddVehicleDetails")]
         [ResponseType(typeof(ErrorDetail))]
         public async Task<IHttpActionResult> AddVehicleDetails([FromBody]VehicleDetail vehicleDetail)
@@ -276,27 +213,6 @@ namespace QuotationAPI.Controllers
             try
             {
                 ErrorDetail errorDetail = await Task.Run(() => quotationDb.UpdateVehicleDetails(vehicleDetail));
-                if (errorDetail == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(errorDetail);
-            }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
-        }
-
-        [HttpPost]
-        [Route("api/Quotation/ValidateUser")]
-        [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> ValidateUser(string userName, string password)
-        {
-            try
-            {
-                ErrorDetail errorDetail = await Task.Run(() => quotationDb.ValidateUser(userName, password));
                 if (errorDetail == null)
                 {
                     return NotFound();

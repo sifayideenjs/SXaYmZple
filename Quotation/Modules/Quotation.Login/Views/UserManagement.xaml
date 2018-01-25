@@ -72,8 +72,11 @@
                                             <material:PackIcon Kind="AccountCircle" Height="128" Width="128" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                         </material:ColorZone>
                                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Name}"/>
-                                            <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static material:Flipper.FlipCommand}" Margin="0 4 0 0">EDIT</Button>
+                                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"/>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static material:Flipper.FlipCommand}" Margin="0 4 0 0">EDIT</Button>
+                                                <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding DeleteCommand}" Margin="0 4 0 0">DELETE</Button>
+                                            </StackPanel>
                                         </StackPanel>
                                     </Grid>
                                 </material:Flipper.FrontContent>
@@ -98,10 +101,10 @@
                                                 <RowDefinition />
                                                 <RowDefinition />
                                             </Grid.RowDefinitions>
-                                            <TextBox material:HintAssist.Hint="Name" material:HintAssist.IsFloating="True" Margin="0 12 0 0" Text="{Binding Name}"/>
-                                            <TextBox Grid.Row="1" material:HintAssist.Hint="Username" material:HintAssist.IsFloating="True" Margin="0 12 0 0" Text="{Binding Username}"/>
+                                            <TextBox IsReadOnly="True" material:HintAssist.Hint="Username" material:HintAssist.IsFloating="True" Margin="0 12 0 0" Text="{Binding Username}"/>
+                                            <TextBox Grid.Row="1" material:HintAssist.Hint="Name" material:HintAssist.IsFloating="True" Margin="0 12 0 0" Text="{Binding Name}"/>
                                             <ComboBox Grid.Row="2" material:HintAssist.Hint="Group" Margin="0 12 0 0" ItemsSource="{Binding Groups}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedGroup}"/>
-                                            <Button Grid.Row="3" Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static material:Flipper.FlipCommand}" Margin="0 4 0 0">SAVE</Button>
+                                            <Button Grid.Row="3" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding SaveCommand}" Margin="0 4 0 0">SAVE</Button>
                                         </Grid>
                                     </Grid>
                                 </material:Flipper.BackContent>

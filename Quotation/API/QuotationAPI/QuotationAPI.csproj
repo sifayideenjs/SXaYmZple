@@ -158,19 +158,23 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuotationController.cs" />
+    <Compile Include="Controllers\UserManagementController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DALUtility\CryptographyUtility.cs" />
     <Compile Include="DALUtility\SqlDatabaseUtility.cs" />
     <Compile Include="DAL\QuotationDb.cs" />
+    <Compile Include="DAL\UserManagementDb.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DriverDetail.cs" />
     <Compile Include="Models\ErrorDetail.cs" />
     <Compile Include="Models\ExpiredInsurance.cs" />
+    <Compile Include="Models\GroupDetail.cs" />
     <Compile Include="Models\MIQuotation.cs" />
     <Compile Include="Models\OwnerDetail.cs" />
     <Compile Include="Models\UserDetail.cs" />
-    <Compile Include="Models\UserFormRight.cs" />
+    <Compile Include="Models\GroupFormRight.cs" />
     <Compile Include="Models\VehicleDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

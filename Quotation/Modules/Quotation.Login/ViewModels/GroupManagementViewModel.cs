@@ -1,42 +1,94 @@
 ﻿using MaterialDesignThemes.Wpf;
 using Quotation.Core;
+using Quotation.DataAccess;
+using Quotation.DataAccess.Models;
 using Quotation.Infrastructure;
 using Quotation.Infrastructure.Base;
+using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Events;
+using Quotation.Infrastructure.Interfaces;
+using Quotation.LoginModule.Events;
 using Quotation.LoginModule.Models;
 using Quotation.LoginModule.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Practices.Unity;
 using System.Windows.Input;
 
 namespace Quotation.LoginModule.ViewModels
 {
     public class GroupManagementViewModel : ViewModelBase
     {
+        #region Fields
+        private UserManagementDb userManagementDb = null;
         private ObservableCollection<GroupViewModel> groups = new ObservableCollection<GroupViewModel>();
+        #endregion //Fields
 
-        public GroupManagementViewModel()
+        #region Constructor
+        public GroupManagementViewModel(UserManagementDb userManagementDb)
         {
+            this.userManagementDb = userManagementDb;
             SubscribeEvents();
             IntializeCommands();
-#if DEBUG
-            List<GroupRoleViewModel> roles1 = new List<GroupRoleViewModel>() { new GroupRoleViewModel("Super-Administrator", true), new GroupRoleViewModel("Administrator", true), new GroupRoleViewModel("User", true) };
-            GroupViewModel group1 = new GroupViewModel("Group1", roles1);
-            this.Groups.Add(group1);
-
-            List<GroupRoleViewModel> roles2 = new List<GroupRoleViewModel>() { new GroupRoleViewModel("Super-Administrator", false), new GroupRoleViewModel("Administrator", true), new GroupRoleViewModel("User", true) };
-            GroupViewModel group2 = new GroupViewModel("Group2", roles2);
-            this.Groups.Add(group2);
-
-            List<GroupRoleViewModel> roles3 = new List<GroupRoleViewModel>() { new GroupRoleViewModel("Super-Administrator", false), new GroupRoleViewModel("Administrator", false), new GroupRoleViewModel("User", true) };
-            GroupViewModel group3 = new GroupViewModel("Group3", roles3);
-            this.Groups.Add(group3);
-#endif
+            InitializeGroups();
         }
+        #endregion //Constructor
+
+        #region Methods
+        private void InitializeGroups()
+        {
+            string errorMessage = string.Empty;
+
+            var formdataset = userManagementDb.LoadComboDetails("FORM", out errorMessage);
+            var formDetails = GetFormDetails(formdataset);
+
+            var groupdataset = this.userManagementDb.LoadComboDetails("GROUP", out errorMessage);
+            var groupDetails = GetGroupDetails(groupdataset);
+
+            this.Groups = new ObservableCollection<GroupViewModel>(groupDetails.Select(gd => new GroupViewModel(userManagementDb, gd, formDetails)));
+        }
+
+        private List<FormDetail> GetFormDetails(DataSet dataset)
+        {
+            List<FormDetail> formDetails = new List<FormDetail>();
+            if (dataset != null && dataset.Tables.Count > 0)
+            {
+                DataTable dataTable = dataset.Tables[0];
+                if (dataTable != null && dataTable.Rows.Count > 0)
+                {
+                    formDetails = dataTable.AsEnumerable().Select(row => new FormDetail
+                    {
+                        FormID = (int)row.Field<long>("FormID"),
+                        FormName = row.Field<string>("FormName")
+                    }).ToList();
+                }
+            }
+            return formDetails;
+        }
+
+        private List<GroupDetail> GetGroupDetails(DataSet dataset)
+        {
+            List<GroupDetail> groupDetails = new List<GroupDetail>();
+            if(dataset != null && dataset.Tables.Count > 0)
+            {
+                DataTable dataTable = dataset.Tables[0];
+                if (dataTable != null && dataTable.Rows.Count > 0)
+                {
+                    groupDetails = dataTable.AsEnumerable().Select(row => new GroupDetail
+                    {
+                        GroupID = row.Field<string>("GroupID"),
+                        GroupName = row.Field<string>("GroupName")
+                    }).ToList();
+                }
+            }
+            return groupDetails;
+        }
+        #endregion //Methods
 
         #region Properties
         public ObservableCollection<GroupViewModel> Groups
@@ -80,7 +132,7 @@ namespace Quotation.LoginModule.ViewModels
         {
             var view = new AddUserDialog
             {
-                DataContext = new AddUserDialogViewModel()
+                //DataContext = new AddUserDialogViewModel()
             };
 
             var result = await DialogHost.Show(view, "GroupDialog", ExtendedOpenedEventHandler);
@@ -91,199 +143,91 @@ namespace Quotation.LoginModule.ViewModels
         }
         #endregion Commands
 
+
         #region EventAggregation
         private void SubscribeEvents()
         {
-            //this.EventAggregator.GetEvent<UserAccountEvent>().Subscribe(OnUserAccountEvent);
+            this.EventAggregator.GetEvent<GroupAccountEvent>().Subscribe(OnGroupAccountEvent);
+        }
+
+        private async void OnGroupAccountEvent(GroupAccountEventArg arg)
+        {
+            if (arg != null && arg.Group != null)
+            {
+                switch (arg.ActionType)
+                {
+                    case GroupAccountAction.GroupAdded:
+                        {
+                            var groupDetail = new GroupDetail()
+                            {
+                                GroupID = "0",
+                                GroupName = arg.Group.Name
+                            };
+                            var errorInfo = this.userManagementDb.UpdateGroup(groupDetail, "ADD", "Admin");
+                            if (errorInfo.Code == 0)
+                            {
+                                this.Groups.Add(arg.Group);
+                            }
+                            else
+                            {
+                                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Group", errorInfo.Info);
+                            }
+                            break;
+                        }
+                    case GroupAccountAction.GroupEdited:
+                        {
+                            List<GroupFormRight> groupFormRights = new List<GroupFormRight>();
+                            foreach (var form in arg.Group.Forms)
+                            {
+                                if (form.IsSelected)
+                                {
+                                    GroupFormRight groupFormRight = new GroupFormRight()
+                                    {
+                                        FormID = form.ID,
+                                        GroupID = form.Parent.GroupID,
+                                        Options = "EDIT"
+                                    };
+
+                                    groupFormRights.Add(groupFormRight);
+                                }
+                            }
+
+                            var errorInfo = this.userManagementDb.UpdateGroupFormRights(groupFormRights);
+                            if (errorInfo.Code == 0)
+                            {
+                            }
+                            else
+                            {
+                                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Group", errorInfo.Info);
+                            }
+                            break;
+                        }
+                    case GroupAccountAction.GroupDeleted:
+                        {
+                            var groupDetail = new GroupDetail()
+                            {
+                                GroupID = "0",
+                                GroupName = arg.Group.Name
+                            };
+                            var errorInfo = this.userManagementDb.UpdateGroup(groupDetail, "DELETE", "Admin");
+                            if (errorInfo.Code == 0)
+                            {
+                                this.Groups.Remove(arg.Group);
+                            }
+                            else
+                            {
+                                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Delete Group", errorInfo.Info);
+                            }
+                            break;
+                        }
+                    case GroupAccountAction.OperationFailed:
+                        {
+                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Group Operation", "Unable to perform this operation");
+                            break;
+                        }
+                }
+            }
         }
         #endregion //EventAggregation
-    }
-
-    public class UserViewModel : ViewModelBase
-    {
-        private string name = string.Empty;
-        private string username = string.Empty;
-        private string password = string.Empty;
-        private List<GroupRoleViewModel> groups = new List<GroupRoleViewModel>();
-        private GroupRoleViewModel selectedGroup = null;
-
-        public UserViewModel(string name, string username, string password, List<GroupRoleViewModel> groups)
-        {
-            this.name = name;
-            this.username = username;
-            this.password = password;
-            this.groups = groups;
-        }
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Username
-        {
-            get
-            {
-                return username;
-            }
-            set
-            {
-                username = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Password
-        {
-            get
-            {
-                return password;
-            }
-            set
-            {
-                password = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public List<GroupRoleViewModel> Groups
-        {
-            get
-            {
-                return groups;
-            }
-            set
-            {
-                groups = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public GroupRoleViewModel SelectedGroup
-        {
-            get
-            {
-                return selectedGroup;
-            }
-            set
-            {
-                selectedGroup = value;
-                OnPropertyChanged();
-            }
-        }
-    }
-
-    public class GroupViewModel : ViewModelBase
-    {
-        private string name = string.Empty;
-        private bool isModified = false;
-        private List<GroupRoleViewModel> roles = new List<GroupRoleViewModel>();
-
-        public GroupViewModel(string name, List<GroupRoleViewModel> roles)
-        {
-            this.name = name;
-            this.roles = roles;
-            this.roles.ForEach(r => r.Parent = this);
-            this.SaveCommand = new RelayCommand(this.ExecuteSaveCommand, this.CanExecuteSaveCommand);
-        }
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool IsModified
-        {
-            get
-            {
-                return isModified;
-            }
-            set
-            {
-                isModified = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public List<GroupRoleViewModel> Roles
-        {
-            get
-            {
-                return roles;
-            }
-            set
-            {
-                roles = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ICommand SaveCommand { get; private set; }
-
-        public bool CanExecuteSaveCommand()
-        {
-            return IsModified;
-        }
-
-        public void ExecuteSaveCommand()
-        {
-        }
-    }
-
-    public class GroupRoleViewModel : ViewModelBase
-    {
-        private string name = string.Empty;
-        private bool isSelected = false;
-
-        public GroupRoleViewModel(string name, bool isSelected)
-        {
-            this.name = name;
-            this.isSelected = isSelected;
-        }
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool IsSelected
-        {
-            get
-            {
-                return isSelected;
-            }
-            set
-            {
-                isSelected = value;
-                if (Parent != null) Parent.IsModified = true;
-                OnPropertyChanged();
-            }
-        }
-
-        public GroupViewModel Parent { get; set; }
     }
 }

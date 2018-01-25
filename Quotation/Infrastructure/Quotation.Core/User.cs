@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Quotation.Infrastructure.Models
+namespace Quotation.Core
 {
     public class User
     {
-        public User(string name, string username, string[] roles)
+        public User(string name, string username, string role)
         {
             Name = name;
             Username = username;
-            Roles = roles;
+            Role = role;
         }
         public string Username
         {
@@ -25,7 +25,7 @@ namespace Quotation.Infrastructure.Models
             set;
         }
 
-        public string[] Roles
+        public string Role
         {
             get;
             set;

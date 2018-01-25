@@ -102,6 +102,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\GroupAccountEvent.cs" />
+    <Compile Include="Events\UserAccountEvent.cs" />
     <Compile Include="LoginModule.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,14 +112,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="ViewModels\AddUserDialogViewModel.cs" />
     <Compile Include="ViewModels\AdministrationTitlebarViewModel.cs" />
+    <Compile Include="ViewModels\UserManagementVM\GroupFormViewModel.cs" />
     <Compile Include="ViewModels\GroupManagementViewModel.cs" />
+    <Compile Include="ViewModels\UserManagementVM\GroupViewModel.cs" />
     <Compile Include="ViewModels\LoginViewTilesViewModel.cs" />
     <Compile Include="ViewModels\LoginViewViewModel.cs" />
     <Compile Include="ViewModels\RightTitlebarViewModel.cs" />
     <Compile Include="ViewModels\UserManagementViewModel.cs" />
     <Compile Include="ViewModels\UsernameTitlebarViewModel.cs" />
+    <Compile Include="ViewModels\UserManagementVM\UserViewModel.cs" />
     <Compile Include="Views\AddUserDialog.xaml.cs">
       <DependentUpon>AddUserDialog.xaml</DependentUpon>
     </Compile>
@@ -193,6 +199,10 @@
     <ProjectReference Include="..\..\Infrastructure\Quotation.Core\Quotation.Core.csproj">
       <Project>{c8c4fb74-febd-49bc-a46f-41f998cc2ce1}</Project>
       <Name>Quotation.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Quotation.DataAccess\Quotation.DataAccess.csproj">
+      <Project>{FFF4B040-CC7B-46A7-ACB1-7D484F809C72}</Project>
+      <Name>Quotation.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\Quotation.Infrastructure\Quotation.Infrastructure.csproj">
       <Project>{de912131-546f-40a9-9c3f-7016957ea613}</Project>

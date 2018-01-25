@@ -8,7 +8,6 @@ using System.Threading;
 using System.Windows;
 using Quotation.Infrastructure.Events;
 using System;
-using Quotation.Infrastructure.Models;
 using Quotation.Infrastructure;
 
 namespace Quotation.LoginModule.ViewModels

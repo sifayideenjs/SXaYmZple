@@ -1,6 +1,6 @@
-﻿using Quotation.Infrastructure.Base;
+﻿using Quotation.Core;
+using Quotation.Infrastructure.Base;
 using Quotation.Infrastructure.Events;
-using Quotation.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

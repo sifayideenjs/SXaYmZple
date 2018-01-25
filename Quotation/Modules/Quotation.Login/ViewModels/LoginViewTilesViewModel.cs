@@ -114,16 +114,10 @@ namespace Quotation.LoginModule.ViewModels
 
         private void InitializeUI()
         {
-            bool isSuperAdministrator = IsSuperAdministrator();
             bool isAdministrator = IsAdministrator();
-            if (isSuperAdministrator)
+            if (isAdministrator)
             {
-                this.CanGroupManagement = isSuperAdministrator ? Visibility.Visible : Visibility.Collapsed;
-                this.CanUserManagement = isSuperAdministrator ? Visibility.Visible : Visibility.Collapsed;
-            }
-            else if(isAdministrator)
-            {
-                this.CanGroupManagement = isAdministrator ? Visibility.Collapsed : Visibility.Visible;
+                this.CanGroupManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
                 this.CanUserManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
             }
             else
@@ -145,17 +139,17 @@ namespace Quotation.LoginModule.ViewModels
             return isAdministrator;
         }
 
-        private static bool IsSuperAdministrator()
-        {
-            bool isSuperAdministrator = false;
-            CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
-            if (customPrincipal != null)
-            {
-                isSuperAdministrator = customPrincipal.IsInRole(RoleNames.SuperAdministrator);
-            }
+        //private static bool IsSuperAdministrator()
+        //{
+        //    bool isSuperAdministrator = false;
+        //    CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
+        //    if (customPrincipal != null)
+        //    {
+        //        isSuperAdministrator = customPrincipal.IsInRole(RoleNames.SuperAdministrator);
+        //    }
 
-            return isSuperAdministrator;
-        }
+        //    return isSuperAdministrator;
+        //}
         #endregion //EventAggregation
 
         #region IRegion

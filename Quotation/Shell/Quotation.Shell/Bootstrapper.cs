@@ -12,6 +12,7 @@ using Prism.Logging;
 using Quotation.Core;
 using System;
 using System.Threading;
+using Quotation.LoginModule.Services;
 
 namespace Quotation.Shell
 {

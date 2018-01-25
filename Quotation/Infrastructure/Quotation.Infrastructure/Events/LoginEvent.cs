@@ -1,5 +1,5 @@
 ﻿using Prism.Events;
-using Quotation.Infrastructure.Models;
+using Quotation.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

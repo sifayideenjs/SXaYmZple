@@ -11,7 +11,6 @@ using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Interfaces;
 using Quotation.Infrastructure;
 using System.Windows.Controls;
-using Quotation.Infrastructure.Models;
 using System.Threading;
 using Quotation.Core;
 using Quotation.Infrastructure.Events;
@@ -112,7 +111,7 @@ namespace Quotation.LoginModule.ViewModels
                 }
 
                 //Authenticate the user
-                customPrincipal.Identity = new CustomIdentity(user.Username, user.Roles);
+                customPrincipal.Identity = new CustomIdentity(user.Username, user.Role);
 
                 //Update UI
                 OnPropertyChanged("IsAuthenticated");
