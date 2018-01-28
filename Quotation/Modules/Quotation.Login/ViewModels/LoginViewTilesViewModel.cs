@@ -1,9 +1,11 @@
 ﻿using Prism.Regions;
 using Quotation.Core;
+using Quotation.Core.Utilities;
 using Quotation.Infrastructure;
 using Quotation.Infrastructure.Base;
 using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Events;
+using Quotation.LoginModule.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -114,29 +116,11 @@ namespace Quotation.LoginModule.ViewModels
 
         private void InitializeUI()
         {
-            bool isAdministrator = IsAdministrator();
-            if (isAdministrator)
-            {
-                this.CanGroupManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
-                this.CanUserManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
-            }
-            else
-            {
-                this.CanGroupManagement = Visibility.Collapsed;
-                this.CanUserManagement = Visibility.Collapsed;
-            }
-        }
+            bool isGroupManagementAccessible = IdentityUtility.IsFormAccessible(FormNames.GROUP_MANAGEMENT);
+            bool isUserManagementAccessible = IdentityUtility.IsFormAccessible(FormNames.USER_MANAGEMENT);
 
-        private static bool IsAdministrator()
-        {
-            bool isAdministrator = false;
-            CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
-            if (customPrincipal != null)
-            {
-                isAdministrator = customPrincipal.IsInRole(RoleNames.Administrator);
-            }
-
-            return isAdministrator;
+            this.CanGroupManagement = isGroupManagementAccessible ? Visibility.Visible : Visibility.Collapsed;
+            this.CanUserManagement = isUserManagementAccessible ? Visibility.Visible : Visibility.Collapsed;
         }
 
         //private static bool IsSuperAdministrator()

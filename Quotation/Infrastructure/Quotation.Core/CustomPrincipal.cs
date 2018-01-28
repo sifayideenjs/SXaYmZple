@@ -27,6 +27,11 @@ namespace Quotation.Core
         {
             return _identity.Role.Equals(role);
         }
+
+        public bool IsFormAccessible(string formName)
+        {
+            return _identity.FormNames.Any(fn => fn == formName);
+        }
         #endregion
     }
 }

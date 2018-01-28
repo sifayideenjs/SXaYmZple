@@ -108,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\FormNames.cs" />
     <Compile Include="Events\DriverEvent.cs" />
     <Compile Include="Events\InsuranceEvent.cs" />
     <Compile Include="Events\OwnerEvents.cs" />
@@ -126,6 +127,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\DbUtility.cs" />
     <Compile Include="ViewModels\CreateQuotationViewModel.cs" />
     <Compile Include="ViewModels\MotorInsuranceTilesViewModel.cs" />
     <Compile Include="ViewModels\QuotationsViewModel.cs" />

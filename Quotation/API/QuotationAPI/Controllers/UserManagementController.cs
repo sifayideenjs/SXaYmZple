@@ -81,18 +81,18 @@ namespace QuotationAPI.Controllers
 
         [HttpGet]
         [Route("api/UserManagement/ValidateUser")]
-        [ResponseType(typeof(ErrorDetail))]
+        [ResponseType(typeof(DataSet))]
         public async Task<IHttpActionResult> UserValidate(string userName, string password)
         {
             try
             {
-                ErrorDetail errorDetail = await Task.Run(() => usermanagementDb.UserValidate(userName, password));
-                if (errorDetail == null)
+                DataSet dataSet = await Task.Run(() => usermanagementDb.UserValidate(userName, password));
+                if (dataSet == null)
                 {
                     return NotFound();
                 }
 
-                return Ok(errorDetail);
+                return Ok(dataSet);
             }
             catch (Exception)
             {
@@ -103,11 +103,11 @@ namespace QuotationAPI.Controllers
         [HttpPost]
         [Route("api/UserManagement/UpdateGroup")]
         [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> UpdateGroup([FromBody]GroupDetail groupDetail, string flag, string userName)
+        public async Task<IHttpActionResult> UpdateGroup([FromBody]IEnumerable<GroupFormRight> groupFormRights, string groupId, string groupName, string flag, string userName)
         {
             try
             {
-                ErrorDetail errorDetail = await Task.Run(() => usermanagementDb.UpdateGroup(groupDetail, flag, userName));
+                ErrorDetail errorDetail = await Task.Run(() => usermanagementDb.UpdateGroup(groupFormRights, groupId, groupName, flag, userName));
                 if (errorDetail == null)
                 {
                     return NotFound();
@@ -121,26 +121,26 @@ namespace QuotationAPI.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("api/UserManagement/UpdateGroupFormRights")]
-        [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> UpdateGroupFormRights([FromBody]IEnumerable<GroupFormRight> groupFormRights)
-        {
-            try
-            {
-                ErrorDetail errorDetail = await Task.Run(() => usermanagementDb.UpdateGroupFormRights(groupFormRights));
-                if (errorDetail == null)
-                {
-                    return NotFound();
-                }
+        //[HttpPost]
+        //[Route("api/UserManagement/UpdateGroupFormRights")]
+        //[ResponseType(typeof(ErrorDetail))]
+        //public async Task<IHttpActionResult> UpdateGroupFormRights([FromBody]IEnumerable<GroupFormRight> groupFormRights)
+        //{
+        //    try
+        //    {
+        //        ErrorDetail errorDetail = await Task.Run(() => usermanagementDb.UpdateGroupFormRights(groupFormRights));
+        //        if (errorDetail == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-                return Ok(errorDetail);
-            }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
-        }
+        //        return Ok(errorDetail);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return InternalServerError();
+        //    }
+        //}
 
         [HttpPost]
         [Route("api/UserManagement/UpdateUser")]

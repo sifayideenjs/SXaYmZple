@@ -16,29 +16,51 @@ using System.Threading;
 using Quotation.Core;
 using System.Windows;
 using Quotation.Infrastructure.Events;
+using Quotation.Core.Utilities;
+using Quotation.MotorInsuranceModule.Constants;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
     public class MotorInsuranceTilesViewModel : ViewModelBase
     {
-        private Visibility canUserManagement = Visibility.Collapsed;
+        private Visibility canNewProposal = Visibility.Collapsed;
+        private Visibility canAddQuotation = Visibility.Collapsed;
+        private Visibility canSearchQuotation = Visibility.Collapsed;
 
         public MotorInsuranceTilesViewModel()
         {
-            bool isAdministrator = IsUserAdministrator();
-            this.CanUserManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
-
+            this.InitializeUI();
             this.IntializeCommands();
             this.SubscribeEvents();
         }
 
         #region Properties
-        public Visibility CanUserManagement
+        public Visibility CanNewProposal
         {
-            get { return canUserManagement; }
+            get { return canNewProposal; }
             set
             {
-                canUserManagement = value;
+                canNewProposal = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Visibility CanAddQuotation
+        {
+            get { return canAddQuotation; }
+            set
+            {
+                canAddQuotation = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Visibility CanSearchQuotation
+        {
+            get { return canSearchQuotation; }
+            set
+            {
+                canSearchQuotation = value;
                 OnPropertyChanged();
             }
         }
@@ -47,32 +69,39 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         #region Commands
         private void IntializeCommands()
         {
-            this.CreateQuotationCommand = new RelayCommand(this.ExecuteCreateQuotationCommand, this.CanExecuteCreateQuotationCommand);
-            this.RecentQuotationCommand = new RelayCommand(this.ExecuteRecentQuotationCommand, this.CanExecuteSearchQuotationCommand);
+            this.NewProposalCommand = new RelayCommand(this.ExecuteNewProposalCommand, this.CanExecuteNewProposalCommand);
+            this.AddQuotationCommand = new RelayCommand(this.ExecuteAddQuotationCommand, this.CanExecuteAddQuotationCommand);
             this.SearchQuotationCommand = new RelayCommand(this.ExecuteSearchQuotationCommand, this.CanExecuteSearchQuotationCommand);
             this.ExpiringQuotationCommand = new RelayCommand(this.ExecuteExpiringQuotationCommand, this.CanExecuteExpiringQuotationCommand);
         }
 
-        public ICommand CreateQuotationCommand { get; private set; }
-        public ICommand RecentQuotationCommand { get; private set; }
+        public ICommand NewProposalCommand { get; private set; }
+        public ICommand AddQuotationCommand { get; private set; }
         public ICommand SearchQuotationCommand { get; private set; }
         public ICommand ExpiringQuotationCommand { get; private set; }
 
-        public bool CanExecuteCreateQuotationCommand()
+        public bool CanExecuteNewProposalCommand()
         {
             return true;
         }
 
-        public void ExecuteCreateQuotationCommand()
+        public void ExecuteNewProposalCommand()
         {
             ClearRegions(RegionNames.MotorWizardRegion);
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
             this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, WindowNames.MotorAddOwnerDetail);
         }
 
-        public bool CanExecuteRecentQuotationCommand()
+        public bool CanExecuteAddQuotationCommand()
         {
             return true;
+        }
+
+        public void ExecuteAddQuotationCommand()
+        {
+            //ClearRegions(RegionNames.MotorWizardRegion);
+            //this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
+            //this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, WindowNames.MotorAddOwnerDetail);
         }
         
         public void ExecuteRecentQuotationCommand()
@@ -117,13 +146,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 {
                     case "Login":
                         {
-                            //if (arg.User != null)
-                            //{
-                            //    User user = arg.User;                                
-                            //}
-
-                            bool isAdministrator = IsUserAdministrator();
-                            this.CanUserManagement = isAdministrator ? Visibility.Visible : Visibility.Collapsed;
+                            InitializeUI();
                             break;
                         }
                     case "SignUp":
@@ -155,6 +178,17 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
         }
         #endregion //EventAggregation
+
+        private void InitializeUI()
+        {
+            bool isNewProposalAccessible = IdentityUtility.IsFormAccessible(FormNames.NEW_PROPOSAL);
+            bool isAddQuotationAccessible = IdentityUtility.IsFormAccessible(FormNames.ADD_QUOTATION);
+            bool isSearchQuotationAccessible = IdentityUtility.IsFormAccessible(FormNames.SEARCH_QUOTATION);
+            
+            this.CanNewProposal = isNewProposalAccessible ? Visibility.Visible : Visibility.Collapsed;
+            this.CanAddQuotation = isAddQuotationAccessible ? Visibility.Visible : Visibility.Collapsed;
+            this.CanSearchQuotation = isSearchQuotationAccessible ? Visibility.Visible : Visibility.Collapsed;
+        }
 
         private void ClearRegions(string regionName)
         {

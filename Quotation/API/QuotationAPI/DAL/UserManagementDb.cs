@@ -18,7 +18,8 @@ namespace QuotationAPI.DAL
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
             cmdParameters["UserID"] = new SqlParameter("UserID", userDetail.UserID);
             cmdParameters["UserName"] = new SqlParameter("UserName", userDetail.UserName);
-            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.CalculateHash(userDetail.Password, userDetail.UserName));
+            cmdParameters["Name"] = new SqlParameter("Name", userDetail.Name);
+            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.Encrypt(userDetail.Password));
             cmdParameters["GroupID"] = new SqlParameter("GroupID", userDetail.GroupID);
             cmdParameters["Flag"] = new SqlParameter("Flag", flag);
             cmdParameters["LogUser"] = new SqlParameter("LogUser", userName);
@@ -46,11 +47,22 @@ namespace QuotationAPI.DAL
             return errorDetail;
         }
 
-        internal ErrorDetail UpdateGroup(GroupDetail groupDetail, string flag, string userName)
+        internal ErrorDetail UpdateGroup(IEnumerable<GroupFormRight> groupFormRights, string groupId, string groupName, string flag, string userName)
         {
+            DataTable dataTable = new DataTable();
+            //dataTable.Columns.Add("GroupID", typeof(int));
+            dataTable.Columns.Add("FormID", typeof(int));
+            dataTable.Columns.Add("Options", typeof(string));
+
+            foreach (var groupFormRight in groupFormRights)
+            {
+                dataTable.Rows.Add(groupFormRight.GroupID, groupFormRight.FormID, groupFormRight.Options);
+            }
+
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
-            cmdParameters["GroupID"] = new SqlParameter("GroupID", groupDetail.GroupID);
-            cmdParameters["GroupName"] = new SqlParameter("GroupName", groupDetail.GroupName);
+            cmdParameters["GroupFormRightsDT"] = new SqlParameter("GroupFormRightsDT", dataTable);
+            cmdParameters["GroupID"] = new SqlParameter("GroupID", groupId);
+            cmdParameters["GroupName"] = new SqlParameter("GroupName", groupName);
             cmdParameters["Flag"] = new SqlParameter("Flag", flag);
             cmdParameters["LogUser"] = new SqlParameter("LogUser", userName);
 
@@ -77,43 +89,43 @@ namespace QuotationAPI.DAL
             return errorDetail;
         }
 
-        internal ErrorDetail UpdateGroupFormRights(IEnumerable<GroupFormRight> groupFormRights)
-        {
-            DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("GroupID", typeof(int));
-            dataTable.Columns.Add("FormID", typeof(int));
-            dataTable.Columns.Add("Options", typeof(string));
+        //internal ErrorDetail UpdateGroupFormRights(IEnumerable<GroupFormRight> groupFormRights)
+        //{
+        //    DataTable dataTable = new DataTable();
+        //    //dataTable.Columns.Add("GroupID", typeof(int));
+        //    dataTable.Columns.Add("FormID", typeof(int));
+        //    dataTable.Columns.Add("Options", typeof(string));
 
-            foreach (var groupFormRight in groupFormRights)
-            {
-                dataTable.Rows.Add(groupFormRight.GroupID, groupFormRight.FormID, groupFormRight.Options);
-            }
+        //    foreach (var groupFormRight in groupFormRights)
+        //    {
+        //        dataTable.Rows.Add(groupFormRight.GroupID, groupFormRight.FormID, groupFormRight.Options);
+        //    }
 
-            Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
-            cmdParameters["UserFormRightsDT"] = new SqlParameter("UserFormRightsDT", dataTable);
+        //    Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
+        //    cmdParameters["GroupFormRightsDT"] = new SqlParameter("GroupFormRightsDT", dataTable);
 
-            SqlParameter outPutParameter1 = new SqlParameter();
-            outPutParameter1.ParameterName = "@ERRORNO";
-            outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
-            outPutParameter1.Size = 255;
-            outPutParameter1.Direction = System.Data.ParameterDirection.Output;
-            cmdParameters["@ERRORNO"] = outPutParameter1;
+        //    SqlParameter outPutParameter1 = new SqlParameter();
+        //    outPutParameter1.ParameterName = "@ERRORNO";
+        //    outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
+        //    outPutParameter1.Size = 255;
+        //    outPutParameter1.Direction = System.Data.ParameterDirection.Output;
+        //    cmdParameters["@ERRORNO"] = outPutParameter1;
 
-            SqlParameter outPutParameter2 = new SqlParameter();
-            outPutParameter2.ParameterName = "@ERRORDESC";
-            outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
-            outPutParameter2.Size = 255;
-            outPutParameter2.Direction = System.Data.ParameterDirection.Output;
-            cmdParameters["@ERRORDESC"] = outPutParameter2;
+        //    SqlParameter outPutParameter2 = new SqlParameter();
+        //    outPutParameter2.ParameterName = "@ERRORDESC";
+        //    outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
+        //    outPutParameter2.Size = 255;
+        //    outPutParameter2.Direction = System.Data.ParameterDirection.Output;
+        //    cmdParameters["@ERRORDESC"] = outPutParameter2;
 
-            ErrorDetail errorDetail = new ErrorDetail();
-            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateGroupFormRights", cmdParameters);
+        //    ErrorDetail errorDetail = new ErrorDetail();
+        //    dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateGroupFormRights", cmdParameters);
 
-            errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
-            errorDetail.Info = outPutParameter2.Value.ToString();
+        //    errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
+        //    errorDetail.Info = outPutParameter2.Value.ToString();
 
-            return errorDetail;
-        }
+        //    return errorDetail;
+        //}
 
         internal DataSet GetGroupDetails(string groupId)
         {
@@ -138,36 +150,49 @@ namespace QuotationAPI.DAL
             return dataSet;
         }
 
-        internal ErrorDetail UserValidate(string userName, string password)
+        internal DataSet UserValidate(string userName, string password)
         {
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
             cmdParameters["UserName"] = new SqlParameter("UserName", userName);
-            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.CalculateHash(password, userName));
+            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.Encrypt(password));
 
             SqlParameter outPutParameter1 = new SqlParameter();
-            outPutParameter1.ParameterName = "@ERRORNO";
+            outPutParameter1.ParameterName = "@Name";
             outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
             outPutParameter1.Size = 255;
             outPutParameter1.Direction = System.Data.ParameterDirection.Output;
-            cmdParameters["@ERRORNO"] = outPutParameter1;
+            cmdParameters["@Name"] = outPutParameter1;
 
             SqlParameter outPutParameter2 = new SqlParameter();
-            outPutParameter2.ParameterName = "@ERRORDESC";
+            outPutParameter2.ParameterName = "@GroupID";
             outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
             outPutParameter2.Size = 255;
             outPutParameter2.Direction = System.Data.ParameterDirection.Output;
-            cmdParameters["@ERRORDESC"] = outPutParameter2;
+            cmdParameters["@GroupID"] = outPutParameter2;
 
-            ErrorDetail errorDetail = new ErrorDetail();
-            dbutility.ExecuteNonQuery("QuotationDb", "dbo.sp_UserValidate", cmdParameters);
+            SqlParameter outPutParameter3 = new SqlParameter();
+            outPutParameter3.ParameterName = "@ERRNo";
+            outPutParameter3.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter3.Size = 255;
+            outPutParameter3.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["@ERRNo"] = outPutParameter3;
 
-            int code = -1;
-            int.TryParse(outPutParameter1.Value == null ? "-1" : outPutParameter1.Value.ToString(), out code);
-            errorDetail.Code = code;
+            SqlParameter outPutParameter4 = new SqlParameter();
+            outPutParameter4.ParameterName = "@ERRORDESC";
+            outPutParameter4.SqlDbType = System.Data.SqlDbType.VarChar;
+            outPutParameter4.Size = 255;
+            outPutParameter4.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["@ERRORDESC"] = outPutParameter4;
 
-            errorDetail.Info = outPutParameter2.Value == null ? "ERROR" : outPutParameter2.Value.ToString();
+            //ErrorDetail errorDetail = new ErrorDetail();
+            //dbutility.ExecuteNonQuery("QuotationDb", "dbo.UserValidate", cmdParameters);
 
-            return errorDetail;
+            //errorDetail.Info = outPutParameter2.Value == null ? "ERROR" : outPutParameter2.Value.ToString();
+            //if(errorDetail.Info == string.Empty) errorDetail.Code = 0;
+            //return errorDetail;
+
+            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UserValidate", cmdParameters);
+            return dataSet;
         }
 
         internal DataSet LoadComboDetails(string flag)

@@ -11,6 +11,7 @@ namespace QuotationAPI.Models
         public string Make { get; set; }
         public string Model { get; set; }
         public string Capacity { get; set; }
+        public string Tonnage { get; set; }
         public Nullable<System.DateTime> DateOfRegistered { get; set; }
         public string YearMade { get; set; }
         public string RegNo { get; set; }

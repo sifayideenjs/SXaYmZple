@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using System.Windows.Input;
+using Quotation.Core.Utilities;
 
 namespace Quotation.LoginModule.ViewModels
 {
@@ -81,7 +82,7 @@ namespace Quotation.LoginModule.ViewModels
                 {
                     groupDetails = dataTable.AsEnumerable().Select(row => new GroupDetail
                     {
-                        GroupID = row.Field<string>("GroupID"),
+                        GroupID = (int)row.Field<long>("GroupID"),
                         GroupName = row.Field<string>("GroupName")
                     }).ToList();
                 }
@@ -130,9 +131,9 @@ namespace Quotation.LoginModule.ViewModels
 
         public async void ExecuteAddGroupCommand()
         {
-            var view = new AddUserDialog
+            var view = new AddGroupDialog
             {
-                //DataContext = new AddUserDialogViewModel()
+                DataContext = new AddGroupDialogViewModel(new GroupViewModel(this.userManagementDb))
             };
 
             var result = await DialogHost.Show(view, "GroupDialog", ExtendedOpenedEventHandler);
@@ -142,7 +143,6 @@ namespace Quotation.LoginModule.ViewModels
         {
         }
         #endregion Commands
-
 
         #region EventAggregation
         private void SubscribeEvents()
@@ -154,16 +154,50 @@ namespace Quotation.LoginModule.ViewModels
         {
             if (arg != null && arg.Group != null)
             {
+                string loggedInUserName = IdentityUtility.GetLoggedInUserName();
                 switch (arg.ActionType)
                 {
                     case GroupAccountAction.GroupAdded:
                         {
                             var groupDetail = new GroupDetail()
                             {
-                                GroupID = "0",
+                                GroupID = 0,
                                 GroupName = arg.Group.Name
                             };
-                            var errorInfo = this.userManagementDb.UpdateGroup(groupDetail, "ADD", "Admin");
+
+                            List<GroupFormRight> groupFormRights = new List<GroupFormRight>();
+                            foreach (var form in arg.Group.Forms)
+                            {
+                                if (form.IsSelected)
+                                {
+                                    GroupFormRight groupFormRight1 = new GroupFormRight()
+                                    {
+                                        FormID = form.ID,
+                                        GroupID = form.Parent.GroupID,
+                                        Options = "ADD"
+                                    };
+
+                                    GroupFormRight groupFormRight2 = new GroupFormRight()
+                                    {
+                                        FormID = form.ID,
+                                        GroupID = form.Parent.GroupID,
+                                        Options = "EDIT"
+                                    };
+
+                                    GroupFormRight groupFormRight3 = new GroupFormRight()
+                                    {
+                                        FormID = form.ID,
+                                        GroupID = form.Parent.GroupID,
+                                        Options = "VIEW"
+                                    };
+
+                                    groupFormRights.Add(groupFormRight1);
+                                    groupFormRights.Add(groupFormRight2);
+                                    groupFormRights.Add(groupFormRight3);
+                                }
+                            }
+
+                            var errorInfo = this.userManagementDb.UpdateGroup(groupDetail, "ADD", groupFormRights, loggedInUserName);
                             if (errorInfo.Code == 0)
                             {
                                 this.Groups.Add(arg.Group);
@@ -176,29 +210,51 @@ namespace Quotation.LoginModule.ViewModels
                         }
                     case GroupAccountAction.GroupEdited:
                         {
+                            var groupDetail = new GroupDetail()
+                            {
+                                GroupID = 0,
+                                GroupName = arg.Group.Name
+                            };
+
                             List<GroupFormRight> groupFormRights = new List<GroupFormRight>();
                             foreach (var form in arg.Group.Forms)
                             {
                                 if (form.IsSelected)
                                 {
-                                    GroupFormRight groupFormRight = new GroupFormRight()
+                                    GroupFormRight groupFormRight1 = new GroupFormRight()
+                                    {
+                                        FormID = form.ID,
+                                        GroupID = form.Parent.GroupID,
+                                        Options = "ADD"
+                                    };
+
+                                    GroupFormRight groupFormRight2 = new GroupFormRight()
                                     {
                                         FormID = form.ID,
                                         GroupID = form.Parent.GroupID,
                                         Options = "EDIT"
                                     };
 
-                                    groupFormRights.Add(groupFormRight);
+                                    GroupFormRight groupFormRight3 = new GroupFormRight()
+                                    {
+                                        FormID = form.ID,
+                                        GroupID = form.Parent.GroupID,
+                                        Options = "VIEW"
+                                    };
+
+                                    groupFormRights.Add(groupFormRight1);
+                                    groupFormRights.Add(groupFormRight2);
+                                    groupFormRights.Add(groupFormRight3);
                                 }
                             }
 
-                            var errorInfo = this.userManagementDb.UpdateGroupFormRights(groupFormRights);
+                            var errorInfo = this.userManagementDb.UpdateGroup(groupDetail, "EDIT", groupFormRights, loggedInUserName);
                             if (errorInfo.Code == 0)
                             {
                             }
                             else
                             {
-                                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Group", errorInfo.Info);
+                                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Edit Group", errorInfo.Info);
                             }
                             break;
                         }
@@ -206,10 +262,40 @@ namespace Quotation.LoginModule.ViewModels
                         {
                             var groupDetail = new GroupDetail()
                             {
-                                GroupID = "0",
+                                GroupID = 0,
                                 GroupName = arg.Group.Name
                             };
-                            var errorInfo = this.userManagementDb.UpdateGroup(groupDetail, "DELETE", "Admin");
+
+                            List<GroupFormRight> groupFormRights = new List<GroupFormRight>();
+                            foreach (var form in arg.Group.Forms)
+                            {
+                                GroupFormRight groupFormRight1 = new GroupFormRight()
+                                {
+                                    FormID = form.ID,
+                                    GroupID = form.Parent.GroupID,
+                                    Options = "ADD"
+                                };
+
+                                GroupFormRight groupFormRight2 = new GroupFormRight()
+                                {
+                                    FormID = form.ID,
+                                    GroupID = form.Parent.GroupID,
+                                    Options = "EDIT"
+                                };
+
+                                GroupFormRight groupFormRight3 = new GroupFormRight()
+                                {
+                                    FormID = form.ID,
+                                    GroupID = form.Parent.GroupID,
+                                    Options = "VIEW"
+                                };
+
+                                groupFormRights.Add(groupFormRight1);
+                                groupFormRights.Add(groupFormRight2);
+                                groupFormRights.Add(groupFormRight3);
+                            }
+
+                            var errorInfo = this.userManagementDb.UpdateGroup(groupDetail, "DELETE", groupFormRights, loggedInUserName);
                             if (errorInfo.Code == 0)
                             {
                                 this.Groups.Remove(arg.Group);

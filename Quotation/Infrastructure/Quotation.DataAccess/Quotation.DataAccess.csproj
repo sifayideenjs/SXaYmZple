@@ -54,6 +54,7 @@
     <Compile Include="Models\FormDetail.cs" />
     <Compile Include="Models\GroupDetail.cs" />
     <Compile Include="Models\GroupFormRight.cs" />
+    <Compile Include="Models\LicenseDetail.cs" />
     <Compile Include="Models\MIQuotation.cs" />
     <Compile Include="Models\OwnerDetail.cs" />
     <Compile Include="Models\UserDetail.cs" />

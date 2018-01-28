@@ -16,10 +16,23 @@ namespace Quotation.LoginModule.ViewModels
     public class GroupViewModel : ViewModelBase
     {
         private UserManagementDb userManagementDb = null;
-        private string groupId = string.Empty;
+        private int groupId = 0;
         private string name = string.Empty;
         private bool isModified = false;
         private List<GroupFormViewModel> forms = new List<GroupFormViewModel>();
+
+        public GroupViewModel(UserManagementDb userManagementDb)
+        {
+            this.userManagementDb = userManagementDb;
+
+            string errorMessage;
+            var formdataset = userManagementDb.LoadComboDetails("FORM", out errorMessage);
+            var formDetails = GetFormDetails(formdataset);
+
+            this.Forms = new List<GroupFormViewModel>(formDetails.Select(fd => new GroupFormViewModel(fd.FormID, fd.FormName, this)));
+
+            this.SaveCommand = new RelayCommand(this.ExecuteSaveCommand, this.CanExecuteSaveCommand);
+        }
 
         public GroupViewModel(UserManagementDb userManagementDb, GroupDetail groupDetail)
         {
@@ -87,7 +100,7 @@ namespace Quotation.LoginModule.ViewModels
                 {
                     groupFormRights = dataTable.AsEnumerable().Select(row => new GroupFormRight
                     {
-                        GroupID = row.Field<string>("GroupID"),
+                        GroupID = (int)row.Field<long>("GroupID"),
                         FormID = (int)row.Field<long>("FormID"),
                         Options = row.Field<string>("Options")
                     }).ToList();
@@ -114,7 +127,7 @@ namespace Quotation.LoginModule.ViewModels
             return formDetails;
         }
 
-        public string GroupID
+        public int GroupID
         {
             get
             {

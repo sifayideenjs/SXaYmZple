@@ -63,7 +63,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             NavigationParameters navParameters = new NavigationParameters();
             navParameters.Add("ReportDataSet", this.QuotationViewModel.QuotationDataSet);
 
-            this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, PopupNames.ReportModule_Motor, navParameters);
+            this.RegionManager.RequestNavigate(RegionNames.MotorQuotationRegion, PopupNames.ReportModule_Motor, navParameters);
         }
         #endregion Commands
 
@@ -76,11 +76,15 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         private void OnOpenQuotationEvent(QuotationEventArgs arg)
         {
-            if(arg != null && arg.QuotationDataSet != null && arg.QuotationDataSet.Tables.Count == 4)
+            if(arg != null && arg.QuotationDataSet != null && arg.QuotationDataSet.Tables.Count == 4 && arg.QuotationDataSet.Tables[0].Rows.Count > 0)
             {
                 QuotationViewModel = new QuotationViewModel(arg.QuotationDataSet);
                 //ClearRegions(RegionNames.MotorWizardRegion);
                 this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
+            }
+            else
+            {
+
             }
         }
         #endregion //EventAggregation

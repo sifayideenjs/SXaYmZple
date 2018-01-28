@@ -111,7 +111,7 @@ namespace Quotation.LoginModule.ViewModels
                 }
 
                 //Authenticate the user
-                customPrincipal.Identity = new CustomIdentity(user.Username, user.Role);
+                customPrincipal.Identity = new CustomIdentity(user.Username, user.Role, user.FormNames);
 
                 //Update UI
                 OnPropertyChanged("IsAuthenticated");

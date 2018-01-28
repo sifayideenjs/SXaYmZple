@@ -8,7 +8,7 @@ namespace Quotation.DataAccess.Models
 {
     public class GroupFormRight
     {
-        public string GroupID { get; set; }
+        public int GroupID { get; set; }
         public int FormID { get; set; }
         public string Options { get; set; }
     }

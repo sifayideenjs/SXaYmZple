@@ -118,3 +118,4 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\ob
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\obj\Debug\QuotationAPI.Tests.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\obj\Debug\QuotationAPI.Tests.pdb
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\RiskLicense.dll

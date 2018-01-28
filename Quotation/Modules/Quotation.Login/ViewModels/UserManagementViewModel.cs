@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using System.Windows.Input;
+using Quotation.Core.Utilities;
 
 namespace Quotation.LoginModule.ViewModels
 {
@@ -58,9 +59,10 @@ namespace Quotation.LoginModule.ViewModels
                 {
                     userDetails = dataTable.AsEnumerable().Select(row => new UserGroupDetail
                     {
-                        UserID = row.Field<string>("UserID"),
+                        UserID = (int)row.Field<long>("UserID"),
                         UserName = row.Field<string>("UserName"),
-                        GroupID = row.Field<string>("GroupID")
+                        Name = row.Field<string>("Name"),
+                        GroupID = (int)row.Field<long>("GroupID")
                     }).ToList();
                 }
             }
@@ -77,7 +79,7 @@ namespace Quotation.LoginModule.ViewModels
                 {
                     groupDetails = dataTable.AsEnumerable().Select(row => new GroupDetail
                     {
-                        GroupID = row.Field<string>("GroupID"),
+                        GroupID = (int)row.Field<long>("GroupID"),
                         GroupName = row.Field<string>("GroupName")
                     }).ToList();
                 }
@@ -150,18 +152,20 @@ namespace Quotation.LoginModule.ViewModels
         {
             if (arg != null && arg.User != null)
             {
+                string loggedInUserName = IdentityUtility.GetLoggedInUserName();
                 switch (arg.ActionType)
                 {
                     case UserAccountAction.UserAdded:
                         {
                             var userDetail = new UserDetail()
                             {
-                                UserID = "0",
-                                UserName = arg.User.Name,
+                                UserID = 0,
+                                Name = arg.User.Name,
+                                UserName = arg.User.Username,
                                 Password = arg.User.Password,
                                 GroupID = arg.User.SelectedGroup.GroupID
                             };
-                            var errorInfo = this.userManagementDb.UpdateUser(userDetail, "ADD", "Admin");
+                            var errorInfo = this.userManagementDb.UpdateUser(userDetail, "ADD", loggedInUserName);
                             if (errorInfo.Code == 0)
                             {
                                 this.Users.Add(arg.User);
@@ -181,7 +185,7 @@ namespace Quotation.LoginModule.ViewModels
                                 //Password = arg.User.Password,
                                 GroupID = arg.User.SelectedGroup.GroupID
                             };
-                            var errorInfo = this.userManagementDb.UpdateUser(userDetail, "EDIT", "Admin");
+                            var errorInfo = this.userManagementDb.UpdateUser(userDetail, "EDIT", loggedInUserName);
                             if (errorInfo.Code == 0)
                             {
                             }
@@ -196,11 +200,12 @@ namespace Quotation.LoginModule.ViewModels
                             var userDetail = new UserDetail()
                             {
                                 UserID = arg.User.ID,
-                                UserName = arg.User.Name,
+                                Name = arg.User.Name,
+                                UserName = arg.User.Username,
                                 Password = arg.User.Password,
                                 GroupID = arg.User.SelectedGroup.GroupID
                             };
-                            var errorInfo = this.userManagementDb.UpdateUser(userDetail, "DELETE", "Admin");
+                            var errorInfo = this.userManagementDb.UpdateUser(userDetail, "DELETE", loggedInUserName);
                             if (errorInfo.Code == 0)
                             {
                                 this.Users.Remove(arg.User);

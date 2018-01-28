@@ -12,8 +12,7 @@ namespace Quotation.DataAccess.Models
         {
             //this.UserFormRights = new HashSet<UserFormRight>();
         }
-
-        public string GroupID { get; set; }
+        public int GroupID { get; set; }
         public string GroupName { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }

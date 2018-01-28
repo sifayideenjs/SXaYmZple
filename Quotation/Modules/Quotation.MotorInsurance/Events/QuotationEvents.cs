@@ -12,8 +12,13 @@ namespace Quotation.MotorInsuranceModule.Events
     {
     }
 
+    public class NewQuotationEvent : PubSubEvent<QuotationEventArgs>
+    {
+    }
+
     public class QuotationEventArgs
     {
+        public string OwnerName { get; set; }
         public string QuotationNumber { get; set; }
         public string NRICNumber { get; set; }
         public DataSet QuotationDataSet { get; set; }

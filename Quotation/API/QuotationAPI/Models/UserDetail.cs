@@ -12,10 +12,11 @@ namespace QuotationAPI.Models
             //this.UserFormRights = new HashSet<UserFormRight>();
         }
 
-        public string UserID { get; set; }
+        public int UserID { get; set; }
         public string UserName { get; set; }
+        public string Name { get; set; }
         public string Password { get; set; }
-        public string GroupID { get; set; }
+        public Nullable<int> GroupID { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string LastUpdatedBy { get; set; }

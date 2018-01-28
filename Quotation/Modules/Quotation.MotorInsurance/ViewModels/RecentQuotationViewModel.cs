@@ -16,14 +16,19 @@ using Quotation.Infrastructure.Constants;
 using Quotation.Infrastructure.Interfaces;
 using Microsoft.Practices.Unity;
 using Quotation.Infrastructure.Events;
+using Quotation.Infrastructure.Utilities;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.IO;
+using Quotation.Infrastructure.Models;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
     public class RecentQuotationViewModel : ViewModelBase
     {
         QuotationDb quotationDb = null;
-        private ObservableCollection<OwnerDetailViewModel> quotations;
-        //private OwnerDetailViewModel selectedQuotation;
+        private string recentFileName = "MotorData.xml";
+        private ObservableCollection<RecentItemViewModel> recentItems;
 
         public RecentQuotationViewModel(QuotationDb quotationDb)
         {
@@ -32,46 +37,26 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.IntializeCommands();
         }
 
-        public QuotationsViewModel QuotationsViewModel { get; set; }
-
-        private void Initializate()
-        {
-            string errorMessage = string.Empty;
-            var ownerDetails = this.quotationDb.GetAllOwnerDetails(out errorMessage);
-            this.Quotations = new ObservableCollection<OwnerDetailViewModel>(ownerDetails.Select(q => new OwnerDetailViewModel(q)));
-        }
-
-        public ObservableCollection<OwnerDetailViewModel> Quotations
+        #region Properties
+        public ObservableCollection<RecentItemViewModel> RecentItems
         {
             get
             {
-                return quotations;
+                return recentItems;
             }
             set
             {
-                quotations = value;
+                recentItems = value;
                 OnPropertyChanged();
             }
         }
-
-        //public OwnerDetailViewModel SelectedQuotation
-        //{
-        //    get
-        //    {
-        //        return selectedQuotation;
-        //    }
-        //    set
-        //    {
-        //        selectedQuotation = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        #endregion //Properties
 
         #region Commands
         private void IntializeCommands()
         {
             this.DashboardCommand = new RelayCommand(this.ExecuteDashboardCommand, this.CanExecuteDashboardCommand);
-            this.OpenQuotationCommand = new RelayCommand<OwnerDetailViewModel>(this.ExecuteOpenQuotationCommand, this.CanExecuteOpenQuotationCommand);
+            this.OpenQuotationCommand = new RelayCommand<RecentItemViewModel>(this.ExecuteOpenQuotationCommand, this.CanExecuteOpenQuotationCommand);
         }
 
         public ICommand DashboardCommand { get; private set; }
@@ -90,24 +75,24 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public ICommand OpenQuotationCommand { get; private set; }
 
-        public bool CanExecuteOpenQuotationCommand(OwnerDetailViewModel quotation)
+        public bool CanExecuteOpenQuotationCommand(RecentItemViewModel recentItem)
         {
             return true;
         }
 
-        public async void ExecuteOpenQuotationCommand(OwnerDetailViewModel quotation)
+        public async void ExecuteOpenQuotationCommand(RecentItemViewModel recentItem)
         {
             string errorMessage = string.Empty;
-            string quotationNo = "1234567";
+            string quotationNo = recentItem.Model.QuotationNo;
             //DataSet quotationDataSet = quotationDb.GetNRICDetails(nric, out errorMessage);
 
             DataSet quotationDataSet = quotationDb.GetMIQuoationDetails(quotationNo, out errorMessage);
             if(!string.IsNullOrEmpty(errorMessage))
             {
-                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("New Proposal", errorMessage);
+                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Open Recent Item", errorMessage);
                 return;
             }
-            else
+            else if(quotationDataSet != null && quotationDataSet.Tables.Count == 4 && quotationDataSet.Tables[0].Rows.Count > 0)
             {
                 this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorViewQuotation);
                 this.EventAggregator.GetEvent<OpenQuotationEvent>().Publish(new QuotationEventArgs
@@ -117,7 +102,58 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     Source = WindowNames.MotorSummaryDetail
                 });
             }
+            else
+            {
+                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Open Recent Item", "Quotation record does not exist");
+                return;
+            }
         }
         #endregion Commands
+
+        #region Methods
+        private void Initializate()
+        {
+            //string errorMessage = string.Empty;
+            //var ownerDetails = this.quotationDb.GetAllOwnerDetails(out errorMessage);
+            //this.Quotations = new ObservableCollection<OwnerDetailViewModel>(ownerDetails.Select(q => new OwnerDetailViewModel(q)));
+
+            recentItems = new ObservableCollection<RecentItemViewModel>();
+            var recentListModel = RecentListUtility.ReadRecentList(recentFileName);
+            if (recentListModel != null)
+            {
+                this.RecentItems = new ObservableCollection<RecentItemViewModel>(recentListModel.RecentList.Select(ri => new RecentItemViewModel(ri)));
+            }
+        }
+        #endregion //Methods
+
+        #region EventAggregation
+        private void SubscribeEvents()
+        {
+            this.EventAggregator.GetEvent<NewQuotationEvent>().Subscribe(OnNewQuotationEvent);
+        }
+
+        private void OnNewQuotationEvent(QuotationEventArgs arg)
+        {
+            if (arg != null && arg.QuotationDataSet != null && arg.QuotationDataSet.Tables.Count == 4)
+            {
+                var recentItem = new RecentItem() { OwnerName = arg.OwnerName, NRIC = arg.NRICNumber, QuotationNo = arg.QuotationNumber, CreatedDateTime = DateTime.Now, IsAvailable = true };
+                RecentListUtility.AddRecentData(recentItem, recentFileName);
+            }
+        }
+        #endregion //EventAggregation
+    }
+
+    public class RecentItemViewModel
+    {
+        private RecentItem model = null;
+        public RecentItemViewModel(RecentItem model)
+        {
+            this.model = model;
+        }
+
+        public RecentItem Model
+        {
+            get { return this.model; }
+        }
     }
 }

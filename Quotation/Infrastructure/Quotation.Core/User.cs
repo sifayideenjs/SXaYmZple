@@ -8,11 +8,12 @@ namespace Quotation.Core
 {
     public class User
     {
-        public User(string name, string username, string role)
+        public User(string name, string username, string role, string[] formNames)
         {
             Name = name;
             Username = username;
             Role = role;
+            FormNames = formNames;
         }
         public string Username
         {
@@ -26,6 +27,12 @@ namespace Quotation.Core
         }
 
         public string Role
+        {
+            get;
+            set;
+        }
+
+        public string[] FormNames
         {
             get;
             set;

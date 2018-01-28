@@ -21,7 +21,7 @@ namespace Quotation.DataAccess
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public DataSet GetGroupDetails(string groupId, out string errorMessage)
+        public DataSet GetGroupDetails(int groupId, out string errorMessage)
         {
             DataSet dataSet = null;
             errorMessage = string.Empty;
@@ -46,7 +46,7 @@ namespace Quotation.DataAccess
             return dataSet;
         }
 
-        public DataSet GetUserDetails(string userId, out string errorMessage)
+        public DataSet GetUserDetails(int userId, out string errorMessage)
         {
             DataSet dataSet = null;
             errorMessage = string.Empty;
@@ -96,9 +96,9 @@ namespace Quotation.DataAccess
             return dataSet;
         }
 
-        public ErrorDetail ValidateUser(string userName, string password, out string errorMessage)
+        public DataSet ValidateUser(string userName, string password, out string errorMessage)
         {
-            ErrorDetail errorDetail = null;
+            DataSet dataSet = null;
             errorMessage = string.Empty;
             try
             {
@@ -106,7 +106,7 @@ namespace Quotation.DataAccess
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var responseData = responseMessage.Content.ReadAsStringAsync().Result;
-                    errorDetail = JsonConvert.DeserializeObject<ErrorDetail>(responseData);
+                    dataSet = JsonConvert.DeserializeObject<DataSet>(responseData);
                 }
                 else
                 {
@@ -118,7 +118,7 @@ namespace Quotation.DataAccess
                 errorMessage = ex.Message;
             }
 
-            return errorDetail;
+            return dataSet;
         }
 
         public ErrorDetail UpdateUser(UserDetail userDetail, string flag, string userName)
@@ -145,12 +145,12 @@ namespace Quotation.DataAccess
             return errorDetail;
         }
 
-        public ErrorDetail UpdateGroup(GroupDetail groupDetail, string flag, string userName)
+        public ErrorDetail UpdateGroup(GroupDetail groupDetail, string flag, IEnumerable<GroupFormRight> groupFormRights, string userName)
         {
             ErrorDetail errorDetail = new ErrorDetail();
             try
             {
-                HttpResponseMessage responseMessage = client.PostAsJsonAsync("/api/UserManagement/UpdateGroup?flag=" + flag + "&userName=" + userName, groupDetail).Result;
+                HttpResponseMessage responseMessage = client.PostAsJsonAsync("/api/UserManagement/UpdateGroup?groupId=" + groupDetail.GroupID + "&groupName=" + groupDetail.GroupName + "&flag=" + flag + "&userName=" + userName, groupFormRights).Result;
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     string data = responseMessage.Content.ReadAsStringAsync().Result;
@@ -169,28 +169,28 @@ namespace Quotation.DataAccess
             return errorDetail;
         }
 
-        public ErrorDetail UpdateGroupFormRights(IEnumerable<GroupFormRight> groupFormRights)
-        {
-            ErrorDetail errorDetail = new ErrorDetail();
-            try
-            {
-                HttpResponseMessage responseMessage = client.PostAsJsonAsync("/api/UserManagement/UpdateGroupFormRights", groupFormRights).Result;
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    string data = responseMessage.Content.ReadAsStringAsync().Result;
-                    errorDetail = JsonConvert.DeserializeObject<ErrorDetail>(data);
-                }
-                else
-                {
-                    errorDetail.Info = responseMessage.ReasonPhrase;
-                }
-            }
-            catch (Exception ex)
-            {
-                errorDetail.Info = ex.Message;
-            }
+        //public ErrorDetail UpdateGroupFormRights(IEnumerable<GroupFormRight> groupFormRights)
+        //{
+        //    ErrorDetail errorDetail = new ErrorDetail();
+        //    try
+        //    {
+        //        HttpResponseMessage responseMessage = client.PostAsJsonAsync("/api/UserManagement/UpdateGroupFormRights", groupFormRights).Result;
+        //        if (responseMessage.IsSuccessStatusCode)
+        //        {
+        //            string data = responseMessage.Content.ReadAsStringAsync().Result;
+        //            errorDetail = JsonConvert.DeserializeObject<ErrorDetail>(data);
+        //        }
+        //        else
+        //        {
+        //            errorDetail.Info = responseMessage.ReasonPhrase;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        errorDetail.Info = ex.Message;
+        //    }
 
-            return errorDetail;
-        }
+        //    return errorDetail;
+        //}
     }
 }

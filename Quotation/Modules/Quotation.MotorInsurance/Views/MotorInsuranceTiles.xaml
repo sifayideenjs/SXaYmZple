@@ -39,8 +39,8 @@
         
         <!-- Tiles -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5 15 0 15">
-            <metro:Tile Title="Proposal" 
-                        Command="{Binding CreateQuotationCommand}"
+            <metro:Tile Title="Proposal" Visibility="{Binding CanNewProposal}"
+                        Command="{Binding NewProposalCommand}"
                         HorizontalAlignment="Center"                        
                         VerticalAlignment="Top"
                         TiltFactor="1"
@@ -53,21 +53,21 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </metro:Tile>
-            <!--<metro:Tile Title="Recent Quotations" 
-                        Command="{Binding RecentQuotationCommand}"
+            <metro:Tile Title="Create Quotations"  Visibility="{Binding CanAddQuotation}"
+                        Command="{Binding AddQuotationCommand}"
                         HorizontalAlignment="Center"                        
                         VerticalAlignment="Top"
                         TiltFactor="1"
                         Width="156" 
                         Height="150" 
-                        Background="#FF16B2D6" HorizontalTitleAlignment="Center" TitleFontSize="14" Margin="10 0 5 0">
+                        Background="#FF16B2D6" HorizontalContentAlignment="Center" TitleFontSize="14" Margin="10 0 5 0">
                 <Rectangle Fill="White" Height="45" Width="45">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Visual="{StaticResource tile_recent}" Stretch="Uniform" />
+                        <VisualBrush Visual="{StaticResource appbar_add}" Stretch="Uniform" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
-            </metro:Tile>-->
-            <metro:Tile Title="Search Quotation" 
+            </metro:Tile>
+            <metro:Tile Title="Search Quotation" Visibility="{Binding CanSearchQuotation}"
                         Command="{Binding SearchQuotationCommand}"
                         HorizontalAlignment="Center"                        
                         VerticalAlignment="Top"
@@ -97,20 +97,6 @@
                     </Rectangle>
                 </metro:Tile>
             </metro:Badged>-->
-            <metro:Tile Title="Expiring Quotations"
-                        Command="{Binding ExpiringQuotationCommand}"
-                        HorizontalAlignment="Center"                        
-                        VerticalAlignment="Top"
-                        TiltFactor="1"
-                        Width="156" 
-                        Height="150" 
-                        Background="#FF16B2D6" HorizontalContentAlignment="Center" TitleFontSize="14" Margin="10 0 5 0">
-                <Rectangle Fill="White" Height="45" Width="45">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Visual="{StaticResource tile_expired}" Stretch="Uniform" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </metro:Tile>
         </StackPanel>
     </Grid>
     

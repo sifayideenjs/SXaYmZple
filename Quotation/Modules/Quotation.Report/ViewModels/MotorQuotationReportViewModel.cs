@@ -29,26 +29,6 @@ namespace Quotation.ReportModule.ViewModels
             IntializeCommands();
         }
 
-        //public static readonly DependencyProperty ReportViewerProperty = DependencyProperty.RegisterAttached("ReportViewer", typeof(DependencyProperty), typeof(MotorQuotationReportViewModel), new FrameworkPropertyMetadata(OnReportViewerChanged));  
-
-        //public static void SetReportViewer(DependencyObject element, CrystalReportsViewer value)
-        //{
-        //    element.SetValue(ReportViewerProperty, value);
-        //}
-
-        //public static CrystalReportsViewer GetReportViewer(DependencyObject element)
-        //{
-        //    return (CrystalReportsViewer)element.GetValue(ReportViewerProperty);
-        //}
-
-        //private static CrystalReportsViewer crystalReportsViewer = null;
-
-        //// DataGrid Property changed event  
-        //public static void OnReportViewerChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
-        //{
-        //    crystalReportsViewer = obj as CrystalReportsViewer;
-        //}
-
         public CrystalReportsViewer ReportsViewer { get; set; }
 
         public ReportDocument ReportSource

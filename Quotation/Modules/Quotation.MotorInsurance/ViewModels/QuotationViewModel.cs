@@ -13,6 +13,7 @@ using System.ComponentModel;
 using Quotation.Infrastructure.Interfaces;
 using Microsoft.Practices.Unity;
 using System.Data;
+using Quotation.Core.Utilities;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
@@ -112,9 +113,9 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 InsuredName = "Kasim",
                 InsuredNRIC = "YYY",
                 BizRegNo = "2233",
-                DateOfBirth = new DateTime(1984, 4, 11),
+                DateofBirth = new DateTime(1984, 4, 11),
                 Gender = "MALE",
-                MaritalStatus = true,
+                MaritalStatus = "YES",
                 Occupation = "Software Engineer",
                 Industry = "IT",
                 LicenseDate = DateTime.Now
@@ -281,13 +282,14 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             if (arg != null && this.OwnerDetail.IsValid())
             {
+                string loggedInUserName = IdentityUtility.GetLoggedInUserName();
+
                 OwnerDetail ownerDetail = arg.OwnerDetail;
                 if (ownerDetail != null)
                 {
                     if(this.IsOwnerCreated == false)
                     {
-                        ownerDetail.CreatedBy = "Sifayideen";
-                        ownerDetail.LastUpdatedBy = "Sifayideen";
+                        ownerDetail.CreatedBy = loggedInUserName;
 
                         var errorInfo = quotationDb.AddOwnerDetails(ownerDetail);
                         if (errorInfo.Code == 0)
@@ -302,7 +304,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     }
                     else
                     {
-                        ownerDetail.LastUpdatedBy = "Sifayideen";
+                        ownerDetail.LastUpdatedBy = loggedInUserName;
 
                         var errorInfo = quotationDb.EditOwnerDetails(ownerDetail);
                         if (errorInfo.Code == 0)
@@ -447,6 +449,14 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                             return;
                         }
                     }
+
+                    //On Successfully creating a new quotation
+                    this.EventAggregator.GetEvent<NewQuotationEvent>().Publish(new QuotationEventArgs
+                    {
+                        QuotationNumber = insuranceDetail.InsuranceQtnNo,
+                        NRICNumber = insuranceDetail.NRIC,
+                        QuotationDataSet = quotationDataSet
+                    });
                 }
                 else
                 {
@@ -479,10 +489,12 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 {
                     Name = row.Field<string>("Name"),
                     NRIC = row.Field<string>("NRIC"),
+                    BizRegNo = row.Field<string>("BizRegNo"),
                     DateOfBirth = row.Field<DateTime?>("DateOfBirth"),
                     Gender = row.Field<string>("Gender"),
                     MaritalStatus = row.Field<bool?>("MaritalStatus"),
                     Occupation = row.Field<string>("Occupation"),
+                    Industry = row.Field<string>("Industry"),
                     LicenseDate = row.Field<DateTime?>("LicenseDate"),
                     CreatedBy = row.Field<string>("CreatedBy"),
                     CreatedDate = row.Field<DateTime?>("CreatedDate"),
@@ -490,7 +502,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     LastUpdatedDate = row.Field<DateTime?>("LastUpdatedDate"),
                     Email = row.Field<string>("Email"),
                     Address = row.Field<string>("Address"),
-                    // RenewalRemindDays = row.Field<short?>("RenewalRemindDays"),
+                    RenewalRemindDays = short.Parse(row["RenewalRemindDays"].ToString())
                 };
             }
             return ownerDetail;
@@ -506,9 +518,9 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     InsuredName = row.Field<string>("InsuredName"),
                     InsuredNRIC = row.Field<string>("InsuredNRIC"),
                     BizRegNo = row.Field<string>("BizRegNo"),
-                    DateOfBirth = row.Field<DateTime?>("DateofBirth"),
+                    DateofBirth = row.Field<DateTime?>("DateofBirth"),
                     Gender = row.Field<string>("Gender"),
-                    MaritalStatus = int.Parse(row["MaritalStatus"].ToString()) == 1 ? true : false,
+                    MaritalStatus = row.Field<string>("MaritalStatus"),
                     Occupation = row.Field<string>("Occupation"),
                     Industry = row.Field<string>("Industry"),
                     LicenseDate = row.Field<DateTime?>("LicenseDate"),
@@ -528,11 +540,12 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     Make = row.Field<string>("Make"),
                     Model = row.Field<string>("Model"),
                     Capacity = row.Field<string>("Capacity"),
+                    Tonnage = row.Field<string>("Tonnage"),
                     DateOfRegistered = row.Field<DateTime?>("DateOfRegistered"),
                     YearMade = row.Field<string>("YearMade"),
                     RegNo = row.Field<string>("RegNo"),
-                    ParallelImport = int.Parse(row["ParallelImport"].ToString()),
-                    OffPeakVehicle = int.Parse(row["OffPeakVehicle"].ToString()),
+                    ParallelImport = byte.Parse(row["ParallelImport"].ToString()),
+                    OffPeakVehicle = byte.Parse(row["OffPeakVehicle"].ToString()),
                     NCD = row.Field<string>("NCD"),
                     ExistingInsurer = row.Field<string>("ExistingInsurer"),
                     PreviousRegNo = row.Field<string>("PreviousRegNo"),
@@ -550,16 +563,16 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 {
                     NRIC = row.Field<string>("NRIC"),
                     InsuranceQtnNo = row.Field<string>("InsuranceQtnNo"),
-                    InsuranceExpiryDate = row.Field<DateTime?>("InsuranceExpiryDate"),
+                    InsuranceExpiryDate = row.Field<DateTime>("InsuranceExpiryDate"),
                     InsuranceRenewalDate = row.Field<DateTime?>("InsuranceRenewalDate"),
-                    RoadTaxExpiryDate = row.Field<DateTime?>("RoadTaxExpiryDate"),
+                    RoadTaxExpiryDate = row.Field<DateTime>("RoadTaxExpiryDate"),
                     RoadTaxRenewalDate = row.Field<DateTime?>("RoadTaxRenewalDate"),
                     PreviousDealer = row.Field<string>("PreviousDealer"),
                     Agency = row.Field<string>("Agency"),
                     PrevYearPremium = row.Field<string>("PrevYearPremium"),
                     FinanceBank = row.Field<string>("FinanceBank"),
-                    InsuranceRenewed = int.Parse(row["InsuranceRenewed"].ToString()),
-                    RoadTaxRenewed = int.Parse(row["RoadTaxRenewed"].ToString()),
+                    InsuranceRenewed = byte.Parse(row["InsuranceRenewed"].ToString()),
+                    RoadTaxRenewed = byte.Parse(row["RoadTaxRenewed"].ToString()),
                 }).ToList();
             }
             return insuranceDetails.FirstOrDefault();
@@ -732,7 +745,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public Nullable<int> RenewalRemindDays
+        public Nullable<short> RenewalRemindDays
         {
             get
             {
@@ -903,11 +916,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             get
             {
-                return this.model.DateOfBirth;
+                return this.model.DateofBirth;
             }
             set
             {
-                this.model.DateOfBirth = value;
+                this.model.DateofBirth = value;
                 OnPropertyChanged();
             }
         }
@@ -947,7 +960,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public Nullable<bool> MaritalStatus
+        public string MaritalStatus
         {
             get
             {
@@ -1114,7 +1127,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.InsuredNRIC = string.Empty;
             this.DateOfBirth = null;
             this.Gender = string.Empty;
-            this.MaritalStatus = false;
+            this.MaritalStatus = "NO";
             this.Occupation = string.Empty;
             this.Industry = string.Empty;
             this.LicenseDate = null;
@@ -1233,7 +1246,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public int ParallelImport
+        public Nullable<byte> ParallelImport
         {
             get
             {
@@ -1245,7 +1258,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public int OffPeakVehicle
+        public Nullable<byte> OffPeakVehicle
         {
             get
             {
@@ -1489,7 +1502,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public Nullable<System.DateTime> InsuranceExpiryDate
+        public System.DateTime InsuranceExpiryDate
         {
             get
             {
@@ -1513,7 +1526,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public Nullable<System.DateTime> RoadTaxExpiryDate
+        public System.DateTime RoadTaxExpiryDate
         {
             get
             {
@@ -1585,7 +1598,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public int InsuranceRenewed
+        public byte InsuranceRenewed
         {
             get
             {
@@ -1597,7 +1610,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
-        public int RoadTaxRenewed
+        public byte RoadTaxRenewed
         {
             get
             {

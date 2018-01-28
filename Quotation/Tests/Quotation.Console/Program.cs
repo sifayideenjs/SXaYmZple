@@ -11,9 +11,9 @@ namespace Quotation.Console
     {
         static void Main(string[] args)
         {
-            string userName = "Admin";
+            //string userName = "Admin";
             string clearTextPassword = "Admin123$";
-            string hashedPassword = CalculateHash(clearTextPassword, userName);
+            string hashedPassword = Encrypt(clearTextPassword);
             System.Console.ReadKey();
         }
 
@@ -26,6 +26,12 @@ namespace Quotation.Console
             byte[] hash = algorithm.ComputeHash(saltedHashBytes);
             // Return the hash as a base64 encoded string to be compared to the stored password
             return Convert.ToBase64String(hash);
+        }
+
+        public static string Encrypt(string clearTextPassword)
+        {
+            RiskLicense.RiskLicense license = new RiskLicense.RiskLicense();
+            return license.EnCrypt(ref clearTextPassword);
         }
     }
 }

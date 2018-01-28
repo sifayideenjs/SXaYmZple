@@ -16,11 +16,11 @@ namespace Quotation.LoginModule.ViewModels
 {
     public class UserViewModel : ViewModelBase
     {
-        private string id = string.Empty;
+        private int id = 0;
         private string name = string.Empty;
         private string username = string.Empty;
         private string password = string.Empty;
-        private string groupId = string.Empty;
+        private int groupId = 0;
         private List<GroupViewModel> groups = new List<GroupViewModel>();
         private GroupViewModel selectedGroup = null;
 
@@ -36,7 +36,7 @@ namespace Quotation.LoginModule.ViewModels
         public UserViewModel(UserManagementDb userManagementDb, List<GroupDetail> groupDetails, UserGroupDetail userGroupDetail)
         {
             this.id = userGroupDetail.UserID;
-            this.name = userGroupDetail.UserName;
+            this.name = userGroupDetail.Name;
             this.username = userGroupDetail.UserName;
             this.groupId = userGroupDetail.GroupID;
             this.groups = new List<GroupViewModel>(groupDetails.Select(gd => new GroupViewModel(userManagementDb, gd)));
@@ -66,17 +66,17 @@ namespace Quotation.LoginModule.ViewModels
                 {
                     userDetail = new UserDetail
                     {
-                        UserID = dataTable.Rows[0].Field<string>("UserID"),
+                        UserID = (int)dataTable.Rows[0].Field<long>("UserID"),
                         UserName = dataTable.Rows[0].Field<string>("UserName"),
                         Password = dataTable.Rows[0].Field<string>("Password"),
-                        GroupID = dataTable.Rows[0].Field<string>("GroupID")
+                        GroupID = (int)dataTable.Rows[0].Field<long>("GroupID")
                     };
                 }
             }
             return userDetail;
         }
 
-        public string ID
+        public int ID
         {
             get
             {

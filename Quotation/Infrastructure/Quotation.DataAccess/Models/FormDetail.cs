@@ -11,7 +11,6 @@ namespace Quotation.DataAccess.Models
         public FormDetail()
         {
         }
-
         public int FormID { get; set; }
         public string FormName { get; set; }
         public string CustomeText { get; set; }

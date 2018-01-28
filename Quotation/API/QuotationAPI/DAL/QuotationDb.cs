@@ -105,7 +105,7 @@ namespace QuotationAPI.DAL
         //        userDetails = dataTable.AsEnumerable().Select(row =>
         //                        new UserDetail
         //                        {
-        //                            UserID = row.Field<int>("UserID"),
+        //                            UserID = (int)row.Field<long>("UserID"),
         //                            UserName = row.Field<string>("UserName"),
         //                            Password = row.Field<string>("Password"),
         //                            CreatedBy = row.Field<string>("CreatedBy"),
@@ -178,7 +178,7 @@ namespace QuotationAPI.DAL
 
             foreach(var driverDetail in driverDetails)
             {
-                dataTable.Rows.Add(driverDetail.InsuredName, driverDetail.InsuredNRIC, driverDetail.BizRegNo, driverDetail.DateOfBirth, driverDetail.Gender, driverDetail.MaritalStatus, driverDetail.Occupation, driverDetail.Industry, driverDetail.LicenseDate);
+                dataTable.Rows.Add(driverDetail.InsuredName, driverDetail.InsuredNRIC, driverDetail.BizRegNo, driverDetail.DateofBirth, driverDetail.Gender, driverDetail.MaritalStatus, driverDetail.Occupation, driverDetail.Industry, driverDetail.LicenseDate);
             }
 
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();

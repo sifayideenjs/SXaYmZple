@@ -102,6 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\FormNames.cs" />
     <Compile Include="Events\GroupAccountEvent.cs" />
     <Compile Include="Events\UserAccountEvent.cs" />
     <Compile Include="LoginModule.cs" />
@@ -113,6 +114,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="ViewModels\AddGroupDialogViewModel.cs" />
     <Compile Include="ViewModels\AddUserDialogViewModel.cs" />
     <Compile Include="ViewModels\AdministrationTitlebarViewModel.cs" />
     <Compile Include="ViewModels\UserManagementVM\GroupFormViewModel.cs" />
@@ -124,6 +126,9 @@
     <Compile Include="ViewModels\UserManagementViewModel.cs" />
     <Compile Include="ViewModels\UsernameTitlebarViewModel.cs" />
     <Compile Include="ViewModels\UserManagementVM\UserViewModel.cs" />
+    <Compile Include="Views\AddGroupDialog.xaml.cs">
+      <DependentUpon>AddGroupDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddUserDialog.xaml.cs">
       <DependentUpon>AddUserDialog.xaml</DependentUpon>
     </Compile>
@@ -154,6 +159,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AddGroupDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddUserDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
