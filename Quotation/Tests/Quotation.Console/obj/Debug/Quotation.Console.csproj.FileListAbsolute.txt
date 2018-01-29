@@ -10,3 +10,4 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\bin
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\obj\Debug\Quotation.Console.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\obj\Debug\Quotation.Console.exe
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\obj\Debug\Quotation.Console.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\bin\Debug\RiskLicense.dll

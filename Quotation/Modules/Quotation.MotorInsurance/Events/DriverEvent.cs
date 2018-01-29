@@ -26,7 +26,7 @@ namespace Quotation.MotorInsuranceModule.Events
 
     public class DriverEventArgs
     {
-        public List<DriverDetail> DriverDetails { get; set; }
+        public DriverDetail DriverDetail { get; set; }
         public string RegionName { get; set; }
         public string Source { get; set; }
     }

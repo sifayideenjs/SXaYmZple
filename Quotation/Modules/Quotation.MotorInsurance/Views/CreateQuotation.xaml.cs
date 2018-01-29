@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace Quotation.MotorInsuranceModule.Views
 {
     /// <summary>
-    /// Interaction logic for CreateQuotation.xaml
+    /// Interaction logic for CreateInsurance.xaml
     /// </summary>
     public partial class CreateQuotation : UserControl
     {

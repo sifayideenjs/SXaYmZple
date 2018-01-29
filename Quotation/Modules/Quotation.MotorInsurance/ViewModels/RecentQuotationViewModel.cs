@@ -33,8 +33,9 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public RecentQuotationViewModel(QuotationDb quotationDb)
         {
             this.quotationDb = quotationDb;
-            Initializate();
+            this.Initializate();
             this.IntializeCommands();
+            this.SubscribeEvents();
         }
 
         #region Properties
@@ -138,6 +139,9 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             {
                 var recentItem = new RecentItem() { OwnerName = arg.OwnerName, NRIC = arg.NRICNumber, QuotationNo = arg.QuotationNumber, CreatedDateTime = DateTime.Now, IsAvailable = true };
                 RecentListUtility.AddRecentData(recentItem, recentFileName);
+
+                if(this.RecentItems.Count == 0) this.RecentItems.Add(new RecentItemViewModel(recentItem));
+                else if (this.RecentItems.Count > 0) this.RecentItems.Insert(0, new RecentItemViewModel(recentItem));
             }
         }
         #endregion //EventAggregation

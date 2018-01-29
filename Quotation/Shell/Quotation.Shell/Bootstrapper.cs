@@ -53,6 +53,7 @@ namespace Quotation.Shell
 
             Container.RegisterTypeForNavigation< Quotation.DashboardModule.Views.Dashboard> (WindowNames.Dashboard);
 
+            Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.NewProposal>(WindowNames.MotorNewProposal);
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateQuotation>(WindowNames.MotorCreateQuotation);
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.Wizards.AddOwnerDetail>(WindowNames.MotorAddOwnerDetail);
             Container.RegisterTypeForNavigation<Quotation.MotorInsuranceModule.Views.CreateWizards.AddQuotationDetail>(WindowNames.MotorAddQuotationDetail);

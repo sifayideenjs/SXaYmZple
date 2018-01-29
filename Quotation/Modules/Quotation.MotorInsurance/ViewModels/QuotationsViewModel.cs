@@ -62,7 +62,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecuteNewQuotationCommand()
         {
-            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorNewProposal);
             this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, WindowNames.MotorAddOwnerDetail);
         }
 

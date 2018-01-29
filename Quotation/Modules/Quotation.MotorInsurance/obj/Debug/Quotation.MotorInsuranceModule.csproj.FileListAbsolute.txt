@@ -84,10 +84,8 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsu
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\en-US\Quotation.MotorInsuranceModule.resources.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Quotation.MotorInsuranceModule.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Quotation.MotorInsuranceModule.pdb
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\CreateQuotation.g.cs
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\RecentQuotation.g.cs
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\SearchQuotation.g.cs
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\CreateQuotation.baml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\RecentQuotation.baml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\SearchQuotation.baml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\Quotation.Styling.dll
@@ -154,3 +152,9 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsuran
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\Quotation.Core.pdb
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\Quotation.Core.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\bin\Debug\Quotation.Core.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\NewProposal.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\NewProposal.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\CreateQuotation.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\CreateQuotation.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\AddDriverDialog.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\AddDriverDialog.baml

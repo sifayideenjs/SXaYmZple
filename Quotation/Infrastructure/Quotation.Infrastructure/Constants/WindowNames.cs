@@ -13,6 +13,7 @@ namespace Quotation.Infrastructure.Constants
 
         public static string Dashboard = "Dashboard";
 
+        public static string MotorNewProposal = "MotorNewProposal";
         public static string MotorCreateQuotation = "MotorCreateQuotation";
         public static string MotorRecentQuotation = "MotorRecentQuotation";
         public static string MotorSearchQuotation = "MotorSearchQuotation";

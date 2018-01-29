@@ -11,8 +11,8 @@
              xmlns:infBehaviors="clr-namespace:Quotation.Infrastructure.Behaviors;assembly=Quotation.Infrastructure"
              xmlns:infConverters="clr-namespace:Quotation.Infrastructure.Converters;assembly=Quotation.Infrastructure"
              xmlns:control="clr-namespace:Quotation.Styling.Controls;assembly=Quotation.Styling"
-             mc:Ignorable="d"
-             d:DesignHeight="600" d:DesignWidth="600" DataContext="{Binding}">
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="600" DataContext="{Binding}">
     <UserControl.Resources>
         <infConverters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <infConverters:YesNoToBooleanConverter x:Key="YesNoToBooleanConverter"/>
@@ -54,37 +54,47 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Insured Name / Contact:</Label>
-                    <TextBox Grid.Row="0" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,  ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5"/>
 
-                    <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14">NRIC / Biz Reg No:</Label>
-                    <TextBox Grid.Row="1" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" IsEnabled="{Binding OwnerDetail.IsOwnerCreated}" Text="{Binding OwnerDetail.NRIC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
+                    <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Contact:</Label>
+                    <TextBox Grid.Row="1" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.Contact, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5"/>
+                    
+                    <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14">NRIC:</Label>
+                    <TextBox Grid.Row="2" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" IsReadOnly="{Binding IsOwnerCreated}" Text="{Binding OwnerDetail.NRIC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5"/>
 
-                    <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Date of Birth:</Label>
-                    <DatePicker Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding OwnerDetail.DateOfBirth, Mode=TwoWay, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
+                    <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Biz Reg No:</Label>
+                    <TextBox Grid.Row="3" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.BizRegNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5"/>
 
-                    <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Gender:</Label>
-                    <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding OwnerDetail.GenderTypes}" SelectedItem="{Binding OwnerDetail.Gender, Mode=TwoWay}" SelectedIndex="0" Margin="5"/>
+                    <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Date of Birth:</Label>
+                    <DatePicker Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding OwnerDetail.DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5"/>
 
-                    <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Marital Status:</Label>
-                    <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding OwnerDetail.MaritalStatusTypes}" SelectedItem="{Binding OwnerDetail.MaritalStatus, Mode=TwoWay, Converter={StaticResource YesNoToBooleanConverter}}" SelectedIndex="0" Margin="5" />
+                    <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Gender:</Label>
+                    <ComboBox Grid.Row="5" Grid.Column="1" ItemsSource="{Binding OwnerDetail.GenderTypes}" SelectedItem="{Binding OwnerDetail.Gender, Mode=TwoWay}" SelectedIndex="0" Margin="5"/>
 
-                    <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Occupation / Industry:</Label>
-                    <TextBox Grid.Row="5" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" metro:TextBoxHelper.Watermark="e.g. Software Engineer" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.Occupation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
+                    <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Marital Status:</Label>
+                    <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding OwnerDetail.MaritalStatusTypes}" SelectedItem="{Binding OwnerDetail.MaritalStatus, Mode=TwoWay}" SelectedIndex="0" Margin="5" />
 
-                    <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14">License Date:</Label>
-                    <DatePicker Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding OwnerDetail.LicenseDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
+                    <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Occupation:</Label>
+                    <TextBox Grid.Row="7" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" metro:TextBoxHelper.Watermark="e.g. Software Engineer" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.Occupation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5"/>
 
-                    <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Contact / Email:</Label>
-                    <TextBox Grid.Row="7" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
+                    <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Industry:</Label>
+                    <TextBox Grid.Row="8" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" metro:TextBoxHelper.Watermark="e.g. Information Technology" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.Industry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5"/>
 
-                    <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Address:</Label>
-                    <TextBox Grid.Row="8" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Text="{Binding OwnerDetail.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
+                    <Label Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" FontSize="14">License Date:</Label>
+                    <DatePicker Grid.Row="9" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding OwnerDetail.LicenseDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5"/>
 
-                    <Label Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Renewal Reminder:</Label>
-                    <ComboBox Grid.Row="9" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" ItemsSource="{Binding OwnerDetail.RenewalReminds}" SelectedItem="{Binding OwnerDetail.RenewalRemindDays, Mode=TwoWay}" SelectedIndex="0" Text="{Binding OwnerDetail.RenewalRemindDays, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
+                    <Label Grid.Row="10" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Email:</Label>
+                    <TextBox Grid.Row="10" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding OwnerDetail.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
+
+                    <Label Grid.Row="11" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Address:</Label>
+                    <TextBox Grid.Row="11" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Text="{Binding OwnerDetail.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5"/>
+
+                    <Label Grid.Row="12" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Renewal Reminder:</Label>
+                    <ComboBox Grid.Row="12" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" ItemsSource="{Binding OwnerDetail.RenewalReminds}" SelectedItem="{Binding OwnerDetail.RenewalRemindDays, Mode=TwoWay}" SelectedIndex="0" Text="{Binding OwnerDetail.RenewalRemindDays, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
                 </Grid>
             </Grid>
         </ScrollViewer>

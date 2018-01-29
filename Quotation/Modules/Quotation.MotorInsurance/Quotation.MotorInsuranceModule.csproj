@@ -128,15 +128,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\DbUtility.cs" />
+    <Compile Include="ViewModels\AddDriverDialogViewModel.cs" />
     <Compile Include="ViewModels\CreateQuotationViewModel.cs" />
+    <Compile Include="ViewModels\NewProposalViewModel.cs" />
     <Compile Include="ViewModels\MotorInsuranceTilesViewModel.cs" />
     <Compile Include="ViewModels\QuotationsViewModel.cs" />
     <Compile Include="ViewModels\QuotationViewModel.cs" />
     <Compile Include="ViewModels\RecentQuotationViewModel.cs" />
     <Compile Include="ViewModels\SearchQuotationViewModel.cs" />
     <Compile Include="ViewModels\ViewQuotationViewModel.cs" />
+    <Compile Include="Views\AddDriverDialog.xaml.cs">
+      <DependentUpon>AddDriverDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateQuotation.xaml.cs">
       <DependentUpon>CreateQuotation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewProposal.xaml.cs">
+      <DependentUpon>NewProposal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreateWizards\AddQuotationDetail.xaml.cs">
       <DependentUpon>AddQuotationDetail.xaml</DependentUpon>
@@ -174,7 +182,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AddDriverDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreateQuotation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewProposal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

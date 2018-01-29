@@ -36,5 +36,38 @@ namespace Quotation.MotorInsuranceModule.Utilities
             }
             return formDetails;
         }
+
+        public static string GetNewQuotationNumber(QuotationDb dbContext)
+        {
+            string quotationNo = string.Empty;
+            string errorMessage;
+            var qtndataset = dbContext.LoadComboDetails("QTN", out errorMessage);
+            if(qtndataset != null && qtndataset.Tables.Count > 0)
+            {
+                var qtnDetails = GetInsuranceDetail(qtndataset.Tables[0]);
+                var quotationNos = qtnDetails.Select(q => int.Parse(q.InsuranceQtnNo));
+                int max = quotationNos.Max();
+                quotationNo = (max + 1).ToString();
+            }
+            else
+            {
+                quotationNo = "1001";
+            }
+            return quotationNo;
+        }
+
+        private static List<MIQuotation> GetInsuranceDetail(DataTable dataTable)
+        {
+            List<MIQuotation> insuranceDetails = new List<MIQuotation>();
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                insuranceDetails = dataTable.AsEnumerable().Select(row => new MIQuotation
+                {
+                    NRIC = row.Field<string>("NRIC"),
+                    InsuranceQtnNo = row.Field<string>("InsuranceQtnNo")
+                }).ToList();
+            }
+            return insuranceDetails;
+        }
     }
 }

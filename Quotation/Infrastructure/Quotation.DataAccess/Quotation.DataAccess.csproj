@@ -59,6 +59,7 @@
     <Compile Include="Models\OwnerDetail.cs" />
     <Compile Include="Models\UserDetail.cs" />
     <Compile Include="Models\UserGroupDetail.cs" />
+    <Compile Include="Models\UserValidateDetail.cs" />
     <Compile Include="Models\VehicleDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuotationDb.cs" />

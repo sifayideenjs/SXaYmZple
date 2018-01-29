@@ -68,10 +68,13 @@ namespace Quotation.DataAccess
                 errorMessage = ex.Message;
             }
 
-            dataSet.Tables[0].TableName = "OwnerDetails";
-            dataSet.Tables[1].TableName = "DriverDetails";
-            dataSet.Tables[2].TableName = "VehicleDetails";
-            dataSet.Tables[3].TableName = "InsuranceDetails";
+            if (dataSet != null && dataSet.Tables.Count == 4 && dataSet.Tables[0].Rows.Count > 0)
+            {
+                dataSet.Tables[0].TableName = "OwnerDetails";
+                dataSet.Tables[1].TableName = "DriverDetails";
+                dataSet.Tables[2].TableName = "VehicleDetails";
+                dataSet.Tables[3].TableName = "InsuranceDetails";
+            }
 
             return dataSet;
         }
@@ -121,6 +124,13 @@ namespace Quotation.DataAccess
             catch (Exception ex)
             {
                 errorMessage = ex.Message;
+            }
+
+            if (dataSet != null && dataSet.Tables.Count == 3 && dataSet.Tables[0].Rows.Count > 0)
+            {
+                dataSet.Tables[0].TableName = "OwnerDetails";
+                dataSet.Tables[1].TableName = "DriverDetails";
+                dataSet.Tables[2].TableName = "VehicleDetails";
             }
 
             return dataSet;
@@ -326,6 +336,31 @@ namespace Quotation.DataAccess
             }
 
             return userDetails;
+        }
+
+        public DataSet LoadComboDetails(string flag, out string errorMessage)
+        {
+            DataSet dataSet = null;
+            errorMessage = string.Empty;
+            try
+            {
+                HttpResponseMessage responseMessage = client.GetAsync("/api/UserManagement/LoadComboDetails?flag=" + flag).Result;
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+                    dataSet = JsonConvert.DeserializeObject<DataSet>(responseData);
+                }
+                else
+                {
+                    errorMessage = "No Record Found!";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+
+            return dataSet;
         }
     }
 }

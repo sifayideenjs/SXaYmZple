@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{78161B3C-3CAC-4593-9504-8FFEF720B21F}"
 EndProject
@@ -40,6 +40,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.Core", "Infrastructure\Quotation.Core\Quotation.Core.csproj", "{C8C4FB74-FEBD-49BC-A46F-41F998CC2CE1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quotation.Console", "Tests\Quotation.Console\Quotation.Console.csproj", "{0AEC84F0-8DB0-4753-B7DD-144B16386C8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Report", "Report", "{DF10E9EA-D50D-41EC-8A18-7F29BCC6B13D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "InsMgt", "Report\InsMgt.vbproj", "{F7C4ADE2-5241-41AF-B0E3-59971AE00A15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +107,10 @@ Global
 		{0AEC84F0-8DB0-4753-B7DD-144B16386C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AEC84F0-8DB0-4753-B7DD-144B16386C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AEC84F0-8DB0-4753-B7DD-144B16386C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7C4ADE2-5241-41AF-B0E3-59971AE00A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7C4ADE2-5241-41AF-B0E3-59971AE00A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7C4ADE2-5241-41AF-B0E3-59971AE00A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7C4ADE2-5241-41AF-B0E3-59971AE00A15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,5 +130,6 @@ Global
 		{9BEC1AE7-B45F-4E30-B648-EC90F52F4FB2} = {763CCFE4-A638-4894-93FD-DCA6D967CA14}
 		{C8C4FB74-FEBD-49BC-A46F-41F998CC2CE1} = {1B733E20-47F8-49AD-9CBF-1B1A10BB1F7B}
 		{0AEC84F0-8DB0-4753-B7DD-144B16386C8B} = {17BCB0DB-8ECD-4C85-B0E7-36483043AB41}
+		{F7C4ADE2-5241-41AF-B0E3-59971AE00A15} = {DF10E9EA-D50D-41EC-8A18-7F29BCC6B13D}
 	EndGlobalSection
 EndGlobal

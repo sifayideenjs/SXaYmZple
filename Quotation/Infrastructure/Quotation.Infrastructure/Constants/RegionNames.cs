@@ -18,6 +18,7 @@ namespace Quotation.Infrastructure.Constants
         public static string DialogPopupRegion = "DialogPopupRegion";
 
         public static string MotorWizardRegion = "MotorWizardRegion";
+        public static string MotorCreateQuotationRegion = "MotorCreateQuotationRegion";
         public static string MotorSearchRegion = "MotorSearchRegion";
         public static string MotorQuotationRegion = "MotorQuotationRegion";
     }

@@ -75,21 +75,29 @@ namespace Quotation.LoginModule.Services
                 //return new User(userData.Username, userData.Username, userData.Role);
 
                 string errorMessage = string.Empty;
-                var dataSet = dbContext.ValidateUser(username, clearTextPassword, out errorMessage);
-                if (dataSet != null)
+                var userValidateDetail = dbContext.ValidateUser(username, clearTextPassword, out errorMessage);
+                if (userValidateDetail != null && userValidateDetail.Code != -1 && userValidateDetail.GroupId != -1)
                 {
-                    var userdataset = dbContext.LoadComboDetails("USER", out errorMessage);
-                    var userGroupDetails = GetUserDetails(userdataset);
-                    var userGroupDetail = userGroupDetails.Single(ud => ud.UserName.ToUpper() == username.ToUpper());
-                    var groupdataset = dbContext.GetGroupDetails(userGroupDetail.GroupID, out errorMessage);
-                    var groupDetail = GetGroupDetail(groupdataset);                    
+                    //var userdataset = dbContext.LoadComboDetails("USER", out errorMessage);
+                    //var userGroupDetails = GetUserDetails(userdataset);
+                    //var userGroupDetail = userGroupDetails.Single(ud => ud.UserName.ToUpper() == username.ToUpper());
+                    //var groupdataset = dbContext.GetGroupDetails(userGroupDetail.GroupID, out errorMessage);
+                    //var groupDetail = GetGroupDetail(groupdataset);                    
+                    //var groupFormRights = GetGroupFormRights(groupdataset);
+                    //var formIds = groupFormRights.Select(gfr => gfr.FormID);
+                    //var formdataset = dbContext.LoadComboDetails("FORM", out errorMessage);
+                    //var formDetails = GetFormDetails(formdataset);
+                    //var formNames = formDetails.Where(f => formIds.Any(fi => fi == f.FormID)).Select(f => f.FormName);
+
+                    var groupdataset = dbContext.GetGroupDetails(userValidateDetail.GroupId, out errorMessage);
+                    var groupDetail = GetGroupDetail(groupdataset);
                     var groupFormRights = GetGroupFormRights(groupdataset);
                     var formIds = groupFormRights.Select(gfr => gfr.FormID);
                     var formdataset = dbContext.LoadComboDetails("FORM", out errorMessage);
                     var formDetails = GetFormDetails(formdataset);
                     var formNames = formDetails.Where(f => formIds.Any(fi => fi == f.FormID)).Select(f => f.FormName);
 
-                    return new User(userGroupDetail.Name, userGroupDetail.UserName, groupDetail.GroupName, formNames.ToArray());
+                    return new User(userValidateDetail.Name, username, groupDetail.GroupName, formNames.ToArray());
                 }
                 else
                 {

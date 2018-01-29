@@ -86,21 +86,21 @@ namespace Quotation.ReportModule.ViewModels
                     TextObject LicenseDate = (TextObject)report.ReportDefinition.ReportObjects["LicenseDate"];
                     LicenseDate.Text = printDataSet.Tables["DriverDetails"].Rows[0]["LicenseDate"].ToString();
 
-                    report.Database.Tables["OwnerDetail"].SetDataSource(printDataSet.Tables["OwnerDetails"]);
+                    report.Database.Tables["OwnerDetails"].SetDataSource(printDataSet.Tables["OwnerDetails"]);
                     report.Database.Tables["VehicleDetails"].SetDataSource(printDataSet.Tables["VehicleDetails"]);
-                    report.Database.Tables["DriverDetails"].SetDataSource(printDataSet.Tables["DriverDetails"]);
-                    report.Database.Tables["InsuranceDetails"].SetDataSource(printDataSet.Tables["InsuranceDetails"]);
+                    //report.Database.Tables["DriverDetails"].SetDataSource(printDataSet.Tables["DriverDetails"]);
+                    report.Database.Tables["MIQuotation"].SetDataSource(printDataSet.Tables["InsuranceDetails"]);
 
                     ReportsViewer.ViewerCore.ReportSource = report;
                 }
                 else
                 {
-                    this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Print", "Unable to load Crystal Report.\nPlease contact your administrator.");
+                    this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Print Report", "Unable to load Crystal Report.\nPlease contact your administrator.");
                 }
             }
             catch (Exception ex)
             {
-                this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Print", ex.Message);
+                this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Print Report", ex.Message);
             }
         }
 

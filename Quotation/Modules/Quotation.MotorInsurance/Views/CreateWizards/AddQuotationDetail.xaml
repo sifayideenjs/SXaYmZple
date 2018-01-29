@@ -13,13 +13,13 @@
              xmlns:infConverters="clr-namespace:Quotation.Infrastructure.Converters;assembly=Quotation.Infrastructure"
              xmlns:control="clr-namespace:Quotation.Styling.Controls;assembly=Quotation.Styling"
              mc:Ignorable="d"
-             d:DesignHeight="800" d:DesignWidth="1000" DataContext="{Binding}">
+             d:DesignHeight="800" d:DesignWidth="1800" DataContext="{Binding}">
     <UserControl.Resources>
         <infConverters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <infConverters:YesNoToBooleanConverter x:Key="YesNoToBooleanConverter"/>
         <infConverters:YesNoToByteConverter x:Key="YesNoToByteConverter"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="root">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
@@ -46,7 +46,7 @@
 
                     <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" FontFamily="{DynamicResource HeaderFontFamily}">Named Driver Details</Label>
 
-                    <DataGrid Grid.Row="1" MinHeight="100" ItemsSource="{Binding DriverDetails}" SelectedItem="{Binding SelectedDriverDetail}" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" material:DataGridAssist.EnableEditBoxAssist="False" >
+                    <DataGrid Grid.Row="1" MinHeight="100" ItemsSource="{Binding DriverDetails}" SelectedItem="{Binding SelectedDriverDetail}" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" material:DataGridAssist.EnableEditBoxAssist="False" Background="LightGray">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Insured Name" Binding="{Binding InsuredName}" Width="200"/>
                             <DataGridTextColumn Header="Insured NRIC" Binding="{Binding InsuredNRIC}" Width="100"/>
@@ -85,15 +85,15 @@
                     </DataGrid>
 
                     <StackPanel Grid.Row="10" Grid.Column="3" Orientation="Vertical" HorizontalAlignment="Center" Margin="0 0 10 10">
-                        <Button Grid.Column="1" Height="40" Width="40" Command="{Binding AddDriverCommand}" Style="{StaticResource MetroCircleButtonStyle}">
-                            <Rectangle Width="15" Height="15" Fill="WhiteSmoke">
+                        <Button Grid.Column="1" Height="40" Width="40" Command="{Binding DataContext.AddDriverCommand, ElementName=root}" Style="{StaticResource MetroCircleButtonStyle}">
+                            <Rectangle Width="15" Height="15" Fill="Black">
                                 <Rectangle.OpacityMask>
                                     <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_add}"/>
                                 </Rectangle.OpacityMask>
                             </Rectangle>
                         </Button>
-                        <Button Grid.Column="1" Height="40" Width="40" Command="{Binding DeleteDriverCommand}" Style="{StaticResource MetroCircleButtonStyle}">
-                            <Rectangle Width="15" Height="15" Fill="WhiteSmoke">
+                        <Button Grid.Column="1" Height="40" Width="40" Command="{Binding DataContext.DeleteDriverCommand, ElementName=root}" Style="{StaticResource MetroCircleButtonStyle}">
+                            <Rectangle Width="15" Height="15" Fill="Black">
                                 <Rectangle.OpacityMask>
                                     <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_delete}"/>
                                 </Rectangle.OpacityMask>
@@ -146,24 +146,28 @@
                         <TextBox Grid.Row="1" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding VehicleDetail.VehicleModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
                              Margin="5"/>
 
-                        <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Capacity / Tonnage:</Label>
+                        <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Capacity:</Label>
                         <TextBox Grid.Row="2" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding VehicleDetail.Capacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
                              Margin="5"/>
 
-                        <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Date of Reg:</Label>
-                        <DatePicker Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding VehicleDetail.DateOfRegistered, Mode=TwoWay, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                        <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Tonnage:</Label>
+                        <TextBox Grid.Row="3" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding VehicleDetail.Tonnage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                             Margin="5"/>
+                        
+                        <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Date of Reg:</Label>
+                        <DatePicker Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" SelectedDate="{Binding VehicleDetail.DateOfRegistered, Mode=TwoWay, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
                              Margin="5"/>
 
-                        <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Year Made:</Label>
-                        <TextBox Grid.Row="4" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding VehicleDetail.YearMade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                        <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Year Made:</Label>
+                        <TextBox Grid.Row="5" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding VehicleDetail.YearMade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
                              Margin="5"/>
 
-                        <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Reg No Plate:</Label>
-                        <TextBox Grid.Row="5" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding VehicleDetail.RegNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
+                        <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Reg No Plate:</Label>
+                        <TextBox Grid.Row="6" Grid.Column="1" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding VehicleDetail.RegNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}"
                              Margin="5"/>
 
-                        <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Parallel Import:</Label>
-                        <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding VehicleDetail.YesNos}" SelectedItem="{Binding VehicleDetail.ParallelImport, Mode=TwoWay, Converter={StaticResource YesNoToByteConverter}}" SelectedIndex="0" Margin="5" />
+                        <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" FontSize="14">Parallel Import:</Label>
+                        <ComboBox Grid.Row="7" Grid.Column="1" ItemsSource="{Binding VehicleDetail.YesNos}" SelectedItem="{Binding VehicleDetail.ParallelImport, Mode=TwoWay, Converter={StaticResource YesNoToByteConverter}}" SelectedIndex="0" Margin="5" />
 
                         <Label Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" FontSize="14">Off Peak Vehicle:</Label>
                         <ComboBox Grid.Row="0" Grid.Column="4" ItemsSource="{Binding VehicleDetail.YesNos}" SelectedItem="{Binding VehicleDetail.OffPeakVehicle, Mode=TwoWay, Converter={StaticResource YesNoToByteConverter}}" SelectedIndex="0" Margin="5" />
@@ -178,7 +182,7 @@
                         <TextBox Grid.Row="3" Grid.Column="4" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" Text="{Binding VehicleDetail.PreviousRegNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
 
                         <Label Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" FontSize="14">Claims (Past 3 years):</Label>
-                        <TextBox Grid.Row="4" Grid.Column="4" Grid.RowSpan="3" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding VehicleDetail.Claims, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
+                        <TextBox Grid.Row="4" Grid.Column="4" Grid.RowSpan="4" metro:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding VehicleDetail.Claims, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true, NotifyOnValidationError=true, ValidatesOnDataErrors=True}" Margin="5"/>
                     </Grid>
                 </Grid>
 

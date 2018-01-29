@@ -18,11 +18,14 @@ using System.Windows;
 using Quotation.Infrastructure.Events;
 using Quotation.Core.Utilities;
 using Quotation.MotorInsuranceModule.Constants;
+using Quotation.Infrastructure.Utilities;
+using Quotation.Infrastructure.Models;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
     public class MotorInsuranceTilesViewModel : ViewModelBase
     {
+        private string recentFileName = "MotorData.xml";
         private Visibility canNewProposal = Visibility.Collapsed;
         private Visibility canAddQuotation = Visibility.Collapsed;
         private Visibility canSearchQuotation = Visibility.Collapsed;
@@ -88,7 +91,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         public void ExecuteNewProposalCommand()
         {
             ClearRegions(RegionNames.MotorWizardRegion);
-            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorNewProposal);
             this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, WindowNames.MotorAddOwnerDetail);
         }
 
@@ -99,8 +102,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecuteAddQuotationCommand()
         {
-            //ClearRegions(RegionNames.MotorWizardRegion);
-            //this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
+            ClearRegions(RegionNames.MotorWizardRegion);
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
             //this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, WindowNames.MotorAddOwnerDetail);
         }
         
@@ -175,7 +178,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         private void OnCreateOwnerView(CreateOwnerEventArgs arg)
         {
-            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorCreateQuotation);
+            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorNewProposal);
         }
         #endregion //EventAggregation
 

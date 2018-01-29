@@ -81,18 +81,18 @@ namespace QuotationAPI.Controllers
 
         [HttpGet]
         [Route("api/UserManagement/ValidateUser")]
-        [ResponseType(typeof(DataSet))]
+        [ResponseType(typeof(UserValidateDetail))]
         public async Task<IHttpActionResult> UserValidate(string userName, string password)
         {
             try
             {
-                DataSet dataSet = await Task.Run(() => usermanagementDb.UserValidate(userName, password));
-                if (dataSet == null)
+                UserValidateDetail userValidateDetail = await Task.Run(() => usermanagementDb.UserValidate(userName, password));
+                if (userValidateDetail == null)
                 {
                     return NotFound();
                 }
 
-                return Ok(dataSet);
+                return Ok(userValidateDetail);
             }
             catch (Exception)
             {

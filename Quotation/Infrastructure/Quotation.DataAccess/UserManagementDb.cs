@@ -96,9 +96,9 @@ namespace Quotation.DataAccess
             return dataSet;
         }
 
-        public DataSet ValidateUser(string userName, string password, out string errorMessage)
+        public UserValidateDetail ValidateUser(string userName, string password, out string errorMessage)
         {
-            DataSet dataSet = null;
+            UserValidateDetail userValidateDetail = null;
             errorMessage = string.Empty;
             try
             {
@@ -106,7 +106,7 @@ namespace Quotation.DataAccess
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var responseData = responseMessage.Content.ReadAsStringAsync().Result;
-                    dataSet = JsonConvert.DeserializeObject<DataSet>(responseData);
+                    userValidateDetail = JsonConvert.DeserializeObject<UserValidateDetail>(responseData);
                 }
                 else
                 {
@@ -118,7 +118,7 @@ namespace Quotation.DataAccess
                 errorMessage = ex.Message;
             }
 
-            return dataSet;
+            return userValidateDetail;
         }
 
         public ErrorDetail UpdateUser(UserDetail userDetail, string flag, string userName)

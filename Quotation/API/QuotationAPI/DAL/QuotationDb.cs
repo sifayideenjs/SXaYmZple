@@ -29,7 +29,7 @@ namespace QuotationAPI.DAL
                                     NRIC = row.Field<string>("NRIC"),
                                     DateOfBirth = row.Field<DateTime?>("DateOfBirth"),
                                     Gender = row.Field<string>("Gender"),
-                                    MaritalStatus = row.Field<bool?>("MaritalStatus"),
+                                    MaritalStatus = row.Field<string>("MaritalStatus"),
                                     Occupation = row.Field<string>("Occupation"),
                                     LicenseDate = row.Field<DateTime?>("LicenseDate"),
                                     CreatedBy = row.Field<string>("CreatedBy"),
@@ -124,14 +124,17 @@ namespace QuotationAPI.DAL
             cmdParameters["@Flag"] = new SqlParameter("@Flag", flag);
             cmdParameters["@Name"] = new SqlParameter("@Name", ownerDetail.Name);
             cmdParameters["@NRIC"] = new SqlParameter("@NRIC", ownerDetail.NRIC);
+            cmdParameters["@Contact"] = new SqlParameter("@Contact", ownerDetail.Contact);
+            cmdParameters["@BizRegNo"] = new SqlParameter("@BizRegNo", ownerDetail.BizRegNo);
             cmdParameters["@DateOfBirth"] = new SqlParameter("@DateOfBirth", ownerDetail.DateOfBirth);
             cmdParameters["@Gender"] = new SqlParameter("@Gender", ownerDetail.Gender);
             cmdParameters["@MaritalStatus"] = new SqlParameter("@MaritalStatus", ownerDetail.MaritalStatus);
             cmdParameters["@Occupation"] = new SqlParameter("@Occupation", ownerDetail.Occupation);
+            cmdParameters["@Industry"] = new SqlParameter("@Industry", ownerDetail.Industry);
             cmdParameters["@LicenseDate"] = new SqlParameter("@LicenseDate", ownerDetail.LicenseDate);
             cmdParameters["@Email"] = new SqlParameter("@Email", ownerDetail.Email);
             cmdParameters["@Address"] = new SqlParameter("@Address", ownerDetail.Address);
-            //cmdParameters["RenewalRemindDays"] = new SqlParameter("RenewalRemindDays", ownerDetail.RenewalRemindDays);
+            cmdParameters["@RenewalRemindDays"] = new SqlParameter("RenewalRemindDays", ownerDetail.RenewalRemindDays);
             cmdParameters["@LogUser"] = new SqlParameter("@LogUser", ownerDetail.CreatedBy);
 
             SqlParameter outPutParameter1 = new SqlParameter();
@@ -171,7 +174,7 @@ namespace QuotationAPI.DAL
             dataTable.Columns.Add("BizRegNo", typeof(string));
             dataTable.Columns.Add("DateOfBirth", typeof(DateTime));
             dataTable.Columns.Add("Gender", typeof(string));
-            dataTable.Columns.Add("MaritalStatus", typeof(bool));
+            dataTable.Columns.Add("MaritalStatus", typeof(string));
             dataTable.Columns.Add("Occupation", typeof(string));
             dataTable.Columns.Add("Industry", typeof(string));
             dataTable.Columns.Add("LicenseDate", typeof(DateTime));
@@ -241,8 +244,8 @@ namespace QuotationAPI.DAL
             ErrorDetail errorDetail = new ErrorDetail();
             dbutility.ExecuteNonQuery("QuotationDb", "dbo.UpdateMIQuotation", cmdParameters);
 
-            errorDetail.Code = int.Parse(outPutParameter1.Value.ToString());
-            errorDetail.Info = outPutParameter2.Value.ToString();
+            errorDetail.Code = outPutParameter1.Value == null ? -1 :  int.Parse(outPutParameter1.Value.ToString());
+            errorDetail.Info = outPutParameter2.Value == null ? "ERROR" : outPutParameter2.Value.ToString();
 
             return errorDetail;
         }
@@ -292,6 +295,7 @@ namespace QuotationAPI.DAL
             cmdParameters["Make"] = new SqlParameter("Make", vehicleDetail.Make);
             cmdParameters["Model"] = new SqlParameter("Model", vehicleDetail.Model);
             cmdParameters["Capacity"] = new SqlParameter("Capacity", vehicleDetail.Capacity);
+            cmdParameters["Tonnage"] = new SqlParameter("Tonnage", vehicleDetail.Tonnage);
             cmdParameters["DateOfRegistered"] = new SqlParameter("DateOfRegistered", vehicleDetail.DateOfRegistered);
             cmdParameters["YearMade"] = new SqlParameter("YearMade", vehicleDetail.YearMade);
             cmdParameters["RegNo"] = new SqlParameter("RegNo", vehicleDetail.RegNo);

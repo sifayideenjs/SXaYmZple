@@ -38,7 +38,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             this.quotationDb = quotationDb;
             this.IntializeCommands();
 
-            searchTypes = new List<string>() { "NRIC", "Quotation No" };
+            searchTypes = new List<string>() { "Quotation No", "NRIC" };
             searchType = searchTypes.First();
         }
 
@@ -156,9 +156,9 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 }
                 else
                 {
-                    if (searchDataSet != null && searchDataSet.Tables.Count == 4)
+                    if (searchDataSet != null && searchDataSet.Tables.Count == 4 && searchDataSet.Tables[0].Rows.Count > 0)
                     {
-                        this.QuotationViewModel = new QuotationViewModel(searchDataSet);
+                        this.QuotationViewModel = new QuotationViewModel(quotationDb, searchDataSet);
                         this.RegionManager.RequestNavigate(RegionNames.MotorSearchRegion, WindowNames.MotorSummaryDetail);
                     }
                     else

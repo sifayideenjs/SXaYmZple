@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F7C4ADE2-5241-41AF-B0E3-59971AE00A15}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>InsMgt</RootNamespace>
+    <AssemblyName>InsMgt</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>InsMgt.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>InsMgt.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=12.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=12.0.1100.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=12.0.1100.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=12.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=12.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.vb" />
+    <Compile Include="rpt_MotorQuotation.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_MotorQuotation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="rpt_TIQuotation.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_TIQuotation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="rpt_MotorQuotation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_MotorQuotation.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpt_TIQuotation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_TIQuotation.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3924545A-F8E2-475A-B1A4-05175BC41E50}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Release\TempPE\My Project.Resources.Designer.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_BillwisePurchase.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_CounterPurchaseSub.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_CounterPurchase_Proj.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_IndentDeliveryItem.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_IndentGroup.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_IndentMain.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_IndentSub1.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_IndentSub_Proj.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_IndentUnDeliveredItem.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_LpoDeliveryItem.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_LpoGroup.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_LpoMain.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_LpoSub1.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_LpoSub_Proj.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_LpoUnDeliveredItem.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_MrvGroup.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_MrvMain.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_MrvSub1.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_MrvSub_Proj.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_MrvUnDeliveredItem.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PayCertificateGroup.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PayCertificateGroupold.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PayCertificateMain1.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PaymentCertificate.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PaymentCertificateFmt1.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PIPDeliveryItem.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PIPUnDeliveredItem.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PIP_Group.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PIP_Main.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PIP_Proj.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PIP_Standard.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PurchaseInvoicePostingSub.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PurchaseRtnMain.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PurchaseRtnSub1.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PurchaseRtn_Group.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PurchaseRtn_Groupold.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PVCash.vb.dll" />
+    <Content Include="obj\Release\TempPE\rpt_PVCheque.vb.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

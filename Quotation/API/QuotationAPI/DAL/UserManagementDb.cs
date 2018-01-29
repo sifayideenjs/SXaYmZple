@@ -19,7 +19,7 @@ namespace QuotationAPI.DAL
             cmdParameters["UserID"] = new SqlParameter("UserID", userDetail.UserID);
             cmdParameters["UserName"] = new SqlParameter("UserName", userDetail.UserName);
             cmdParameters["Name"] = new SqlParameter("Name", userDetail.Name);
-            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.Encrypt(userDetail.Password));
+            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.Encrypt(userDetail.Password, userDetail.UserName));
             cmdParameters["GroupID"] = new SqlParameter("GroupID", userDetail.GroupID);
             cmdParameters["Flag"] = new SqlParameter("Flag", flag);
             cmdParameters["LogUser"] = new SqlParameter("LogUser", userName);
@@ -150,22 +150,22 @@ namespace QuotationAPI.DAL
             return dataSet;
         }
 
-        internal DataSet UserValidate(string userName, string password)
+        internal UserValidateDetail UserValidate(string userName, string password)
         {
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
             cmdParameters["UserName"] = new SqlParameter("UserName", userName);
-            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.Encrypt(password));
+            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.Encrypt(password, userName));
 
             SqlParameter outPutParameter1 = new SqlParameter();
             outPutParameter1.ParameterName = "@Name";
-            outPutParameter1.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter1.SqlDbType = System.Data.SqlDbType.VarChar;
             outPutParameter1.Size = 255;
             outPutParameter1.Direction = System.Data.ParameterDirection.Output;
             cmdParameters["@Name"] = outPutParameter1;
 
             SqlParameter outPutParameter2 = new SqlParameter();
             outPutParameter2.ParameterName = "@GroupID";
-            outPutParameter2.SqlDbType = System.Data.SqlDbType.VarChar;
+            outPutParameter2.SqlDbType = System.Data.SqlDbType.Int;
             outPutParameter2.Size = 255;
             outPutParameter2.Direction = System.Data.ParameterDirection.Output;
             cmdParameters["@GroupID"] = outPutParameter2;
@@ -184,15 +184,14 @@ namespace QuotationAPI.DAL
             outPutParameter4.Direction = System.Data.ParameterDirection.Output;
             cmdParameters["@ERRORDESC"] = outPutParameter4;
 
-            //ErrorDetail errorDetail = new ErrorDetail();
-            //dbutility.ExecuteNonQuery("QuotationDb", "dbo.UserValidate", cmdParameters);
+            UserValidateDetail userValidateDetail = new UserValidateDetail();
+            dbutility.ExecuteNonQuery("QuotationDb", "dbo.UserValidate", cmdParameters);
 
-            //errorDetail.Info = outPutParameter2.Value == null ? "ERROR" : outPutParameter2.Value.ToString();
-            //if(errorDetail.Info == string.Empty) errorDetail.Code = 0;
-            //return errorDetail;
-
-            DataSet dataSet = dbutility.ExecuteQuery("QuotationDb", "dbo.UserValidate", cmdParameters);
-            return dataSet;
+            userValidateDetail.Name = outPutParameter1.Value == null ? null : outPutParameter1.Value.ToString();
+            userValidateDetail.GroupId = outPutParameter2.Value == null ? -1 : (outPutParameter2.Value.ToString() == string.Empty ? -1 : int.Parse(outPutParameter2.Value.ToString()));
+            userValidateDetail.Code = outPutParameter3.Value == null ? -1 : (outPutParameter3.Value.ToString() == string.Empty ? -1 : int.Parse(outPutParameter3.Value.ToString()));
+            userValidateDetail.Info = outPutParameter4.Value == null ? "ERROR" : outPutParameter4.Value.ToString();
+            return userValidateDetail;
         }
 
         internal DataSet LoadComboDetails(string flag)

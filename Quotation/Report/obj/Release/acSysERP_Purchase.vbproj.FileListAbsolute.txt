@@ -1,0 +1,9 @@
+C:\Users\KASIM\Desktop\Purchase\bin\Release\acSysERP_Purchase.dll
+C:\Users\KASIM\Desktop\Purchase\bin\Release\acSysERP_Purchase.pdb
+C:\Users\KASIM\Desktop\Purchase\bin\Release\acSysERP_Purchase.xml
+C:\Users\KASIM\Desktop\Purchase\obj\Release\ResolveAssemblyReference.cache
+C:\Users\KASIM\Desktop\Purchase\obj\Release\acSysERP_Purchase.Resources.resources
+C:\Users\KASIM\Desktop\Purchase\obj\Release\acSysERP_Purchase.vbproj.GenerateResource.Cache
+C:\Users\KASIM\Desktop\Purchase\obj\Release\acSysERP_Purchase.dll
+C:\Users\KASIM\Desktop\Purchase\obj\Release\acSysERP_Purchase.xml
+C:\Users\KASIM\Desktop\Purchase\obj\Release\acSysERP_Purchase.pdb

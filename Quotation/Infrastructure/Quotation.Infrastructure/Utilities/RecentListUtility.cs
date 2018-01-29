@@ -45,14 +45,15 @@ namespace Quotation.Infrastructure.Utilities
             if (!File.Exists(filePath))
             {
 #if DEBUG
-                var recentList = new RecentListModel();
-                recentList.Add(new RecentItem() { QuotationNo = "1234567", NRIC = "XXX-YYY" });
-                recentList.Add(new RecentItem() { QuotationNo = "1234568", NRIC = "YYY-ZZZ" });
-                recentList.Add(new RecentItem() { QuotationNo = "1234569", NRIC = "XXX-ZZZ" });
-                return recentList;
+                //var recentList = new RecentListModel();
+                //recentList.Add(new RecentItem() { QuotationNo = "1234567", NRIC = "XXX-YYY" });
+                //recentList.Add(new RecentItem() { QuotationNo = "1234568", NRIC = "YYY-ZZZ" });
+                //recentList.Add(new RecentItem() { QuotationNo = "1234569", NRIC = "XXX-ZZZ" });
+                //return recentList;
 #else
-                return new RecentListModel();
+                //return new RecentListModel();
 #endif
+                return new RecentListModel();
             }
             try
             {

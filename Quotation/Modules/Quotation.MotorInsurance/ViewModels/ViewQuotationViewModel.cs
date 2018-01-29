@@ -20,6 +20,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
     public class ViewQuotationViewModel : ViewModelBase, INavigationAware
     {
         QuotationDb quotationDb = null;
+        private string quotationNo = string.Empty;
 
         public ViewQuotationViewModel(QuotationDb quotationDb)
         {
@@ -29,6 +30,19 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         }
 
         public QuotationViewModel QuotationViewModel { get; set; }
+
+        public string QuotationNo
+        {
+            get
+            {
+                return quotationNo;
+            }
+            set
+            {
+                quotationNo = value;
+                OnPropertyChanged();
+            }
+        }
 
         #region Commands
         private void IntializeCommands()
@@ -78,8 +92,13 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             if(arg != null && arg.QuotationDataSet != null && arg.QuotationDataSet.Tables.Count == 4 && arg.QuotationDataSet.Tables[0].Rows.Count > 0)
             {
-                QuotationViewModel = new QuotationViewModel(arg.QuotationDataSet);
-                //ClearRegions(RegionNames.MotorWizardRegion);
+                QuotationViewModel = new QuotationViewModel(quotationDb, arg.QuotationDataSet);
+                if (this.QuotationViewModel != null)
+                {
+                    string qNo = this.QuotationViewModel.CurrentInsuranceDetail.InsuranceQtnNo;
+                    QuotationNo = string.Format("Quotation No : {0}", qNo);
+                }
+                ClearRegions(arg.RegionName);
                 this.RegionManager.RequestNavigate(arg.RegionName, arg.Source);
             }
             else

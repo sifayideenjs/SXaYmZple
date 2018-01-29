@@ -122,9 +122,9 @@ namespace QuotationAPI.Controllers
         }
 
         [HttpPost]
-        [Route("api/Quotation/UpdateOwnerDetails")]
+        [Route("api/Quotation/EditOwnerDetails")]
         [ResponseType(typeof(ErrorDetail))]
-        public async Task<IHttpActionResult> UpdateOwnerDetails([FromBody]OwnerDetail ownerDetail)
+        public async Task<IHttpActionResult> EditOwnerDetails([FromBody]OwnerDetail ownerDetail)
         {
             try
             {
