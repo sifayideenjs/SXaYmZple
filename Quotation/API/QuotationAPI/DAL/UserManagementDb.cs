@@ -56,7 +56,7 @@ namespace QuotationAPI.DAL
 
             foreach (var groupFormRight in groupFormRights)
             {
-                dataTable.Rows.Add(groupFormRight.GroupID, groupFormRight.FormID, groupFormRight.Options);
+                dataTable.Rows.Add(groupFormRight.FormID, groupFormRight.Options);
             }
 
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();

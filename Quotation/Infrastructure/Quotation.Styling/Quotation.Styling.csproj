@@ -83,6 +83,18 @@
   <ItemGroup>
     <Resource Include="BitmapGraphics\Icons\globe_bw.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BitmapGraphics\Icons\logo.bmp" />
+    <Resource Include="BitmapGraphics\Icons\logo.png" />
+    <Resource Include="BitmapGraphics\Icons\logomain.png" />
+    <Resource Include="BitmapGraphics\Icons\logo_bw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BitmapGraphics\Icons\wallpapers.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BitmapGraphics\Icons\logo_bw1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

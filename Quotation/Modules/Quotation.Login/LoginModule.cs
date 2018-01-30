@@ -19,6 +19,9 @@ namespace Quotation.LoginModule
             // Titlebar
             regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(UsernameTitlebar));
             regionManager.RegisterViewWithRegion(RegionNames.RightWindowCommandsRegion, typeof(RightTitlebar));
+
+            // Flyouts
+            regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(UserProfileFlyout));
         }
     }
 }

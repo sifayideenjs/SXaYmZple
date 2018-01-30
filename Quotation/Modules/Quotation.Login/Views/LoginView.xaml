@@ -16,6 +16,9 @@
              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType={x:Type Grid}, Mode=FindAncestor}}"
              Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type Grid}, Mode=FindAncestor}}">
     <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="{StaticResource wallpaper}"/>
+        </Border.Background>
         <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -24,11 +27,12 @@
             </Grid.RowDefinitions>
 
             <!--<Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>-->
-
+            <!--<Image Margin="3" Width="450" Height="220" DockPanel.Dock="Bottom" Source="{StaticResource logo}" Stretch="UniformToFill"/>-->
+            
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
 
                 <!--<DockPanel LastChildFill="True">
-                    <Image Margin="3" Width="150" Height="120" DockPanel.Dock="Bottom" Source="{StaticResource logo}"/>
+                    <Image Margin="3" Width="250" Height="220" DockPanel.Dock="Bottom" Source="{StaticResource logo}"/>
                 </DockPanel>-->
 
                 <Grid Margin="0 20 0 0">

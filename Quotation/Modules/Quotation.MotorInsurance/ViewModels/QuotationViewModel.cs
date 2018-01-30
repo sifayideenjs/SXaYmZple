@@ -75,15 +75,10 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 VehicleDetail vehicleDetail = GetVehicleDetail(dataSet.Tables[2]);
                 this.vehicleDetail = new VehicleDetailViewModel(vehicleDetail);
 
-                if(dataSet.Tables.Count == 4)
+                List<MIQuotation> insuranceDetail = GetInsuranceDetail(dataSet.Tables[3]);
+                if (insuranceDetail.Count > 0)
                 {
-                    MIQuotation insuranceDetail = GetInsuranceDetail(dataSet.Tables[3]);
-                    this.currentInsuranceDetail = new InsuranceDetailViewModel(insuranceDetail);
-                }
-                else
-                {
-                    MIQuotation insuranceDetail = new MIQuotation();
-                    this.currentInsuranceDetail = new InsuranceDetailViewModel(insuranceDetail);
+                    this.currentInsuranceDetail = new InsuranceDetailViewModel(insuranceDetail.Last());
                 }
             }
             else
@@ -615,7 +610,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
             return vehicleDetail;
         }
-        private MIQuotation GetInsuranceDetail(DataTable dataTable)
+        private List<MIQuotation> GetInsuranceDetail(DataTable dataTable)
         {
             List<MIQuotation> insuranceDetails = new List<MIQuotation>();
             if (dataTable != null && dataTable.Rows.Count > 0)
@@ -636,7 +631,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                     RoadTaxRenewed = byte.Parse(row["RoadTaxRenewed"].ToString()),
                 }).ToList();
             }
-            return insuranceDetails.FirstOrDefault();
+            return insuranceDetails;
         }
         #endregion //Helper
     }

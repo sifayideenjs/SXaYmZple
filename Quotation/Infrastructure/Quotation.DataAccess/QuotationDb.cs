@@ -131,6 +131,7 @@ namespace Quotation.DataAccess
                 dataSet.Tables[0].TableName = "OwnerDetails";
                 dataSet.Tables[1].TableName = "DriverDetails";
                 dataSet.Tables[2].TableName = "VehicleDetails";
+                dataSet.Tables[3].TableName = "InsuranceDetails";
             }
 
             return dataSet;

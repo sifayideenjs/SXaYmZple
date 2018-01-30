@@ -158,7 +158,8 @@ namespace Quotation.LoginModule.Services
                     formDetails = dataTable.AsEnumerable().Select(row => new FormDetail
                     {
                         FormID = (int)row.Field<long>("FormID"),
-                        FormName = row.Field<string>("FormName")
+                        FormName = row.Field<string>("FormName"),
+                        CustomeText = row.Field<string>("CustomeText")
                     }).ToList();
                 }
             }

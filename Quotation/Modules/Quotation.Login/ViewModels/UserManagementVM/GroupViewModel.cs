@@ -29,7 +29,7 @@ namespace Quotation.LoginModule.ViewModels
             var formdataset = userManagementDb.LoadComboDetails("FORM", out errorMessage);
             var formDetails = GetFormDetails(formdataset);
 
-            this.Forms = new List<GroupFormViewModel>(formDetails.Select(fd => new GroupFormViewModel(fd.FormID, fd.FormName, this)));
+            this.Forms = new List<GroupFormViewModel>(formDetails.Select(fd => new GroupFormViewModel(fd.FormID, fd.CustomeText, this)));
 
             this.SaveCommand = new RelayCommand(this.ExecuteSaveCommand, this.CanExecuteSaveCommand);
         }
@@ -80,7 +80,7 @@ namespace Quotation.LoginModule.ViewModels
             var groupDetailDataSet = userManagementDb.GetGroupDetails(groupId, out errorMessage);
             var groupFormRights = GetGroupFormRights(groupDetailDataSet);
 
-            this.forms = new List<GroupFormViewModel>(formDetails.Select(fd => new GroupFormViewModel(fd.FormID, fd.FormName, this)));
+            this.forms = new List<GroupFormViewModel>(formDetails.Select(fd => new GroupFormViewModel(fd.FormID, fd.CustomeText, this)));
             foreach (var form in forms)
             {
                 if (groupFormRights.Any(gfr => gfr.FormID == form.ID))
@@ -120,7 +120,8 @@ namespace Quotation.LoginModule.ViewModels
                     formDetails = dataTable.AsEnumerable().Select(row => new FormDetail
                     {
                         FormID = (int)row.Field<long>("FormID"),
-                        FormName = row.Field<string>("FormName")
+                        FormName = row.Field<string>("FormName"),
+                        CustomeText = row.Field<string>("CustomeText")
                     }).ToList();
                 }
             }

@@ -136,3 +136,5 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\AddGroupDialog.g.cs
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\AddGroupDialog.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\UserProfileFlyout.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\UserProfileFlyout.baml

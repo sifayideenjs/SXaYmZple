@@ -39,7 +39,7 @@
         
         <!-- Tiles -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5 15 0 15">
-            <metro:Tile Title="Proposal" Visibility="{Binding CanNewProposal}"
+            <metro:Tile Title="New Quotation" Visibility="{Binding CanNewProposal}"
                         Command="{Binding NewProposalCommand}"
                         HorizontalAlignment="Center"                        
                         VerticalAlignment="Top"

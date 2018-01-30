@@ -46,9 +46,9 @@
 
                     <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" FontFamily="{DynamicResource HeaderFontFamily}">Named Driver Details</Label>
 
-                    <DataGrid Grid.Row="1" MinHeight="100" ItemsSource="{Binding DriverDetails}" SelectedItem="{Binding SelectedDriverDetail}" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" material:DataGridAssist.EnableEditBoxAssist="False" Background="LightGray">
+                    <DataGrid Grid.Row="1" MinHeight="100" ItemsSource="{Binding DriverDetails}" SelectedItem="{Binding SelectedDriverDetail}" AutoGenerateColumns="False" material:DataGridAssist.EnableEditBoxAssist="False" Background="WhiteSmoke">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Insured Name" Binding="{Binding InsuredName}" Width="200"/>
+                            <DataGridTextColumn Header="Insured Name" Binding="{Binding InsuredName}" Width="150"/>
                             <DataGridTextColumn Header="Insured NRIC" Binding="{Binding InsuredNRIC}" Width="100"/>
                             <DataGridTextColumn Header="Biz Reg No" Binding="{Binding BizRegNo}" Width="100"/>
                             <DataGridTemplateColumn Header="Date of Birth" Width="150">
@@ -72,8 +72,8 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Occupation" Binding="{Binding Occupation}" Width="200"/>
-                            <DataGridTextColumn Header="Industry" Binding="{Binding Industry}" Width="200"/>
+                            <DataGridTextColumn Header="Occupation" Binding="{Binding Occupation}" Width="150"/>
+                            <DataGridTextColumn Header="Industry" Binding="{Binding Industry}" Width="150"/>
                             <DataGridTemplateColumn Header="License Date" Width="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

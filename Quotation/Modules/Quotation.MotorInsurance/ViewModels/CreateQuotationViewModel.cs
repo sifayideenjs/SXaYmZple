@@ -124,10 +124,10 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 }
                 else
                 {
-                    if (searchDataSet != null && searchDataSet.Tables.Count == 3 && searchDataSet.Tables[0].Rows.Count > 0)
+                    if (searchDataSet != null && searchDataSet.Tables.Count == 4 && searchDataSet.Tables[0].Rows.Count > 0)
                     {
                         this.QuotationViewModel = new QuotationViewModel(quotationDb, searchDataSet);
-                        this.RegionManager.RequestNavigate(RegionNames.MotorCreateQuotationRegion, WindowNames.MotorAddQuotationDetail);
+                        //this.RegionManager.RequestNavigate(RegionNames.MotorCreateQuotationRegion, WindowNames.MotorAddQuotationDetail);
                     }
                     else
                     {

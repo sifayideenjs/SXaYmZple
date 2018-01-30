@@ -11,7 +11,7 @@
              Orientation="Horizontal"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="300">
-    <Button Visibility="{Binding CanUserNameVisible}">
+    <Button Visibility="{Binding CanUserNameVisible}" Command="{x:Static inf:ApplicationCommands.ShowFlyoutCommand}" CommandParameter="{x:Static constants:FlyoutNames.UserProfileFlyout}">
         <StackPanel Orientation="Horizontal">
             <TextBlock Margin="0" VerticalAlignment="Center" Text="{Binding Username}" />
         </StackPanel>

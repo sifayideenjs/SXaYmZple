@@ -153,6 +153,9 @@
     <Compile Include="Views\UsernameTitlebar.xaml.cs">
       <DependentUpon>UsernameTitlebar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserProfileFlyout.xaml.cs">
+      <DependentUpon>UserProfileFlyout.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UsernameTitlebar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserProfileFlyout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
