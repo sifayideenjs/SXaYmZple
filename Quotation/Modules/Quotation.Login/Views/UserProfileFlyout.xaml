@@ -5,12 +5,67 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Quotation.LoginModule.Views"
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" Header="User Profile"
               Position="Right"
-              Theme="Accent"
+              Theme="Accent" 
+              Background="{StaticResource PrimaryHueDarkBrush}"
              Width="500"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="300">
     <Grid>
-            
+        <materialDesign:Card Width="420" Margin="8 8 8 16" Height="270">
+            <Grid VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Kind="AccountCircle" Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextWrapping="Wrap" Margin="16 16 16 0" Foreground="{DynamicResource MaterialDesignBodyLight}" VerticalAlignment="Top" Text="Profile Name"/>
+                    <TextBlock Style="{StaticResource MaterialDesignButtonTextBlock}" Margin="16 0 16 8" Text="{Binding Name}"/>
+
+                    <TextBlock TextWrapping="Wrap" Margin="16 16 16 0" Foreground="{DynamicResource MaterialDesignBodyLight}" VerticalAlignment="Top" Text="User Name"/>
+                    <TextBlock Style="{StaticResource MaterialDesignButtonTextBlock}" Margin="16 0 16 8" Text="{Binding UserName}"/>
+
+                    <TextBlock TextWrapping="Wrap" Margin="16 16 16 0" Foreground="{DynamicResource MaterialDesignBodyLight}" VerticalAlignment="Top" Text="Role"/>
+                    <TextBlock Style="{StaticResource MaterialDesignButtonTextBlock}" Margin="16 0 16 8" Text="{Binding Role}"/>
+                </StackPanel>
+                <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Padding="8" Visibility="{Binding IsLoggedIn}">
+                    <DockPanel>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}" Margin="8 0 8 0" DockPanel.Dock="Right" Width="40" Height="40"
+                            Command="{Binding SaveComand}" CommandParameter="{Binding ElementName=passwordTextBox}"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
+                            materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}">
+                            <materialDesign:PackIcon Height="24" Width="24">
+                                <materialDesign:PackIcon.Style>
+                                    <Style TargetType="materialDesign:PackIcon">
+                                        <Setter Property="Kind" Value="Autorenew" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsSaveComplete}" Value="True">
+                                                <Setter Property="Kind" Value="Check" />
+                                                <DataTrigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.8" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </DataTrigger.EnterActions>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </materialDesign:PackIcon.Style>
+                            </materialDesign:PackIcon>
+                        </Button>
+                        <PasswordBox x:Name="passwordTextBox" Margin="8 0 0 0" materialDesign:HintAssist.Hint="Reset Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </metro:Flyout>

@@ -15,5 +15,6 @@ namespace QuotationAPI.Models
         public string Info { get; set; }
         public string Name { get; set; }
         public int GroupId { get; set; }
+        public int UserId { get; set; }
     }
 }

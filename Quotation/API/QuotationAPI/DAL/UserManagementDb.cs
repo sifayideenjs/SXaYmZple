@@ -184,6 +184,13 @@ namespace QuotationAPI.DAL
             outPutParameter4.Direction = System.Data.ParameterDirection.Output;
             cmdParameters["@ERRORDESC"] = outPutParameter4;
 
+            SqlParameter outPutParameter5 = new SqlParameter();
+            outPutParameter5.ParameterName = "@UserID";
+            outPutParameter5.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter5.Size = 255;
+            outPutParameter5.Direction = System.Data.ParameterDirection.Output;
+            cmdParameters["@UserID"] = outPutParameter5;
+
             UserValidateDetail userValidateDetail = new UserValidateDetail();
             dbutility.ExecuteNonQuery("QuotationDb", "dbo.UserValidate", cmdParameters);
 
@@ -191,6 +198,7 @@ namespace QuotationAPI.DAL
             userValidateDetail.GroupId = outPutParameter2.Value == null ? -1 : (outPutParameter2.Value.ToString() == string.Empty ? -1 : int.Parse(outPutParameter2.Value.ToString()));
             userValidateDetail.Code = outPutParameter3.Value == null ? -1 : (outPutParameter3.Value.ToString() == string.Empty ? -1 : int.Parse(outPutParameter3.Value.ToString()));
             userValidateDetail.Info = outPutParameter4.Value == null ? "ERROR" : outPutParameter4.Value.ToString();
+            userValidateDetail.UserId = outPutParameter5.Value == null ? -1 : (outPutParameter5.Value.ToString() == string.Empty ? -1 : int.Parse(outPutParameter5.Value.ToString()));
             return userValidateDetail;
         }
 

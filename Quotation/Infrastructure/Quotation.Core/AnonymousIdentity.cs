@@ -8,7 +8,7 @@ namespace Quotation.Core
 {
     public class AnonymousIdentity : CustomIdentity
     {
-        public AnonymousIdentity() : base("Anonymous", string.Empty, new string[] { })
+        public AnonymousIdentity() : base(-1, "Anonymous", "Anonymous", "NIL", new string[] { })
         {
         }
     }

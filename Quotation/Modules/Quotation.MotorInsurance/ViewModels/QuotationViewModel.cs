@@ -92,6 +92,43 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             SubscribeEvents();
         }
 
+        public QuotationViewModel(DataSet dataSet)
+        {
+            this.QuotationDataSet = dataSet;
+
+            if (dataSet != null)
+            {
+                OwnerDetail ownerDetail = GetOwnerDetail(dataSet.Tables[0]);
+                this.ownerDetail = new OwnerDetailViewModel(ownerDetail);
+
+                List<DriverDetail> driverDetails = GetDriverDetails(dataSet.Tables[1]);
+                this.driverDetails = new ObservableCollection<DriverDetailViewModel>();
+                if (driverDetails != null && driverDetails.Count > 0)
+                {
+                    this.driverDetails = new ObservableCollection<DriverDetailViewModel>(driverDetails.Select(d => new DriverDetailViewModel(d)));
+                }
+
+                VehicleDetail vehicleDetail = GetVehicleDetail(dataSet.Tables[2]);
+                this.vehicleDetail = new VehicleDetailViewModel(vehicleDetail);
+
+                this.currentInsuranceDetail = new InsuranceDetailViewModel(new MIQuotation());
+
+                List<MIQuotation> insuranceDetails = GetInsuranceDetail(dataSet.Tables[3]);
+                this.insuranceDetails = new ObservableCollection<InsuranceDetailViewModel>();
+                if (insuranceDetails != null && insuranceDetails.Count > 0)
+                {
+                    this.insuranceDetails = new ObservableCollection<InsuranceDetailViewModel>(insuranceDetails.Select(i => new InsuranceDetailViewModel(i)));
+                }
+            }
+            else
+            {
+                this.ownerDetail = new OwnerDetailViewModel(new DataAccess.Models.OwnerDetail());
+                this.driverDetails = new ObservableCollection<DriverDetailViewModel>();
+                this.vehicleDetail = new VehicleDetailViewModel(new DataAccess.Models.VehicleDetail());
+                this.currentInsuranceDetail = new InsuranceDetailViewModel(new MIQuotation());
+            }
+        }
+
         public QuotationViewModel(QuotationDb quotationDb)
         {
             this.quotationDb = quotationDb;

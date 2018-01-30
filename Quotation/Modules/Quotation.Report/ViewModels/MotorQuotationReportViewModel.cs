@@ -16,6 +16,8 @@ using System.Windows;
 using SAPBusinessObjects.WPF.Viewer;
 using Quotation.Infrastructure;
 using System.Windows.Input;
+using System.IO;
+using System.Drawing;
 
 namespace Quotation.ReportModule.ViewModels
 {
@@ -48,7 +50,12 @@ namespace Quotation.ReportModule.ViewModels
             if (arg != null && arg.PrintDataSet != null)
             {
                 DataSet printDataSet = arg.PrintDataSet;
-                SetReportSource(printDataSet);
+                DataTable imageDataTable = GetImageDataTable();
+                if(imageDataTable != null)
+                {
+                    printDataSet.Tables.Add(imageDataTable);
+                    SetReportSource(printDataSet);
+                }
             }
         }
 
@@ -80,8 +87,8 @@ namespace Quotation.ReportModule.ViewModels
                     TextObject Occupation = (TextObject)report.ReportDefinition.ReportObjects["Occupation"];
                     Occupation.Text = printDataSet.Tables["DriverDetails"].Rows[0]["Occupation"].ToString();
 
-                    //TextObject Industry = (TextObject)report.ReportDefinition.ReportObjects["Industry"];
-                    //Industry.Text = printDataSet.Tables["DriverDetails"].Rows[0]["Industry"].ToString();
+                    TextObject Industry = (TextObject)report.ReportDefinition.ReportObjects["Industry"];
+                    Industry.Text = printDataSet.Tables["DriverDetails"].Rows[0]["Industry"].ToString();
 
                     TextObject LicenseDate = (TextObject)report.ReportDefinition.ReportObjects["LicenseDate"];
                     LicenseDate.Text = printDataSet.Tables["DriverDetails"].Rows[0]["LicenseDate"].ToString();
@@ -90,6 +97,7 @@ namespace Quotation.ReportModule.ViewModels
                     report.Database.Tables["VehicleDetails"].SetDataSource(printDataSet.Tables["VehicleDetails"]);
                     //report.Database.Tables["DriverDetails"].SetDataSource(printDataSet.Tables["DriverDetails"]);
                     report.Database.Tables["MIQuotation"].SetDataSource(printDataSet.Tables["InsuranceDetails"]);
+                    report.Database.Tables["Images"].SetDataSource(printDataSet.Tables["Images"]);
 
                     ReportsViewer.ViewerCore.ReportSource = report;
                 }
@@ -104,7 +112,7 @@ namespace Quotation.ReportModule.ViewModels
             }
         }
 
-        public object LoadReport(string DllName, string ClassName, string curAppPath)
+        private object LoadReport(string DllName, string ClassName, string curAppPath)
         {
             object reportSource = null;
             try
@@ -117,6 +125,28 @@ namespace Quotation.ReportModule.ViewModels
             }
 
             return reportSource;
+        }
+
+        private DataTable GetImageDataTable()
+        {
+            DataTable imageDataTable = null;
+            string imagePath = Directory.GetCurrentDirectory() + @"\Images\QTN.bmp";
+            if(File.Exists(imagePath))
+            {
+                imageDataTable = new DataTable("Images", "Images");
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    Bitmap bitmap = new Bitmap(imagePath);
+                    bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Bmp);
+                    imageDataTable.Columns.Add("Image", typeof(byte[]));
+
+                    var row = imageDataTable.NewRow();
+                    row[0] = memoryStream.GetBuffer();
+                    imageDataTable.Rows.Add(row);
+                    imageDataTable.AcceptChanges();
+                }
+            }
+            return imageDataTable;
         }
         #endregion //IEventAggregator
 
@@ -178,7 +208,12 @@ namespace Quotation.ReportModule.ViewModels
                 DataSet reportDataDataSet = (DataSet)navParameters["ReportDataSet"];
                 if(reportDataDataSet != null)
                 {
-                    SetReportSource(reportDataDataSet);
+                    DataTable imageDataTable = GetImageDataTable();
+                    if (imageDataTable != null)
+                    {
+                        reportDataDataSet.Tables.Add(imageDataTable);
+                        SetReportSource(reportDataDataSet);
+                    }
                 }
             }
         }

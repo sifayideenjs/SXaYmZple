@@ -9,7 +9,20 @@ namespace Quotation.Core.Utilities
 {
     public static class IdentityUtility
     {
-        public static string GetLoggedInUserName()
+        public static int GetLoggedInUserId()
+        {
+            int loggedInUserId = -1;
+            CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
+            if (customPrincipal != null)
+            {
+                CustomIdentity identity = customPrincipal.Identity as CustomIdentity;
+                loggedInUserId = identity.ID;
+            }
+
+            return loggedInUserId;
+        }
+
+        public static string GetLoggedInName()
         {
             string loggedInName = string.Empty;
             CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
@@ -17,6 +30,19 @@ namespace Quotation.Core.Utilities
             {
                 CustomIdentity identity = customPrincipal.Identity as CustomIdentity;
                 loggedInName = identity.Name;
+            }
+
+            return loggedInName;
+        }
+
+        public static string GetLoggedInUserName()
+        {
+            string loggedInName = string.Empty;
+            CustomPrincipal customPrincipal = Thread.CurrentPrincipal as CustomPrincipal;
+            if (customPrincipal != null)
+            {
+                CustomIdentity identity = customPrincipal.Identity as CustomIdentity;
+                loggedInName = identity.UserName;
             }
 
             return loggedInName;

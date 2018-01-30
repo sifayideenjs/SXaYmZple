@@ -148,7 +148,20 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
                 string errorMessage = string.Empty;
                 searchDataSet = null;
-                searchDataSet = quotationDb.GetMIQuoationDetails(this.SearchText, out errorMessage);
+                switch(SearchType)
+                {
+                    case "Quotation No":
+                        {
+                            searchDataSet = quotationDb.GetMIQuoationDetails(this.SearchText, out errorMessage);
+                            break;
+                        }
+                    case "NRIC":
+                        {
+                            searchDataSet = quotationDb.GetNRICDetails(this.SearchText, out errorMessage);
+                            break;
+                        }
+                }
+
                 if (!string.IsNullOrEmpty(errorMessage))
                 {
                     await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Search", errorMessage);

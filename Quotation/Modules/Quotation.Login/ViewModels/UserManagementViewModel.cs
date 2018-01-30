@@ -129,9 +129,13 @@ namespace Quotation.LoginModule.ViewModels
 
         public async void ExecuteAddUserCommand()
         {
+            string errorMessage;
+            var gdataset = this.userManagementDb.LoadComboDetails("GROUP", out errorMessage);
+            var gDetails = GetGroupDetails(gdataset);
+
             var view = new AddUserDialog
             {
-                DataContext = new AddUserDialogViewModel(new UserViewModel(this.userManagementDb, groupDetails))
+                DataContext = new AddUserDialogViewModel(new UserViewModel(this.userManagementDb, gDetails))
             };
 
             var result = await DialogHost.Show(view, "UserDialog", ExtendedOpenedEventHandler);

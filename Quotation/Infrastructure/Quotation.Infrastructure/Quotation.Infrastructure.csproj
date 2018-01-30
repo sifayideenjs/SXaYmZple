@@ -96,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnotherCommandImplementation.cs" />
     <Compile Include="ApplicationCommands.cs" />
     <Compile Include="Base\PrismBaseModule.cs" />
     <Compile Include="Base\ViewModelBase.cs" />

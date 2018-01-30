@@ -17,12 +17,14 @@ using Microsoft.Practices.Unity;
 using Quotation.MotorInsuranceModule.Views;
 using Quotation.DataAccess.Models;
 using MaterialDesignThemes.Wpf;
+using System.Windows;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
     public class CreateQuotationViewModel : ViewModelBase, INavigationAware
     {
         QuotationDb quotationDb = null;
+        private Visibility _searchFound = Visibility.Collapsed;
         private QuotationViewModel quotationViewModel = null;
         private string searchText = string.Empty;
         private string errorInfo = "No Record Found!";
@@ -42,6 +44,16 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             set
             {
                 quotationViewModel = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Visibility SearchFound
+        {
+            get { return _searchFound; }
+            set
+            {
+                _searchFound = value;
                 OnPropertyChanged();
             }
         }
@@ -112,6 +124,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             try
             {
+                SearchFound = Visibility.Collapsed;
                 ClearRegions(RegionNames.MotorCreateQuotationRegion);
 
                 string errorMessage = string.Empty;
@@ -126,7 +139,9 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 {
                     if (searchDataSet != null && searchDataSet.Tables.Count == 4 && searchDataSet.Tables[0].Rows.Count > 0)
                     {
-                        this.QuotationViewModel = new QuotationViewModel(quotationDb, searchDataSet);
+                        this.QuotationViewModel = new QuotationViewModel(searchDataSet);
+                        SearchFound = Visibility.Visible;
+
                         //this.RegionManager.RequestNavigate(RegionNames.MotorCreateQuotationRegion, WindowNames.MotorAddQuotationDetail);
                     }
                     else

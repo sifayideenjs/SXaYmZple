@@ -94,10 +94,10 @@ namespace Quotation.LoginModule.ViewModels
         {
             PasswordBox passwordBox = parameter as PasswordBox;
             string clearTextPassword = passwordBox.Password;
-#if DEBUG
-            if(_username == "Mark") clearTextPassword = "Mark";
-            else if (_username == "Admin") clearTextPassword = "Admin123$";
-#endif
+//#if DEBUG
+//            if (_username == "Mark") clearTextPassword = "Mark";
+//            else if (_username == "Admin") clearTextPassword = "Admin";
+//#endif
             try
             {
                 //Validate Credentials through the Authentication Service
@@ -111,7 +111,7 @@ namespace Quotation.LoginModule.ViewModels
                 }
 
                 //Authenticate the user
-                customPrincipal.Identity = new CustomIdentity(user.Username, user.Role, user.FormNames);
+                customPrincipal.Identity = new CustomIdentity(user.ID, user.Name, user.Username, user.Role, user.FormNames);
 
                 //Update UI
                 OnPropertyChanged("IsAuthenticated");

@@ -126,6 +126,7 @@
     <Compile Include="ViewModels\UserManagementViewModel.cs" />
     <Compile Include="ViewModels\UsernameTitlebarViewModel.cs" />
     <Compile Include="ViewModels\UserManagementVM\UserViewModel.cs" />
+    <Compile Include="ViewModels\UserProfileFlyoutViewModel.cs" />
     <Compile Include="Views\AddGroupDialog.xaml.cs">
       <DependentUpon>AddGroupDialog.xaml</DependentUpon>
     </Compile>

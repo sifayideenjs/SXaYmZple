@@ -11,14 +11,14 @@
              lex:ResxLocalizationProvider.DefaultAssembly="Quotation.LoginModule"
              lex:ResxLocalizationProvider.DefaultDictionary="Resources"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             mc:Ignorable="d" Background="White"
+             mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="600"
              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType={x:Type Grid}, Mode=FindAncestor}}"
              Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type Grid}, Mode=FindAncestor}}">
     <Border>
-        <Border.Background>
+        <!--<Border.Background>
             <ImageBrush ImageSource="{StaticResource wallpaper}"/>
-        </Border.Background>
+        </Border.Background>-->
         <Grid  VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>

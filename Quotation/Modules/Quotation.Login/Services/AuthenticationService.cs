@@ -76,7 +76,7 @@ namespace Quotation.LoginModule.Services
 
                 string errorMessage = string.Empty;
                 var userValidateDetail = dbContext.ValidateUser(username, clearTextPassword, out errorMessage);
-                if (userValidateDetail != null && userValidateDetail.Code != -1 && userValidateDetail.GroupId != -1)
+                if (userValidateDetail != null && userValidateDetail.Code != -1 && userValidateDetail.UserId != -1 && userValidateDetail.GroupId != -1)
                 {
                     //var userdataset = dbContext.LoadComboDetails("USER", out errorMessage);
                     //var userGroupDetails = GetUserDetails(userdataset);
@@ -97,7 +97,7 @@ namespace Quotation.LoginModule.Services
                     var formDetails = GetFormDetails(formdataset);
                     var formNames = formDetails.Where(f => formIds.Any(fi => fi == f.FormID)).Select(f => f.FormName);
 
-                    return new User(userValidateDetail.Name, username, groupDetail.GroupName, formNames.ToArray());
+                    return new User(userValidateDetail.UserId, userValidateDetail.Name, username, groupDetail.GroupName, formNames.ToArray());
                 }
                 else
                 {
