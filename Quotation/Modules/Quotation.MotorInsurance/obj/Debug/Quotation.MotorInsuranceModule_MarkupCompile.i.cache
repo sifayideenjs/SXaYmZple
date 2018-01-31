@@ -16,5 +16,5 @@ DEBUG;TRACE
 84-572967524
 Views\AddDriverDialog.xaml;Views\CreateQuotation.xaml;Views\NewProposal.xaml;Views\CreateWizards\AddQuotationDetail.xaml;Views\MotorInsuranceTiles.xaml;Views\RecentQuotation.xaml;Views\SearchQuotation.xaml;Views\CreateWizards\AddOwnerDetail.xaml;Views\CreateWizards\QuotationSummary.xaml;Views\SearchWizards\NonSearchView.xaml;Views\SearchWizards\InsuranceRenewalDetail.xaml;Views\SearchWizards\SearchView.xaml;Views\ViewQuotation.xaml;
 
-True
+False
 

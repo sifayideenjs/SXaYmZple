@@ -77,13 +77,13 @@ namespace Quotation.LoginModule.ViewModels
             }
         }
 
-        #region floating Save button
+        #region Reset Comand
         private void InitializeCommands()
         {
-            SaveComand = new AnotherCommandImplementation(ExecuteResetCommand, CanExecuteResetCommand);
+            ResetComand = new AnotherCommandImplementation(ExecuteResetCommand, CanExecuteResetCommand);
         }
 
-        public ICommand SaveComand { get; set; }
+        public ICommand ResetComand { get; set; }
         public bool CanExecuteResetCommand(object parameter)
         {
             if (parameter == null) return false;

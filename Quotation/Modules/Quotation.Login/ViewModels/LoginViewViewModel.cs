@@ -96,7 +96,7 @@ namespace Quotation.LoginModule.ViewModels
             string clearTextPassword = passwordBox.Password;
 //#if DEBUG
 //            if (_username == "Mark") clearTextPassword = "Mark";
-//            else if (_username == "Admin") clearTextPassword = "Admin";
+//            else if (_username == "Admin") clearTextPassword = "Admin123$";
 //#endif
             try
             {

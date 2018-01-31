@@ -39,7 +39,7 @@
                 <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Padding="8" Visibility="{Binding IsLoggedIn}">
                     <DockPanel>
                         <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}" Margin="8 0 8 0" DockPanel.Dock="Right" Width="40" Height="40"
-                            Command="{Binding SaveComand}" CommandParameter="{Binding ElementName=passwordTextBox}"
+                            Command="{Binding ResetComand}" CommandParameter="{Binding ElementName=passwordTextBox}"
                             materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
                             materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}">
                             <materialDesign:PackIcon Height="24" Width="24">

@@ -63,7 +63,7 @@
                         <DataTemplate>
                             <material:Flipper Style="{StaticResource MaterialDesignCardFlipper}" Margin="0 30 0 0">
                                 <material:Flipper.FrontContent>
-                                    <Grid Height="236" Width="200">
+                                    <Grid Height="255" Width="200">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="160" />
                                             <RowDefinition Height="*" />
@@ -81,7 +81,7 @@
                                     </Grid>
                                 </material:Flipper.FrontContent>
                                 <material:Flipper.BackContent>
-                                    <Grid Height="236" Width="200">
+                                    <Grid Height="255" Width="200">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
@@ -94,17 +94,45 @@
                                                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center">EDIT USER</TextBlock>
                                             </StackPanel>
                                         </material:ColorZone>
-                                        <Grid Grid.Row="1" Margin="0 6 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="172">
+                                        <Grid Grid.Row="1" Margin="0 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="172">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition />
                                                 <RowDefinition />
                                                 <RowDefinition />
                                                 <RowDefinition />
+                                                <RowDefinition />
                                             </Grid.RowDefinitions>
-                                            <TextBox IsReadOnly="True" material:HintAssist.Hint="Username" material:HintAssist.IsFloating="True" Margin="0 12 0 0" Text="{Binding Username}"/>
-                                            <TextBox Grid.Row="1" material:HintAssist.Hint="Name" material:HintAssist.IsFloating="True" Margin="0 12 0 0" Text="{Binding Name}"/>
+                                            <TextBox material:HintAssist.Hint="Username" material:HintAssist.IsFloating="True" Margin="0 5 0 0" Text="{Binding Username}"/>
+                                            <TextBox Grid.Row="1" material:HintAssist.Hint="Name" material:HintAssist.IsFloating="True" Margin="0 5 0 0" Text="{Binding Name}"/>
                                             <ComboBox Grid.Row="2" material:HintAssist.Hint="Group" Margin="0 12 0 0" ItemsSource="{Binding Groups}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedGroup}"/>
-                                            <Button Grid.Row="3" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding SaveCommand}" Margin="0 4 0 0">SAVE</Button>
+                                            <DockPanel Grid.Row="3">
+                                                <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}" Margin="0 5 0 0" DockPanel.Dock="Right" Width="30" Height="30" Command="{Binding ResetComand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type DockPanel}}}" material:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}" material:ButtonProgressAssist.Value="{Binding SaveProgress}">
+                                                    <material:PackIcon Height="24" Width="24">
+                                                        <material:PackIcon.Style>
+                                                            <Style TargetType="material:PackIcon">
+                                                                <Setter Property="Kind" Value="Autorenew" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsSaveComplete}" Value="True">
+                                                                        <Setter Property="Kind" Value="Check" />
+                                                                        <DataTrigger.EnterActions>
+                                                                            <BeginStoryboard>
+                                                                                <Storyboard>
+                                                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.8" />
+                                                                                </Storyboard>
+                                                                            </BeginStoryboard>
+                                                                        </DataTrigger.EnterActions>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </material:PackIcon.Style>
+                                                    </material:PackIcon>
+                                                </Button>
+                                                <PasswordBox x:Name="passwordTextBox" Margin="0 5 0 0" material:HintAssist.Hint="Reset Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                                            </DockPanel>
+                                            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding SaveCommand}" Margin="0 4 0 0">SAVE</Button>
+                                                <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static material:Flipper.FlipCommand}" Margin="0 4 0 0">CANCEL</Button>
+                                            </StackPanel>
                                         </Grid>
                                     </Grid>
                                 </material:Flipper.BackContent>
