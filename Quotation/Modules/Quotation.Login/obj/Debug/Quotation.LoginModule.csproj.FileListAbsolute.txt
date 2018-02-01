@@ -138,3 +138,5 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\AddGroupDialog.baml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\UserProfileFlyout.g.cs
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\UserProfileFlyout.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\LicenseView.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.Login\obj\Debug\Views\LicenseView.baml

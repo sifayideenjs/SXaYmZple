@@ -10,6 +10,7 @@ namespace Quotation.Infrastructure.Constants
     {
         public static string MainWindowName = "MainWindowName";
         public static string LoginView = "LoginView";
+        public static string LicenseView = "LicenseView";
 
         public static string Dashboard = "Dashboard";
 

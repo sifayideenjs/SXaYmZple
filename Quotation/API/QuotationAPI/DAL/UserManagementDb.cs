@@ -19,7 +19,7 @@ namespace QuotationAPI.DAL
             cmdParameters["UserID"] = new SqlParameter("UserID", userDetail.UserID);
             cmdParameters["UserName"] = new SqlParameter("UserName", userDetail.UserName);
             cmdParameters["Name"] = new SqlParameter("Name", userDetail.Name);
-            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.Encrypt(userDetail.Password, userDetail.UserName));
+            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.EncryptPassword(userDetail.Password, userDetail.UserName));
             cmdParameters["GroupID"] = new SqlParameter("GroupID", userDetail.GroupID);
             cmdParameters["Flag"] = new SqlParameter("Flag", flag);
             cmdParameters["LogUser"] = new SqlParameter("LogUser", userName);
@@ -154,7 +154,7 @@ namespace QuotationAPI.DAL
         {
             Dictionary<string, SqlParameter> cmdParameters = new Dictionary<string, SqlParameter>();
             cmdParameters["UserName"] = new SqlParameter("UserName", userName);
-            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.Encrypt(password, userName));
+            cmdParameters["Password"] = new SqlParameter("Password", CryptographyUtility.EncryptPassword(password, userName));
 
             SqlParameter outPutParameter1 = new SqlParameter();
             outPutParameter1.ParameterName = "@Name";

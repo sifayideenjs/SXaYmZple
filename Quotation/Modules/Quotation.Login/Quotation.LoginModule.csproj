@@ -117,6 +117,7 @@
     <Compile Include="ViewModels\AddGroupDialogViewModel.cs" />
     <Compile Include="ViewModels\AddUserDialogViewModel.cs" />
     <Compile Include="ViewModels\AdministrationTitlebarViewModel.cs" />
+    <Compile Include="ViewModels\LicenseViewViewModel.cs" />
     <Compile Include="ViewModels\UserManagementVM\GroupFormViewModel.cs" />
     <Compile Include="ViewModels\GroupManagementViewModel.cs" />
     <Compile Include="ViewModels\UserManagementVM\GroupViewModel.cs" />
@@ -138,6 +139,9 @@
     </Compile>
     <Compile Include="Views\GroupManagement.xaml.cs">
       <DependentUpon>GroupManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LicenseView.xaml.cs">
+      <DependentUpon>LicenseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -176,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\GroupManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LicenseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

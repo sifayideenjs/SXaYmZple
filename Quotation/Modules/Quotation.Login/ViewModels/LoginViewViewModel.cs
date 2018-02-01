@@ -94,10 +94,10 @@ namespace Quotation.LoginModule.ViewModels
         {
             PasswordBox passwordBox = parameter as PasswordBox;
             string clearTextPassword = passwordBox.Password;
-//#if DEBUG
-//            if (_username == "Mark") clearTextPassword = "Mark";
-//            else if (_username == "Admin") clearTextPassword = "Admin123$";
-//#endif
+#if DEBUG
+            if (_username == "Mark") clearTextPassword = "Mark";
+            else if (_username == "Admin") clearTextPassword = "Admin";
+#endif
             try
             {
                 //Validate Credentials through the Authentication Service
@@ -125,7 +125,7 @@ namespace Quotation.LoginModule.ViewModels
                     ActionType = "Login"
                 });
 
-                this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.Dashboard);
+                this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.LicenseView);
                 //this.RegionManager.RequestNavigate(RegionNames.RightWindowCommandsRegion, FlyoutNames.LoginAdminFlyout);
             }
             catch (UnauthorizedAccessException)

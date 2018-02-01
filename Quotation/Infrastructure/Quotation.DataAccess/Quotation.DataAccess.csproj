@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FromBodyAttribute.cs" />
+    <Compile Include="LicenseDb.cs" />
     <Compile Include="Models\DriverDetail.cs" />
     <Compile Include="Models\ErrorDetail.cs" />
     <Compile Include="Models\ExpiredInsurance.cs" />

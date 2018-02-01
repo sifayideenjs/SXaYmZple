@@ -118,3 +118,4 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bi
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\System.Web.Optimization.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\QuotationAPI.pdb
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\RiskLicense.dll

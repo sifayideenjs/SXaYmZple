@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,13 +10,7 @@ namespace QuotationAPI.DALUtility
 {
     public static class CryptographyUtility
     {
-        //public static string Encrypt(string clearTextPassword)
-        //{
-        //    RiskLicense.RiskLicense license = new RiskLicense.RiskLicense();
-        //    return license.EnCrypt(ref clearTextPassword);
-        //}
-
-        public static string Encrypt(string clearTextPassword, string salt)
+        public static string EncryptPassword(string clearTextPassword, string salt)
         {
             // Convert the salted password to a byte array
             byte[] saltedHashBytes = Encoding.UTF8.GetBytes(clearTextPassword + salt.ToUpper());
@@ -26,10 +21,22 @@ namespace QuotationAPI.DALUtility
             return Convert.ToBase64String(hash);
         }
 
-        //public static string Decrypt(string hashedTextPassword)
-        //{
-        //    RiskLicense.RiskLicense license = new RiskLicense.RiskLicense();
-        //    return license.DeCrypt(ref hashedTextPassword);
-        //}
+        public static string Encrypt(string clearTextPassword)
+        {
+            RiskLicense.RiskLicense license = new RiskLicense.RiskLicense();
+            return license.EnCrypt(ref clearTextPassword);
+        }
+
+        public static string Decrypt(string hashedTextPassword)
+        {
+            RiskLicense.RiskLicense license = new RiskLicense.RiskLicense();
+            return license.DeCrypt(ref hashedTextPassword);
+        }
+
+        public static Dictionary<string, string> DecryptLicense(DataTable licenseInfo)
+        {
+            RiskLicense.RiskLicense license = new RiskLicense.RiskLicense();
+            return license._DeCryptLicense(licenseInfo);
+        }
     }
 }
