@@ -170,6 +170,9 @@
     <Compile Include="Views\SearchWizards\InsuranceRenewalDetail.xaml.cs">
       <DependentUpon>InsuranceRenewalDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SearchWizards\RenewInsuranceDetail.xaml.cs">
+      <DependentUpon>RenewInsuranceDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SearchWizards\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
@@ -223,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchWizards\InsuranceRenewalDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchWizards\RenewInsuranceDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

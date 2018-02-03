@@ -4,7 +4,6 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Da
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Debug\System.Net.Http.Formatting.xml
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\obj\Debug\Quotation.DataAccess.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\obj\Debug\Quotation.DataAccess.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\obj\Debug\Quotation.DataAccess.pdb
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Debug\Quotation.DataAccess.dll

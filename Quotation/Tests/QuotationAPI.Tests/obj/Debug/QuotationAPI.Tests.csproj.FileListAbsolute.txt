@@ -113,7 +113,6 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bi
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\obj\Debug\QuotationAPI.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\obj\Debug\QuotationAPI.Tests.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\obj\Debug\QuotationAPI.Tests.pdb
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\Microsoft.Web.Infrastructure.xml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\QuotationAPI.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\System.Web.Optimization.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\QuotationAPI.Tests\bin\Debug\QuotationAPI.pdb

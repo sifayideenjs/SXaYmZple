@@ -217,9 +217,9 @@ namespace QuotationAPI.DAL
             cmdParameters["NRIC"] = new SqlParameter("NRIC", quotationDetail.NRIC);
             cmdParameters["InsuranceQtnNo"] = new SqlParameter("InsuranceQtnNo", quotationDetail.InsuranceQtnNo);
             cmdParameters["InsuranceExpiryDate"] = new SqlParameter("InsuranceExpiryDate", quotationDetail.InsuranceExpiryDate);
-            cmdParameters["InsuranceRenewalDate"] = new SqlParameter("InsuranceRenewalDate", quotationDetail.InsuranceRenewalDate);
+            cmdParameters["InsuranceRenewalDate"] = new SqlParameter("InsuranceRenewalDate", quotationDetail.InsuranceExpiryDate);
             cmdParameters["RoadTaxExpiryDate"] = new SqlParameter("RoadTaxExpiryDate", quotationDetail.RoadTaxExpiryDate);
-            cmdParameters["RoadTaxRenewalDate"] = new SqlParameter("RoadTaxRenewalDate", quotationDetail.RoadTaxRenewalDate);
+            cmdParameters["RoadTaxRenewalDate"] = new SqlParameter("RoadTaxRenewalDate", quotationDetail.RoadTaxExpiryDate);
             cmdParameters["PreviousDealer"] = new SqlParameter("PreviousDealer", quotationDetail.PreviousDealer);
             cmdParameters["Agency"] = new SqlParameter("Agency", quotationDetail.Agency);
             cmdParameters["PrevYearPremium"] = new SqlParameter("PrevYearPremium", quotationDetail.PrevYearPremium);

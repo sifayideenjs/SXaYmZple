@@ -11,6 +11,7 @@ namespace Quotation.Infrastructure.Constants
         public static string MainWindowName = "MainWindowName";
         public static string LoginView = "LoginView";
         public static string LicenseView = "LicenseView";
+        public static string ClockTamperingDetectionView = "ClockTamperingDetectionView";
 
         public static string Dashboard = "Dashboard";
 
@@ -24,6 +25,8 @@ namespace Quotation.Infrastructure.Constants
         public static string MotorAddOwnerDetail = "MotorAddOwnerDetail";
         public static string MotorAddQuotationDetail = "MotorAddQuotationDetail";
         public static string MotorSummaryDetail = "MotorSummaryDetail";
+
+        public static string MotorRenewInsuranceDetail = "MotorRenewInsuranceDetail";
 
         public static string MotorSearchQuotationDetail = "MotorSearchQuotationDetail";
         public static string MotorNonSearchDetail = "MotorNonSearchDetail";

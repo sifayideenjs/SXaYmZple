@@ -21,5 +21,7 @@ namespace Quotation.Infrastructure.Constants
         public static string MotorCreateQuotationRegion = "MotorCreateQuotationRegion";
         public static string MotorSearchRegion = "MotorSearchRegion";
         public static string MotorQuotationRegion = "MotorQuotationRegion";
+
+        public static string MotorRenewQuotationRegion = "MotorRenewQuotationRegion";
     }
 }

@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Quotation.LoginModule.ViewModels
@@ -39,20 +40,31 @@ namespace Quotation.LoginModule.ViewModels
         #region Commands
         private void IntializeCommands()
         {
-            this.AddCommand = new RelayCommand(this.ExecuteAddCommand, this.CanExecuteAddCommand);
+            this.AddCommand = new RelayCommand<object>(this.ExecuteAddCommand, this.CanExecuteAddCommand);
             this.CancelCommand = new RelayCommand(this.ExecuteCancelCommand, this.CanExecuteCancelCommand);
         }
 
         public ICommand AddCommand { get; private set; }
 
-        public bool CanExecuteAddCommand()
+        public bool CanExecuteAddCommand(object parameter)
         {
-            if (string.IsNullOrEmpty(this.User.Name) == false && string.IsNullOrEmpty(this.User.Username) == false && this.User.SelectedGroup != null) return true;
+            if (string.IsNullOrEmpty(this.User.Name) == false && string.IsNullOrEmpty(this.User.Username) == false && this.User.SelectedGroup != null)
+            {
+                PasswordBox passwordBox = parameter as PasswordBox;
+                string clearTextPassword = passwordBox.Password;
+                if (string.IsNullOrEmpty(clearTextPassword)) return false;
+                else return true;
+            }
             else return false;
         }
 
-        public void ExecuteAddCommand()
+        public void ExecuteAddCommand(object parameter)
         {
+            PasswordBox passwordBox = parameter as PasswordBox;
+            string clearTextPassword = passwordBox.Password;
+
+            this.User.Password = clearTextPassword;
+
             this.EventAggregator.GetEvent<UserAccountEvent>().Publish(new UserAccountEventArg
             {
                 User = this.User,

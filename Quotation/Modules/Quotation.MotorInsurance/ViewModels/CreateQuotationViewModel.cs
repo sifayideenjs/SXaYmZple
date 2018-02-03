@@ -18,6 +18,7 @@ using Quotation.MotorInsuranceModule.Views;
 using Quotation.DataAccess.Models;
 using MaterialDesignThemes.Wpf;
 using System.Windows;
+using Quotation.MotorInsuranceModule.Utilities;
 
 namespace Quotation.MotorInsuranceModule.ViewModels
 {
@@ -26,9 +27,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         QuotationDb quotationDb = null;
         private Visibility _searchFound = Visibility.Collapsed;
         private QuotationViewModel quotationViewModel = null;
+        private DataSet quotationDataSet = null;
         private string searchText = string.Empty;
         private string errorInfo = "No Record Found!";
         private DataSet searchDataSet = null;
+        private bool isQuotationAdded = true;
 
         public CreateQuotationViewModel(QuotationDb quotationDb)
         {
@@ -83,6 +86,18 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public DataSet QuotationDataSet
+        {
+            get { return quotationDataSet; }
+            set { quotationDataSet = value; OnPropertyChanged(); }
+        }
+
+        public bool IsQuotationAdded
+        {
+            get { return isQuotationAdded; }
+            set { isQuotationAdded = value; OnPropertyChanged(); }
+        }
         #endregion //Properties
 
         #region Commands
@@ -90,11 +105,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             this.DashboardCommand = new RelayCommand(this.ExecuteDashboardCommand, this.CanExecuteDashboardCommand);
             this.SearchQuotationCommand = new RelayCommand(this.ExecuteSearchQuotationCommand, this.CanExecuteSearchQuotationCommand);
-            this.AddDriverCommand = new RelayCommand(this.ExecuteAddDriverCommand, this.CanExecuteAddDriverCommand);
-            this.DeleteDriverCommand = new RelayCommand(this.ExecuteDeleteDriverCommand, this.CanExecuteDeleteDriverCommand);
+            //this.AddDriverCommand = new RelayCommand(this.ExecuteAddDriverCommand, this.CanExecuteAddDriverCommand);
+            //this.DeleteDriverCommand = new RelayCommand(this.ExecuteDeleteDriverCommand, this.CanExecuteDeleteDriverCommand);
             this.AddQuotationCommand = new RelayCommand(this.ExecuteAddQuotationCommand, this.CanExecuteAddQuotationCommand);
             this.PrintQuotationCommand = new RelayCommand(this.ExecutePrintQuotationCommand, this.CanExecutePrintQuotationCommand);
-            this.PreviousCommand = new RelayCommand(this.ExecutePreviousCommand, this.CanExecutePreviousCommand);
+            //this.PreviousCommand = new RelayCommand(this.ExecutePreviousCommand, this.CanExecutePreviousCommand);
         }
 
         public ICommand DashboardCommand { get; private set; }
@@ -124,8 +139,9 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             try
             {
+                this.QuotationDataSet = null;
                 SearchFound = Visibility.Collapsed;
-                ClearRegions(RegionNames.MotorCreateQuotationRegion);
+                ClearRegions(RegionNames.MotorRenewQuotationRegion);
 
                 string errorMessage = string.Empty;
                 searchDataSet = null;
@@ -139,10 +155,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 {
                     if (searchDataSet != null && searchDataSet.Tables.Count == 4 && searchDataSet.Tables[0].Rows.Count > 0)
                     {
+                        this.IsQuotationAdded = true;
                         this.QuotationViewModel = new QuotationViewModel(searchDataSet);
                         SearchFound = Visibility.Visible;
 
-                        //this.RegionManager.RequestNavigate(RegionNames.MotorCreateQuotationRegion, WindowNames.MotorAddQuotationDetail);
+                        this.RegionManager.RequestNavigate(RegionNames.MotorRenewQuotationRegion, WindowNames.MotorRenewInsuranceDetail);
                     }
                     else
                     {
@@ -205,8 +222,8 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             if (this.QuotationViewModel != null && this.QuotationViewModel.VehicleDetail.IsValid() && this.QuotationViewModel.CurrentInsuranceDetail.IsValid())
             {
-                bool isValid = true;
-                return isValid;
+                if (IsQuotationAdded == true) return true;
+                return false;
             }
             else
             {
@@ -214,32 +231,70 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             }
         }
 
-        public void ExecuteAddQuotationCommand()
+        public async void ExecuteAddQuotationCommand()
         {
-            this.EventAggregator.GetEvent<AddInsuranceEvent>().Publish(new InsuranceEventArgs
+            MIQuotation insuranceDetail = this.QuotationViewModel.CurrentInsuranceDetail.Model;
+            if (insuranceDetail != null)
             {
-                DriverDetails = this.QuotationViewModel.DriverDetails.Count == 0 ? null : this.QuotationViewModel.DriverDetails.Select(dd => dd.Model),
-                VehicleDetail = this.QuotationViewModel.VehicleDetail.Model,
-                InsuranceDetail = this.QuotationViewModel.CurrentInsuranceDetail.Model,
-                RegionName = RegionNames.MotorWizardRegion,
-                //Source = WindowNames.MotorSummaryDetail
-                Source = PopupNames.ReportModule_Motor
-            });
+                string quotationNo = DbUtility.GetNewQuotationNumber(quotationDb);
+
+                insuranceDetail.NRIC = this.QuotationViewModel.OwnerDetail.NRIC;
+                insuranceDetail.InsuranceQtnNo = quotationNo;
+                var errorInfo = quotationDb.AddInsuranceDetails(insuranceDetail);
+                if (errorInfo.Code == 0)
+                {
+                    this.IsQuotationAdded = false;
+                    string errorMessage;
+                    this.QuotationDataSet = quotationDb.GetMIQuoationDetails(quotationNo, out errorMessage);
+                    //if(String.IsNullOrEmpty(errorMessage) == true)
+                    //{
+                    //    NavigationParameters navParameters = new NavigationParameters();
+                    //    navParameters.Add("ReportDataSet", quotationDataSet);
+
+                    //    this.RegionManager.RequestNavigate(RegionNames.MotorWizardRegion, PopupNames.ReportModule_Motor, navParameters);
+                    //}
+                    //else
+                    //{
+                    //    await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Renew Quotation", errorMessage);
+                    //    return;
+                    //}
+                }
+                else
+                {
+                    await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Renew Quotation", errorInfo.Info);
+                    return;
+                }
+
+                //On Successfully creating a new quotation
+                this.EventAggregator.GetEvent<NewQuotationEvent>().Publish(new QuotationEventArgs
+                {
+                    QuotationNumber = insuranceDetail.InsuranceQtnNo,
+                    OwnerName = this.QuotationViewModel.OwnerDetail.Name,
+                    NRICNumber = insuranceDetail.NRIC,
+                    QuotationDataSet = quotationDataSet
+                });
+            }
+            else
+            {
+                await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Renew Quotation", "Unable to add Insurance details");
+                return;
+            }
         }
 
         public ICommand PrintQuotationCommand { get; private set; }
 
         public bool CanExecutePrintQuotationCommand()
         {
-            return true;
+            if (IsQuotationAdded == false) return true;
+            else return false;
         }
 
         public void ExecutePrintQuotationCommand()
         {
             NavigationParameters navParameters = new NavigationParameters();
-            navParameters.Add("ReportDataSet", this.QuotationViewModel.QuotationDataSet);
+            navParameters.Add("ReportDataSet", this.QuotationDataSet);
 
-            this.RegionManager.RequestNavigate(RegionNames.MotorCreateQuotationRegion, PopupNames.ReportModule_Motor, navParameters);
+            this.RegionManager.RequestNavigate(RegionNames.MotorRenewQuotationRegion, PopupNames.ReportModule_Motor, navParameters);
         }
 
 
@@ -287,6 +342,11 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 {
                     (QuotationViewModel as IViewModel).UnSubscribeEvents();
                     QuotationViewModel = null;
+                    QuotationDataSet = null;
+                    SearchFound = Visibility.Collapsed;
+                    SearchText = string.Empty;
+                    IsQuotationAdded = true;
+                    ClearRegions(RegionNames.MotorRenewQuotationRegion);
                 }
             }
         }

@@ -158,3 +158,5 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsu
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\CreateQuotation.baml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\AddDriverDialog.g.cs
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\AddDriverDialog.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\SearchWizards\RenewInsuranceDetail.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Modules\Quotation.MotorInsurance\obj\Debug\Views\SearchWizards\RenewInsuranceDetail.baml

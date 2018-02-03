@@ -59,7 +59,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <metro:Tile Title="{Binding Model.NRIC}" Command="{Binding DataContext.OpenQuotationCommand, ElementName=root}" CommandParameter="{Binding}"
+                            <metro:Tile Title="{Binding Model.QuotationNo}" Command="{Binding DataContext.OpenQuotationCommand, ElementName=root}" CommandParameter="{Binding}"
                         HorizontalAlignment="Center" VerticalAlignment="Top" TiltFactor="1"
                         Width="120" Height="120" Background="#FF134577" HorizontalContentAlignment="Center" TitleFontSize="13" Margin="5">
                                 <Rectangle Fill="White" Height="30" Width="30" Margin="0 0 0 20">

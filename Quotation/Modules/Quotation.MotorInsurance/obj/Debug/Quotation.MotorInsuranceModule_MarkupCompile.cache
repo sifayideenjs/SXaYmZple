@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-13318793667
+14201930612
 
-38-1349677078
+39-951831393
 84-572967524
-Views\AddDriverDialog.xaml;Views\CreateQuotation.xaml;Views\NewProposal.xaml;Views\CreateWizards\AddQuotationDetail.xaml;Views\MotorInsuranceTiles.xaml;Views\RecentQuotation.xaml;Views\SearchQuotation.xaml;Views\CreateWizards\AddOwnerDetail.xaml;Views\CreateWizards\QuotationSummary.xaml;Views\SearchWizards\NonSearchView.xaml;Views\SearchWizards\InsuranceRenewalDetail.xaml;Views\SearchWizards\SearchView.xaml;Views\ViewQuotation.xaml;
+Views\AddDriverDialog.xaml;Views\CreateQuotation.xaml;Views\NewProposal.xaml;Views\CreateWizards\AddQuotationDetail.xaml;Views\MotorInsuranceTiles.xaml;Views\RecentQuotation.xaml;Views\SearchQuotation.xaml;Views\CreateWizards\AddOwnerDetail.xaml;Views\CreateWizards\QuotationSummary.xaml;Views\SearchWizards\NonSearchView.xaml;Views\SearchWizards\InsuranceRenewalDetail.xaml;Views\SearchWizards\RenewInsuranceDetail.xaml;Views\SearchWizards\SearchView.xaml;Views\ViewQuotation.xaml;
 
 False
 

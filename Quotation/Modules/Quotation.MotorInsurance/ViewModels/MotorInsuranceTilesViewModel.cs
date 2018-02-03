@@ -120,7 +120,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         public void ExecuteSearchQuotationCommand()
         {
-            ClearRegions(RegionNames.MotorSearchRegion);
+            ClearRegions(RegionNames.MainRegion);
             this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.MotorSearchQuotation);
         }
 

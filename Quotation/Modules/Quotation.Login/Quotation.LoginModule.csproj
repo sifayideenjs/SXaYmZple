@@ -117,6 +117,7 @@
     <Compile Include="ViewModels\AddGroupDialogViewModel.cs" />
     <Compile Include="ViewModels\AddUserDialogViewModel.cs" />
     <Compile Include="ViewModels\AdministrationTitlebarViewModel.cs" />
+    <Compile Include="ViewModels\ClockTamperingDetectionViewViewModel.cs" />
     <Compile Include="ViewModels\LicenseViewViewModel.cs" />
     <Compile Include="ViewModels\UserManagementVM\GroupFormViewModel.cs" />
     <Compile Include="ViewModels\GroupManagementViewModel.cs" />
@@ -136,6 +137,9 @@
     </Compile>
     <Compile Include="Views\AdministrationTitlebar.xaml.cs">
       <DependentUpon>AdministrationTitlebar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClockTamperingDetectionView.xaml.cs">
+      <DependentUpon>ClockTamperingDetectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GroupManagement.xaml.cs">
       <DependentUpon>GroupManagement.xaml</DependentUpon>
@@ -176,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdministrationTitlebar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClockTamperingDetectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

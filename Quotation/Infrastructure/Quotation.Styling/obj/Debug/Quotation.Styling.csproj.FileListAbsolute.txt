@@ -34,4 +34,3 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.St
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Controls\HeaderControl.g.cs
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling_MarkupCompile.lref
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Controls\HeaderControl.baml
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Debug\Quotation.Styling.csprojResolveAssemblyReference.cache

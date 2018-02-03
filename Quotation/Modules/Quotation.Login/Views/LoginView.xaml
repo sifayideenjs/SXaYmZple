@@ -26,8 +26,10 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <!--<Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>-->
-            <!--<Image Margin="3" Width="450" Height="220" DockPanel.Dock="Bottom" Source="{StaticResource logo}" Stretch="UniformToFill"/>-->
+            <StackPanel Grid.Row="0" Orientation="Vertical">
+                <Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>
+                <Image Margin="3" Width="150" Height="150" DockPanel.Dock="Bottom" Source="{StaticResource logo}" Stretch="Uniform"/>
+            </StackPanel>
             
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
 

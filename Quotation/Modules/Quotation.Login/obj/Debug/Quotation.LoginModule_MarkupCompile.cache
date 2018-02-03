@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-11-1792983735
+12-976221652
 
-331768377781
+35-1339293289
 831194391554
-Views\AddGroupDialog.xaml;Views\AddUserDialog.xaml;Views\AdministrationTitlebar.xaml;Views\GroupManagement.xaml;Views\LicenseView.xaml;Views\LoginView.xaml;Views\LoginViewTiles.xaml;Views\RightTitlebar.xaml;Views\UserManagement.xaml;Views\UsernameTitlebar.xaml;Views\UserProfileFlyout.xaml;
+Views\AddGroupDialog.xaml;Views\AddUserDialog.xaml;Views\AdministrationTitlebar.xaml;Views\ClockTamperingDetectionView.xaml;Views\GroupManagement.xaml;Views\LicenseView.xaml;Views\LoginView.xaml;Views\LoginViewTiles.xaml;Views\RightTitlebar.xaml;Views\UserManagement.xaml;Views\UsernameTitlebar.xaml;Views\UserProfileFlyout.xaml;
 
 False
 

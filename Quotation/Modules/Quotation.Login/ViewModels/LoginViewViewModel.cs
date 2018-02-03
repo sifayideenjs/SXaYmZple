@@ -15,12 +15,15 @@ using System.Threading;
 using Quotation.Core;
 using Quotation.Infrastructure.Events;
 using Prism.Regions;
+using Quotation.DataAccess;
+using Quotation.Core.Utilities;
 
 namespace Quotation.LoginModule.ViewModels
 {
     public class LoginViewViewModel : ViewModelBase
     {
         #region Fields
+        private LicenseDb dbContext = null;
         private readonly IAuthenticationService _authenticationService;
         private string _username;
         private string _error = string.Empty;
@@ -28,8 +31,9 @@ namespace Quotation.LoginModule.ViewModels
         #endregion //Fields
 
         #region Constructor
-        public LoginViewViewModel()
+        public LoginViewViewModel(LicenseDb licenseDb)
         {
+            this.dbContext = licenseDb;
             this._authenticationService = this.Container.Resolve<IAuthenticationService>(ServiceNames.AuthenticationService);
             this.IntializeCommands();
 
@@ -125,8 +129,32 @@ namespace Quotation.LoginModule.ViewModels
                     ActionType = "Login"
                 });
 
-                this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.LicenseView);
-                //this.RegionManager.RequestNavigate(RegionNames.RightWindowCommandsRegion, FlyoutNames.LoginAdminFlyout);
+                string errorMessage;
+                var licenseDetails = this.dbContext.GetLicenseDetails(out errorMessage);
+                if (licenseDetails != null && licenseDetails.ContainsKey("ExpiryDate"))
+                {
+                    var eDate = licenseDetails["ExpiryDate"];
+                    DateTime expiryDate; DateTime.TryParse(eDate, out expiryDate);
+                    if (string.IsNullOrEmpty(eDate) == false && IsDateBeforeOrToday(expiryDate))
+                    {
+                        if(ClockTampering.IsClockTampered())
+                        {
+                            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.ClockTamperingDetectionView);
+                        }
+                        else
+                        {
+                            this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.Dashboard);
+                        }
+                    }
+                    else
+                    {
+                        this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.LicenseView);
+                    }
+                }
+                else
+                {
+                    this.RegionManager.RequestNavigate(RegionNames.MainRegion, WindowNames.LicenseView);
+                }
             }
             catch (UnauthorizedAccessException)
             {
@@ -162,6 +190,12 @@ namespace Quotation.LoginModule.ViewModels
         }
         #endregion //Commands
 
+        public bool IsDateBeforeOrToday(DateTime inputDate)
+        {
+            bool result = DateTime.Today <= inputDate;
+            return result;
+
+        }
         private void ClearRegions(string regionName)
         {
             if (this.RegionManager.Regions.ContainsRegionWithName(regionName))
