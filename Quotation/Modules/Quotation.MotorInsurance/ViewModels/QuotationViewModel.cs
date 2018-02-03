@@ -178,6 +178,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 Model = "AXIO 1.5XA",
                 YearMade = "2007",
                 Capacity = "1496CC",
+                Tonnage = "10",
                 DateOfRegistered = DateTime.Now,
                 RegNo = "SGY9152X",
                 PreviousRegNo = "SGY9152X",
@@ -1549,16 +1550,16 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                         validationMessage = string.Empty;
                     }
                     break;
-                //case "Tonnage":
-                //    if (string.IsNullOrEmpty(this.Tonnage))
-                //    {
-                //        validationMessage = "Please enter Vehicle Tonnage";
-                //    }
-                //    else
-                //    {
-                //        validationMessage = string.Empty;
-                //    }
-                //    break;
+                case "Tonnage":
+                    if (string.IsNullOrEmpty(this.Tonnage))
+                    {
+                        validationMessage = "Please enter Vehicle Tonnage";
+                    }
+                    else
+                    {
+                        validationMessage = string.Empty;
+                    }
+                    break;
                 case "DateOfRegistered":
                     if (this.DateOfRegistered == null)
                     {
