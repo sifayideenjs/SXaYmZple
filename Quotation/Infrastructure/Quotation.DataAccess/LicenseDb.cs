@@ -16,7 +16,7 @@ namespace Quotation.DataAccess
 
         public LicenseDb()
         {
-            client.BaseAddress = new Uri("http://localhost:13036");
+            client.BaseAddress = new Uri("http://localhost:13037");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 

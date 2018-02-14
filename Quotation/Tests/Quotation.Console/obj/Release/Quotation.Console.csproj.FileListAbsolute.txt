@@ -1,0 +1,7 @@
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\bin\Release\Quotation.Console.exe.config
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\bin\Release\Quotation.Console.exe
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\bin\Release\Quotation.Console.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\bin\Release\RiskLicense.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\obj\Release\Quotation.Console.csprojResolveAssemblyReference.cache
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\obj\Release\Quotation.Console.exe
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Tests\Quotation.Console\obj\Release\Quotation.Console.pdb

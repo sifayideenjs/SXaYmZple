@@ -1,0 +1,5 @@
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\bin\Release\Quotation.Common.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\bin\Release\Quotation.Common.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\obj\Release\Quotation.Common.csprojResolveAssemblyReference.cache
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\obj\Release\Quotation.Common.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\obj\Release\Quotation.Common.pdb

@@ -17,9 +17,9 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\bin\Debug\CrystalDec
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\bin\Debug\stdole.dll
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\obj\Debug\InsMgt.vbprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\obj\Debug\InsMgt.Resources.resources
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\obj\Debug\InsMgt.vbproj.GenerateResource.Cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\obj\Debug\InsMgt.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\obj\Debug\InsMgt.xml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\obj\Debug\InsMgt.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Report\obj\Debug\InsMgt.vbprojResolveAssemblyReference.cache

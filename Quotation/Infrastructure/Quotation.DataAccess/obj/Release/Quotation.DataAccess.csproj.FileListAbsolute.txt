@@ -1,0 +1,9 @@
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Release\Quotation.DataAccess.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Release\Quotation.DataAccess.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Release\Newtonsoft.Json.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Release\System.Net.Http.Formatting.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Release\Newtonsoft.Json.xml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\bin\Release\System.Net.Http.Formatting.xml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\obj\Release\Quotation.DataAccess.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\obj\Release\Quotation.DataAccess.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.DataAccess\obj\Release\Quotation.DataAccess.csprojResolveAssemblyReference.cache

@@ -1,0 +1,90 @@
+2018-02-14 00:09:06.0278|DEBUG|Quotation.Shell.Bootstrapper|Logger was created successfully.
+2018-02-14 00:09:06.0448|DEBUG|Quotation.Shell.Bootstrapper|Creating module catalog.
+2018-02-14 00:09:06.0468|DEBUG|Quotation.Shell.Bootstrapper|Configuring module catalog.
+2018-02-14 00:09:06.1469|DEBUG|Quotation.Shell.Bootstrapper|Creating Unity container.
+2018-02-14 00:09:06.2279|DEBUG|Quotation.Shell.Bootstrapper|Configuring the Unity container.
+2018-02-14 00:09:06.2669|DEBUG|Quotation.Shell.Bootstrapper|Adding UnityBootstrapperExtension to container.
+2018-02-14 00:09:06.3779|DEBUG|Quotation.Shell.Bootstrapper|Configuring ServiceLocator singleton.
+2018-02-14 00:09:06.3779|DEBUG|Quotation.Shell.Bootstrapper|Configuring the ViewModelLocator to use Unity.
+2018-02-14 00:09:06.3779|DEBUG|Quotation.Shell.Bootstrapper|Configuring region adapters.
+2018-02-14 00:09:06.3899|DEBUG|Quotation.Shell.Bootstrapper|Configuring default region behaviors.
+2018-02-14 00:09:06.3899|DEBUG|Quotation.Shell.Bootstrapper|Registering Framework Exception Types.
+2018-02-14 00:09:06.3899|DEBUG|Quotation.Shell.Bootstrapper|Creating the shell.
+2018-02-14 00:09:08.4635|INFO|Quotation.Shell.Bootstrapper|MainViewModel created
+2018-02-14 00:09:08.8646|DEBUG|Quotation.Shell.Bootstrapper|Setting the RegionManager.
+2018-02-14 00:09:08.8776|DEBUG|Quotation.Shell.Bootstrapper|Updating Regions.
+2018-02-14 00:09:08.9026|DEBUG|Quotation.Shell.Bootstrapper|Initializing the shell.
+2018-02-14 00:09:10.8312|DEBUG|Quotation.Shell.Bootstrapper|Initializing modules.
+2018-02-14 00:09:12.1136|DEBUG|Quotation.Shell.Bootstrapper|Bootstrapper sequence completed.
+2018-02-14 00:09:31.6221|DEBUG|Quotation.Shell.Bootstrapper|Logger was created successfully.
+2018-02-14 00:09:31.6791|DEBUG|Quotation.Shell.Bootstrapper|Creating module catalog.
+2018-02-14 00:09:31.7011|DEBUG|Quotation.Shell.Bootstrapper|Configuring module catalog.
+2018-02-14 00:09:32.0032|DEBUG|Quotation.Shell.Bootstrapper|Creating Unity container.
+2018-02-14 00:09:32.1813|DEBUG|Quotation.Shell.Bootstrapper|Configuring the Unity container.
+2018-02-14 00:09:32.2243|DEBUG|Quotation.Shell.Bootstrapper|Adding UnityBootstrapperExtension to container.
+2018-02-14 00:09:32.3283|DEBUG|Quotation.Shell.Bootstrapper|Configuring ServiceLocator singleton.
+2018-02-14 00:09:32.3283|DEBUG|Quotation.Shell.Bootstrapper|Configuring the ViewModelLocator to use Unity.
+2018-02-14 00:09:32.3283|DEBUG|Quotation.Shell.Bootstrapper|Configuring region adapters.
+2018-02-14 00:09:32.3283|DEBUG|Quotation.Shell.Bootstrapper|Configuring default region behaviors.
+2018-02-14 00:09:32.3443|DEBUG|Quotation.Shell.Bootstrapper|Registering Framework Exception Types.
+2018-02-14 00:09:32.3443|DEBUG|Quotation.Shell.Bootstrapper|Creating the shell.
+2018-02-14 00:09:33.7117|INFO|Quotation.Shell.Bootstrapper|MainViewModel created
+2018-02-14 00:09:34.0788|DEBUG|Quotation.Shell.Bootstrapper|Setting the RegionManager.
+2018-02-14 00:09:34.1218|DEBUG|Quotation.Shell.Bootstrapper|Updating Regions.
+2018-02-14 00:09:34.1498|DEBUG|Quotation.Shell.Bootstrapper|Initializing the shell.
+2018-02-14 00:09:36.1314|DEBUG|Quotation.Shell.Bootstrapper|Initializing modules.
+2018-02-14 00:09:37.4608|DEBUG|Quotation.Shell.Bootstrapper|Bootstrapper sequence completed.
+2018-02-14 00:12:33.8431|DEBUG|Quotation.Shell.Bootstrapper|Logger was created successfully.
+2018-02-14 00:12:33.8691|DEBUG|Quotation.Shell.Bootstrapper|Creating module catalog.
+2018-02-14 00:12:33.8691|DEBUG|Quotation.Shell.Bootstrapper|Configuring module catalog.
+2018-02-14 00:12:33.9482|DEBUG|Quotation.Shell.Bootstrapper|Creating Unity container.
+2018-02-14 00:12:34.0642|DEBUG|Quotation.Shell.Bootstrapper|Configuring the Unity container.
+2018-02-14 00:12:34.0982|DEBUG|Quotation.Shell.Bootstrapper|Adding UnityBootstrapperExtension to container.
+2018-02-14 00:12:34.2302|DEBUG|Quotation.Shell.Bootstrapper|Configuring ServiceLocator singleton.
+2018-02-14 00:12:34.2472|DEBUG|Quotation.Shell.Bootstrapper|Configuring the ViewModelLocator to use Unity.
+2018-02-14 00:12:34.2502|DEBUG|Quotation.Shell.Bootstrapper|Configuring region adapters.
+2018-02-14 00:12:34.2502|DEBUG|Quotation.Shell.Bootstrapper|Configuring default region behaviors.
+2018-02-14 00:12:34.2662|DEBUG|Quotation.Shell.Bootstrapper|Registering Framework Exception Types.
+2018-02-14 00:12:34.2662|DEBUG|Quotation.Shell.Bootstrapper|Creating the shell.
+2018-02-14 00:12:35.7827|INFO|Quotation.Shell.Bootstrapper|MainViewModel created
+2018-02-14 00:12:36.1688|DEBUG|Quotation.Shell.Bootstrapper|Setting the RegionManager.
+2018-02-14 00:12:36.2118|DEBUG|Quotation.Shell.Bootstrapper|Updating Regions.
+2018-02-14 00:12:36.2398|DEBUG|Quotation.Shell.Bootstrapper|Initializing the shell.
+2018-02-14 00:12:38.0973|DEBUG|Quotation.Shell.Bootstrapper|Initializing modules.
+2018-02-14 00:12:39.4007|DEBUG|Quotation.Shell.Bootstrapper|Bootstrapper sequence completed.
+2018-02-14 00:18:25.0984|DEBUG|Quotation.Shell.Bootstrapper|Logger was created successfully.
+2018-02-14 00:18:25.1354|DEBUG|Quotation.Shell.Bootstrapper|Creating module catalog.
+2018-02-14 00:18:25.1354|DEBUG|Quotation.Shell.Bootstrapper|Configuring module catalog.
+2018-02-14 00:18:25.3594|DEBUG|Quotation.Shell.Bootstrapper|Creating Unity container.
+2018-02-14 00:18:25.4995|DEBUG|Quotation.Shell.Bootstrapper|Configuring the Unity container.
+2018-02-14 00:18:25.5595|DEBUG|Quotation.Shell.Bootstrapper|Adding UnityBootstrapperExtension to container.
+2018-02-14 00:18:25.6695|DEBUG|Quotation.Shell.Bootstrapper|Configuring ServiceLocator singleton.
+2018-02-14 00:18:25.6715|DEBUG|Quotation.Shell.Bootstrapper|Configuring the ViewModelLocator to use Unity.
+2018-02-14 00:18:25.6715|DEBUG|Quotation.Shell.Bootstrapper|Configuring region adapters.
+2018-02-14 00:18:25.6715|DEBUG|Quotation.Shell.Bootstrapper|Configuring default region behaviors.
+2018-02-14 00:18:25.6865|DEBUG|Quotation.Shell.Bootstrapper|Registering Framework Exception Types.
+2018-02-14 00:18:25.6865|DEBUG|Quotation.Shell.Bootstrapper|Creating the shell.
+2018-02-14 00:18:27.0289|INFO|Quotation.Shell.Bootstrapper|MainViewModel created
+2018-02-14 00:18:27.3390|DEBUG|Quotation.Shell.Bootstrapper|Setting the RegionManager.
+2018-02-14 00:18:27.3900|DEBUG|Quotation.Shell.Bootstrapper|Updating Regions.
+2018-02-14 00:18:27.4180|DEBUG|Quotation.Shell.Bootstrapper|Initializing the shell.
+2018-02-14 00:18:29.4886|DEBUG|Quotation.Shell.Bootstrapper|Initializing modules.
+2018-02-14 00:18:30.7886|DEBUG|Quotation.Shell.Bootstrapper|Bootstrapper sequence completed.
+2018-02-14 00:22:30.4671|DEBUG|Quotation.Shell.Bootstrapper|Logger was created successfully.
+2018-02-14 00:22:30.4981|DEBUG|Quotation.Shell.Bootstrapper|Creating module catalog.
+2018-02-14 00:22:30.5021|DEBUG|Quotation.Shell.Bootstrapper|Configuring module catalog.
+2018-02-14 00:22:30.5181|DEBUG|Quotation.Shell.Bootstrapper|Creating Unity container.
+2018-02-14 00:22:30.5861|DEBUG|Quotation.Shell.Bootstrapper|Configuring the Unity container.
+2018-02-14 00:22:30.6002|DEBUG|Quotation.Shell.Bootstrapper|Adding UnityBootstrapperExtension to container.
+2018-02-14 00:22:30.6742|DEBUG|Quotation.Shell.Bootstrapper|Configuring ServiceLocator singleton.
+2018-02-14 00:22:30.6742|DEBUG|Quotation.Shell.Bootstrapper|Configuring the ViewModelLocator to use Unity.
+2018-02-14 00:22:30.6742|DEBUG|Quotation.Shell.Bootstrapper|Configuring region adapters.
+2018-02-14 00:22:30.6872|DEBUG|Quotation.Shell.Bootstrapper|Configuring default region behaviors.
+2018-02-14 00:22:30.6872|DEBUG|Quotation.Shell.Bootstrapper|Registering Framework Exception Types.
+2018-02-14 00:22:30.6872|DEBUG|Quotation.Shell.Bootstrapper|Creating the shell.
+2018-02-14 00:22:31.6384|INFO|Quotation.Shell.Bootstrapper|MainViewModel created
+2018-02-14 00:22:31.8855|DEBUG|Quotation.Shell.Bootstrapper|Setting the RegionManager.
+2018-02-14 00:22:31.9135|DEBUG|Quotation.Shell.Bootstrapper|Updating Regions.
+2018-02-14 00:22:31.9375|DEBUG|Quotation.Shell.Bootstrapper|Initializing the shell.
+2018-02-14 00:22:32.3286|DEBUG|Quotation.Shell.Bootstrapper|Initializing modules.
+2018-02-14 00:22:33.3009|DEBUG|Quotation.Shell.Bootstrapper|Bootstrapper sequence completed.

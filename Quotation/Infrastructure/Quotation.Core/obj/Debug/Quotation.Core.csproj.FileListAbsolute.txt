@@ -5,7 +5,6 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\obj\Debug\Quotation.Core.pdb
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\bin\Debug\Quotation.Core.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\bin\Debug\Quotation.Core.pdb
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\obj\Debug\Quotation.Core.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\obj\Debug\Quotation.Core.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\obj\Debug\Quotation.Core.pdb
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\bin\Debug\Microsoft.Practices.ServiceLocation.dll
@@ -44,3 +43,4 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Co
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Core\obj\Debug\Quotation.Core.csprojResolveAssemblyReference.cache

@@ -47,7 +47,9 @@ namespace Quotation.MotorInsuranceModule.Utilities
             {
                 var qtnDetails = GetInsuranceDetail(qtndataset.Tables[0]);
                 var quotationNos = qtnDetails.Select(q => int.Parse(q.InsuranceQtnNo));
-                int max = quotationNos.Max();
+                int max = 10000;
+                if (quotationNos != null && quotationNos.Count() == 0) max = 10000;
+                else max = quotationNos.Max();
                 quotationNo = (max + 1).ToString();
             }
             else

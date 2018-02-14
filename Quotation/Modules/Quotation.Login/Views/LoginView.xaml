@@ -27,11 +27,11 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Orientation="Vertical">
-                <Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>
-                <Image Margin="3" Width="150" Height="150" DockPanel.Dock="Bottom" Source="{StaticResource logo}" Stretch="Uniform"/>
+                <!--<Label Grid.Row="0" VerticalAlignment="Center" Content="PROPOSIFY"  FontSize="35" IsTabStop="False" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Tahoma"/>-->
+                <Image Margin="40 40 20 40" Width="280" Height="180" DockPanel.Dock="Bottom" Source="{StaticResource logo}" Stretch="Uniform"/>
             </StackPanel>
             
-            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical" Margin="0 0 0 50">
 
                 <!--<DockPanel LastChildFill="True">
                     <Image Margin="3" Width="250" Height="220" DockPanel.Dock="Bottom" Source="{StaticResource logo}"/>

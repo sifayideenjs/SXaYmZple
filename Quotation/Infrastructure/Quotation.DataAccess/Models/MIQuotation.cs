@@ -8,6 +8,11 @@ namespace Quotation.DataAccess.Models
 {
     public class MIQuotation
     {
+        public MIQuotation()
+        {
+            this.InsuranceExpiryDate = DateTime.Now.AddYears(1);
+            this.RoadTaxExpiryDate = DateTime.Now.AddYears(1);
+        }
         public string NRIC { get; set; }
         public string InsuranceQtnNo { get; set; }
         public System.DateTime InsuranceExpiryDate { get; set; }

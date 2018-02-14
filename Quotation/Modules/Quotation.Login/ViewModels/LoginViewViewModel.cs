@@ -37,9 +37,9 @@ namespace Quotation.LoginModule.ViewModels
             this._authenticationService = this.Container.Resolve<IAuthenticationService>(ServiceNames.AuthenticationService);
             this.IntializeCommands();
 
-#if DEBUG
-            Username = "Admin";
-#endif
+//#if DEBUG
+//            Username = "Admin";
+//#endif
         }
         #endregion //Constructor
 
@@ -98,10 +98,10 @@ namespace Quotation.LoginModule.ViewModels
         {
             PasswordBox passwordBox = parameter as PasswordBox;
             string clearTextPassword = passwordBox.Password;
-#if DEBUG
-            if (_username == "Mark") clearTextPassword = "Mark";
-            else if (_username == "Admin") clearTextPassword = "Admin";
-#endif
+//#if DEBUG
+//            if (_username == "Mark") clearTextPassword = "Mark";
+//            else if (_username == "Admin") clearTextPassword = "Admin";
+//#endif
             try
             {
                 //Validate Credentials through the Authentication Service

@@ -10,11 +10,11 @@ none
 false
 TRACE
 
-1-1206739958
+12-976221652
 
-91038858200
-78199255518
-Views\LoginView.xaml;
+39157304906
+8368112248
+Views\AddGroupDialog.xaml;Views\AddUserDialog.xaml;Views\AdministrationTitlebar.xaml;Views\ClockTamperingDetectionView.xaml;Views\GroupManagement.xaml;Views\LicenseView.xaml;Views\LoginView.xaml;Views\LoginViewTiles.xaml;Views\RightTitlebar.xaml;Views\UserManagement.xaml;Views\UsernameTitlebar.xaml;Views\UserProfileFlyout.xaml;
 
 True
 

@@ -5,6 +5,6 @@ C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Commo
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\obj\Debug\Quotation.Common.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\bin\Debug\Quotation.Common.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\bin\Debug\Quotation.Common.pdb
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\obj\Debug\Quotation.Common.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\obj\Debug\Quotation.Common.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\obj\Debug\Quotation.Common.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Common\obj\Debug\Quotation.Common.csprojResolveAssemblyReference.cache

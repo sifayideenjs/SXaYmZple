@@ -220,9 +220,9 @@ namespace QuotationAPI.DAL
             cmdParameters["InsuranceRenewalDate"] = new SqlParameter("InsuranceRenewalDate", quotationDetail.InsuranceExpiryDate);
             cmdParameters["RoadTaxExpiryDate"] = new SqlParameter("RoadTaxExpiryDate", quotationDetail.RoadTaxExpiryDate);
             cmdParameters["RoadTaxRenewalDate"] = new SqlParameter("RoadTaxRenewalDate", quotationDetail.RoadTaxExpiryDate);
-            cmdParameters["PreviousDealer"] = new SqlParameter("PreviousDealer", quotationDetail.PreviousDealer);
-            cmdParameters["Agency"] = new SqlParameter("Agency", quotationDetail.Agency);
-            cmdParameters["PrevYearPremium"] = new SqlParameter("PrevYearPremium", quotationDetail.PrevYearPremium);
+            cmdParameters["PreviousDealer"] = new SqlParameter("PreviousDealer", quotationDetail.PreviousDealer ?? "NIL");
+            cmdParameters["Agency"] = new SqlParameter("Agency", quotationDetail.Agency ?? "NIL");
+            cmdParameters["PrevYearPremium"] = new SqlParameter("PrevYearPremium", quotationDetail.PrevYearPremium ?? "NIL");
             cmdParameters["FinanceBank"] = new SqlParameter("FinanceBank", quotationDetail.FinanceBank);
             cmdParameters["InsuranceRenewed"] = new SqlParameter("InsuranceRenewed", quotationDetail.InsuranceRenewed);
             cmdParameters["RoadTaxRenewed"] = new SqlParameter("RoadTaxRenewed", quotationDetail.RoadTaxRenewed);
@@ -302,9 +302,9 @@ namespace QuotationAPI.DAL
             cmdParameters["ParallelImport"] = new SqlParameter("ParallelImport", vehicleDetail.ParallelImport);
             cmdParameters["OffPeakVehicle"] = new SqlParameter("OffPeakVehicle", vehicleDetail.OffPeakVehicle);
             cmdParameters["NCD"] = new SqlParameter("NCD", vehicleDetail.NCD);
-            cmdParameters["ExistingInsurer"] = new SqlParameter("ExistingInsurer", vehicleDetail.ExistingInsurer);
-            cmdParameters["PreviousRegNo"] = new SqlParameter("PreviousRegNo", vehicleDetail.PreviousRegNo);
-            cmdParameters["Claims"] = new SqlParameter("Claims", vehicleDetail.Claims);
+            cmdParameters["ExistingInsurer"] = new SqlParameter("ExistingInsurer", vehicleDetail.ExistingInsurer ?? "NIL");
+            cmdParameters["PreviousRegNo"] = new SqlParameter("PreviousRegNo", vehicleDetail.PreviousRegNo ?? "NIL");
+            cmdParameters["Claims"] = new SqlParameter("Claims", vehicleDetail.Claims ?? "NIL");
 
             SqlParameter outPutParameter1 = new SqlParameter();
             outPutParameter1.ParameterName = "ERRORNO";

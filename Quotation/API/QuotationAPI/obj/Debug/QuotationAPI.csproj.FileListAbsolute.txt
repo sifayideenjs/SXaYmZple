@@ -132,8 +132,8 @@ C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\bin\System
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\bin\System.Web.WebPages.Razor.xml
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\bin\Antlr3.Runtime.pdb
-C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\obj\Debug\QuotationAPI.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\obj\Debug\QuotationAPI.dll
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\obj\Debug\QuotationAPI.pdb
 C:\Users\h149041\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\obj\Debug\QuotationAPI.csprojResolveAssemblyReference.cache
 C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\bin\RiskLicense.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\API\QuotationAPI\obj\Debug\QuotationAPI.csprojResolveAssemblyReference.cache

@@ -135,7 +135,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         private void OnNewQuotationEvent(QuotationEventArgs arg)
         {
-            if (arg != null && arg.QuotationDataSet != null && arg.QuotationDataSet.Tables.Count == 4)
+            if (arg != null && arg.QuotationDataSet != null && arg.QuotationDataSet.Tables.Count == 5)
             {
                 var recentItem = new RecentItem() { OwnerName = arg.OwnerName, NRIC = arg.NRICNumber, QuotationNo = arg.QuotationNumber, CreatedDateTime = DateTime.Now, IsAvailable = true };
                 RecentListUtility.AddRecentData(recentItem, recentFileName);

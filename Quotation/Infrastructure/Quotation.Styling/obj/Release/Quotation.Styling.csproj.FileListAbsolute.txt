@@ -1,0 +1,14 @@
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\bin\Release\Quotation.Styling.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\bin\Release\Quotation.Styling.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\BitmapGraphics\Icons.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\LookAndFeel.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Styles\Popup.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Styles\Label.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Controls\HeaderControl.g.cs
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Quotation.Styling_MarkupCompile.cache
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Quotation.Styling_MarkupCompile.lref
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Controls\HeaderControl.baml
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Quotation.Styling.g.resources
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Quotation.Styling.dll
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Quotation.Styling.pdb
+C:\Users\Sifayideen\Source\Repos\SXaYmZple\Quotation\Infrastructure\Quotation.Styling\obj\Release\Quotation.Styling.csprojResolveAssemblyReference.cache

@@ -133,83 +133,89 @@ namespace Quotation.MotorInsuranceModule.ViewModels
         {
             this.quotationDb = quotationDb;
 
-#if DEBUG
-            DataAccess.Models.OwnerDetail ownerDetail = new DataAccess.Models.OwnerDetail()
-            {
-                Name = "Sifayideen",
-                NRIC = "YYY-ZZZ1",
-                DateOfBirth = new DateTime(1983, 5, 7),
-                Gender = "MALE",
-                MaritalStatus = "YES",
-                Occupation = "Software Engineer",
-                LicenseDate = DateTime.Now,
-                Email = "sifayideen@gmail.com",
-                Address = "Chennai",
-                RenewalRemindDays = 7
-            };
+            //#if DEBUG
+            //            DataAccess.Models.OwnerDetail ownerDetail = new DataAccess.Models.OwnerDetail()
+            //            {
+            //                Name = "Sifayideen",
+            //                NRIC = "YYY-ZZZ1",
+            //                DateOfBirth = new DateTime(1983, 5, 7),
+            //                Gender = "MALE",
+            //                MaritalStatus = "YES",
+            //                Occupation = "Software Engineer",
+            //                LicenseDate = DateTime.Now,
+            //                Email = "sifayideen@gmail.com",
+            //                Address = "Chennai",
+            //                RenewalRemindDays = 7
+            //            };
 
-            this.ownerDetail = new OwnerDetailViewModel(ownerDetail);
-#else
+            //            this.ownerDetail = new OwnerDetailViewModel(ownerDetail);
+            //#else
+            //            this.ownerDetail = new OwnerDetailViewModel(new DataAccess.Models.OwnerDetail());
+            //#endif
+
+            //#if DEBUG
+            //            DataAccess.Models.DriverDetail driverDetail = new DataAccess.Models.DriverDetail()
+            //            {
+            //                InsuredName = "Kasim",
+            //                InsuredNRIC = "YYY",
+            //                BizRegNo = "2233",
+            //                DateofBirth = new DateTime(1984, 4, 11),
+            //                Gender = "MALE",
+            //                MaritalStatus = "YES",
+            //                Occupation = "Software Engineer",
+            //                Industry = "IT",
+            //                LicenseDate = DateTime.Now
+            //            };
+            //            this.driverDetails = new ObservableCollection<DriverDetailViewModel>() { new DriverDetailViewModel(driverDetail) };
+            //#else
+            //            this.driverDetails = new ObservableCollection<DriverDetailViewModel>();
+            //#endif
+
+            //#if DEBUG
+            //            DataAccess.Models.VehicleDetail vehicleDetail = new DataAccess.Models.VehicleDetail()
+            //            {
+            //                Make = "TOYOTA COROLLA",
+            //                Model = "AXIO 1.5XA",
+            //                YearMade = "2007",
+            //                Capacity = "1496CC",
+            //                Tonnage = "10",
+            //                DateOfRegistered = DateTime.Now,
+            //                RegNo = "SGY9152X",
+            //                PreviousRegNo = "SGY9152X",
+            //                ParallelImport = 1,
+            //                OffPeakVehicle = 0,
+            //                NCD = "10% EISTING",
+            //                ExistingInsurer = "AXA",
+            //                Claims = string.Empty
+            //            };
+
+            //            this.VehicleDetail = new VehicleDetailViewModel(vehicleDetail);
+            //#else
+            //            this.vehicleDetail = new VehicleDetailViewModel(new DataAccess.Models.VehicleDetail());
+            //#endif
+
+            //#if DEBUG
+            //            DataAccess.Models.MIQuotation insuranceDetail = new DataAccess.Models.MIQuotation()
+            //            {
+            //                InsuranceExpiryDate = new DateTime(2019, 01, 14),
+            //                InsuranceRenewalDate = new DateTime(2019, 01, 14),
+            //                RoadTaxExpiryDate = new DateTime(2020, 01, 14),
+            //                RoadTaxRenewalDate = new DateTime(2020, 01, 14),
+            //                PreviousDealer = "CAR HOUSE",
+            //                Agency = "MDIVINE",
+            //                FinanceBank = "MAYBANK",
+            //                PrevYearPremium = "NIL"
+            //            };
+            //            this.CurrentInsuranceDetail = new InsuranceDetailViewModel(insuranceDetail);
+            //#else            
+            //            this.currentInsuranceDetail = new InsuranceDetailViewModel(new MIQuotation());
+            //#endif
+
             this.ownerDetail = new OwnerDetailViewModel(new DataAccess.Models.OwnerDetail());
-#endif
-
-#if DEBUG
-            DataAccess.Models.DriverDetail driverDetail = new DataAccess.Models.DriverDetail()
-            {
-                InsuredName = "Kasim",
-                InsuredNRIC = "YYY",
-                BizRegNo = "2233",
-                DateofBirth = new DateTime(1984, 4, 11),
-                Gender = "MALE",
-                MaritalStatus = "YES",
-                Occupation = "Software Engineer",
-                Industry = "IT",
-                LicenseDate = DateTime.Now
-            };
-            this.driverDetails = new ObservableCollection<DriverDetailViewModel>() { new DriverDetailViewModel(driverDetail) };
-#else
             this.driverDetails = new ObservableCollection<DriverDetailViewModel>();
-#endif
-
-#if DEBUG
-            DataAccess.Models.VehicleDetail vehicleDetail = new DataAccess.Models.VehicleDetail()
-            {
-                Make = "TOYOTA COROLLA",
-                Model = "AXIO 1.5XA",
-                YearMade = "2007",
-                Capacity = "1496CC",
-                Tonnage = "10",
-                DateOfRegistered = DateTime.Now,
-                RegNo = "SGY9152X",
-                PreviousRegNo = "SGY9152X",
-                ParallelImport = 1,
-                OffPeakVehicle = 0,
-                NCD = "10% EISTING",
-                ExistingInsurer = "AXA",
-                Claims = string.Empty
-            };
-
-            this.VehicleDetail = new VehicleDetailViewModel(vehicleDetail);
-#else
             this.vehicleDetail = new VehicleDetailViewModel(new DataAccess.Models.VehicleDetail());
-#endif
-
-#if DEBUG
-            DataAccess.Models.MIQuotation insuranceDetail = new DataAccess.Models.MIQuotation()
-            {
-                InsuranceExpiryDate = new DateTime(2019, 01, 14),
-                InsuranceRenewalDate = new DateTime(2019, 01, 14),
-                RoadTaxExpiryDate = new DateTime(2020, 01, 14),
-                RoadTaxRenewalDate = new DateTime(2020, 01, 14),
-                PreviousDealer = "CAR HOUSE",
-                Agency = "MDIVINE",
-                FinanceBank = "MAYBANK",
-                PrevYearPremium = "NIL"
-            };
-            this.CurrentInsuranceDetail = new InsuranceDetailViewModel(insuranceDetail);
-#else            
             this.currentInsuranceDetail = new InsuranceDetailViewModel(new MIQuotation());
-#endif
+
             SubscribeEvents();
         }
         #endregion //Constructor
@@ -430,7 +436,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
 
         private async void OnAddInsuranceView(InsuranceEventArgs arg)
         {
-            if (arg != null && this.VehicleDetail.IsValid() && this.CurrentInsuranceDetail.IsValid())
+             if (arg != null && this.VehicleDetail.IsValid() && this.CurrentInsuranceDetail.IsValid())
             {
                 if(arg.DriverDetails != null)
                 {
@@ -509,6 +515,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                             string errorMessage;
                             this.QuotationDataSet = quotationDb.GetMIQuoationDetails(quotationNo, out errorMessage);
 
+                            await this.Container.Resolve<IMetroMessageDisplayService>(ServiceNames.MetroMessageDisplayService).ShowMessageAsnyc("Add Quotation", this.QuotationDataSet.Tables[0].TableName + " " + this.QuotationDataSet.Tables[1].TableName);
                             NavigationParameters navParameters = new NavigationParameters();
                             navParameters.Add("ReportDataSet", quotationDataSet);
 
@@ -687,6 +694,7 @@ namespace Quotation.MotorInsuranceModule.ViewModels
             if(this.model != null)
             {
                 this.model.Gender = this.genderTypes.First();
+                this.model.MaritalStatus = maritalStatusTypes.First();
                 this.model.RenewalRemindDays = this.renewalReminds.First();
             }
         }
@@ -1643,9 +1651,10 @@ namespace Quotation.MotorInsuranceModule.ViewModels
                 DateOfRegistered != null &&
                 string.IsNullOrEmpty(YearMade) == false &&
                 string.IsNullOrEmpty(RegNo) == false &&
-                string.IsNullOrEmpty(NCD) == false &&
-                string.IsNullOrEmpty(ExistingInsurer) == false &&
-                string.IsNullOrEmpty(PreviousRegNo) == false)
+                string.IsNullOrEmpty(NCD) == false
+                //string.IsNullOrEmpty(ExistingInsurer) == false &&
+                //string.IsNullOrEmpty(PreviousRegNo) == false
+                )
             {
                 return true;
             }
